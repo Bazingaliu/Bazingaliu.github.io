@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>cs231n作业：assignment1 - features | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="cs231n,homework">
+    
+    <meta name="description" content="GitHub地址：https://github.com/ZJUFangzh/cs231n 抽取图像的HOG和HSV特征。">
+<meta name="keywords" content="cs231n,homework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs231n作业：assignment1 - features">
+<meta property="og:url" content="http://fangzh.top/2018/cs231n-1h-5/index.html">
+<meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
+<meta property="og:description" content="GitHub地址：https://github.com/ZJUFangzh/cs231n 抽取图像的HOG和HSV特征。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlvz19onj20yh0k1dms.jpg">
+<meta property="og:updated_time" content="2018-10-23T12:16:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cs231n作业：assignment1 - features">
+<meta name="twitter:description" content="GitHub地址：https://github.com/ZJUFangzh/cs231n 抽取图像的HOG和HSV特征。">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlvz19onj20yh0k1dms.jpg">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon_1.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+    <!--百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?c48627a60135ae47d77a79844f7e5b04";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <!--百度SEO-->
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+        </script>
+    <!--googleseo-->
+    <meta name="google-site-verification" content="p1u63jgcp2J7NsJHR_UxQX2Fzj_UY6Zwf8C1zTRpONM">
+    
+    <meta name="google-site-verification" content="8ojU19tXQIB94wIY0cAPI5BKSsrqV-xxrlx46C_-WMg">
+	<!--xiongzhang-->
+	<script src="https://xiongzhang.baidu.com/sdk/c.js?appid=1608109025415176"></script>
+	<!--shougou-->
+	<meta name="sogou_site_verification" content="tRwGjUhpuk">
+	<!--360-->
+	<meta name="360-site-verification" content="06663b5113fe8a05769074a579c4d4ea">
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">我愿做你光华中淡淡的一笔</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives">归档</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AI/">AI</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AI/Deep-Learning/">Deep Learning</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/">日常技术</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/Linux/">Linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/博客搭建/">博客搭建</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/汇总帖/">汇总帖</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/">生活</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/旅行/">旅行</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/随笔/">随笔</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/board">留言板</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-cs231n-1h-5" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        cs231n作业：assignment1 - features
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/cs231n-1h-5/" class="article-date">
+            <time datetime="2018-09-27T09:25:31.000Z" itemprop="datePublished">2018-09-27</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/cs231n/">cs231n</a>, <a class="tag-link" href="/tags/homework/">homework</a>
+    </div>
+
+                <!---cloud阅读量统计系统-->
+                阅读数量:<span id="/2018/cs231n-1h-5/" class="leancloud_visitors" data-flag-title="cs231n作业：assignment1 - features"></span>次
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlvz19onj20yh0k1dms.jpg" alt></p>
+<p>GitHub地址：<a href="https://github.com/ZJUFangzh/cs231n" target="_blank" rel="noopener">https://github.com/ZJUFangzh/cs231n</a></p>
+<p>抽取图像的HOG和HSV特征。</p>
+<a id="more"></a>
+<p>对于每张图，我们会计算<strong>梯度方向直方图(HOG)</strong>特征和用<strong>HSV（Hue色调，Saturation饱和度,Value明度）</strong>颜色空间的<strong>色调</strong>特征。把每张图的梯度方向直方图和颜色直方图特征合并形成我们最后的特征向量。</p>
+<p>粗略的讲呢，HOG应该可以捕捉到图像的纹理特征而忽略了颜色信息，颜色直方图会表示图像的颜色特征而忽略了纹理特征(详细见<a href="http://www.jianshu.com/p/395f0582c5f7" target="_blank" rel="noopener">这篇</a>)。所以我们预估把两者结合起来得到的效果应该是比用其中一种得到的效果好。对于后面的bonus，验证一下这个设想是不错的选择。</p>
+<p><code>hog_feature</code>和<code>color_histogram_hsv</code>两个函数都只对一张图做操作并返回这张图片的特征向量。<code>extract_features</code>函数接收一堆图片和一个list的特征函数，然后用每个特征函数在每张图片上过一遍，把结果存到一个矩阵里面，矩阵的每一行都是一张图片的所有特征的合并。</p>
+<p>在features.py中写了两个特征的计算方法，HOG是改写了scikit-image的fog接口，并且首先要转换成灰度图。颜色直方图是实现用matplotlib.colors.rgb_to_hsv的接口把图片从RGB变成HSV，再提取明度(value)，把value投射到不同的bin当中去。关于HOG的原理请谷歌百度。</p>
+<p><strong>如果出错</strong>：</p>
+<p><code>orientation_histogram[:,:,i] = uniform_filter(temp_mag, size=(cx, cy))[cx/2::cx, cy/2::cy].T</code>这行报错,<em>“TypeError: slice indices must be integers or None or have an <strong>index</strong> method”</em>,可以把代码改成: <code>orientation_histogram[:,:,i] = uniform_filter(temp_mag, size=(cx, cy))[int(cx/2)::cx, int(cy/2)::cy].T</code></p>
+<p>通过这一步，把原来的数据集都提取出了特征，换成了X_train_feats,X_val_feats,X_test_feats</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> cs231n.features <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">num_color_bins = <span class="number">10</span> <span class="comment"># Number of bins in the color histogram</span></span><br><span class="line">feature_fns = [hog_feature, <span class="keyword">lambda</span> img: color_histogram_hsv(img, nbin=num_color_bins)]</span><br><span class="line">X_train_feats = extract_features(X_train, feature_fns, verbose=<span class="keyword">True</span>)</span><br><span class="line">X_val_feats = extract_features(X_val, feature_fns)</span><br><span class="line">X_test_feats = extract_features(X_test, feature_fns)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Preprocessing: Subtract the mean feature</span></span><br><span class="line">mean_feat = np.mean(X_train_feats, axis=<span class="number">0</span>, keepdims=<span class="keyword">True</span>)</span><br><span class="line">X_train_feats -= mean_feat</span><br><span class="line">X_val_feats -= mean_feat</span><br><span class="line">X_test_feats -= mean_feat</span><br><span class="line"></span><br><span class="line"><span class="comment"># Preprocessing: Divide by standard deviation. This ensures that each feature</span></span><br><span class="line"><span class="comment"># has roughly the same scale.</span></span><br><span class="line">std_feat = np.std(X_train_feats, axis=<span class="number">0</span>, keepdims=<span class="keyword">True</span>)</span><br><span class="line">X_train_feats /= std_feat</span><br><span class="line">X_val_feats /= std_feat</span><br><span class="line">X_test_feats /= std_feat</span><br><span class="line"></span><br><span class="line"><span class="comment"># Preprocessing: Add a bias dimension</span></span><br><span class="line">X_train_feats = np.hstack([X_train_feats, np.ones((X_train_feats.shape[<span class="number">0</span>], <span class="number">1</span>))])</span><br><span class="line">X_val_feats = np.hstack([X_val_feats, np.ones((X_val_feats.shape[<span class="number">0</span>], <span class="number">1</span>))])</span><br><span class="line">X_test_feats = np.hstack([X_test_feats, np.ones((X_test_feats.shape[<span class="number">0</span>], <span class="number">1</span>))])</span><br></pre></td></tr></table></figure>
+<h1 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h1><p>跟之前都一样的，把训练集换成 ***_feats就行了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Use the validation set to tune the learning rate and regularization strength</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> cs231n.classifiers.linear_classifier <span class="keyword">import</span> LinearSVM</span><br><span class="line"></span><br><span class="line">learning_rates = [<span class="number">1e-9</span>, <span class="number">1e-8</span>, <span class="number">1e-7</span>]</span><br><span class="line">regularization_strengths = [<span class="number">5e4</span>, <span class="number">5e5</span>, <span class="number">5e6</span>]</span><br><span class="line"></span><br><span class="line">results = &#123;&#125;</span><br><span class="line">best_val = <span class="number">-1</span></span><br><span class="line">best_svm = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">learning_rates =[<span class="number">5e-9</span>, <span class="number">7.5e-9</span>, <span class="number">1e-8</span>]</span><br><span class="line">regularization_strengths = [(<span class="number">5</span>+i)*<span class="number">1e6</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">-3</span>,<span class="number">4</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="comment"># <span class="doctag">TODO:</span>                                                                        #</span></span><br><span class="line"><span class="comment"># Use the validation set to set the learning rate and regularization strength. #</span></span><br><span class="line"><span class="comment"># This should be identical to the validation that you did for the SVM; save    #</span></span><br><span class="line"><span class="comment"># the best trained classifer in best_svm. You might also want to play          #</span></span><br><span class="line"><span class="comment"># with different numbers of bins in the color histogram. If you are careful    #</span></span><br><span class="line"><span class="comment"># you should be able to get accuracy of near 0.44 on the validation set.       #</span></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="keyword">for</span> learning_rate <span class="keyword">in</span> learning_rates:</span><br><span class="line">    <span class="keyword">for</span> regularization_strength <span class="keyword">in</span> regularization_strengths:</span><br><span class="line">        svm = LinearSVM()</span><br><span class="line">        loss_hist = svm.train(X_train_feats, y_train, learning_rate=learning_rate, reg=regularization_strength,</span><br><span class="line">                      num_iters=<span class="number">1500</span>, verbose=<span class="keyword">False</span>)</span><br><span class="line">        y_train_pred = svm.predict(X_train_feats)</span><br><span class="line">        y_val_pred = svm.predict(X_val_feats)</span><br><span class="line">        y_train_acc = np.mean(y_train_pred==y_train)</span><br><span class="line">        y_val_acc = np.mean(y_val_pred==y_val)</span><br><span class="line">        results[(learning_rate,regularization_strength)] = [y_train_acc, y_val_acc]</span><br><span class="line">        <span class="keyword">if</span> y_val_acc &gt; best_val:</span><br><span class="line">            best_val = y_val_acc</span><br><span class="line">            best_svm = svm</span><br><span class="line"></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="comment">#                              END OF YOUR CODE                                #</span></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Print out results.</span></span><br><span class="line"><span class="keyword">for</span> lr, reg <span class="keyword">in</span> sorted(results):</span><br><span class="line">    train_accuracy, val_accuracy = results[(lr, reg)]</span><br><span class="line">    print(<span class="string">'lr %e reg %e train accuracy: %f val accuracy: %f'</span> % (</span><br><span class="line">                lr, reg, train_accuracy, val_accuracy))</span><br><span class="line">    </span><br><span class="line">print(<span class="string">'best validation accuracy achieved during cross-validation: %f'</span> % best_val)</span><br></pre></td></tr></table></figure>
+<h1 id="Neural-Network-on-image-features"><a href="#Neural-Network-on-image-features" class="headerlink" title="Neural Network on image features"></a>Neural Network on image features</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> cs231n.classifiers.neural_net <span class="keyword">import</span> TwoLayerNet</span><br><span class="line"></span><br><span class="line">input_dim = X_train_feats.shape[<span class="number">1</span>]</span><br><span class="line">hidden_dim = <span class="number">500</span></span><br><span class="line">num_classes = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">net = TwoLayerNet(input_dim, hidden_dim, num_classes)</span><br><span class="line">best_net = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="comment"># <span class="doctag">TODO:</span> Train a two-layer neural network on image features. You may want to    #</span></span><br><span class="line"><span class="comment"># cross-validate various parameters as in previous sections. Store your best   #</span></span><br><span class="line"><span class="comment"># model in the best_net variable.                                              #</span></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line">best_val = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">learning_rates = [<span class="number">1.2e-3</span>, <span class="number">1.5e-3</span>, <span class="number">1.75e-3</span>]</span><br><span class="line">regularization_strengths = [<span class="number">1</span>, <span class="number">1.25</span>, <span class="number">1.5</span> , <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> lr <span class="keyword">in</span> learning_rates:</span><br><span class="line">    <span class="keyword">for</span> reg <span class="keyword">in</span> regularization_strengths:<span class="comment">#</span></span><br><span class="line"><span class="comment">#        net = TwoLayerNet(input_dim, hidden_dim, num_classes)</span></span><br><span class="line">        loss_hist = net.train(X_train_feats, y_train, X_val_feats, y_val,</span><br><span class="line">                    num_iters=<span class="number">1000</span>, batch_size=<span class="number">200</span>,</span><br><span class="line">                    learning_rate=lr, learning_rate_decay=<span class="number">0.95</span>,</span><br><span class="line">                    reg=reg, verbose=<span class="keyword">False</span>)</span><br><span class="line">        y_train_pred = net.predict(X_train_feats)</span><br><span class="line">        y_val_pred = net.predict(X_val_feats)</span><br><span class="line">        y_train_acc = np.mean(y_train_pred==y_train)</span><br><span class="line">        y_val_acc = np.mean(y_val_pred==y_val)</span><br><span class="line">        results[(lr,reg)] = [y_train_acc, y_val_acc]</span><br><span class="line">        <span class="keyword">if</span> y_val_acc &gt; best_val:</span><br><span class="line">            best_val = y_val_acc</span><br><span class="line">            best_net = net</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> lr, reg <span class="keyword">in</span> sorted(results):</span><br><span class="line">    train_accuracy, val_accuracy = results[(lr, reg)]</span><br><span class="line">    print(<span class="string">'lr %e reg %e train accuracy: %f val accuracy: %f'</span> % (</span><br><span class="line">                lr, reg, train_accuracy, val_accuracy))</span><br><span class="line">    </span><br><span class="line">print(<span class="string">'best validation accuracy achieved during cross-validation: %f'</span> % best_val)</span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="comment">#                              END OF YOUR CODE                                #</span></span><br><span class="line"><span class="comment">################################################################################</span></span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://fangzh.top/2018/cs231n-1h-5/" data-id="ck2yn0k0q0005pov8wxm52cz8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+
+        </footer>
+    </div>
+</article>
+<!--
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+-->
+<!--来比力评论系统，在commetn/livebe.ejs中-->
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQ4OC8xNjAxNQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/profile.php?id=100042920468816" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/Bazingaliu" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/dl-ai-4-1/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            DeepLearning.ai笔记:(4-1)-- 卷积神经网络（Foundations of CNN）
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/cs231n-1h-4/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">cs231n作业：assignment1 - two_layer_net</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/cs231n-2-3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlvz19onj20yh0k1dms.jpg)" alt="cs231n作业：assignment2 - Convolutional Networks" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a></p>
+                            <p class="item-title"><a href="/2018/cs231n-2-3/" class="title">cs231n作业：assignment2 - Convolutional Networks</a></p>
+                            <p class="item-date"><time datetime="2018-10-22T05:49:41.000Z" itemprop="datePublished">2018-10-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/cs231n-2-2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlvz19onj20yh0k1dms.jpg)" alt="cs231n作业：assignment2 - Batch Normalization and Dropout" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a></p>
+                            <p class="item-title"><a href="/2018/cs231n-2-2/" class="title">cs231n作业：assignment2 - Batch Normalization and Dropout</a></p>
+                            <p class="item-date"><time datetime="2018-10-22T05:07:45.000Z" itemprop="datePublished">2018-10-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/dl-ai-summary/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="吴恩达Coursera(DeepLearning.ai)笔记和作业汇总帖" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/汇总帖/">汇总帖</a></p>
+                            <p class="item-title"><a href="/2018/dl-ai-summary/" class="title">吴恩达Coursera(DeepLearning.ai)笔记和作业汇总帖</a></p>
+                            <p class="item-date"><time datetime="2018-10-18T12:01:05.000Z" itemprop="datePublished">2018-10-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/dl-ai-5-3h/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="DeepLearning.ai作业:(5-3) -- 序列模型和注意力机制" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a></p>
+                            <p class="item-title"><a href="/2018/dl-ai-5-3h/" class="title">DeepLearning.ai作业:(5-3) -- 序列模型和注意力机制</a></p>
+                            <p class="item-date"><time datetime="2018-10-18T10:39:15.000Z" itemprop="datePublished">2018-10-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/dl-ai-5-3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="DeepLearning.ai笔记:(5-3) -- 序列模型和注意力机制" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a></p>
+                            <p class="item-title"><a href="/2018/dl-ai-5-3/" class="title">DeepLearning.ai笔记:(5-3) -- 序列模型和注意力机制</a></p>
+                            <p class="item-date"><time datetime="2018-10-18T10:39:10.000Z" itemprop="datePublished">2018-10-18</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系方式</h3>
+        <div class="widget">
+            <!--fangzhyx@foxmail.com-->
+		<p>fangzhyx@foxmail.com</p>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">36</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/Deep-Learning/">Deep Learning</a><span class="category-list-count">36</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/">日常技术</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/博客搭建/">博客搭建</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/汇总帖/">汇总帖</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/旅行/">旅行</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/随笔/">随笔</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">29</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs231n/">cs231n</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dl-ai/">dl.ai</a><span class="tag-list-count">29</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/homework/">homework</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/">shadowsocks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/旅行/">旅行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/航拍/">航拍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频/">视频</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/cs231n/" style="font-size: 16.67px;">cs231n</a> <a href="/tags/dl-ai/" style="font-size: 20px;">dl.ai</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/homework/" style="font-size: 18.33px;">homework</a> <a href="/tags/install/" style="font-size: 13.33px;">install</a> <a href="/tags/python/" style="font-size: 11.67px;">python</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/航拍/" style="font-size: 10px;">航拍</a> <a href="/tags/视频/" style="font-size: 10px;">视频</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://qhgong.com">Avalon</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://hfanss.com">幻凡ss</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://trhx.top">trhx</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 理科生写给世界的情书</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+
+				<!--coding pages and github-->
+                <p><span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span> and <span><a href="https://github.com" style="font-weight: bold">Github</a></span></p>
+                <!--这一段是不蒜子的访问量统计脚本-->
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次 &nbsp;   </span>
+                <span id="busuanzi_container_site_uv">
+                    访客数<span id="busuanzi_value_site_uv"></span>人次
+                  </span>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--往下是cloud的文章阅读量系统-->
+<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+<script>
+    var APP_ID = 'YVSE8R91f8Qc6d6FwMTnwytk-gzGzoHsz';
+    var APP_KEY = 'ajFB9Ueh08Y5pIvkDsXSOW56';
+    AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+    });
+    // 显示次数
+    function showTime(Counter) {
+        var query = new AV.Query("Counter");
+        if($(".leancloud_visitors").length > 0){
+            var url = $(".leancloud_visitors").attr('id').trim();
+            // where field
+            query.equalTo("words", url);
+            // count
+            query.count().then(function (number) {
+                // There are number instances of MyClass where words equals url.
+                $(document.getElementById(url)).text(number?  number : '--');
+            }, function (error) {
+                // error is an instance of AVError.
+            });
+        }
+    }
+    // 追加pv
+    function addCount(Counter) {
+        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+        var Counter = AV.Object.extend("Counter");
+        var query = new Counter;
+        query.save({
+            words: url
+        }).then(function (object) {
+        })
+    }
+    $(function () {
+        var Counter = AV.Object.extend("Counter");
+        addCount(Counter);
+        showTime(Counter);
+    });
+</script>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://fangzh.top/2018/cs231n-1h-5/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

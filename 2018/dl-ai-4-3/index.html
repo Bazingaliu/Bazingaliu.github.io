@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>DeepLearning.ai笔记:(4-3)-- 目标检测（Object detection） | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="dl.ai">
+    
+    <meta name="description" content="这一周主要讲了卷积神经网络的进一步应用：目标检测。 主要内容有：目标定位、特征点检测、目标检测、滑动窗口、Bounding Box，IOU，NMS，Anchor Boxes，Yolo算法。">
+<meta name="keywords" content="dl.ai">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DeepLearning.ai笔记:(4-3)-- 目标检测（Object detection）">
+<meta property="og:url" content="http://fangzh.top/2018/dl-ai-4-3/index.html">
+<meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
+<meta property="og:description" content="这一周主要讲了卷积神经网络的进一步应用：目标检测。 主要内容有：目标定位、特征点检测、目标检测、滑动窗口、Bounding Box，IOU，NMS，Anchor Boxes，Yolo算法。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
+<meta property="og:updated_time" content="2018-10-23T12:16:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DeepLearning.ai笔记:(4-3)-- 目标检测（Object detection）">
+<meta name="twitter:description" content="这一周主要讲了卷积神经网络的进一步应用：目标检测。 主要内容有：目标定位、特征点检测、目标检测、滑动窗口、Bounding Box，IOU，NMS，Anchor Boxes，Yolo算法。">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon_1.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+    <!--百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?c48627a60135ae47d77a79844f7e5b04";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <!--百度SEO-->
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+        </script>
+    <!--googleseo-->
+    <meta name="google-site-verification" content="p1u63jgcp2J7NsJHR_UxQX2Fzj_UY6Zwf8C1zTRpONM">
+    
+    <meta name="google-site-verification" content="8ojU19tXQIB94wIY0cAPI5BKSsrqV-xxrlx46C_-WMg">
+	<!--xiongzhang-->
+	<script src="https://xiongzhang.baidu.com/sdk/c.js?appid=1608109025415176"></script>
+	<!--shougou-->
+	<meta name="sogou_site_verification" content="tRwGjUhpuk">
+	<!--360-->
+	<meta name="360-site-verification" content="06663b5113fe8a05769074a579c4d4ea">
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">我愿做你光华中淡淡的一笔</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives">归档</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AI/">AI</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AI/Deep-Learning/">Deep Learning</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/">日常技术</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/Linux/">Linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/博客搭建/">博客搭建</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/汇总帖/">汇总帖</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/">生活</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/旅行/">旅行</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/随笔/">随笔</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/board">留言板</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-dl-ai-4-3" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        DeepLearning.ai笔记:(4-3)-- 目标检测（Object detection）
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/dl-ai-4-3/" class="article-date">
+            <time datetime="2018-10-11T09:02:09.000Z" itemprop="datePublished">2018-10-11</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/dl-ai/">dl.ai</a>
+    </div>
+
+                <!---cloud阅读量统计系统-->
+                阅读数量:<span id="/2018/dl-ai-4-3/" class="leancloud_visitors" data-flag-title="DeepLearning.ai笔记:(4-3)-- 目标检测（Object detection）"></span>次
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg" alt></p>
+<p>这一周主要讲了卷积神经网络的进一步应用：目标检测。</p>
+<p>主要内容有：目标定位、特征点检测、目标检测、滑动窗口、Bounding Box，IOU，NMS，Anchor Boxes，Yolo算法。</p>
+<a id="more"></a>
+<h1 id="目标定位（Object-localization）"><a href="#目标定位（Object-localization）" class="headerlink" title="目标定位（Object localization）"></a>目标定位（Object localization）</h1><p>在进行目标检测之前，需要先了解一下目标定位。</p>
+<p>因为进行目标检测的时候需要预测出目标的具体位置，所以在训练的时候需要先标定一下这个目标的实际位置。</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktch0hzj20ot0e1juw.jpg" alt></p>
+<p>假设我们需要分类的类别有3个，行人，汽车，自行车，如果什么都没有，那么就是背景。可以看到，y一共有8个参数：</p>
+<ul>
+<li>$P_c$：是否有目标</li>
+<li>$b_x,b_y,b_h,b_w$：目标的位置x,y，高宽h,w</li>
+<li>$c_1,c_2,c_3$：行人、汽车、自行车</li>
+</ul>
+<p>如果$P_c = 0$那么表示没有目标，那么我们就不关心后面的其他参数了。</p>
+<h1 id="特征点检测-Landmark-detection"><a href="#特征点检测-Landmark-detection" class="headerlink" title="特征点检测(Landmark detection)"></a>特征点检测(Landmark detection)</h1><p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktegta7j20p50e0tga.jpg" alt></p>
+<p>如果是要检测人脸，那么可以在人脸上标注若干个特征点，假设有64个特征点，那么这个时候就有128个参数了，再加上判断是否有人脸，就有129个参数。</p>
+<p>假设要检测的是人体肢体的动作，那么同样也可以标注若干个肢体上的特征点。</p>
+<p>注意，这些都是需要<strong>人工进行标注</strong>的。</p>
+<h1 id="目标检测"><a href="#目标检测" class="headerlink" title="目标检测"></a>目标检测</h1><p><strong>滑动窗口</strong></p>
+<p>目标检测通常采用的是滑动窗口的方法来检测的。也就是用一定窗口的大小，按照指定的步长，遍历整个图像；而后再选取更大的窗口，再次遍历，依次循环。这样子，每个窗口都相当于一张小图片，对这个小图片进行图像识别，从而得到预测结果。</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktcgv82j20oo0dy0wz.jpg" alt></p>
+<p>但是这个方法有个很明显的问题，就是每个窗口都要进行一次图像识别，速度太慢了。因此就有了滑动窗口的卷积实现。在此之前，我们需要知道如何把全连接层变为卷积层。</p>
+<p><strong>全连接层转化为卷积层</strong></p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktb7cdvj20ov0dx0tx.jpg" alt></p>
+<p>如图，在经过Max pool后，我们得到了$5 \times 5 \times 16$的图像，经过第一个FC层后变成了400个节点。</p>
+<p>而此时我们可以使用400个$5\times5$的卷积核，进行卷积，得到了$1\times1\times400$</p>
+<p>而后再使用400个$1\times1$的卷积核，再得到了$1\times1\times400$矩阵，所以我们就将全连接层转化成了卷积层。</p>
+<p><strong>卷积滑动窗口的实现</strong></p>
+<p>因为之前的滑动窗口每一次都要进行一次计算，太慢了。所以利用上面的全连接层转化为卷积层的做法，可以一次性把滑动窗口的结果都计算出来。</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktb94djj20ns09k0vh.jpg" alt></p>
+<p>为了方面观察，这里把三维图像画成了平面。</p>
+<p>假设滑动的窗口是$14\times14\times3$，原图像大小是$16\times\times16\times3$。</p>
+<p>蓝色表示滑动窗口，如果步数是2的话，很容易可以得到$2\times2$的图像，不难看出，在图中最后输出的左上角的蓝色部分就是原图中蓝色部分的计算结果，以此类推。</p>
+<p>也就是说，只需要原图进行一次运算，就可以一次性得到多个滑动窗口的输出值。</p>
+<p>具体例子如下图：</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktb8z1tj20no0cdwhr.jpg" alt></p>
+<p>可以看到，原图为$28\times28$，最后得到了$8\times8 = 64$个滑动窗口。</p>
+<h1 id="Bounding-Box"><a href="#Bounding-Box" class="headerlink" title="Bounding Box"></a>Bounding Box</h1><p>上面介绍的滑动窗口的方法有一个问题，就是很多情况下并不能检测出窗口的精确位置。</p>
+<p>那么如何找到这个准确的边界框呢？有一个很快的算法叫做YOLO(you only look once)，只需要计算一次便可以检测出物体的位置。</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktcya16j20p10btq8q.jpg" alt></p>
+<p>如图，首先，将图片分为$n \times n$个部分，如图是划分成了$3\times3=9$份，而每一份都由一个向量y来表示。</p>
+<p>因此最终得到了$3\times3\times8$的矩阵。</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktblfnuj20h70cg414.jpg" alt></p>
+<p>要得到这个$3\times3\times8$的矩阵，只要选择适当的卷积神经网络，让输出矩阵为这个矩阵就行，而每一个小图像都有一个目标标签y，这个时候y中的$b_x,b_y$都是这个小图像的相对位置，在0-1之间，而$b_h,b_w$是可以大于1的，因为整个大目标有可能在框框外。</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktb8qxxj20v606i0v4.jpg" alt></p>
+<p>在实际过程中可以选用更精细的划分，如$19\times19$。</p>
+<h1 id="交并比-Intersection-over-Union-IoU"><a href="#交并比-Intersection-over-Union-IoU" class="headerlink" title="交并比(Intersection over Union, IoU)"></a>交并比(Intersection over Union, IoU)</h1><p>如何判断框框是否正确呢？</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4kte96wxj20ay0at7af.jpg" alt></p>
+<p>如图红色为车身的框，而紫色为检测到的框，那么紫色的框到底算不算有车呢？</p>
+<p>这个时候可以用交并比来判断，也就是两个框框的交集和并集之比。</p>
+<p>$$IoU = \frac{交集面积}{并集面积}$$</p>
+<p>一般来说 $IoU  \geq 0.5$，那么说明检测正确，当然，这个阈值可以自己设定。</p>
+<h1 id="非最大值抑制（NMS）"><a href="#非最大值抑制（NMS）" class="headerlink" title="非最大值抑制（NMS）"></a>非最大值抑制（NMS）</h1><p>在实际过程中，很可能很多个框框都检测出同一个物体，那么如何判断这些边界框检测的是同一个对象呢？</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktdewjvj20a6088tdv.jpg" alt></p>
+<ul>
+<li>首先，每一个框都会返回一个概率$P_c$，我们需要先去掉那些概率比较低的框，如去掉$P_c \leq 0.55$的框。</li>
+<li>而后，在$P_c$中找到概率最大的框，然后用算法遍历其他的边框，找出并取消掉和这个边框IoU大于0.5的框（因为如果IoU大于0.5，我们可以认为是同一个物体）</li>
+<li>循环第二步的操作</li>
+</ul>
+<p>如果有多个目标类别的检测，那么对每个类别分别进行上面的NMS算法。</p>
+<h1 id="Anchor-Box"><a href="#Anchor-Box" class="headerlink" title="Anchor Box"></a>Anchor Box</h1><p>如果一张格子中有多个目标，那怎么办？这时候就需要Anchor Box了，可以同时检测出多个对象。</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktbwaixj2064065mzy.jpg" alt></p>
+<p>我们预先定义了两个不同形状的Anchor box，如比较高的来检测人，比较宽的来检测汽车，然后重新定义了目标向量y：</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktb6okuj20e50bmq38.jpg" alt></p>
+<p>这个时候最后输出的矩阵从原来的$3\times3\times8$变成了$3\times3\times16$，也可以是$3\times3\times2\times8$</p>
+<p>在计算的时候就可以根据不同的box输出了，？号表示我们不关系这个值。</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktb77nnj20dn0dtmxs.jpg" alt></p>
+<p><strong>问题：</strong></p>
+<ul>
+<li>如果使用两个Box，那么如果出现3个目标怎么办，这时候需要别的手段了</li>
+<li>如果同一个格子的两个对象的box相同怎么办，那也需要别的手段来处理了。</li>
+</ul>
+<p>因为这两种情况出现的几率都比较少，所以问题不大。</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>Anchor box的形状都是人工指定的，一般可以选择5-10种不同的形状，来涵盖我们想要检测的不同对象</li>
+<li>更高级一点的使用k-means聚类算法，将不同的对象形状进行聚类，然后得到一组比较具有代表性的boxes</li>
+</ul>
+<h1 id="YOLO算法"><a href="#YOLO算法" class="headerlink" title="YOLO算法"></a>YOLO算法</h1><p>假设我们需要检测三种目标：行人、汽车、摩托车，使用两种anchor box</p>
+<p> <strong>在训练集中：</strong></p>
+<ul>
+<li>输入同样大小的图片X</li>
+<li>每张图片的输出Y是$3\times3\times16$的矩阵</li>
+<li>人工标定输出Y</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktdbjbij20om0de42t.jpg" alt></p>
+<p><strong>预测：</strong></p>
+<p>输入图片和训练集大小相同，得到$3\times3\times16$的输出结果</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktc1dooj20p00cjadn.jpg" alt></p>
+<p>这个时候得到了很多个框框，如果是两个Anchor box，那么就有$2\times9=18$个预测框框，那么就需要把没用的框框都去掉，也就用到了上面的NMS非最大值抑制算法。</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktd13lnj208v08rn2c.jpg" alt></p>
+<p><strong>进行NMS算法：</strong></p>
+<ul>
+<li>去掉$P_c$小于某个阈值的框框</li>
+<li>对于每个对象分别使用NMS算法得到最终的边界框。</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktdzoa1j209z09w461.jpg" alt></p>
+<h1 id="候选区域"><a href="#候选区域" class="headerlink" title="候选区域"></a>候选区域</h1><p>这里还介绍了其他的目标检测算法，不过貌似都是比较慢的。</p>
+<p><strong>R-CNN：</strong></p>
+<p>原本的滑动窗口，只有在少部分的区域是可以检测到目标的，很多区域都是背景，所以运算很慢，用R-CNN后，只选择一些候选的窗口，不需要对整个图片进行滑动。</p>
+<p>R-CNN使用的是图像分割算法，将图片分割成很多个色块，从而减少了窗口数量。</p>
+<p>是对每个候选区域进行分类，输出的标签和bounding box</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktfhue7j20xn08lwo3.jpg" alt></p>
+<p><strong>Fast R-CNN：</strong></p>
+<p>候选区域，使用滑动窗口在区分所有的候选区域。</p>
+<p><strong>Faster R-CNN：</strong></p>
+<p>使用卷积神经网络而不是图像分割来获得候选区域。</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://fangzh.top/2018/dl-ai-4-3/" data-id="ck2yn0kci003upov817m0doiy" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+
+        </footer>
+    </div>
+</article>
+<!--
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+-->
+<!--来比力评论系统，在commetn/livebe.ejs中-->
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQ4OC8xNjAxNQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/profile.php?id=100042920468816" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/Bazingaliu" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/dl-ai-4-3h/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            DeepLearning.ai作业:(4-3)-- 目标检测（Object detection）
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/dl-ai-4-2h/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">DeepLearning.ai作业:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/cs231n-2-3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlvz19onj20yh0k1dms.jpg)" alt="cs231n作业：assignment2 - Convolutional Networks" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a></p>
+                            <p class="item-title"><a href="/2018/cs231n-2-3/" class="title">cs231n作业：assignment2 - Convolutional Networks</a></p>
+                            <p class="item-date"><time datetime="2018-10-22T05:49:41.000Z" itemprop="datePublished">2018-10-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/cs231n-2-2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlvz19onj20yh0k1dms.jpg)" alt="cs231n作业：assignment2 - Batch Normalization and Dropout" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a></p>
+                            <p class="item-title"><a href="/2018/cs231n-2-2/" class="title">cs231n作业：assignment2 - Batch Normalization and Dropout</a></p>
+                            <p class="item-date"><time datetime="2018-10-22T05:07:45.000Z" itemprop="datePublished">2018-10-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/dl-ai-summary/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="吴恩达Coursera(DeepLearning.ai)笔记和作业汇总帖" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/汇总帖/">汇总帖</a></p>
+                            <p class="item-title"><a href="/2018/dl-ai-summary/" class="title">吴恩达Coursera(DeepLearning.ai)笔记和作业汇总帖</a></p>
+                            <p class="item-date"><time datetime="2018-10-18T12:01:05.000Z" itemprop="datePublished">2018-10-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/dl-ai-5-3h/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="DeepLearning.ai作业:(5-3) -- 序列模型和注意力机制" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a></p>
+                            <p class="item-title"><a href="/2018/dl-ai-5-3h/" class="title">DeepLearning.ai作业:(5-3) -- 序列模型和注意力机制</a></p>
+                            <p class="item-date"><time datetime="2018-10-18T10:39:15.000Z" itemprop="datePublished">2018-10-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/dl-ai-5-3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="DeepLearning.ai笔记:(5-3) -- 序列模型和注意力机制" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a></p>
+                            <p class="item-title"><a href="/2018/dl-ai-5-3/" class="title">DeepLearning.ai笔记:(5-3) -- 序列模型和注意力机制</a></p>
+                            <p class="item-date"><time datetime="2018-10-18T10:39:10.000Z" itemprop="datePublished">2018-10-18</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系方式</h3>
+        <div class="widget">
+            <!--fangzhyx@foxmail.com-->
+		<p>fangzhyx@foxmail.com</p>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">36</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/Deep-Learning/">Deep Learning</a><span class="category-list-count">36</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/">日常技术</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/博客搭建/">博客搭建</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/汇总帖/">汇总帖</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/旅行/">旅行</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/随笔/">随笔</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">29</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs231n/">cs231n</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dl-ai/">dl.ai</a><span class="tag-list-count">29</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/homework/">homework</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/">shadowsocks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/旅行/">旅行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/航拍/">航拍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频/">视频</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/cs231n/" style="font-size: 16.67px;">cs231n</a> <a href="/tags/dl-ai/" style="font-size: 20px;">dl.ai</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/homework/" style="font-size: 18.33px;">homework</a> <a href="/tags/install/" style="font-size: 13.33px;">install</a> <a href="/tags/python/" style="font-size: 11.67px;">python</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/航拍/" style="font-size: 10px;">航拍</a> <a href="/tags/视频/" style="font-size: 10px;">视频</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://qhgong.com">Avalon</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://hfanss.com">幻凡ss</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://trhx.top">trhx</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 理科生写给世界的情书</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+
+				<!--coding pages and github-->
+                <p><span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span> and <span><a href="https://github.com" style="font-weight: bold">Github</a></span></p>
+                <!--这一段是不蒜子的访问量统计脚本-->
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次 &nbsp;   </span>
+                <span id="busuanzi_container_site_uv">
+                    访客数<span id="busuanzi_value_site_uv"></span>人次
+                  </span>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--往下是cloud的文章阅读量系统-->
+<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+<script>
+    var APP_ID = 'YVSE8R91f8Qc6d6FwMTnwytk-gzGzoHsz';
+    var APP_KEY = 'ajFB9Ueh08Y5pIvkDsXSOW56';
+    AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+    });
+    // 显示次数
+    function showTime(Counter) {
+        var query = new AV.Query("Counter");
+        if($(".leancloud_visitors").length > 0){
+            var url = $(".leancloud_visitors").attr('id').trim();
+            // where field
+            query.equalTo("words", url);
+            // count
+            query.count().then(function (number) {
+                // There are number instances of MyClass where words equals url.
+                $(document.getElementById(url)).text(number?  number : '--');
+            }, function (error) {
+                // error is an instance of AVError.
+            });
+        }
+    }
+    // 追加pv
+    function addCount(Counter) {
+        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+        var Counter = AV.Object.extend("Counter");
+        var query = new Counter;
+        query.save({
+            words: url
+        }).then(function (object) {
+        })
+    }
+    $(function () {
+        var Counter = AV.Object.extend("Counter");
+        addCount(Counter);
+        showTime(Counter);
+    });
+</script>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://fangzh.top/2018/dl-ai-4-3/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
