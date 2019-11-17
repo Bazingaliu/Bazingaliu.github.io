@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>MIXED PRECISION TRAINING | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="CVPR">
+    
+    <meta name="description" content="ABSTRACT增大网络通常会提升准确性，但是也增加了内存和计算量。我们的方法可以使用半精度浮点数训练网络，同时不损失准确性，也不需要修改超参数。这近乎减少了一般的内存，在最新的GPU上还能加速运算。权重，激活和梯度都使用IEEE半精度格式。由于这个格式范围比单精度小，我们提出了三种方法来避免重要信息的损失。首先，建议保留权重的单精度拷贝，每次优化器执行后累积梯度（前向和反向传播时，拷贝归整到单精">
+<meta name="keywords" content="CVPR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MIXED PRECISION TRAINING">
+<meta property="og:url" content="http://fangzh.top/2019/ck32f6wmn000484v8awz2g9v8/index.html">
+<meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
+<meta property="og:description" content="ABSTRACT增大网络通常会提升准确性，但是也增加了内存和计算量。我们的方法可以使用半精度浮点数训练网络，同时不损失准确性，也不需要修改超参数。这近乎减少了一般的内存，在最新的GPU上还能加速运算。权重，激活和梯度都使用IEEE半精度格式。由于这个格式范围比单精度小，我们提出了三种方法来避免重要信息的损失。首先，建议保留权重的单精度拷贝，每次优化器执行后累积梯度（前向和反向传播时，拷贝归整到单精">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/mixed-precision-fig1.png?raw=true">
+<meta property="og:updated_time" content="2019-11-17T03:07:42.584Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MIXED PRECISION TRAINING">
+<meta name="twitter:description" content="ABSTRACT增大网络通常会提升准确性，但是也增加了内存和计算量。我们的方法可以使用半精度浮点数训练网络，同时不损失准确性，也不需要修改超参数。这近乎减少了一般的内存，在最新的GPU上还能加速运算。权重，激活和梯度都使用IEEE半精度格式。由于这个格式范围比单精度小，我们提出了三种方法来避免重要信息的损失。首先，建议保留权重的单精度拷贝，每次优化器执行后累积梯度（前向和反向传播时，拷贝归整到单精">
+<meta name="twitter:image" content="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/mixed-precision-fig1.png?raw=true">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon_1.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+    <!--百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?c48627a60135ae47d77a79844f7e5b04";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <!--百度SEO-->
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+        </script>
+    <!--googleseo-->
+    <meta name="google-site-verification" content="p1u63jgcp2J7NsJHR_UxQX2Fzj_UY6Zwf8C1zTRpONM">
+    
+    <meta name="google-site-verification" content="8ojU19tXQIB94wIY0cAPI5BKSsrqV-xxrlx46C_-WMg">
+	<!--xiongzhang-->
+	<script src="https://xiongzhang.baidu.com/sdk/c.js?appid=1608109025415176"></script>
+	<!--shougou-->
+	<meta name="sogou_site_verification" content="tRwGjUhpuk">
+	<!--360-->
+	<meta name="360-site-verification" content="06663b5113fe8a05769074a579c4d4ea">
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">我愿做你光华中淡淡的一笔</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives">归档</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AI/">AI</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AI/Deep-Learning/">Deep Learning</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/codeforces/">codeforces</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/">日常技术</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/Linux/">Linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/博客搭建/">博客搭建</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/汇总帖/">汇总帖</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/">生活</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/旅行/">旅行</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/随笔/">随笔</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/论文笔记/">论文笔记</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/board">留言板</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/论文笔记/">论文笔记</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="mixed-TRAINING" class="article article-single article-type-mixed" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        MIXED PRECISION TRAINING
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/ck32f6wmn000484v8awz2g9v8/" class="article-date">
+            <time datetime="2019-11-17T03:02:10.000Z" itemprop="datePublished">2019-11-17</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/CVPR/">CVPR</a>
+    </div>
+
+                <!---cloud阅读量统计系统-->
+                阅读数量:<span id="/2019/ck32f6wmn000484v8awz2g9v8/" class="leancloud_visitors" data-flag-title="MIXED PRECISION TRAINING"></span>次
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/mixed-precision-fig1.png?raw=true" alt="mixed-precision-fig1.png">ABSTRACT</h2><p>增大网络通常会提升准确性，但是也增加了内存和计算量。我们的方法可以使用半精度浮点数训练网络，同时不损失准确性，也不需要修改超参数。这近乎减少了一般的内存，在最新的GPU上还能加速运算。权重，激活和梯度都使用IEEE半精度格式。由于这个格式范围比单精度小，我们提出了三种方法来避免重要信息的损失。首先，建议保留权重的单精度拷贝，每次优化器执行后累积梯度（前向和反向传播时，拷贝归整到单精度）。其次，我们提出了损失放大用于保留小的梯度值。第三，我们使用半精度累积到单精度输出，在存到内存前转为半精度。</p>
+<h2 id="1-INTRODUCTION"><a href="#1-INTRODUCTION" class="headerlink" title="1 INTRODUCTION"></a>1 INTRODUCTION</h2><p>神经网络两个趋势：更大的数据和更大的模型。大的模型需要更多的计算和内存，可以通过降低精度来减小这些需求。性能（速度）包括了网络的训练和推理，受三个因素先知：算术带宽，内存带宽，或者延迟。减低精度解决了其中的两个限制。内存带宽的压力可以通过更少的比特位来降低。算术时间可以通过更大的低精度吞吐量来降低。例如，在最近的GPU上半精度的吞吐量是单精度的2到8倍。除了速度提升，降低精度也减少了训练的内存。</p>
+<p>现代的深度学习系统是使用单精度（FP32）格式。我们使用更低的精度来训练，同时保持准确率，用IEEE半精度格式FP16来训练网络。由于FP16比FP32动态范围小，我们引入了3个技术来保持准确率：保留权重的FP32主拷贝，梯度变为0时损失放大，用FP16计算累积到FP32。我们证明了这些方法可以让大部分网络匹敌FP32的准确率。而且这些方法不需要修改模型或调整超参数。</p>
+<h2 id="2-RELATED-WORK"><a href="#2-RELATED-WORK" class="headerlink" title="2 RELATED WORK"></a>2 RELATED WORK</h2><p>【略】</p>
+<h2 id="3-IMPLEMENTATION"><a href="#3-IMPLEMENTATION" class="headerlink" title="3 IMPLEMENTATION"></a>3 IMPLEMENTATION</h2><p>single-precision master weights and updates, loss-scaling, and accumulating FP16 products into FP32。</p>
+<h3 id="3-1-FP32-MASTER-COPY-OF-WEIGHTS"><a href="#3-1-FP32-MASTER-COPY-OF-WEIGHTS" class="headerlink" title="3.1 FP32 MASTER COPY OF WEIGHTS"></a>3.1 FP32 MASTER COPY OF WEIGHTS</h3><p>在混合精度训练中，权重，激活和梯度用FP16存储。为了匹敌FP32的准确率，需要保留FP32的权重主拷贝，在优化的时候随梯度更新。每次迭代时，权重的FP16拷贝用于前向和反向传播，减少了FP32训练的存储和带宽。图1是混合精度的训练过程。</p>
+<p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/mixed-precision-fig1.png?raw=true" alt="mixed-precision-fig1.png"></p>
+<p>并不是所有步骤都需要FP32主权重，两个可能原因。一个解释是更新（权重梯度乘以学习率）太小，FP16无法表示，任何梯度小于$2^{-24}$在FP16中都是0。图2b中可以看到5%左右的权重梯度指数小于-24。</p>
+<p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/mixed-precision-fig2.png?raw=true" alt="mixed-precision-fig2.png"></p>
+<p>另一个解释是，权重的值小相比于更新的值很大。这样，即使权重的更新可以用FP16表示，在右移对齐二进制点的时候会变成0.当权重值量至少大于权重更新的2048倍时就会发生。由于FP16有10 bits的小数，可能在右移11或更多位置的时候变成0。这个影响可以通过计算FP32更新来解决。</p>
+<p>为了展示FP32的必要性，我们使用了普通话语言模型进行了实验，如图2a，更新FP16权重导致了80%的准确率损失。即使保留额外的权重拷贝增加了内存，但是对于整体的内存占用还是很小的。训练内存的消耗主要是激活，这是因为每一层的批量或激活会保存下来用于重复使用。激活也使用半精度存储，整体的内存基本减半。</p>
+<h3 id="3-2-LOSS-SCALING"><a href="#3-2-LOSS-SCALING" class="headerlink" title="3.2 LOSS SCALING"></a>3.2 LOSS SCALING</h3><p>FP16的指数偏置（exponent bias） 把标准化值的指数中心化为$[-14,15]$，而梯度值主要由很小的值（负指数）决定。例如图3为激活梯度直方图，来自SSD检测网络。注意到大部分FP16的表示范围并未使用，大量小于表示范围的值变为0。放大梯度可以让他们移到更好的表示区间内，不至于让值变为0。如果不放大网络很容易发散，放大因子设为8足够达到FP32的精度。这表明低于$2^{-27}$的值就与训练无关了，但是$\left[2^{-27}, 2^{-24}\right)$之间的值值得保留。</p>
+<p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/mixed-precision-fig3.png?raw=true" alt="mixed-precision-fig3.png"></p>
+<p>一个有效的把梯度值移动到FP16表示范围内的方法是在前向传播计算损失的时候放大损失值。通过链式法则反向传播保证了所有的梯度值可以放大的相同的范围。并不需要反向传播额外的运算，也不会让有用的梯度值变成0。权重梯度在更新的时候必须缩小回来，这样才能保证正确的FP32训练精度。</p>
+<p>有几种方法来选择损失放大因子。最简单的是挑选一个常量。我们在8到32k的范围内训练大量的网络，可以通过经验选取一个值，或直接选择一个因子让最大值低于65504（FP16的最大值）即可。【略】</p>
+<h3 id="3-3-ARITHMETIC-PRECISION"><a href="#3-3-ARITHMETIC-PRECISION" class="headerlink" title="3.3 ARITHMETIC PRECISION"></a>3.3 ARITHMETIC PRECISION</h3><p>网络的运算有三类：向量点乘，reduction，和逐点操作。不同的类别有不同的方式处理。为了保持模型的准确率，我们发现一些网络需要把FP16点乘部分乘积累积到FP32精度，在写入内存的时候转成FP16。如果没有这个步骤，一些FP16模型无法达到相似的准确率。</p>
+<p>大的reduction操作（向量元素相加）可以用FP32执行。这样的操作大多来自于BN层和softmax层。我们实现的这些层都是从内存中读写FP16张量，执行FP32运算。这些操作并没有降低训练速度，因为他们是受限于内存带宽的，对运算速度不敏感。</p>
+<p>逐点操作，例如非线性或逐点矩阵成绩，是受限于内存带宽的。运算精度不影响速度，因此使用FP16和FP32都可以。</p>
+<h2 id="4-RESULTS"><a href="#4-RESULTS" class="headerlink" title="4 RESULTS"></a>4 RESULTS</h2><ul>
+<li><strong>Baseline (FP32)</strong> 所有的运算FP32</li>
+<li><strong>Mixed Precision (MP)</strong> FP16用于运算和存储。权重，激活和梯度使用FP16存储，权重的FP32主拷贝用于更新。某些应用中使用损失放大。对于卷积，全连接和循环层的矩阵相乘通过FP16运算累积到FP32精度。</li>
+</ul>
+<p>【略】</p>
+<h3 id="4-1-CNNS-FOR-ILSVRC-CLASSIFICATION"><a href="#4-1-CNNS-FOR-ILSVRC-CLASSIFICATION" class="headerlink" title="4.1 CNNS FOR ILSVRC CLASSIFICATION"></a>4.1 CNNS FOR ILSVRC CLASSIFICATION</h3><p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/mixed-precision-tab1.png?raw=true" alt="mixed-precision-tab1.png"></p>
+<h3 id="4-2-DETECTION-CNNS"><a href="#4-2-DETECTION-CNNS" class="headerlink" title="4.2 DETECTION CNNS"></a>4.2 DETECTION CNNS</h3><p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/mixed-precision-tab2.png?raw=true" alt="mixed-precision-tab2.png"></p>
+<h3 id="4-3-SPEECH-RECOGNITION"><a href="#4-3-SPEECH-RECOGNITION" class="headerlink" title="4.3 SPEECH RECOGNITION"></a>4.3 SPEECH RECOGNITION</h3><p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/mixed-precision-tab3.png?raw=true" alt="mixed-precision-tab3.png"></p>
+<h3 id="4-4-MACHINE-TRANSLATION"><a href="#4-4-MACHINE-TRANSLATION" class="headerlink" title="4.4 MACHINE TRANSLATION"></a>4.4 MACHINE TRANSLATION</h3><p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/mixed-precision-fig4.png?raw=true" alt="mixed-precision-fig4.png"></p>
+<h3 id="4-5-LANGUAGE-MODELING"><a href="#4-5-LANGUAGE-MODELING" class="headerlink" title="4.5 LANGUAGE MODELING"></a>4.5 LANGUAGE MODELING</h3><p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/mixed-precision-fig5.png?raw=true" alt="mixed-precision-fig5.png"></p>
+<h3 id="4-6-DCGAN-RESULTS"><a href="#4-6-DCGAN-RESULTS" class="headerlink" title="4.6 DCGAN RESULTS"></a>4.6 DCGAN RESULTS</h3><p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/mixed-precision-fig6.png?raw=true" alt="mixed-precision-fig6.png"></p>
+<h2 id="5-CONCLUSIONS-AND-FUTURE-WORK"><a href="#5-CONCLUSIONS-AND-FUTURE-WORK" class="headerlink" title="5 CONCLUSIONS AND FUTURE WORK"></a>5 CONCLUSIONS AND FUTURE WORK</h2><p>混合精度训练是减少内存占用的重要方法，还有运算时间和运算量。我们证明了很多不同的深度模型都可以用这个方法训练，没有准确率损失，也不需要修改超参数。对于有大量小梯度值的模型，我们引入梯度放大方法让它们可以收敛到与FP32同样的准确率。</p>
+<p>【略】</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://fangzh.top/2019/ck32f6wmn000484v8awz2g9v8/" data-id="ck32f6wmn000484v8awz2g9v8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+
+        </footer>
+    </div>
+</article>
+<!--
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+-->
+<!--来比力评论系统，在commetn/livebe.ejs中-->
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQ4OC8xNjAxNQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/LQNhgeygPuSzm62?s=09" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/profile.php?id=100042920468816" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/Bazingaliu" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/ck32f6wml000384v8wx93xk0x/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Evaluation of a Tree-based Pipeline Optimization Tool for Automating Data Science</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/ck32f6wmn000484v8awz2g9v8/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/mixed-precision-fig1.png?raw=true)" alt="MIXED PRECISION TRAINING" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/论文笔记/">论文笔记</a></p>
+                            <p class="item-title"><a href="/2019/ck32f6wmn000484v8awz2g9v8/" class="title">MIXED PRECISION TRAINING</a></p>
+                            <p class="item-date"><time datetime="2019-11-17T03:02:10.000Z" itemprop="datePublished">2019-11-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/ck32f6wml000384v8wx93xk0x/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/TPOT-fig1.png?raw=true)" alt="Evaluation of a Tree-based Pipeline Optimization Tool for Automating Data Science" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/论文笔记/">论文笔记</a></p>
+                            <p class="item-title"><a href="/2019/ck32f6wml000384v8wx93xk0x/" class="title">Evaluation of a Tree-based Pipeline Optimization Tool for Automating Data Science</a></p>
+                            <p class="item-date"><time datetime="2019-11-16T06:03:45.000Z" itemprop="datePublished">2019-11-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/ck32f6wmi000284v8m2tfyh44/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://img-blog.csdnimg.cn/2019090516131491.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Zpc2hfbGlrZV9hcHBsZQ==,size_16,color_FFFFFF,t_70)" alt="Deep-Learning-Approach-for-Surface-Defect-Detection" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/论文笔记/">论文笔记</a></p>
+                            <p class="item-title"><a href="/2019/ck32f6wmi000284v8m2tfyh44/" class="title">Deep-Learning-Approach-for-Surface-Defect-Detection</a></p>
+                            <p class="item-date"><time datetime="2019-11-16T05:12:08.000Z" itemprop="datePublished">2019-11-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/ck32f6wmd000184v8tan4vvrj/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://sta.codeforces.com/s/91655/images/codeforces-logo-with-telegram.png)" alt="THE CONTEST" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/codeforces/">codeforces</a></p>
+                            <p class="item-title"><a href="/2019/ck32f6wmd000184v8tan4vvrj/" class="title">THE CONTEST</a></p>
+                            <p class="item-date"><time datetime="2019-11-15T18:05:14.000Z" itemprop="datePublished">2019-11-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/ck32f6wnx000f84v8db5no4y2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://sta.codeforces.com/s/91655/images/codeforces-logo-with-telegram.png)" alt="Yet Another Monster Killing Problem" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/codeforces/">codeforces</a></p>
+                            <p class="item-title"><a href="/2019/ck32f6wnx000f84v8db5no4y2/" class="title">Yet Another Monster Killing Problem</a></p>
+                            <p class="item-date"><time datetime="2019-11-15T17:15:43.000Z" itemprop="datePublished">2019-11-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系方式</h3>
+        <div class="widget">
+            <!--yuanquanquan29@gmail.com-->
+		<p>yuanquanquan29@gmail.com</p>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">36</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/Deep-Learning/">Deep Learning</a><span class="category-list-count">36</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/codeforces/">codeforces</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/">日常技术</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/博客搭建/">博客搭建</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/汇总帖/">汇总帖</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/旅行/">旅行</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/随笔/">随笔</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文笔记/">论文笔记</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">29</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AutoML/">AutoML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CVPR/">CVPR</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs231n/">cs231n</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dl-ai/">dl.ai</a><span class="tag-list-count">29</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/homework/">homework</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/">shadowsocks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/旅行/">旅行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/航拍/">航拍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频/">视频</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AutoML/" style="font-size: 10px;">AutoML</a> <a href="/tags/CVPR/" style="font-size: 11.67px;">CVPR</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/cs231n/" style="font-size: 16.67px;">cs231n</a> <a href="/tags/dl-ai/" style="font-size: 20px;">dl.ai</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/homework/" style="font-size: 18.33px;">homework</a> <a href="/tags/install/" style="font-size: 13.33px;">install</a> <a href="/tags/python/" style="font-size: 11.67px;">python</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/算法/" style="font-size: 11.67px;">算法</a> <a href="/tags/航拍/" style="font-size: 10px;">航拍</a> <a href="/tags/视频/" style="font-size: 10px;">视频</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://qhgong.com">Avalon</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://hfanss.com">幻凡ss</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://trhx.top">trhx</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 理科生写给世界的情书</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+
+				<!--coding pages and github-->
+                <p><span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span> and <span><a href="https://github.com" style="font-weight: bold">Github</a></span></p>
+                <!--这一段是不蒜子的访问量统计脚本-->
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次 &nbsp;   </span>
+                <span id="busuanzi_container_site_uv">
+                    访客数<span id="busuanzi_value_site_uv"></span>人次
+                  </span>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--往下是cloud的文章阅读量系统-->
+<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+<script>
+    var APP_ID = 'YVSE8R91f8Qc6d6FwMTnwytk-gzGzoHsz';
+    var APP_KEY = 'ajFB9Ueh08Y5pIvkDsXSOW56';
+    AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+    });
+    // 显示次数
+    function showTime(Counter) {
+        var query = new AV.Query("Counter");
+        if($(".leancloud_visitors").length > 0){
+            var url = $(".leancloud_visitors").attr('id').trim();
+            // where field
+            query.equalTo("words", url);
+            // count
+            query.count().then(function (number) {
+                // There are number instances of MyClass where words equals url.
+                $(document.getElementById(url)).text(number?  number : '--');
+            }, function (error) {
+                // error is an instance of AVError.
+            });
+        }
+    }
+    // 追加pv
+    function addCount(Counter) {
+        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+        var Counter = AV.Object.extend("Counter");
+        var query = new Counter;
+        query.save({
+            words: url
+        }).then(function (object) {
+        })
+    }
+    $(function () {
+        var Counter = AV.Object.extend("Counter");
+        addCount(Counter);
+        showTime(Counter);
+    });
+</script>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://fangzh.top/2019/ck32f6wmn000484v8awz2g9v8/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
