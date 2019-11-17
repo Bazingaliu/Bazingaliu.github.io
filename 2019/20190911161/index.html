@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>Deep-Learning-Approach-for-Surface-Defect-Detection | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="CVPR">
+    
+    <meta name="description" content="表面缺陷检测是工业视觉的热点应用之一，自动的表面缺陷检测技术越来越受到重视，其中以深度学习相关技术应用为代表，它通过大量图像对检测系统进行训练学习得到一个自动的视觉检测系统。这个方面基于深度学习的检测方法基本上可以分为两个大类。  1-基于目标检测网络实现的缺陷检测系统 2-基于图像分割网络实现的缺陷检测系统 网络设计 ​        作者采用后者·实现了一个缺陷检测与缺陷大小分割的网络，实现">
+<meta name="keywords" content="CVPR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep-Learning-Approach-for-Surface-Defect-Detection">
+<meta property="og:url" content="http://fangzh.top/2019/20190911161/index.html">
+<meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
+<meta property="og:description" content="表面缺陷检测是工业视觉的热点应用之一，自动的表面缺陷检测技术越来越受到重视，其中以深度学习相关技术应用为代表，它通过大量图像对检测系统进行训练学习得到一个自动的视觉检测系统。这个方面基于深度学习的检测方法基本上可以分为两个大类。  1-基于目标检测网络实现的缺陷检测系统 2-基于图像分割网络实现的缺陷检测系统 网络设计 ​        作者采用后者·实现了一个缺陷检测与缺陷大小分割的网络，实现">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019090516131491.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Zpc2hfbGlrZV9hcHBsZQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-11-17T14:00:12.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deep-Learning-Approach-for-Surface-Defect-Detection">
+<meta name="twitter:description" content="表面缺陷检测是工业视觉的热点应用之一，自动的表面缺陷检测技术越来越受到重视，其中以深度学习相关技术应用为代表，它通过大量图像对检测系统进行训练学习得到一个自动的视觉检测系统。这个方面基于深度学习的检测方法基本上可以分为两个大类。  1-基于目标检测网络实现的缺陷检测系统 2-基于图像分割网络实现的缺陷检测系统 网络设计 ​        作者采用后者·实现了一个缺陷检测与缺陷大小分割的网络，实现">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019090516131491.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Zpc2hfbGlrZV9hcHBsZQ==,size_16,color_FFFFFF,t_70">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon_1.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+    <!--百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?c48627a60135ae47d77a79844f7e5b04";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <!--百度SEO-->
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+        </script>
+    <!--googleseo-->
+    <meta name="google-site-verification" content="p1u63jgcp2J7NsJHR_UxQX2Fzj_UY6Zwf8C1zTRpONM">
+    
+    <meta name="google-site-verification" content="8ojU19tXQIB94wIY0cAPI5BKSsrqV-xxrlx46C_-WMg">
+	<!--xiongzhang-->
+	<script src="https://xiongzhang.baidu.com/sdk/c.js?appid=1608109025415176"></script>
+	<!--shougou-->
+	<meta name="sogou_site_verification" content="tRwGjUhpuk">
+	<!--360-->
+	<meta name="360-site-verification" content="06663b5113fe8a05769074a579c4d4ea">
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">我愿做你光华中淡淡的一笔</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives">归档</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AI/">AI</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AI/Deep-Learning/">Deep Learning</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/">日常技术</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/Linux/">Linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/博客搭建/">博客搭建</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/汇总帖/">汇总帖</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/">生活</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/旅行/">旅行</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/随笔/">随笔</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/笔记/">笔记</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/笔记/论文笔记/">论文笔记</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/算法/">算法</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/算法/codeforces/">codeforces</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/board">留言板</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/笔记/论文笔记/">论文笔记</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Deep-Learning-Approach-for-Surface-Defect-Detection" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Deep-Learning-Approach-for-Surface-Defect-Detection
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/20190911161/" class="article-date">
+            <time datetime="2019-11-16T05:12:08.000Z" itemprop="datePublished">2019-11-16</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/CVPR/">CVPR</a>
+    </div>
+
+                <!---cloud阅读量统计系统-->
+                阅读数量:<span id="/2019/20190911161/" class="leancloud_visitors" data-flag-title="Deep-Learning-Approach-for-Surface-Defect-Detection"></span>次
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><strong><img src="https://img-blog.csdnimg.cn/2019090516131491.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Zpc2hfbGlrZV9hcHBsZQ==,size_16,color_FFFFFF,t_70" alt="img"></strong></p>
+<pre><code>表面缺陷检测是工业视觉的热点应用之一，自动的表面缺陷检测技术越来越受到重视，其中以深度学习相关技术应用为代表，它通过大量图像对检测系统进行训练学习得到一个自动的视觉检测系统。这个方面基于深度学习的检测方法基本上可以分为两个大类。
+</code></pre><p> 1-基于目标检测网络实现的缺陷检测系统<br> 2-基于图像分割网络实现的缺陷检测系统</p>
+<p><strong>网络设计</strong></p>
+<p>​        作者采用后者·实现了一个缺陷检测与缺陷大小分割的网络，实现了一个更加高效与准确的缺陷检测系统。该网络只需要20~30个样本训练量就可以得到很好的效果，避免网络训练需要成千上万的样本收集成本。</p>
+<p>作者在论文中提到，经典的机器视觉方法已经不能满足工业4.0的技术要求，基于深度学习的方法显示出高的灵活性与准确性，传统的手工标准特征提取+SVM/KNN的视觉检测方法不如深度学习的相关方法有效。该网络模型架构策略如下：</p>
+<p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/20191023132239.png?raw=true" alt="20191023132239.png"></p>
+<p>网络在最初设计时候就充分考虑了下面两个关键问题</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-需要的标注数据多少</span><br><span class="line">2-网络参数与浮点数计算量</span><br></pre></td></tr></table></figure>
+<p>​        通过语义分割+决策两阶段网络基于KoletorSDD（缺陷检测公开数据库）达到最好效果，实现了少量样本训练与高精度检测。整个网络架构如下：</p>
+<p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/20191023132307.png?raw=true" alt="20191023132307.png"></p>
+<p>​        在网络分割部分，作者认为表面缺陷检测可以被解释成一个图像二值分割问题，所以作者首先通过一个语义分割网络实现像素级的语义分割。然后把分割结果作为输入特征构建决策部分，第一部分称为<strong>分割网络</strong>，第二部分自然就被认为是<strong>决策网络</strong></p>
+<p><strong>分割网络详解</strong></p>
+<p>​        分割网络包括了11个卷积层与3个池化层，在每个卷积层后面跟上一个BN层与ReLU激活层（conv+BN+ReLU），用来优化学习加速收敛。除了最后一层卷积核大小为15 x 15，所有的卷积层都采用5 x 5大小的卷积核。最后使用1 x 1的卷积得到的图像大小是一个单通道的是原图八分之一大小的mask图像，dropout正则化则被完全抛弃，作者认为这样的网络已经足够正则化（事实后面的实验数据证明确实如此），这样的网络架构有能力在高分辨率图像实现小的缺陷检测，网络具备比较大的感受野（5 x 5），同时可以实现比较小的特征捕获（像素级分割），作者还解释了网络的下采样与高层通过大的卷积核（15 x 15）的目的是为了放大感受野大小，以及底层采用多个卷积核与下采样max-pooling层的作用</p>
+<p><strong>决策网络详解</strong></p>
+<p>​        决策网络用分割网络的输出作为输入，使用分割网络的最后一个卷积层加上mask通道得到1025个通道数据作为输入特征，即分隔网络的倒数第二层和最后输出的集联。</p>
+<p>采用max-pooling+conv（5 x 5的卷积核）的方式，最后网络通过全局最大池化与均值池化输出得到66个输出向</p>
+<p>量</p>
+<p>作者在设计决策网络的时候考虑了以下两个重要原则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-网络有能力应对大而复杂的形状，所以采用三次max-pooling</span><br><span class="line">2-对输入不仅采用最后一层卷积层特征同时把mask数据当成输入，最终输出66个特征向量。有效的解决了过拟合与全卷积特征参数过多的问题。</span><br></pre></td></tr></table></figure>
+<p>同时作者提出了一个快捷路径的概念，通过全局最大池化与卷积层实现了不同的快捷路径，有效地阻止了网络的复杂性。</p>
+<p><strong>训练</strong></p>
+<p>分割网络的学习目标是产生一个二分类分割网络，是基于像素级别的分类操作，作者采用了两种训练方式：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-基于回归的平方错误（MSE） 损失函数：逐像素均方差</span><br><span class="line">2-基于交叉熵的二分类 损失函数：逐像素交叉熵</span><br></pre></td></tr></table></figure>
+<p>​        值得一提的是，segmentation和decision是分开训练的，先训练segmentation部分再训练decision部分，作者说这种方式应对标准化问题，我对标准化的理解是，损失包括两部分，分别是分割损失和分类部分的损失，这两个损失需要均衡一下（标准化）才能加到一起（不过两者比例很难确定</p>
+<p>优化器是没有momenum的<strong>随机梯度下降（SGD）</strong>batch大小为1，使用逐方差训练时损失为0,005，使用交叉熵训练时损失为0.1，一共训练了100个Epochs，值得一提的是并不是每个epoch包括固定次数的迭代，而是一正常一随机的交替选择样本，33个缺陷样本全部过一遍才算一个epoch，论文中提到也可以同时训练，不过损失函数应都是用交叉熵函数，据作者说效果更佳。</p>
+<p><strong>数据集</strong></p>
+<p>作者使用的数据集是KolertorSDD，这是作者自己搜集的数据集，标签有5种，图片尺寸有两种。数据扩增包括90度旋转和标签膨胀如下图<img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/20191023132357.png?raw=true" alt="20191023132357.png"></p>
+<p>数据如何标注：需要两个数据集，一个是拍摄的图像+黑白像素的图像，一个是图像+有无瑕疵，较难的是前一个，建立一个大小一样的1矩阵，然后将瑕疵部分的像素值置为0 。</p>
+<p><strong>个人总结</strong></p>
+<ol>
+<li>本篇论文最核心的思想，把缺陷检测当成是一个二值化图像分割问题，采用基于像素级别分割网络成功地减少了网络深度与参数总数，实现了少量样本训练就可以达到极高准确率的缺陷表面检测网络。</li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://fangzh.top/2019/20190911161/" data-id="ck332k24w0001igv8hhs5roto" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+
+        </footer>
+    </div>
+</article>
+<!--
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+-->
+<!--来比力评论系统，在commetn/livebe.ejs中-->
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQ4OC8xNjAxNQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/LQNhgeygPuSzm62?s=09" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/profile.php?id=100042920468816" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/Bazingaliu" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/20190911162/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            Evaluation of a Tree-based Pipeline Optimization Tool for Automating Data Science
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/20190911165/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">THE CONTEST</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/2019091117/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3545615097,2982278649&amp;fm=26&amp;gp=0.jpg)" alt="芝诺之圆 | 方向、迷失与北京三年" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/生活/">生活</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/生活/随笔/">随笔</a></p>
+                            <p class="item-title"><a href="/2019/2019091117/" class="title">芝诺之圆 | 方向、迷失与北京三年</a></p>
+                            <p class="item-date"><time datetime="2019-11-17T03:34:04.000Z" itemprop="datePublished">2019-11-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/20190911172/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/mixed-precision-fig1.png?raw=true)" alt="MIXED PRECISION TRAINING" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/笔记/论文笔记/">论文笔记</a></p>
+                            <p class="item-title"><a href="/2019/20190911172/" class="title">MIXED PRECISION TRAINING</a></p>
+                            <p class="item-date"><time datetime="2019-11-17T03:02:10.000Z" itemprop="datePublished">2019-11-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/20190911162/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/TPOT-fig1.png?raw=true)" alt="Evaluation of a Tree-based Pipeline Optimization Tool for Automating Data Science" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/笔记/论文笔记/">论文笔记</a></p>
+                            <p class="item-title"><a href="/2019/20190911162/" class="title">Evaluation of a Tree-based Pipeline Optimization Tool for Automating Data Science</a></p>
+                            <p class="item-date"><time datetime="2019-11-16T06:03:45.000Z" itemprop="datePublished">2019-11-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/20190911161/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://img-blog.csdnimg.cn/2019090516131491.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Zpc2hfbGlrZV9hcHBsZQ==,size_16,color_FFFFFF,t_70)" alt="Deep-Learning-Approach-for-Surface-Defect-Detection" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/笔记/论文笔记/">论文笔记</a></p>
+                            <p class="item-title"><a href="/2019/20190911161/" class="title">Deep-Learning-Approach-for-Surface-Defect-Detection</a></p>
+                            <p class="item-date"><time datetime="2019-11-16T05:12:08.000Z" itemprop="datePublished">2019-11-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/20190911165/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://sta.codeforces.com/s/91655/images/codeforces-logo-with-telegram.png)" alt="THE CONTEST" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/算法/">算法</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/算法/codeforces/">codeforces</a></p>
+                            <p class="item-title"><a href="/2019/20190911165/" class="title">THE CONTEST</a></p>
+                            <p class="item-date"><time datetime="2019-11-15T18:05:14.000Z" itemprop="datePublished">2019-11-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系方式</h3>
+        <div class="widget">
+            <!--yuanquanquan29@gmail.com-->
+		<p>yuanquanquan29@gmail.com</p>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">36</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/Deep-Learning/">Deep Learning</a><span class="category-list-count">36</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/">日常技术</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/博客搭建/">博客搭建</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/汇总帖/">汇总帖</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/旅行/">旅行</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/随笔/">随笔</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/论文笔记/">论文笔记</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/codeforces/">codeforces</a><span class="category-list-count">2</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">29</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AutoML/">AutoML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CVPR/">CVPR</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs231n/">cs231n</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dl-ai/">dl.ai</a><span class="tag-list-count">29</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/homework/">homework</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shadowsocks/">shadowsocks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/旅行/">旅行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/航拍/">航拍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频/">视频</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AutoML/" style="font-size: 10px;">AutoML</a> <a href="/tags/CVPR/" style="font-size: 11.67px;">CVPR</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/cs231n/" style="font-size: 16.67px;">cs231n</a> <a href="/tags/dl-ai/" style="font-size: 20px;">dl.ai</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/homework/" style="font-size: 18.33px;">homework</a> <a href="/tags/install/" style="font-size: 13.33px;">install</a> <a href="/tags/python/" style="font-size: 11.67px;">python</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/生活/" style="font-size: 11.67px;">生活</a> <a href="/tags/算法/" style="font-size: 11.67px;">算法</a> <a href="/tags/航拍/" style="font-size: 10px;">航拍</a> <a href="/tags/视频/" style="font-size: 10px;">视频</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://qhgong.com">Avalon</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://hfanss.com">幻凡ss</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://trhx.top">trhx</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 理科生写给世界的情书</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+
+				<!--coding pages and github-->
+                <p><span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span> and <span><a href="https://github.com" style="font-weight: bold">Github</a></span></p>
+                <!--这一段是不蒜子的访问量统计脚本-->
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次 &nbsp;   </span>
+                <span id="busuanzi_container_site_uv">
+                    访客数<span id="busuanzi_value_site_uv"></span>人次
+                  </span>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--往下是cloud的文章阅读量系统-->
+<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+<script>
+    var APP_ID = 'YVSE8R91f8Qc6d6FwMTnwytk-gzGzoHsz';
+    var APP_KEY = 'ajFB9Ueh08Y5pIvkDsXSOW56';
+    AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+    });
+    // 显示次数
+    function showTime(Counter) {
+        var query = new AV.Query("Counter");
+        if($(".leancloud_visitors").length > 0){
+            var url = $(".leancloud_visitors").attr('id').trim();
+            // where field
+            query.equalTo("words", url);
+            // count
+            query.count().then(function (number) {
+                // There are number instances of MyClass where words equals url.
+                $(document.getElementById(url)).text(number?  number : '--');
+            }, function (error) {
+                // error is an instance of AVError.
+            });
+        }
+    }
+    // 追加pv
+    function addCount(Counter) {
+        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+        var Counter = AV.Object.extend("Counter");
+        var query = new Counter;
+        query.save({
+            words: url
+        }).then(function (object) {
+        })
+    }
+    $(function () {
+        var Counter = AV.Object.extend("Counter");
+        addCount(Counter);
+        showTime(Counter);
+    });
+</script>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://fangzh.top/2019/20190911161/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
