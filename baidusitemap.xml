@@ -326,37 +326,12 @@
 
     
   <url>
-    <loc>http://fangzh.top/2018/cs231n-1h-3/</loc>
+    <loc>http://fangzh.top/2018/dl-ai-4-2/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>cs231n作业：assignment1 - softmax</title>
-        <pubTime>2018-09-27T08:02:57.000Z</pubTime>
-        
-        <tag>cs231n</tag>
-         
-        <tag>homework</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://fangzh.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://fangzh.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://fangzh.top/2018/2018091720/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）</title>
-        <pubTime>2018-09-17T12:19:55.000Z</pubTime>
+        <title>DeepLearning.ai笔记:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）</title>
+        <pubTime>2018-10-09T09:17:04.000Z</pubTime>
         
         <tag>dl.ai</tag>
          
@@ -374,12 +349,12 @@
 
     
   <url>
-    <loc>http://fangzh.top/2018/dl-ai-4-2/</loc>
+    <loc>http://fangzh.top/2018/2018091316/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai笔记:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）</title>
-        <pubTime>2018-10-09T09:17:04.000Z</pubTime>
+        <title>DeepLearning.ai笔记:(1-4)-- 深层神经网络（Deep neural networks）</title>
+        <pubTime>2018-09-13T08:54:18.000Z</pubTime>
         
         <tag>dl.ai</tag>
          
@@ -420,6 +395,29 @@
 
     
   <url>
+    <loc>http://fangzh.top/2018/2018092016/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>DeepLearning.ai笔记:(3-1)-- 机器学习策略(1)(ML strategy)</title>
+        <pubTime>2018-09-20T08:48:41.000Z</pubTime>
+        
+        <tag>dl.ai</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://fangzh.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://fangzh.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://fangzh.top/2018/2018092017/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
@@ -443,24 +441,51 @@
 
     
   <url>
-    <loc>http://fangzh.top/2018/dl-ai-5-1h3/</loc>
+    <loc>http://fangzh.top/2018/2018090521/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai作业:(5-1)-- 循环神经网络（Recurrent Neural Networks）（3）</title>
-        <pubTime>2018-10-18T08:20:36.000Z</pubTime>
+        <title>Linux安装anaconda</title>
+        <pubTime>2018-09-05T13:52:53.000Z</pubTime>
         
-        <tag>homework</tag>
+        <tag>Linux</tag>
          
-        <tag>dl.ai</tag>
+        <tag>install</tag>
+         
+        <tag>python</tag>
          
          
            
              
-              <breadCrumb title="AI" url="http://fangzh.top/categories/AI/"/>
+              <breadCrumb title="日常技术" url="http://fangzh.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
           
              
-              <breadCrumb title="Deep Learning" url="http://fangzh.top/categories/AI/Deep-Learning/"/>
+              <breadCrumb title="Linux" url="http://fangzh.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://fangzh.top/2018/2018091212/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>hexo中输入数学公式</title>
+        <pubTime>2018-09-12T05:39:33.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>blog</tag>
+         
+         
+           
+             
+              <breadCrumb title="日常技术" url="http://fangzh.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+          
+             
+              <breadCrumb title="博客搭建" url="http://fangzh.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
           
         </display>
     </data>
@@ -515,24 +540,24 @@
 
     
   <url>
-    <loc>http://fangzh.top/2018/2018091212/</loc>
+    <loc>http://fangzh.top/2018/dl-ai-5-1h3/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>hexo中输入数学公式</title>
-        <pubTime>2018-09-12T05:39:33.000Z</pubTime>
+        <title>DeepLearning.ai作业:(5-1)-- 循环神经网络（Recurrent Neural Networks）（3）</title>
+        <pubTime>2018-10-18T08:20:36.000Z</pubTime>
         
-        <tag>hexo</tag>
+        <tag>homework</tag>
          
-        <tag>blog</tag>
+        <tag>dl.ai</tag>
          
          
            
              
-              <breadCrumb title="日常技术" url="http://fangzh.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+              <breadCrumb title="AI" url="http://fangzh.top/categories/AI/"/>
           
              
-              <breadCrumb title="博客搭建" url="http://fangzh.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+              <breadCrumb title="Deep Learning" url="http://fangzh.top/categories/AI/Deep-Learning/"/>
           
         </display>
     </data>
@@ -540,12 +565,12 @@
 
     
   <url>
-    <loc>http://fangzh.top/2018/2018090521/</loc>
+    <loc>http://fangzh.top/2018/2018090520/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>Linux安装anaconda</title>
-        <pubTime>2018-09-05T13:52:53.000Z</pubTime>
+        <title>Linux安装selenium+chromedriver</title>
+        <pubTime>2018-09-05T13:51:41.000Z</pubTime>
         
         <tag>Linux</tag>
          
@@ -583,33 +608,6 @@
           
              
               <breadCrumb title="随笔" url="http://fangzh.top/categories/%E7%94%9F%E6%B4%BB/%E9%9A%8F%E7%AC%94/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://fangzh.top/2018/2018090520/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>Linux安装selenium+chromedriver</title>
-        <pubTime>2018-09-05T13:51:41.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-        <tag>install</tag>
-         
-        <tag>python</tag>
-         
-         
-           
-             
-              <breadCrumb title="日常技术" url="http://fangzh.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
-          
-             
-              <breadCrumb title="Linux" url="http://fangzh.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/Linux/"/>
           
         </display>
     </data>
@@ -769,14 +767,16 @@
 
     
   <url>
-    <loc>http://fangzh.top/2018/2018091621/</loc>
+    <loc>http://fangzh.top/2018/cs231n-1h-3/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai笔记:(2-2)-- 优化算法（Optimization algorithms）</title>
-        <pubTime>2018-09-16T13:42:33.000Z</pubTime>
+        <title>cs231n作业：assignment1 - softmax</title>
+        <pubTime>2018-09-27T08:02:57.000Z</pubTime>
         
-        <tag>dl.ai</tag>
+        <tag>cs231n</tag>
+         
+        <tag>homework</tag>
          
          
            
@@ -801,29 +801,6 @@
         
         <tag>homework</tag>
          
-        <tag>dl.ai</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://fangzh.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://fangzh.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://fangzh.top/2018/dl-ai-4-3/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>DeepLearning.ai笔记:(4-3)-- 目标检测（Object detection）</title>
-        <pubTime>2018-10-11T09:02:09.000Z</pubTime>
-        
         <tag>dl.ai</tag>
          
          
@@ -913,6 +890,29 @@
 
     
   <url>
+    <loc>http://fangzh.top/2018/dl-ai-5-1/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>DeepLearning.ai笔记:(5-1)-- 循环神经网络（Recurrent Neural Networks）</title>
+        <pubTime>2018-10-18T02:26:52.000Z</pubTime>
+        
+        <tag>dl.ai</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://fangzh.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://fangzh.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://fangzh.top/2018/dl-ai-5-1h2/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
@@ -984,12 +984,12 @@
 
     
   <url>
-    <loc>http://fangzh.top/2018/dl-ai-5-1/</loc>
+    <loc>http://fangzh.top/2018/dl-ai-4-3/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai笔记:(5-1)-- 循环神经网络（Recurrent Neural Networks）</title>
-        <pubTime>2018-10-18T02:26:52.000Z</pubTime>
+        <title>DeepLearning.ai笔记:(4-3)-- 目标检测（Object detection）</title>
+        <pubTime>2018-10-11T09:02:09.000Z</pubTime>
         
         <tag>dl.ai</tag>
          
@@ -1085,53 +1085,6 @@
     </url>
 
     
-  <url>
-    <loc>http://fangzh.top/2018/cs231n-1h-5/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>cs231n作业：assignment1 - features</title>
-        <pubTime>2018-09-27T09:25:31.000Z</pubTime>
-        
-        <tag>cs231n</tag>
-         
-        <tag>homework</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://fangzh.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://fangzh.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://fangzh.top/2018/2018091215/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>DeepLearning.ai笔记:(1-3)-- 浅层神经网络（Shallow neural networks）</title>
-        <pubTime>2018-09-12T07:34:23.000Z</pubTime>
-        
-        <tag>dl.ai</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://fangzh.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://fangzh.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://fangzh.top/2018/cs231n-1h-2/</loc>
@@ -1234,29 +1187,6 @@
 
     
   <url>
-    <loc>http://fangzh.top/2018/20180901513/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>DeepLearning.ai笔记:(2-1)-- 深度学习的实践层面（Practical aspects of Deep Learning）</title>
-        <pubTime>2018-09-15T05:37:15.000Z</pubTime>
-        
-        <tag>dl.ai</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://fangzh.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://fangzh.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://fangzh.top/2018/2018090715/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
@@ -1277,6 +1207,31 @@
           
              
               <breadCrumb title="博客搭建" url="http://fangzh.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://fangzh.top/2018/cs231n-1h-5/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>cs231n作业：assignment1 - features</title>
+        <pubTime>2018-09-27T09:25:31.000Z</pubTime>
+        
+        <tag>cs231n</tag>
+         
+        <tag>homework</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://fangzh.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://fangzh.top/categories/AI/Deep-Learning/"/>
           
         </display>
     </data>
@@ -1409,12 +1364,12 @@
 
     
   <url>
-    <loc>http://fangzh.top/2018/2018091316/</loc>
+    <loc>http://fangzh.top/2018/2018091215/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai笔记:(1-4)-- 深层神经网络（Deep neural networks）</title>
-        <pubTime>2018-09-13T08:54:18.000Z</pubTime>
+        <title>DeepLearning.ai笔记:(1-3)-- 浅层神经网络（Shallow neural networks）</title>
+        <pubTime>2018-09-12T07:34:23.000Z</pubTime>
         
         <tag>dl.ai</tag>
          
@@ -1432,12 +1387,35 @@
 
     
   <url>
-    <loc>http://fangzh.top/2018/2018092016/</loc>
+    <loc>http://fangzh.top/2018/2018091720/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai笔记:(3-1)-- 机器学习策略(1)(ML strategy)</title>
-        <pubTime>2018-09-20T08:48:41.000Z</pubTime>
+        <title>DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）</title>
+        <pubTime>2018-09-17T12:19:55.000Z</pubTime>
+        
+        <tag>dl.ai</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://fangzh.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://fangzh.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://fangzh.top/2018/20180901513/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>DeepLearning.ai笔记:(2-1)-- 深度学习的实践层面（Practical aspects of Deep Learning）</title>
+        <pubTime>2018-09-15T05:37:15.000Z</pubTime>
         
         <tag>dl.ai</tag>
          
@@ -1455,4 +1433,26 @@
 
     
     
+  <url>
+    <loc>http://fangzh.top/2018/2018091621/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>DeepLearning.ai笔记:(2-2)-- 优化算法（Optimization algorithms）</title>
+        <pubTime>2018-09-16T13:42:33.000Z</pubTime>
+        
+        <tag>dl.ai</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://fangzh.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://fangzh.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
 </urlset>
