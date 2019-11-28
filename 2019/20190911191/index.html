@@ -12,19 +12,19 @@
     
         <meta name="keywords" content="CVPR">
     
-    <meta name="description" content="这篇文章提出了基于权重连接重要性（saliency）的剪枝方法，能够在深度模型训练之前（初始化阶段），通过mini-batch的多次采样，决定不同权重连接的重要性，进而根据剪枝目标生成剪枝模板（prunningmask）、应用于稀疏剪枝，从而节省了相对耗时的剪枝-微调迭代周期。 ABSTRACT现有的剪枝方法是在迭代中，通过启发式剪枝策略或者增加超参数完成，削弱了可用性。我们展示了一个新方法，可以">
+    <meta name="description" content="这篇文章提出了基于权重连接重要性（saliency）的剪枝方法，能够在深度模型训练之前（初始化阶段），通过mini-batch的多次采样，决定不同权重连接的重要性，进而根据剪枝目标生成剪枝模板（prunning mask）、应用于稀疏剪枝，从而节省了相对耗时的剪枝-微调迭代周期。 ABSTRACT现有的剪枝方法是在迭代中，通过启发式剪枝策略或者增加超参数完成，削弱了可用性。我们展示了一个新方法，可">
 <meta name="keywords" content="CVPR">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SINGLE-SHOT NETWORK PRUNING BASED ON CONNECTION SENSITIVITY">
 <meta property="og:url" content="http://fangzh.top/2019/20190911191/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="这篇文章提出了基于权重连接重要性（saliency）的剪枝方法，能够在深度模型训练之前（初始化阶段），通过mini-batch的多次采样，决定不同权重连接的重要性，进而根据剪枝目标生成剪枝模板（prunningmask）、应用于稀疏剪枝，从而节省了相对耗时的剪枝-微调迭代周期。 ABSTRACT现有的剪枝方法是在迭代中，通过启发式剪枝策略或者增加超参数完成，削弱了可用性。我们展示了一个新方法，可以">
+<meta property="og:description" content="这篇文章提出了基于权重连接重要性（saliency）的剪枝方法，能够在深度模型训练之前（初始化阶段），通过mini-batch的多次采样，决定不同权重连接的重要性，进而根据剪枝目标生成剪枝模板（prunning mask）、应用于稀疏剪枝，从而节省了相对耗时的剪枝-微调迭代周期。 ABSTRACT现有的剪枝方法是在迭代中，通过启发式剪枝策略或者增加超参数完成，削弱了可用性。我们展示了一个新方法，可">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190322155629388.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25hdHVyZTU1Mzg2Mw==,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-11-28T07:34:45.592Z">
+<meta property="og:updated_time" content="2019-11-28T08:09:09.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SINGLE-SHOT NETWORK PRUNING BASED ON CONNECTION SENSITIVITY">
-<meta name="twitter:description" content="这篇文章提出了基于权重连接重要性（saliency）的剪枝方法，能够在深度模型训练之前（初始化阶段），通过mini-batch的多次采样，决定不同权重连接的重要性，进而根据剪枝目标生成剪枝模板（prunningmask）、应用于稀疏剪枝，从而节省了相对耗时的剪枝-微调迭代周期。 ABSTRACT现有的剪枝方法是在迭代中，通过启发式剪枝策略或者增加超参数完成，削弱了可用性。我们展示了一个新方法，可以">
+<meta name="twitter:description" content="这篇文章提出了基于权重连接重要性（saliency）的剪枝方法，能够在深度模型训练之前（初始化阶段），通过mini-batch的多次采样，决定不同权重连接的重要性，进而根据剪枝目标生成剪枝模板（prunning mask）、应用于稀疏剪枝，从而节省了相对耗时的剪枝-微调迭代周期。 ABSTRACT现有的剪枝方法是在迭代中，通过启发式剪枝策略或者增加超参数完成，削弱了可用性。我们展示了一个新方法，可">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190322155629388.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25hdHVyZTU1Mzg2Mw==,size_16,color_FFFFFF,t_70">
     
 
@@ -221,7 +221,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="https://img-blog.csdnimg.cn/20190322155629388.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25hdHVyZTU1Mzg2Mw==,size_16,color_FFFFFF,t_70" alt="img">这篇文章提出了基于权重连接重要性（saliency）的剪枝方法，能够在深度模型训练之前（初始化阶段），通过mini-batch的多次采样，决定不同权重连接的重要性，进而根据剪枝目标生成剪枝模板（prunning<br>mask）、应用于稀疏剪枝，从而节省了相对耗时的剪枝-微调迭代周期。</p>
+            <p><img src="https://img-blog.csdnimg.cn/20190322155629388.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25hdHVyZTU1Mzg2Mw==,size_16,color_FFFFFF,t_70" alt="img">这篇文章提出了基于权重连接重要性（saliency）的剪枝方法，能够在深度模型训练之前（初始化阶段），通过mini-batch的多次采样，决定不同权重连接的重要性，进而根据剪枝目标生成剪枝模板（prunning mask）、应用于稀疏剪枝，从而节省了相对耗时的剪枝-微调迭代周期。</p>
 <h2 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h2><p>现有的剪枝方法是在迭代中，通过启发式剪枝策略或者增加超参数完成，削弱了可用性。我们展示了一个新方法，可以在训练前的初始化阶段一次完成剪枝。我们引入了基于连接敏感的显著性指标来定位当前任务中的重要连接。减少了预训练和剪枝策略的复杂性，对于不同的网络结构也比较鲁棒。在剪枝后，稀疏的网络按照常规训练。我们的方法可以获得极为稀疏的网络，同时准确率得到了保持。我们的方法证明了保留的连接与给定的任务相关。</p>
 <h2 id="1-INTRODUCTION"><a href="#1-INTRODUCTION" class="headerlink" title="1 INTRODUCTION"></a>1 INTRODUCTION</h2><p>由于剪枝是迭代优化的，现有的方法需要高昂的剪枝-再训练的循环，需要额外的超参数，实用性不好。</p>
 <p>我们引入了显著性指标在训练前定位重要的连接，它是依赖于数据的。我们把不同尺度初始化下重要连接对损失函数的影响称为连接显著度。</p>
@@ -258,7 +258,7 @@
 
 
 
-    <a data-url="http://fangzh.top/2019/20190911191/" data-id="ck3iel7sl000q4sv8wttgbsh0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://fangzh.top/2019/20190911191/" data-id="ck3ig5dtw001408v863l9t9de" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
