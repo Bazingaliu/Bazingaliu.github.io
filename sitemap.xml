@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://fangzh.top/2019/2019120722/</loc>
+    
+    <lastmod>2019-12-06T16:42:52.817Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://fangzh.top/2019/20191206/</loc>
     
     <lastmod>2019-12-06T15:49:40.473Z</lastmod>
@@ -128,7 +135,7 @@
   </url>
   
   <url>
-    <loc>http://fangzh.top/2018/2018092016/</loc>
+    <loc>http://fangzh.top/2018/dl-ai-5-1h3/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -142,21 +149,14 @@
   </url>
   
   <url>
+    <loc>http://fangzh.top/2018/2018090520/</loc>
+    
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://fangzh.top/2018/2018091015/</loc>
-    
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://fangzh.top/2018/2018090522/</loc>
-    
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://fangzh.top/board/index.html</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -177,7 +177,14 @@
   </url>
   
   <url>
-    <loc>http://fangzh.top/2018/dl-ai-5-1h3/</loc>
+    <loc>http://fangzh.top/board/index.html</loc>
+    
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://fangzh.top/2018/2018090522/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -212,13 +219,6 @@
   </url>
   
   <url>
-    <loc>http://fangzh.top/2018/2018091216/</loc>
-    
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://fangzh.top/2018/cs231n-2-3/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
@@ -226,14 +226,14 @@
   </url>
   
   <url>
-    <loc>http://fangzh.top/2018/2018091621/</loc>
+    <loc>http://fangzh.top/2018/2018091216/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://fangzh.top/2018/2018090520/</loc>
+    <loc>http://fangzh.top/2018/cs231n-1h-5/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -247,7 +247,7 @@
   </url>
   
   <url>
-    <loc>http://fangzh.top/2018/dl-ai-4-3/</loc>
+    <loc>http://fangzh.top/2018/2018091621/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -268,13 +268,6 @@
   </url>
   
   <url>
-    <loc>http://fangzh.top/2018/dl-ai-5-1/</loc>
-    
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://fangzh.top/2018/dl-ai-4-4h/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
@@ -282,7 +275,7 @@
   </url>
   
   <url>
-    <loc>http://fangzh.top/2018/dl-ai-5-2/</loc>
+    <loc>http://fangzh.top/2018/dl-ai-5-1/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -296,7 +289,21 @@
   </url>
   
   <url>
+    <loc>http://fangzh.top/2018/dl-ai-5-2/</loc>
+    
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://fangzh.top/2018/dl-ai-5-3/</loc>
+    
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://fangzh.top/2018/dl-ai-4-3/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -324,13 +331,6 @@
   </url>
   
   <url>
-    <loc>http://fangzh.top/2018/cs231n-1h-5/</loc>
-    
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://fangzh.top/2018/2018091215/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
@@ -346,6 +346,13 @@
   
   <url>
     <loc>http://fangzh.top/2018/2018091720/</loc>
+    
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://fangzh.top/2018/2018092017/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -387,7 +394,7 @@
   </url>
   
   <url>
-    <loc>http://fangzh.top/2018/dl-ai-4-1/</loc>
+    <loc>http://fangzh.top/2018/2018092016/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -436,14 +443,14 @@
   </url>
   
   <url>
-    <loc>http://fangzh.top/2018/dl-ai-4-2/</loc>
+    <loc>http://fangzh.top/2018/dl-ai-4-1/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://fangzh.top/2018/2018092017/</loc>
+    <loc>http://fangzh.top/2018/dl-ai-4-2/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
