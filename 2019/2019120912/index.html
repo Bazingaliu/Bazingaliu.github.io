@@ -6,26 +6,26 @@
     
 
     
-    <title>DeepLearning.ai笔记:(4-4)-- 特殊应用:人脸识别和神经风格转换 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+    <title>THE LOTTERY TICKET HYPOTHESIS： FINDING SPARSE, TRAINABLE NEURAL NETWORKS | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="dl.ai">
+        <meta name="keywords" content="ICLR">
     
-    <meta name="description" content="本周讲了CNN的两个特殊应用：人脸识别和神经风格转换。">
-<meta name="keywords" content="dl.ai">
+    <meta name="description" content="ABSTRACT神经网络剪枝可以减少超过90%的参数量，同时准确率没有太大影响。但是剪枝后的结构很难从头开始训练，不然就能近似提高训练性能了。 有一些子网络，在初始情况下就可以高效的训练网络，但我们发现标准的剪枝技术天然的没有包括它们。基于这些结果，我们提出了彩票假说：密集的，随机初始化的前馈网络包括一些子网络（中奖者），这些子网络独立训练时可以在相近的迭代次数达到相近的测试准确率。这些中奖者赢得">
+<meta name="keywords" content="ICLR">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DeepLearning.ai笔记:(4-4)-- 特殊应用:人脸识别和神经风格转换">
-<meta property="og:url" content="http://fangzh.top/2018/dl-ai-4-4/index.html">
+<meta property="og:title" content="THE LOTTERY TICKET HYPOTHESIS： FINDING SPARSE, TRAINABLE NEURAL NETWORKS">
+<meta property="og:url" content="http://fangzh.top/2019/2019120912/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="本周讲了CNN的两个特殊应用：人脸识别和神经风格转换。">
+<meta property="og:description" content="ABSTRACT神经网络剪枝可以减少超过90%的参数量，同时准确率没有太大影响。但是剪枝后的结构很难从头开始训练，不然就能近似提高训练性能了。 有一些子网络，在初始情况下就可以高效的训练网络，但我们发现标准的剪枝技术天然的没有包括它们。基于这些结果，我们提出了彩票假说：密集的，随机初始化的前馈网络包括一些子网络（中奖者），这些子网络独立训练时可以在相近的迭代次数达到相近的测试准确率。这些中奖者赢得">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
-<meta property="og:updated_time" content="2018-10-23T12:16:33.000Z">
+<meta property="og:image" content="https://cugtyt.github.io/blog/papers/2019/R/lottery-prun-fig1.png">
+<meta property="og:updated_time" content="2019-12-09T06:11:50.026Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DeepLearning.ai笔记:(4-4)-- 特殊应用:人脸识别和神经风格转换">
-<meta name="twitter:description" content="本周讲了CNN的两个特殊应用：人脸识别和神经风格转换。">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
+<meta name="twitter:title" content="THE LOTTERY TICKET HYPOTHESIS： FINDING SPARSE, TRAINABLE NEURAL NETWORKS">
+<meta name="twitter:description" content="ABSTRACT神经网络剪枝可以减少超过90%的参数量，同时准确率没有太大影响。但是剪枝后的结构很难从头开始训练，不然就能近似提高训练性能了。 有一些子网络，在初始情况下就可以高效的训练网络，但我们发现标准的剪枝技术天然的没有包括它们。基于这些结果，我们提出了彩票假说：密集的，随机初始化的前馈网络包括一些子网络（中奖者），这些子网络独立训练时可以在相近的迭代次数达到相近的测试准确率。这些中奖者赢得">
+<meta name="twitter:image" content="https://cugtyt.github.io/blog/papers/2019/R/lottery-prun-fig1.png">
     
 
     
@@ -180,19 +180,19 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
+    <a class="page-title-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/笔记/论文笔记/">论文笔记</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-dl-ai-4-4" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-论文笔记-6" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        DeepLearning.ai笔记:(4-4)-- 特殊应用:人脸识别和神经风格转换
+        THE LOTTERY TICKET HYPOTHESIS： FINDING SPARSE, TRAINABLE NEURAL NETWORKS
         </h1>
     
 
@@ -202,8 +202,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2018/dl-ai-4-4/" class="article-date">
-            <time datetime="2018-10-12T10:55:15.000Z" itemprop="datePublished">2018-10-12</time>
+        <a href="/2019/2019120912/" class="article-date">
+            <time datetime="2019-12-09T06:02:23.000Z" itemprop="datePublished">2019-12-09</time>
         </a>
     </div>
 
@@ -212,100 +212,59 @@
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dl-ai/">dl.ai</a>
+        <a class="tag-link" href="/tags/ICLR/">ICLR</a>
     </div>
 
                 <!---cloud阅读量统计系统-->
-                阅读数量:<span id="/2018/dl-ai-4-4/" class="leancloud_visitors" data-flag-title="DeepLearning.ai笔记:(4-4)-- 特殊应用:人脸识别和神经风格转换"></span>次
+                阅读数量:<span id="/2019/2019120912/" class="leancloud_visitors" data-flag-title="THE LOTTERY TICKET HYPOTHESIS： FINDING SPARSE, TRAINABLE NEURAL NETWORKS"></span>次
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg" alt></p>
-<p>本周讲了CNN的两个特殊应用：人脸识别和神经风格转换。</p>
-<a id="more"></a>
-<h1 id="人脸识别"><a href="#人脸识别" class="headerlink" title="人脸识别"></a>人脸识别</h1><h2 id="Face-Verification-and-Face-Recognition"><a href="#Face-Verification-and-Face-Recognition" class="headerlink" title="Face Verification and Face Recognition"></a>Face Verification and Face Recognition</h2><p>人脸识别和人脸验证不一样。</p>
-<p>人脸验证是输入一张图片，和这个人的ID或者名字，然后根据输入的图片判断这个人是不是对应这个ID，是个1对1的问题。</p>
-<p>人脸识别是有K个人的数据库，然后输入一张人脸的图片，不确定他是哪一位，然后输出在K个人的数据库中对应的那个人，是1对K的问题。</p>
-<p>所以人脸识别难度更高，而且精度要求更高，因为如果每张图片都是99%的精度，那么K个人就是K倍了，所以应该有99.9%以上的精度。</p>
-<h2 id="One-shot-learning"><a href="#One-shot-learning" class="headerlink" title="One shot learning"></a>One shot learning</h2><p>人脸识别系统，通常都是只有一个人脸的样例，然后就能够成功的识别是不是这个人。这就是one shot learning，一次学习，单单通过一张照片就能识别这个人。</p>
-<p>因此，在只有单个样本的情况下，并不能用之前的方法来实现这个识别系统。这里就需要有一个相似性函数。</p>
-<p><strong>similarity函数：</strong></p>
-<p>通过$d(img1,img2)$来表示两张图片的差异程度，如果d大于某个阈值，那么就表示差别很大，如果小于某个阈值，则认为是同一个人。</p>
-<h1 id="Siamese网络"><a href="#Siamese网络" class="headerlink" title="Siamese网络"></a>Siamese网络</h1><p>那么如何计算这个$d(img1,img2)$呢？</p>
-<p>可以利用Siamese网络来实现。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw5q2v3cqwj20ou0dx0um.jpg" alt></p>
-<p>如图，输入两张图片$x^{(1)},x^{(2)}$，经过一个卷积神经网络，去掉最后的softmax层，可以得到N维的向量，$f(x^{(1)}),f(x^{(2)})$，假设是128维，而N维的向量就相当于是对输入图片的的<strong>编码(encoding)。</strong></p>
-<p>然后比较这两个向量之间的差值：</p>
-<p>$$d(x1,x2) = ||f(x1) - f(x2)||^{2}_{2}$$</p>
-<p>如果距离$d$很小，那表示这两张图片很相近，认为是同一个人。</p>
-<p>如果距离$d$很大，那么表示这两张图片差别很大，不是同一个人。</p>
-<h2 id="Triplet-loss"><a href="#Triplet-loss" class="headerlink" title="Triplet loss"></a>Triplet loss</h2><p>那么，我们之前说到，要得到输入图片的向量编码$f(x)$，是需要经过卷积神经网络的，那么卷积神经网络的参数如何确定呢？使用的方法就是Triplet loss损失函数，而后用梯度下降法进行迭代。</p>
-<p>我们需要比较两组成对的图像 <strong>(Anchor, Positive, Negative)，简写(A,P,N)</strong></p>
-<p>Anchor：表示要检测的目标图片</p>
-<p>Positive：表示与anchor同个人的图片</p>
-<p>Negative：表示与anchor不同个人的图片</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw5q2u6lkzj20j8072mz6.jpg" alt></p>
-<p>所以我们希望A和P的距离小，A和N的距离大，因此有了如下不等式：</p>
-<p>$$||f(A) - f(P)||^2 - ||f(A) - f(N)||^2 + \alpha \leq 0$$</p>
-<p>这里这个公式与SVM的损失函数很类似，$\alpha$是表示margin边界，也就是增加$d(A,P)$和$d(A,N)$之间的差距。</p>
-<p>而如果上面的不等式小于0，那说明是符合我们的要求的，如果是大于0，则要计入损失函数中，所以得到了Triplet loss的公式是：</p>
-<p>$$L(A,P,N) = max(||f(A) - f(P)||^2 - ||f(A) - f(N)||^2 + \alpha,0)$$</p>
-<p>整个网络的代价函数就是把所有的图片损失加起来：</p>
-<p>$$J = \sum L(A,P,N)$$</p>
-<h2 id="三元组的选择"><a href="#三元组的选择" class="headerlink" title="三元组的选择"></a>三元组的选择</h2><p>每个三元组的选择是有讲究的，如果你要识别的是一个女人，然后对比的Negative是个老大爷，那么条件就很容易满足，学不到什么东西。所以应该尽量选择那些相似的图片进行每一组的训练，也就是：</p>
-<p>$$d(A,P) \approx d(A,N) $$</p>
-<p>选择的例子如下图，可以看到，每一个三元组对比的都是一些比较相似的图片：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw5q2u59x9j20kg0bv41m.jpg" alt></p>
-<h2 id="脸部验证和二分类"><a href="#脸部验证和二分类" class="headerlink" title="脸部验证和二分类"></a>脸部验证和二分类</h2><p>除了之前说的用Triplet loss进行训练以外，还有别的方法来进行训练，也就是可以把Siamese网络当做一个二分类的问题。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw5q2u74asj20m50brgnh.jpg" alt></p>
-<p>如图，输入两张图片，当计算得到了两个图片的向量编码后，求两张图片的距离，然后通过一个sigmoid函数，把他变成一个二分类问题，如果同个人，输出1，不同个人则输出0。其中，权重$W,b$都可以通过训练来得到。</p>
-<p>这个时候，人脸识别问题就变成了一个<strong>监督学习</strong>的问题，在创建每一对训练集的时候，应该有对应的输出标签y。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw5q2vnh63j20kx0bv41k.jpg" alt></p>
-<h1 id="神经风格迁移"><a href="#神经风格迁移" class="headerlink" title="神经风格迁移"></a>神经风格迁移</h1><p>神经风格的迁移，就是输入两张图片，一张当做内容图片content，另一张当做风格图片style，输出的图片g兼具有一张的内容，和另一张的风格。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw5q2wcuc4j20ow0ctqg6.jpg" alt></p>
-<h2 id="卷积神经网络学什么？"><a href="#卷积神经网络学什么？" class="headerlink" title="卷积神经网络学什么？"></a>卷积神经网络学什么？</h2><p>在进行风格迁移前，我们需要了解我们的神经网络到底在学些什么东西，把中间的隐藏单元拎出来看看。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw5q2wgh0ej21360l214v.jpg" alt></p>
-<p>如上图，假设我们有一个卷积神经网络，要看到不同层的隐藏单元计算结果，怎么办？依次对各个层进行如下操作：</p>
+            <h2 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h2><p>神经网络剪枝可以减少超过90%的参数量，同时准确率没有太大影响。但是剪枝后的结构很难从头开始训练，不然就能近似提高训练性能了。</p>
+<p>有一些子网络，在初始情况下就可以高效的训练网络，但我们发现标准的剪枝技术天然的没有包括它们。基于这些结果，我们提出了彩票假说：密集的，随机初始化的前馈网络包括一些子网络（中奖者），这些子网络独立训练时可以在相近的迭代次数达到相近的测试准确率。这些中奖者赢得了初始彩票：它们初始权重就能特别高效的训练。</p>
+<p>我们提出了一个算法来找这些中奖者，一系列的实验也支持了我们的假说和那些偶然初始化的重要性。我们不断的在MNIST和CIFAR10数据集上发现，中奖者的大小只有全连接网络和卷积网络的10%到20%。除了尺寸，我们发现这些中奖者训练更快，测试准确率更高。</p>
+<h2 id="1-INTRODUCTION"><a href="#1-INTRODUCTION" class="headerlink" title="1 INTRODUCTION"></a>1 INTRODUCTION</h2><p>有一些方法可以减少90%的参数但是没有准确率影响，但是为什么开始时不用这个更小的结构来训练呢？研究发现这样做的结果比较差。</p>
+<p>在图1中，我们从MNIST的全连接网络和CIFAR10的卷积网络中随机采样训练一个子网络。随机采样建模了非结构化剪枝。在不同的稀疏程度上，虚线表示迭代中的最小验证损失和准确率。网络越稀疏，学的越慢，最后的准确率越低。</p>
+<p><img src="https://cugtyt.github.io/blog/papers/2019/R/lottery-prun-fig1.png" alt></p>
+<p>本文中，我们展示总存在是个更小的网络，在从头训练时至少和原始网络一样快，测试准确率相近。图1实线是我们找到的网络。</p>
+<p><strong>The Lottery Ticket Hypothesis</strong> 随机初始化的，密集的网络包括一个子网络，这个网络的初始化使得它能在单独训练时达到相似的准确率，需要的迭代次数也相近。</p>
+<p>严格来说，考虑一个密集的前馈网络$f(x ; \theta)$，初始参数$\theta=\theta_{0} \sim \mathcal{D}<em>{\theta}$。在训练集中用SGD优化，$f$在迭代$j$次后达到最小验证损失$l$和测试准确率$a$。另外，考虑带参数mask $m \in{0,1}^{|\theta|}$训练$f(x ; m \odot \theta)$，所以初始化参数为$m \odot \theta</em>{0}$。当用SGD优化时，$f$在迭代$j‘$次后达到最小验证损失$l‘$和测试准确率$a’$。彩票假说预测，对于$\exists m$使得$j^{\prime} \leq j$，$a^{\prime} \geq a$，$|m|_{0} \ll|\theta|$参数量更少。</p>
+<p>我们发现标准化的剪枝方法自动的略过了这样的网络。我们称这样的一个子网络为中奖者。在参数随机初始化后，$f\left(x ; m \odot \theta_{0}^{\prime}\right)$ where $\theta_{0}^{\prime} \sim \mathcal{D}_{\theta}$，它们就无法中奖了，除非初始化得好。</p>
+<p><strong>Identifying winning tickets</strong> 我们通过训练，减去梯度最小的权重来定为这个网络。剩下的，没有剪枝的就是我们的中奖者。每个未剪枝的连接值在重新训练时在次填回原来初始化的值。这就是我们的实验核心：</p>
+<ol>
+<li>随机初始化网络$f\left(x ; \theta_{0}\right)\left(\text { where } \theta_{0} \sim \mathcal{D}_{\theta}\right)$</li>
+<li>迭代j次，得到参数$\theta_{j}$</li>
+<li>从参数$\theta_{j}$中减去$p \%$参数，生成mask $m$。</li>
+<li>把剩下的参数值设为原来的值$\theta_{0}$，生成中奖者$f\left(x ; m \odot \theta_{0}\right)$</li>
+</ol>
+<p>可以看到，这个剪枝过程是one-shot：网络训练一次，$p \%$的权重剪枝，剩下的重新设置值。但是本文关注于迭代剪枝，不断的进行训练，剪枝，重设。结果显示，迭代剪枝比one-shot剪枝找到的网络更小。</p>
+<p>结果：我们在MNIST的全连接网络和CIFAR10的卷积网络中找到了中奖者。我们使用非结构化的剪枝方法，因此这些中奖者是稀疏的。在更深的网络中，我们的基于剪枝的方法对学习率敏感，高学习率需要warmup来找中奖者。中奖者是原始网络的10-20%大小，准确率更高，迭代次数相近。随机初始化后，效果就很差了，意味着单独说结构不能解释中奖者的成功。</p>
+<p><img src="https://cugtyt.github.io/blog/papers/2019/R/lottery-prun-fig2.png" alt></p>
+<p><strong>The Lottery Ticket Conjecture</strong> 密集的随机初始化的网络相对于稀疏网络更容易训练，因为有更多可能的子网络。</p>
+<p><strong>Contributions</strong></p>
 <ul>
-<li>在当前层挑选一个隐藏单元；</li>
-<li>遍历训练集，找到最大化地激活了该运算单元的图片或者图片块；</li>
-<li>对该层的其他运算单元执行操作。</li>
+<li>我们证明了可以剪枝得到一个子网络，在相近的迭代后可以达到相似的测试准确率</li>
+<li>我们展示了中奖者相比于原来学的更快，可以达到更高的准确率，泛化性更好</li>
+<li>我们提出了彩票假说可以用来解释这个发现</li>
 </ul>
-<p>对于在第一层的隐藏单元中，其只能看到卷积网络的小部分内容，也就是最后我们找到的那些最大化激活第一层隐层单元的是一些小的图片块。我们可以理解为第一层的神经单元通常会寻找一些简单的特征，如边缘或者颜色阴影等。</p>
-<p>而后随着层数的增加，隐藏层单元看到的东西就越来越复杂了：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw5q2v7oo0j20ok06sagx.jpg" alt></p>
-<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>对于神经风格迁移，我们的目标是由内容图片C和风格图片S，生成最终的风格迁移图片G。所以定义代价函数为：</p>
-<p>$$J(G) = \alpha J_{content}(C,G) + \beta J_{style}(S,G)$$</p>
+<p><strong>Implications</strong> 我们可以探索：</p>
 <ul>
-<li>$J_{content}(C, G)$: 代表生成图片G的内容和内容图片C的内容的相似度</li>
-<li>$J_{style}(S, G)$: 代表生成图片G的内容和风格图片S的内容的相似度</li>
-<li>$\alpha, \beta$: 两个超参数用来表示以上两者之间的权重</li>
+<li><em>Improve training performance</em> 由于中奖者可以独立从头训练，所以我们可以设计一个训练方法来寻找中奖者，更容易的进行剪枝。</li>
+<li>Design better networks* 中奖者揭示了稀疏结构和初始化对学习尤其重要。我们可以试着设计新的网络结构和初始化方案。甚至可以迁移到其他任务上。</li>
+<li><em>Improve our theoretical understanding of neural networks</em></li>
 </ul>
-<p>首先随机初始化G的像素，然后进行梯度下降：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw5q2v5on0j20or0dcte1.jpg" alt></p>
-<h2 id="内容代价函数"><a href="#内容代价函数" class="headerlink" title="内容代价函数"></a>内容代价函数</h2><ul>
-<li>首先假设我们使用第$l$层隐藏层来计算$J_{content}(C, G)$注意这里的$l$一般取在中间层，而不是最前面的层，或者最后层。因为太浅了啥也看不到，太深了就太像原图了。</li>
-<li>使用一个预训练的卷积网络。（如，VGG或其他）</li>
-<li>$a^{[l] (C)}$和$a^{[l] (G)}$分别代表内容图片C和生成图片G的$l$层的激活值；</li>
-<li>内容损失函数$J_{content} = \frac{1}{2}||a^{[l] (C)} - a^{[l] (G)}||^2$</li>
-</ul>
-<h2 id="风格代价函数"><a href="#风格代价函数" class="headerlink" title="风格代价函数"></a>风格代价函数</h2><p>对于一个卷积网络中，我们选择网络的中间层$l$， 定义“Style”表示$l$层的各个通道激活项之间的相关性。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw5q2u35a3j20oa08wdgh.jpg" alt></p>
-<p>那如何计算这个相关性呢？</p>
-<p>假设我们在第$l$层有5个通道：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw5q2undn5j20nu0d5ada.jpg" alt></p>
-<p><strong>不同的通道之间代表着不同的神经元学习到的特征，</strong>如第一个通道（红色）可以表示含有垂直纹理的特征，第二个通道（黄色）表示区域中出现橙色的特征。</p>
-<p>那么两个通道的相关性就表示图片中出现垂直纹理又出现橙色的可能性大小。</p>
-<p>所以可以得到相关系数的矩阵<strong>“Gram Matrix</strong>：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw5q2u2s3rj209f068q2x.jpg" alt></p>
-<p>$i,j.k$表示神经元所在的高度，宽度和通道。也就是每个通道的神经元分别乘上另一个通道对应位置的神经元再求和即可得到这两个通道$k,k^{\prime}$的相关系数。这个矩阵的维度是$(n_{c}^{[l]},n_{c}^{[l]})$的，也就是第$l$层的通道数乘通道数的大小。</p>
-<p>而代价函数即为两张图片中相关系数矩阵的差值求和，再取平均。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw5q2u1z3wj20im03mmx4.jpg" alt></p>
-<h2 id="1D-to-3D-卷积"><a href="#1D-to-3D-卷积" class="headerlink" title="1D to 3D 卷积"></a>1D to 3D 卷积</h2><p>图片都是2D的卷积运算，其实还可以推广到1D和3D的情况。</p>
-<p>典型的1D情况就是信号处理。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw5q2u42q0j20o90dqabb.jpg" alt></p>
-<p>3D情况就像CT的切片，是一层一层叠加起来的。</p>
+<h2 id="2-WINNING-TICKETS-IN-FULLY-CONNECTED-NETWORKS"><a href="#2-WINNING-TICKETS-IN-FULLY-CONNECTED-NETWORKS" class="headerlink" title="2 WINNING TICKETS IN FULLY-CONNECTED NETWORKS"></a>2 WINNING TICKETS IN FULLY-CONNECTED NETWORKS</h2><p>我们试验了MNIST上的全连接网络。使用Lenet-300-100。在随机初始化和训练网络后，我们剪枝，然后重新设置参数。我们使用了简单的修建方法，移除最小梯度的权重。</p>
+<p><strong>Notation</strong> $P_{m}=\frac{|m|<em>{0}}{|\theta|}$表示m的稀疏性，例如$P</em>{m}=25 \%$表示75%的权重减掉了。</p>
+<p><strong>Iterative pruning</strong> 图3表示迭代剪枝的结果。第一测修建，网络学得更快，准确率更高（图3左）。51.3%权重有最好的测试准确率，比原始网络快，但是慢于21.1%。3.6%是达到原始网络一样的性能。</p>
+<p><img src="https://cugtyt.github.io/blog/papers/2019/R/lottery-prun-fig3.png" alt></p>
+<p>图4a是每次迭代剪枝20%的情况。左侧是早停与权重比例的情况。中间是测试准确率。</p>
+<p><img src="https://cugtyt.github.io/blog/papers/2019/R/lottery-prun-fig4.png" alt></p>
+<p>中奖者从$P-m$为100%到21%学得越来越快，最后早了38%。进一步的剪枝学习变慢，在3.6%的时候早停性能和原始网络一致。测试准确率在13.5%下提升了0.3个百分点，后续就降低了，在3.6%的时候返回原始网络的水平。</p>
+<p><strong>Random reinitialization</strong> 为了验证中奖者初始化的重要性，我们保持了中奖者的结构，但重新初始化。在图5中对每个中奖者随机初始化3次，发现初始化是极其重要的。图3右展示了迭代剪枝的情况。</p>
+<p>【略】</p>
+<p><strong>One-shot pruning</strong> 图4中也展示了one-shot的实验。【略】</p>
+<h2 id="3-WINNING-TICKETS-IN-CONVOLUTIONAL-NETWORKS"><a href="#3-WINNING-TICKETS-IN-CONVOLUTIONAL-NETWORKS" class="headerlink" title="3 WINNING TICKETS IN CONVOLUTIONAL NETWORKS"></a>3 WINNING TICKETS IN CONVOLUTIONAL NETWORKS</h2><p>【略】</p>
 
         </div>
         <footer class="article-footer">
@@ -313,7 +272,7 @@
 
 
 
-    <a data-url="http://fangzh.top/2018/dl-ai-4-4/" data-id="ck3y1abfg006j7wv8ae95641o" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://fangzh.top/2019/2019120912/" data-id="ck3y1eo5h0000tgv8fh9xd83b" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -455,20 +414,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2018/dl-ai-4-4h/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            DeepLearning.ai作业:(4-4)-- 特殊应用:人脸识别和神经风格转换
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2018/dl-ai-4-3h/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/2019120800/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">DeepLearning.ai作业:(4-3)-- 目标检测（Object detection）</p>
+        <p class="article-nav-title">艾萨克的英雄主义</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -748,7 +697,7 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://fangzh.top/2018/dl-ai-4-4/';
+    var disqus_url = 'http://fangzh.top/2019/2019120912/';
     
     (function() {
     var dsq = document.createElement('script');
