@@ -6,26 +6,26 @@
     
 
     
-    <title>DeepLearning.ai笔记:(3-1)-- 机器学习策略(1)(ML strategy) | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+    <title>Fast Online Object Tracking and Segmentation:A Unifying Approach | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="dl.ai">
+        <meta name="keywords" content>
     
-    <meta name="description" content="第三门课主要讲了机器学习的一些策略，也就是在你做项目的时候，应该要具体根据什么来改进你的模型。">
-<meta name="keywords" content="dl.ai">
+    <meta name="description" content="用单个方法实时做到同时目标跟踪和半监督视频目标分割。SiamMask通过二值分割任务增强损失提升了全卷积Siamense目标跟踪方法的训练过程。训练完成后，SiamMask只依赖于单个边界框初始值，可以做到旋转的边界框分割未知类别目标，达到每秒55帧。 ABSTRACT展示了如何用单个方法实时做到同时目标跟踪和半监督视频目标分割。我们的方法SiamMask，通过二值分割任务增强损失提升了全卷积Si">
+<meta name="keywords" content="人工智能、计算机、机器学习、linux、程序员">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DeepLearning.ai笔记:(3-1)-- 机器学习策略(1)(ML strategy)">
-<meta property="og:url" content="http://fangzh.top/2018/2018092016/index.html">
+<meta property="og:title" content="Fast Online Object Tracking and Segmentation:A Unifying Approach">
+<meta property="og:url" content="http://fangzh.top/2019/20191213002/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="第三门课主要讲了机器学习的一些策略，也就是在你做项目的时候，应该要具体根据什么来改进你的模型。">
+<meta property="og:description" content="用单个方法实时做到同时目标跟踪和半监督视频目标分割。SiamMask通过二值分割任务增强损失提升了全卷积Siamense目标跟踪方法的训练过程。训练完成后，SiamMask只依赖于单个边界框初始值，可以做到旋转的边界框分割未知类别目标，达到每秒55帧。 ABSTRACT展示了如何用单个方法实时做到同时目标跟踪和半监督视频目标分割。我们的方法SiamMask，通过二值分割任务增强损失提升了全卷积Si">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
-<meta property="og:updated_time" content="2018-10-23T12:16:33.000Z">
+<meta property="og:image" content="https://cugtyt.github.io/blog/papers/2019/R/SiamMask-fig1.png">
+<meta property="og:updated_time" content="2019-12-12T23:54:08.321Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DeepLearning.ai笔记:(3-1)-- 机器学习策略(1)(ML strategy)">
-<meta name="twitter:description" content="第三门课主要讲了机器学习的一些策略，也就是在你做项目的时候，应该要具体根据什么来改进你的模型。">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
+<meta name="twitter:title" content="Fast Online Object Tracking and Segmentation:A Unifying Approach">
+<meta name="twitter:description" content="用单个方法实时做到同时目标跟踪和半监督视频目标分割。SiamMask通过二值分割任务增强损失提升了全卷积Siamense目标跟踪方法的训练过程。训练完成后，SiamMask只依赖于单个边界框初始值，可以做到旋转的边界框分割未知类别目标，达到每秒55帧。 ABSTRACT展示了如何用单个方法实时做到同时目标跟踪和半监督视频目标分割。我们的方法SiamMask，通过二值分割任务增强损失提升了全卷积Si">
+<meta name="twitter:image" content="https://cugtyt.github.io/blog/papers/2019/R/SiamMask-fig1.png">
     
 
     
@@ -180,19 +180,19 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
+    <a class="page-title-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/笔记/论文笔记/">论文笔记</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-dl-ai-3-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-论文笔记-7" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        DeepLearning.ai笔记:(3-1)-- 机器学习策略(1)(ML strategy)
+        Fast Online Object Tracking and Segmentation:A Unifying Approach
         </h1>
     
 
@@ -202,74 +202,48 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2018/2018092016/" class="article-date">
-            <time datetime="2018-09-20T08:48:41.000Z" itemprop="datePublished">2018-09-20</time>
+        <a href="/2019/20191213002/" class="article-date">
+            <time datetime="2019-12-12T23:41:41.000Z" itemprop="datePublished">2019-12-13</time>
         </a>
     </div>
 
 		
 
                 
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dl-ai/">dl.ai</a>
-    </div>
-
                 <!---cloud阅读量统计系统-->
-                阅读数量:<span id="/2018/2018092016/" class="leancloud_visitors" data-flag-title="DeepLearning.ai笔记:(3-1)-- 机器学习策略(1)(ML strategy)"></span>次
+                阅读数量:<span id="/2019/20191213002/" class="leancloud_visitors" data-flag-title="Fast Online Object Tracking and Segmentation:A Unifying Approach"></span>次
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg" alt></p>
-<p>第三门课主要讲了机器学习的一些策略，也就是在你做项目的时候，应该要具体根据什么来改进你的模型。</p>
-<a id="more"></a>
-<h1 id="正交化"><a href="#正交化" class="headerlink" title="正交化"></a>正交化</h1><p>在设计过程中，最好是保证几个变量相互独立，也就是正交。就好比你在开车的时候，油门和方向盘是相互独立的。如果方向盘和油门不独立，当你调整方向盘的时候速度也在变化，就很难受了。</p>
-<p>所以在监督学习中，以下几个应该正交：</p>
-<ul>
-<li>损失函数应该在训练集上表现很好<ul>
-<li>否则，就使用<strong>更大的神经网络</strong>，或者使用<strong>更好的优化算法</strong></li>
-</ul>
-</li>
-<li>在验证集上表现很好<ul>
-<li>否则，就用<strong>正则化</strong>或者<strong>训练集上要更多的数据</strong></li>
-</ul>
-</li>
-<li>在测试机上表现很好<ul>
-<li>否则，就使用<strong>更大的验证集</strong></li>
-</ul>
-</li>
-<li>现实中表现很好<ul>
-<li>否则，就检查一下<strong>验证集</strong>是不是对的，<strong>损失函数是不是好的</strong></li>
-</ul>
-</li>
-</ul>
-<h1 id="单一数字评估指标"><a href="#单一数字评估指标" class="headerlink" title="单一数字评估指标"></a>单一数字评估指标</h1><p>在训练模型中，当然需要一种指标来评估一下模型是不是好的。</p>
-<p>一般使用两个参数：</p>
-<ul>
-<li>准确率p：在预测的数据中，是正确的概率</li>
-<li>召回率r：在真实数据中，预测是正确的概率</li>
-</ul>
-<p>一般用F1 Score把两个指标给统一起来：</p>
-<p>$$F1-Score = \frac{2}{\frac{1}{p} + \frac{1}{r}}$$</p>
-<h1 id="满足和优化指标"><a href="#满足和优化指标" class="headerlink" title="满足和优化指标"></a>满足和优化指标</h1><p>一般，满足指标都是一个区间范围，比如时间上只要小于100ms就可以，这样子，就在满足满足指标的情况下，选择最优指标（如精确度最高）最好的那个模型。</p>
-<h1 id="训练-验证-测试集的划分"><a href="#训练-验证-测试集的划分" class="headerlink" title="训练/验证/测试集的划分"></a>训练/验证/测试集的划分</h1><p>应该使验证集和测试集的数据满足统一分布。</p>
-<h1 id="与人类表现比较"><a href="#与人类表现比较" class="headerlink" title="与人类表现比较"></a>与人类表现比较</h1><p><strong>可避免的偏差</strong></p>
-<p>我们训练出来的结果，应该和人类表现作比较，如果差距比较小，那么说明很接近了，如果差距比较大，应该着重优化缩小这个可避免的偏差。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlruzuroj20tu0dedhl.jpg" alt></p>
-<p>如图，左边说明应该着重减小bias，右边应该着重减小variance</p>
-<h1 id="改善模型的表现"><a href="#改善模型的表现" class="headerlink" title="改善模型的表现"></a>改善模型的表现</h1><p>减少bias：</p>
-<ul>
-<li>训练更大的模型</li>
-<li>更长的时间，更优化的算法（Momentum，RMSprop，Adam）</li>
-<li>寻找更好的网络架构、更好的参数</li>
-</ul>
-<p>减少variance：</p>
-<ul>
-<li>收集更多的数据</li>
-<li>正则化</li>
-<li>更好的架构和参数</li>
-</ul>
+            <p>用单个方法实时做到同时目标跟踪和半监督视频目标分割。SiamMask通过二值分割任务增强损失提升了全卷积Siamense目标跟踪方法的训练过程。训练完成后，SiamMask只依赖于单个边界框初始值，可以做到旋转的边界框分割未知类别目标，达到每秒55帧。</p>
+<h2 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h2><p>展示了如何用单个方法实时做到同时目标跟踪和半监督视频目标分割。我们的方法SiamMask，通过二值分割任务增强损失提升了全卷积Siamense目标跟踪方法的训练过程。训练完成后，SiamMask只依赖于单个边界框初始值，可以做到旋转的边界框分割未知类别目标，达到每秒55帧。性能也有很大的优势【略】。</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><p><img src="https://cugtyt.github.io/blog/papers/2019/R/SiamMask-fig1.png" alt></p>
+<p>本文希望通过SiamMask拉近任意目标跟踪和视频目标分割（VOS）的关系。SiamMask是一个简单的多任务方法，可以同时解决上述两个问题。我们希望保持离线的训练能力，以及在线的速度，同时对目标的表示进行快速调节。</p>
+<p>为了达到这个目标，我们同时在三个任务上训练一个Siamese网络，每个对应于不同的目标对象和候选区域的策略。在Bertinetto的全卷积方法中，一个任务是学习目标对象和滑动窗口中多个候选的相似性度量。它的输出是密度响应图，表示目标的未知，但是不包含空间信息。为了提炼这个信息，我们同时训练另外两个任务：用Region Proposal Network训练边界框回归，未知类别二值分割。需要注意的是：二值标签只需要在离线训练时给出，在线分割和跟踪的时候不需要。每个任务用单独的分支表示，最终的损失对三个输出求和。</p>
+<p>在训练后，SiamMask只依赖于单个初始边界框，不需要更新即可在线运算，最后生成目标分割的mask和旋转的边界框，达到每秒55帧。在VOT-2018上达到最好的效果。另外，相同的方法在半监督VOS上也很有竞争力。</p>
+<h2 id="3-Methodology"><a href="#3-Methodology" class="headerlink" title="3. Methodology"></a>3. Methodology</h2><p>为了能在线运算，速度更快，我们采用了全卷积Siamese网络。我们实验了SiamFC和SiamRPN。</p>
+<h3 id="3-1-Fully-convolutional-Siamese-networks"><a href="#3-1-Fully-convolutional-Siamese-networks" class="headerlink" title="3.1. Fully-convolutional Siamese networks"></a>3.1. Fully-convolutional Siamese networks</h3><p><strong>SiamFC</strong> Bertinetto提出作为跟踪系统的基本块，离线训练的全卷积Siamese网络在（大的）搜索图像x中比较一个模板图像z，获得一个密集响应图。z和x分别是$w \times h$大小的中心剪切的目标对象，和更大的中心剪切的目标位置目标估计。两个输入通过相同的CNN$f_{\theta}$处理，返回两个交叉相关的特征图：</p>
+<p>$$g_{\theta}(z, x)=f_{\theta}(z) \star f_{\theta}(x) \qquad (1)$$</p>
+<p>我们把响应图（式1左）的每个空间元素看做候选窗的响应（ROW）。例如$g_{\theta}^{n}(z, x)$表示一个模板z和x第n个候选窗的相似性。对于SiamFC而言，目标是响应图最大值对应于在搜索区域x中的目标位置。为了让每个ROW编码更丰富的目标对象信息，我们把式1的交叉相关替换为深度方向的交叉相关，生成多通道响应图。SiamFC在几百万视频帧上用logistic损失（记作$\mathcal{L}_{s i m}$）离线训练。</p>
+<p><strong>SiamRPN</strong> Li等通过区域提议网络（RPN提上SiamFC的性能，可以用一个不同比例的边界框预测目标位置。在SiamRPN中，每个ROW表示k个archor box提议的集合，以及对应的目标/背景分数。两个输出的分支用平滑$L_{1}$和交叉熵训练。记作$\mathcal{L}<em>{b o x}$和$\mathcal{L}</em>{\text { score }}$。</p>
+<h3 id="3-2-SiamMask"><a href="#3-2-SiamMask" class="headerlink" title="3.2. SiamMask"></a>3.2. SiamMask</h3><p>不同于现在的依赖于低保真度目标表示的方法，我们认为生成先前帧的目标二值分割mask是很重要的。除了相似性分数和边界框坐标，ROW也包含了生成二值mask的信息。可以在现有的网络基础上增加新的分支和损失。</p>
+<p>通过参数为$\phi$的两层神经网络$h_{\phi}$预测$w \times h$的二值mask。令$m_{n}$表示第n个ROW上预测的mask：</p>
+<p>$$m_{n}=h_{\phi}\left(g_{\theta}^{n}(z, x)\right) \qquad (2)$$</p>
+<p>从式2可以看出mask的预测是图像到分割x以及目标对象z的函数。这里z可以用于指导分割过程：给定一个不同的参考图像，网络会对x生成不同的分割mask。</p>
+<p><strong>Loss function</strong> 训练的时候，每个ROW由真实二值标签$y_{n} \in{ \pm 1}$标记，同时还有$w \times h$大小的像素级真实mask$c_{n}$。令$c_{n}^{i j} \in{ \pm 1}$表示第n个候选ROW像素$(i, j)$上的标签。损失$\mathcal{L}_{\text { mask }}$是二元logistic回归损失：</p>
+<p>$$\mathcal{L}<em>{\operatorname{mask}}(\theta, \phi)=\sum</em>{n}\left(\frac{1+y_{n}}{2 w h} \sum_{i j} \log \left(1+e^{-c_{n}^{i j} m_{n}^{i j}}\right)\right) \qquad (3)$$</p>
+<p>因此，$h_{\phi}$的分类层包括$w \times h$个分类器，每个表示给定像素是否候选窗中的对象。$\mathcal{L}<em>{\text { mask }}$只计算正的ROW（$y</em>{n}=1$）。</p>
+<p><img src="https://cugtyt.github.io/blog/papers/2019/R/SiamMask-fig2.png" alt></p>
+<p><strong>Mask representation</strong> </p>
+<p>$f_{\theta}(z)$和$f_{\theta}(x)$生成的深度方向交叉相关的（$17 \times 17$）ROW之一为mask的表示。分割任务的网络$h_{\phi}$由两个$1 \times 1$卷积层表示，一个256通道，一个$63^{2}$通道。这可以让每个像素分类器利用整个ROW包含的信息，也可以对x中的候选窗有完整的视角，这对于区分目标对象是很关键的。</p>
+<p><strong>Two variants</strong> 【略】</p>
+<p><strong>Box generation</strong> 【略】</p>
+<h3 id="3-3-Implementation-details"><a href="#3-3-Implementation-details" class="headerlink" title="3.3. Implementation details"></a>3.3. Implementation details</h3><p>【略】</p>
+<h2 id="4-Experiments"><a href="#4-Experiments" class="headerlink" title="4. Experiments"></a>4. Experiments</h2><h3 id="4-1-Evaluation-for-visual-object-tracking"><a href="#4-1-Evaluation-for-visual-object-tracking" class="headerlink" title="4.1. Evaluation for visual object tracking"></a>4.1. Evaluation for visual object tracking</h3><p><img src="https://cugtyt.github.io/blog/papers/2019/R/SiamMask-fig3.png" alt><br><img src="D:/BazingaliuBlog/Bazingaliu.github.io-master/blog/papers/2019/R/SiamMask-fig3.png" alt><br><img src="https://cugtyt.github.io/blog/papers/2019/R/SiamMask-tab2.png" alt><br><img src="https://cugtyt.github.io/blog/papers/2019/R/SiamMask-tab3-4.png" alt></p>
+<h3 id="4-2-Evaluation-for-semi-supervised-VOS"><a href="#4-2-Evaluation-for-semi-supervised-VOS" class="headerlink" title="4.2. Evaluation for semi-supervised VOS"></a>4.2. Evaluation for semi-supervised VOS</h3><p><img src="https://cugtyt.github.io/blog/papers/2019/R/SiamMask-tab5-6.png" alt><br><img src="https://cugtyt.github.io/blog/papers/2019/R/SiamMask-fig4.png" alt></p>
+<h3 id="4-3-Further-analysis"><a href="#4-3-Further-analysis" class="headerlink" title="4.3. Further analysis"></a>4.3. Further analysis</h3><p><img src="https://cugtyt.github.io/blog/papers/2019/R/SiamMask-tab7.png" alt><br><img src="https://cugtyt.github.io/blog/papers/2019/R/SiamMask-fig5.png" alt></p>
+<h2 id="5-Conclusion"><a href="#5-Conclusion" class="headerlink" title="5. Conclusion"></a>5. Conclusion</h2><p>我们提出了SiamMask方法，让全卷积Siamese跟踪器生成任意类别二值分割mask。我们把它成功运用到了目标跟踪和半监督视频目标分割中，速度快，性能高。</p>
 
         </div>
         <footer class="article-footer">
@@ -277,7 +251,7 @@
 
 
 
-    <a data-url="http://fangzh.top/2018/2018092016/" data-id="ck43dorgz000sycv86s2dfvo7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://fangzh.top/2019/20191213002/" data-id="ck43dq1fp0000f0v8k6q153f1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -419,20 +393,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2018/2018092017/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            DeepLearning.ai笔记:(3-2)-- 机器学习策略(2)(ML strategy)
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2018/2018091810/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/2019121111/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">DeepLearning.ai作业:(2-3)-- 超参数调试（Hyperparameter tuning）</p>
+        <p class="article-nav-title">jupyter远程连接炼丹</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -712,7 +676,7 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://fangzh.top/2018/2018092016/';
+    var disqus_url = 'http://fangzh.top/2019/20191213002/';
     
     (function() {
     var dsq = document.createElement('script');
