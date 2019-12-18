@@ -6,21 +6,26 @@
     
 
     
-    <title>归档: 2018 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+    <title>CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="人工智能、计算机、机器学习、linux、程序员">
+        <meta name="keywords" content>
+    
+    <meta name="description" content="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。1、MCNN的多列设计没有显著作用：​    以前的拥挤场景分析工作主要基于mul">
 <meta name="keywords" content="人工智能、计算机、机器学习、linux、程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:url" content="http://fangzh.top/archives/2018/page/2/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes">
+<meta property="og:url" content="http://fangzh.top/2019/2019121899/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta property="og:description" content="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。1、MCNN的多列设计没有显著作用：​    以前的拥挤场景分析工作主要基于mul">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5755028-34d8ac2822a2fb51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/644">
+<meta property="og:updated_time" content="2019-12-18T13:45:08.331Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta name="twitter:description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta name="twitter:title" content="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes">
+<meta name="twitter:description" content="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。1、MCNN的多列设计没有显著作用：​    以前的拥挤场景分析工作主要基于mul">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5755028-34d8ac2822a2fb51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/644">
     
 
     
@@ -175,439 +180,260 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>归档: 2018
+    <a class="page-title-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/笔记/论文笔记/">论文笔记</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-论文笔记-8" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2018" class="archive-year"><i class="icon fa fa-calendar-o"></i>2018</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/dl-ai-5-1/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="DeepLearning.ai笔记:(5-1)-- 循环神经网络（Recurrent Neural Networks）" class="thumbnail-image"></span>
-    
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
-            </div>
-            <div class="date"><time datetime="2018-10-18T02:26:52.000Z" itemprop="datePublished">2018-10-18</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/dl-ai-5-1/">DeepLearning.ai笔记:(5-1)-- 循环神经网络（Recurrent Neural Networks）</a>
+        CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes
         </h1>
     
 
-        <p class="article-excerpt">
-            
-第五门课讲的是序列模型，主要是对RNN算法的应用，如GRU，LSTM算法，应用在词嵌入模型，情感分类，语音识别等领域。
-第一周讲的是RNN的基本算法。
-        </p>
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/2019121899/" class="article-date">
+            <time datetime="2019-12-18T11:49:36.000Z" itemprop="datePublished">2019-12-18</time>
+        </a>
     </div>
-</article>
-    
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/dl-ai-4-4h/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="DeepLearning.ai作业:(4-4)-- 特殊应用:人脸识别和神经风格转换" class="thumbnail-image"></span>
-    
-    
-</a>
+		
 
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
+                
+                <!---cloud阅读量统计系统-->
+                阅读数量:<span id="/2019/2019121899/" class="leancloud_visitors" data-flag-title="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes"></span>次
             </div>
-            <div class="date"><time datetime="2018-10-12T10:55:20.000Z" itemprop="datePublished">2018-10-12</time></div>
-        </div>
         
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/dl-ai-4-4h/">DeepLearning.ai作业:(4-4)-- 特殊应用:人脸识别和神经风格转换</a>
-        </h1>
-    
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h3 id="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1-8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域，-生成高质量的人群分布密度图。"><a href="#主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1-8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域，-生成高质量的人群分布密度图。" class="headerlink" title="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。"></a>主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。</h3><h5 id="1、MCNN的多列设计没有显著作用："><a href="#1、MCNN的多列设计没有显著作用：" class="headerlink" title="1、MCNN的多列设计没有显著作用："></a>1、MCNN的多列设计没有显著作用：</h5><p>​    以前的拥挤场景分析工作主要基于<code>multi-scale architectures</code>。它们在该领域取得了很高的性能，但是当网络变得更深时，它们使用的设计也带来了两个显着的缺点：大量的训练时间和无效的分支结构（例如，MCNN ）。我们设计了一个实验来证明MCNN与表1中更深入的常规网络相比表现不佳。</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/5755028-34d8ac2822a2fb51.png?imageMogr2/auto-orient/strip|imageView2/2/w/644" alt="img"></p>
+<pre><code>如我们先前所知，MCNN的每列专用于某一级别的拥塞场景。但是，使用MCNN的有效性可能并不突出。我们在图2中展示了MCNN中三个独立列（代表大，中，小的感受野）所学习的特征，并用ShanghaiTech Part A [18]数据集进行评估。该图中的三条曲线与具有不同拥塞密度的50个测试案例共享非常相似的模式（估计的错误率），这意味着这种分支结构中的每个列学习几乎相同的特征。它违背了MCNN设计的初衷，用于学习每列的不同功能。
+</code></pre><p><img src="https:////upload-images.jianshu.io/upload_images/5755028-5460d374cb5eb598.png?imageMogr2/auto-orient/strip|imageView2/2/w/635" alt="img"></p>
+<h5 id="2、膨胀卷积优于反卷积"><a href="#2、膨胀卷积优于反卷积" class="headerlink" title="2、膨胀卷积优于反卷积"></a>2、膨胀卷积优于反卷积</h5><p>​    已经在分割任务中证明了膨胀卷积层，其精度得到显着提高，并且它是池化层的良好替代方案。 尽管池化层（例如，最大和平均池化）被广泛用于维持不变性和控制过度拟合，但是它们还显着地降低了空间分辨率，这意味着丢失了特征映射的空间信息。 反卷积层可以减轻信息的丢失，但额外的复杂性和执行延迟可能并不适合所有情况。 膨胀卷积是一个更好的选择，它使用稀疏内核（如图3所示）来交替汇集和卷积层。 该字符在不增加参数数量或计算量的情况下扩大了感受野（例如，添加更多卷积层可以产生更大的感受野但引入更多操作）。<br>​     为了保持特征图的分辨率，与使用<code>卷积+池化+反卷积</code>的方案相比，<code>膨胀卷积</code>显示出明显的优点。我们在图4中选择一个例子用于说明。输入是人群的图像，并且它分别通过两种方法处理以产生具有相同大小的输出。在第一种方法中，输入由具有因子2的最大池化层进行下采样，然后将其传递到具有3X3 Sobel内核的卷积层。由于生成的特征映射仅是原始输入的1/2，因此需要通过解卷积层（双线性插值）<code>bilinear interpolation</code>对其进行上采样。在另一种方法中，我们尝试扩张卷积并使相同的3X3 Sobel内核适应具有因子= 2步幅的扩张内核。输出与输入共享相同的维度。最重要的是，扩张卷积的输出包含更详细的信息。</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/5755028-831ea76be9d81e42.png?imageMogr2/auto-orient/strip|imageView2/2/w/649" alt="img"></p>
+<h3 id="贡献："><a href="#贡献：" class="headerlink" title="贡献："></a>贡献：</h3><p>​    在本文中，我们设计了一个更深入的网络，称为<code>CSR-Net</code>，用于计算人群和生成高质量的密度图。我们的模型使用<code>纯卷积层</code>作为主干，以灵活的分辨率支持输入图像。为了限制网络的复杂性，我们在所有层中使用<code>小尺寸</code>的卷积滤波器（如3x3）。我们将VGG-16 [21]的前10层作为前端和<code>膨胀卷积层</code>作为后端部署，以扩大感受域并提取更深的特征而不会丢失分辨率（因为不使用池化层）。</p>
+<h3 id="主要实现："><a href="#主要实现：" class="headerlink" title="主要实现："></a>主要实现：</h3><h5 id="网络结构："><a href="#网络结构：" class="headerlink" title="网络结构："></a>网络结构：</h5><p>​    此前端网络的输出大小是原始输入大小的<code>1/8</code>。如果我们继续堆叠更多卷积层和池化层（VGG-16中的基本组件），输出大小将进一步缩小，并且很难生成高质量的密度映射。 我们尝试将膨胀卷积层作为后端来提取更深层的显着性信息以及维持输出分辨率。<br>​     我们在表3中提出了四种CSRNet网络配置，它们具有相同的前端结构但后端的扩展速率不同。 关于前端，我们采用VGG-16网络（全连接层除外）并仅使用3X3内核。 根据VGG的论文，当使用相同大小的感受野时，使用具有小内核的更多卷积层比使用具有更大内核的更少层更有效。<br>​     通过移除完全连接的层，我们尝试确定需要从VGG-16使用的层数。 最关键的部分是在准确性和资源开销（包括训练时间，内存消耗和参数数量）之间进行权衡。 实验表明，在保持前十层VGG-16 [21]只有3个池化层而不是五层时，可以实现最佳权衡，以抑制由池化操作引起的对输出精度的不利影响。 由于CSRNet的输出（密度图）较小（输入尺寸的1/8），我们选择因子为8的双线性插值进行缩放，并确保<code>输出与输入图像具有相同的分辨率</code>。 使用相同的大小，CSRNet生成的结果与使用<code>PSNR</code>（峰值信噪比）和<code>SSIM</code>（图像中的结构相似性）的基础事实结果相当。</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/5755028-2b178b35c8499118.png?imageMogr2/auto-orient/strip|imageView2/2/w/510" alt="img"></p>
+<h5 id="高斯核："><a href="#高斯核：" class="headerlink" title="高斯核："></a>高斯核：</h5><p><img src="https:////upload-images.jianshu.io/upload_images/5755028-481efae51de757d1.png?imageMogr2/auto-orient/strip|imageView2/2/w/524" alt="img"></p>
+<h5 id="数据增强："><a href="#数据增强：" class="headerlink" title="数据增强："></a>数据增强：</h5><p>​    我们从不同位置的每个图像裁剪9个patches，原始图像的大小为1/4。 前四个patches包含四分之三的图像而没有重叠，而其他五个patches则从输入图像中随机裁剪。 之后，我们镜像patches，以便我们将训练集加倍。</p>
+<h5 id="损失函数："><a href="#损失函数：" class="headerlink" title="损失函数："></a>损失函数：</h5><p>​    使用简单的方法将CSRNet作为端到端结构进行培训。 前10个卷积层由训练有素的VGG-16进行微调[21]。 对于其他层，初始值来自具有0.01标准偏差的高斯初始化。 随机梯度下降（SGD）在训练期间以1e-6的固定学习率应用。 此外，我们选择欧氏距离来测量地面实况与我们生成的估计密度图之间的差异，这与其他工作类似[19,18,4]。 损失函数如下：</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/5755028-8869ec65cec50152.png?imageMogr2/auto-orient/strip|imageView2/2/w/529" alt="img"></p>
+<h3 id="实验："><a href="#实验：" class="headerlink" title="实验："></a>实验：</h3><h5 id="评估指标："><a href="#评估指标：" class="headerlink" title="评估指标："></a>评估指标：</h5><p><img src="https:////upload-images.jianshu.io/upload_images/5755028-fb4132ba92b2fc8c.png?imageMogr2/auto-orient/strip|imageView2/2/w/517" alt="img"></p>
+<pre><code>我们还使用和来评估ShanghaiTech Part A数据集上输出密度图的质量。 为了计算和，我们遵循[5]给出的预处理，其中包括密度图调整大小（与原始输入相同的大小），对地面实况和预测密度图进行插值和归一化。     除了人群计数之外，我们在TRANCOS数据集[44]上设置了一个实验，用于车辆计数，以证明我们的方法的稳健性和一般化。 TRANCOS是一个公共交通数据集，包含由监控摄像机捕获的1244个不同拥挤交通场景的图像，其中包含46796个带注释的车辆。 此外，提供感兴趣区域（ROI）用于评估。 图像的视角不固定，图像是从非常不同的场景中收集的。 网格平均值平均绝对误差（GAME）[44]用于此测试中的估值。 GAME定义如下：
+</code></pre><p><img src="https:////upload-images.jianshu.io/upload_images/5755028-f1ad66fd5f997286.png?imageMogr2/auto-orient/strip|imageView2/2/w/528" alt="img"></p>
+<h5 id="代码：https-github-com-leeyeehoo-CSRNet-pytorch"><a href="#代码：https-github-com-leeyeehoo-CSRNet-pytorch" class="headerlink" title="代码：https://github.com/leeyeehoo/CSRNet-pytorch"></a>代码：<a href="https://github.com/leeyeehoo/CSRNet-pytorch" target="_blank" rel="noopener">https://github.com/leeyeehoo/CSRNet-pytorch</a></h5><p>我在根据作者的github（<a href="https://github.com/leeyeehoo/CSRNet-pytorch）构建环境时遇到了一些问题。我调试过，百度花了很长时间才解决。写这一章的目的是帮助大家学得更好，少走弯路。" target="_blank" rel="noopener">https://github.com/leeyeehoo/CSRNet-pytorch）构建环境时遇到了一些问题。我调试过，百度花了很长时间才解决。写这一章的目的是帮助大家学得更好，少走弯路。</a></p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553123470473.png" alt></p>
+<hr>
+<h2 id="step1-install"><a href="#step1-install" class="headerlink" title="step1. install"></a>step1. install</h2><p>For the specific installation process, you can refer to the author’s github. Here I simply show the command line of my operation.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">conda create -n CSRNet python=3.6</span><br><span class="line">source activate CSRNet</span><br><span class="line">unzip CSRNet-pytorch-master.zip</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple torch torchvision</span><br><span class="line">pip install decorator cloudpickle&gt;=0.2.1 dask[array]&gt;=1.0.0 matplotlib&gt;=2.0.0 networkx&gt;=1.8 scipy&gt;=0.17.0 bleach python-dateutil&gt;=2.1 decorator</span><br><span class="line">unzip ShanghaiTech_Crowd_Counting_Dataset.zip</span><br><span class="line">jupyter nbconvert --to script make_dataset.ipynb  #Convert .ipynb file to .py file</span><br></pre></td></tr></table></figure>
+<h2 id="step2-make-dataset-py"><a href="#step2-make-dataset-py" class="headerlink" title="step2.  make_dataset.py"></a>step2.  make_dataset.py</h2><p>I just run the command to convert the <strong>make_dataset.ipynb</strong> file to a <strong>make_dataset.py</strong> file.Now you need to modify the contents of the <strong>make_dataset.py</strong> file.</p>
+<p>Find the location where <strong>root</strong> is, add <strong>def main()</strong> in the above line</p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553080510253.png" alt></p>
+<p>Add these two lines at the end of the <strong>make_dataset.py</strong>, adjust the format of the code</p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553080672186.png" alt></p>
+<p>There is an error in the author’s source code, you need to change the code</p>
+<p>Replace <strong>pts = np.array(zip(np.nonzero(gt)[1], np.nonzero(gt)[0]))</strong> with <strong>pts = np.array(list(zip(np.nonzero(gt)[1], np.nonzero(gt)[0])))</strong> </p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553081148694.png" alt></p>
+<p>Then run the <strong>make_dataset.py</strong> file</p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553081269333.png" alt></p>
+<hr>
+<p><strong>The above is just a general summary, then we will run and visualize the line-by-line code.</strong></p>
+<p>I will use this image as an example.</p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553083826276.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># coding: utf-8</span><br><span class="line">import h5py</span><br><span class="line">import scipy.io as io</span><br><span class="line">import PIL.Image as Image</span><br><span class="line">import numpy as np</span><br><span class="line">import os</span><br><span class="line">import glob</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">from scipy.ndimage.filters import gaussian_filter </span><br><span class="line">import scipy</span><br><span class="line">import json</span><br><span class="line">from matplotlib import cm as CM</span><br><span class="line">from image import *</span><br><span class="line">from model import CSRNet</span><br><span class="line">import torch</span><br><span class="line">img_path=&apos;D:\\paper\\CSRNet\\CSRNet\\dataset\\Shanghai\\part_A_final\\train_data\\images\\IMG_21.jpg&apos;</span><br><span class="line">mat=&apos;D:\\paper\\CSRNet\\CSRNet\\dataset\\Shanghai\\part_A_final\\train_data\\ground_truth\\GT_IMG_21.mat&apos;</span><br><span class="line">mat = io.loadmat(mat)</span><br><span class="line">img= plt.imread(img_path)</span><br><span class="line">k = np.zeros((img.shape[0],img.shape[1]))</span><br></pre></td></tr></table></figure>
+<p>The following is the information of <strong>k</strong></p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553084203041.png" alt="1553084203041"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gt = mat[&quot;image_info&quot;][0,0][0,0][0]</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553084581750.png" alt="1553084581750"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in range(0,len(gt)):</span><br><span class="line">    if int(gt[i][1])&lt;img.shape[0] and int(gt[i][0])&lt;img.shape[1]:</span><br><span class="line">        k[int(gt[i][1]),int(gt[i][0])]=1</span><br><span class="line">gt = k</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553085088872.png" alt="1553085088872"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">density = np.zeros(gt.shape, dtype=np.float32)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553085203128.png" alt="1553085203128"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gt_count = np.count_nonzero(gt)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553085315569.png" alt="1553085315569"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pts = np.array(list(zip(np.nonzero(gt)[1], np.nonzero(gt)[0])))</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553085525410.png" alt="1553085525410"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">leafsize = 2048</span><br><span class="line"># build kdtree</span><br><span class="line">tree = scipy.spatial.KDTree(pts.copy(), leafsize=leafsize)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553085714302.png" alt="1553085714302"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">distances, locations = tree.query(pts, k=4)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553085877665.png" alt="1553085877665"></p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553086025902.png" alt="1553086025902"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">print(&apos;generate density...&apos;)</span><br><span class="line">for i, pt in enumerate(pts):</span><br><span class="line">    pt2d = np.zeros(gt.shape, dtype=np.float32)</span><br><span class="line">    pt2d[pt[1],pt[0]] = 1.</span><br><span class="line">    if gt_count &gt; 1:</span><br><span class="line">        sigma = (distances[i][1]+distances[i][2]+distances[i][3])*0.1</span><br><span class="line">    else:</span><br><span class="line">        sigma = np.average(np.array(gt.shape))/2./2. #case: 1 point</span><br><span class="line">    density += scipy.ndimage.filters.gaussian_filter(pt2d, sigma, mode=&apos;constant&apos;)</span><br><span class="line">print(&apos;done.&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553086270822.png" alt="1553086270822"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">k = density</span><br><span class="line">with h5py.File(img_path.replace(&apos;.jpg&apos;,&apos;.h5&apos;).replace(&apos;images&apos;,&apos;ground_truth&apos;), &apos;w&apos;) as hf:</span><br><span class="line">        hf[&apos;density&apos;] = k</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553086450949.png" alt="1553086450949"></p>
+<p>So far, we have generated true values for the image.  At this point I will sort the above code as follows</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"># coding: utf-8</span><br><span class="line">import h5py</span><br><span class="line">import scipy.io as io</span><br><span class="line">import PIL.Image as Image</span><br><span class="line">import numpy as np</span><br><span class="line">import os</span><br><span class="line">import glob</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">from scipy.ndimage.filters import gaussian_filter </span><br><span class="line">import scipy</span><br><span class="line">import json</span><br><span class="line">from matplotlib import cm as CM</span><br><span class="line">from image import *</span><br><span class="line">from model import CSRNet</span><br><span class="line">import torch</span><br><span class="line">def gaussian_filter_density(gt):</span><br><span class="line">    print(gt.shape)</span><br><span class="line">    density = np.zeros(gt.shape, dtype=np.float32)</span><br><span class="line">    gt_count = np.count_nonzero(gt)</span><br><span class="line">    if gt_count == 0:</span><br><span class="line">        return density</span><br><span class="line"></span><br><span class="line">    # pts = np.array(zip(np.nonzero(gt)[1], np.nonzero(gt)[0]))</span><br><span class="line">    pts = np.array(list(zip(np.nonzero(gt)[1], np.nonzero(gt)[0])))</span><br><span class="line">    leafsize = 2048</span><br><span class="line">    # build kdtree</span><br><span class="line">    tree = scipy.spatial.KDTree(pts.copy(), leafsize=leafsize)</span><br><span class="line">    # query kdtree</span><br><span class="line">    distances, locations = tree.query(pts, k=4)</span><br><span class="line"></span><br><span class="line">    print(&apos;generate density...&apos;)</span><br><span class="line">    for i, pt in enumerate(pts):</span><br><span class="line">        pt2d = np.zeros(gt.shape, dtype=np.float32)</span><br><span class="line">        pt2d[pt[1],pt[0]] = 1.</span><br><span class="line">        if gt_count &gt; 1:</span><br><span class="line">            sigma = (distances[i][1]+distances[i][2]+distances[i][3])*0.1</span><br><span class="line">        else:</span><br><span class="line">            sigma = np.average(np.array(gt.shape))/2./2. #case: 1 point</span><br><span class="line">        density += scipy.ndimage.filters.gaussian_filter(pt2d, sigma, mode=&apos;constant&apos;)</span><br><span class="line">    print(&apos;done.&apos;)</span><br><span class="line">    return density</span><br><span class="line">img_path=&apos;D:\\paper\\CSRNet\\CSRNet\\dataset\\Shanghai\\part_A_final\\train_data\\images\\IMG_21.jpg&apos;</span><br><span class="line">mat=&apos;D:\\paper\\CSRNet\\CSRNet\\dataset\\Shanghai\\part_A_final\\train_data\\ground_truth\\GT_IMG_21.mat&apos;</span><br><span class="line">img_paths = []</span><br><span class="line">img_paths.append(img_path)</span><br><span class="line">    for img_path in img_paths:</span><br><span class="line">        print(img_path)</span><br><span class="line">        mat = io.loadmat(mat)</span><br><span class="line">        img= plt.imread(img_path)        </span><br><span class="line">        k = np.zeros((img.shape[0],img.shape[1]))</span><br><span class="line">        gt = mat[&quot;image_info&quot;][0,0][0,0][0]</span><br><span class="line">        for i in range(0,len(gt)):</span><br><span class="line">            if int(gt[i][1])&lt;img.shape[0] and int(gt[i][0])&lt;img.shape[1]:</span><br><span class="line">                k[int(gt[i][1]),int(gt[i][0])]=1</span><br><span class="line">        k = gaussian_filter_density(k)        </span><br><span class="line">        with h5py.File(img_path.replace(&apos;.jpg&apos;,&apos;.h5&apos;).replace(&apos;images&apos;,&apos;ground_truth&apos;), &apos;w&apos;) as hf:</span><br><span class="line">                hf[&apos;density&apos;] = k</span><br></pre></td></tr></table></figure>
+<hr>
+<p>And….then, let’s plot the true values of the image:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gt_file = h5py.File(img_paths[0].replace(&apos;.jpg&apos;,&apos;.h5&apos;).replace(&apos;images&apos;,&apos;ground_truth&apos;),&apos;r&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553088999563.png" alt="1553088999563"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groundtruth = np.asarray(gt_file[&apos;density&apos;])</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553089130159.png" alt="1553089130159"></p>
+<p>plot the true values of the image</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.imshow(groundtruth,cmap=CM.jet)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553089178172.png" alt="1553089178172"></p>
+<p>Calculate how many people are in this picture</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.sum(groundtruth)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553089513587.png" alt="1553089513587"></p>
+<hr>
+<p><strong>Based on the same operation above, I generated true values for all images in the dataset. The following operations are performed on the gpu server.</strong></p>
+<p>That is, run the command line <strong>python make_dataset.py</strong> on the server to get the true value of all the pictures.</p>
+<h2 id="step3-Training"><a href="#step3-Training" class="headerlink" title="step3.  Training"></a>step3.  Training</h2><p><strong>Note</strong>: if you use the python3.x</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. In model.py, change the xrange in line 18 to range</span><br><span class="line">2. In model.py, change line 19 to: list(self.frontend.state_dict().items())[i][1].data[:] = list(mod.state_dict().items())[i][1].data[:]</span><br><span class="line">3. In image.py, change line 40 to: target = cv2.resize(target,(target.shape[1]//8,target.shape[0]//8),interpolation = cv2.INTER_CUBIC)*64</span><br></pre></td></tr></table></figure>
+<ul>
+<li>In  part_A_train.json:change the path of images</li>
+<li>In  part_A_val.json: change the path of images</li>
+</ul>
+<p>run </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train.py part_A_train.json part_A_val.json 0 0</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553156680043.png" alt="1553156680043"></p>
+<h2 id="step4-Testing"><a href="#step4-Testing" class="headerlink" title="step4. Testing"></a>step4. Testing</h2><p>These are our test images. number：182</p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553158644963.png" alt="1553158644963"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbconvert --to script val.ipynb</span><br></pre></td></tr></table></figure>
+<p>Finally, the performance of this model on invisible data is tested. We will use the val.py file to verify the results. Remember to change the path to pre-train weights and images.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python val.py</span><br></pre></td></tr></table></figure>
+<p>The average absolute error value that can be obtained by running this val.py file code</p>
+<p>total ：182</p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553158312997.png" alt="1553158312997"><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553158352180.png" alt="1553158352180"></p>
+<p>The average absolute error value obtained is 65.96636956602663, which is very good.</p>
+<hr>
+<p>Now let’s examine the predicted values on a single image:</p>
+<p>run</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test_single-image.py</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553157191632.png" alt="1553157191632"><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553157269984.png" alt="1553157269984"><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553157324880.png" alt="1553157324880"></p>
+<p>another one</p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553157626748.png" alt="1553157626748"><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553157727196.png" alt="1553157727196"><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1553157772668.png" alt="1553157772668"></p>
+<p>The effect is not too good，maybe the model is not trained enough，i guess。</p>
+<hr>
+<h2 id="Reading-paper-https-arxiv-org-pdf-1802-10062-pdf"><a href="#Reading-paper-https-arxiv-org-pdf-1802-10062-pdf" class="headerlink" title="Reading paper   https://arxiv.org/pdf/1802.10062.pdf"></a>Reading paper   <a href="https://arxiv.org/pdf/1802.10062.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1802.10062.pdf</a></h2><p>先说数据集用的ShanghaiTech dataset，根据.jpg和.mat处理之后生成train_den文件夹下.csv文件和图片一一对应</p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1554628742996.png" alt="1554628742996"></p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1554628757778.png" alt="1554628757778"></p>
+<p>数据集扩充处理再补充一下：使用的是高斯模糊作用于图像中的每个人的头部。所有图像都被裁剪成9块，每块的大小是图像原始大小的1/4。</p>
+<hr>
+<p>空洞卷积也有的博客翻译成膨胀卷积、扩张卷积啥的，anyway，使用扩张卷积是在不增加参数的情况下扩大内核。因此，如果扩张率为1就是中间的图在整个图像上进行卷积。将膨胀率增加到2最右边图它可以替代pooling层</p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1554628804461.png" alt="1554628804461"></p>
+<p>接下来再说它的数学公式上怎么计算的，</p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1554628873425.png" alt="1554628873425"></p>
+<p>由上公式得到这个([k + (k-1)<em>(r-1)] </em> [k + (k-1)*(r-1)])</p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1554628903758.png" alt="1554628903758"></p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1554628933425.png" alt="1554628933425"></p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1554628946463.png" alt="1554628946463"></p>
+<p><img src="https://raw.githubusercontent.com/Bazingaliu/learning_CSRNet/master/img/1554628958176.png" alt="1554628958176"></p>
+<p>这个过程是：首先预测出给定图像的密度图。如果没有人，像素值pixel value设为0。如果该像素对应于人，则将分配某个预定义值。所以图像中的人数就是总共有的像素值total pixel values </p>
 
-        <p class="article-excerpt">
+        </div>
+        <footer class="article-footer">
             
-本周作业分为了两个部分:
 
-人脸识别
-风格迁移
 
-        </p>
+
+    <a data-url="http://fangzh.top/2019/2019121899/" data-id="ck4bcminh008xesv8obtg7l5l" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+
+        </footer>
     </div>
 </article>
+<!--
+    <section id="comments">
     
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <a href="/2018/dl-ai-4-4/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="DeepLearning.ai笔记:(4-4)-- 特殊应用:人脸识别和神经风格转换" class="thumbnail-image"></span>
-    
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
-            </div>
-            <div class="date"><time datetime="2018-10-12T10:55:15.000Z" itemprop="datePublished">2018-10-12</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/dl-ai-4-4/">DeepLearning.ai笔记:(4-4)-- 特殊应用:人脸识别和神经风格转换</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-本周讲了CNN的两个特殊应用：人脸识别和神经风格转换。
-        </p>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-    
 
     
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/dl-ai-4-3h/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="DeepLearning.ai作业:(4-3)-- 目标检测（Object detection）" class="thumbnail-image"></span>
-    
-    
-</a>
+    </section>
 
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
-            </div>
-            <div class="date"><time datetime="2018-10-11T12:15:58.000Z" itemprop="datePublished">2018-10-11</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/dl-ai-4-3h/">DeepLearning.ai作业:(4-3)-- 目标检测（Object detection）</a>
-        </h1>
-    
+-->
+<!--来比力评论系统，在commetn/livebe.ejs中-->
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQ4OC8xNjAxNQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
 
-        <p class="article-excerpt">
-            
-本周的作业实现了YOLO算法，并用于自动驾驶的目标检测中。
-Model details输入： (m, 608, 608, 3)
-输出： (m, 19, 19, 5, 85)
-IMAGE (m, 608, 608, 3) -&gt; DEEP CNN -&gt; ENCODING (m, 19, 19, 5, 85)
-也就是有5个Anchor boxes，一共有80个分类。
+       if (typeof LivereTower === 'function') { return; }
 
-所以，每个box的s
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
 
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/dl-ai-4-3/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="DeepLearning.ai笔记:(4-3)-- 目标检测（Object detection）" class="thumbnail-image"></span>
-    
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
-            </div>
-            <div class="date"><time datetime="2018-10-11T09:02:09.000Z" itemprop="datePublished">2018-10-11</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/dl-ai-4-3/">DeepLearning.ai笔记:(4-3)-- 目标检测（Object detection）</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-这一周主要讲了卷积神经网络的进一步应用：目标检测。
-主要内容有：目标定位、特征点检测、目标检测、滑动窗口、Bounding Box，IOU，NMS，Anchor Boxes，Yolo算法。
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/dl-ai-4-2h/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="DeepLearning.ai作业:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）" class="thumbnail-image"></span>
-    
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
-            </div>
-            <div class="date"><time datetime="2018-10-09T11:20:57.000Z" itemprop="datePublished">2018-10-09</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/dl-ai-4-2h/">DeepLearning.ai作业:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-本周作业分为两部分，一部分是keras的基本使用，另一部分是ResNet的构建。
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/dl-ai-4-2/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="DeepLearning.ai笔记:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）" class="thumbnail-image"></span>
-    
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
-            </div>
-            <div class="date"><time datetime="2018-10-09T09:17:04.000Z" itemprop="datePublished">2018-10-09</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/dl-ai-4-2/">DeepLearning.ai笔记:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-本周主要讲了深度卷积网络的一些模型：LeNet,AlexNet,VGGNet,ResNet,Inception,1×1卷积，迁移学习等。
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/cs231n-2-1/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlvz19onj20yh0k1dms.jpg)" alt="cs231n作业：assignment2 - Fully-Connected Neural Nets" class="thumbnail-image"></span>
-    
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
-            </div>
-            <div class="date"><time datetime="2018-09-30T09:52:30.000Z" itemprop="datePublished">2018-09-30</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/cs231n-2-1/">cs231n作业：assignment2 - Fully-Connected Neural Nets</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-GitHub地址：https://github.com/ZJUFangzh/cs231n
-作业2主要是关于搭建卷积神经网络框架，还有tensorflow的基本应用。
-首先先搭建一个全连接神经网络的基本框架。
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/dl-ai-4-1h/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="DeepLearning.ai作业:(4-1)-- 卷积神经网络（Foundations of CNN）" class="thumbnail-image"></span>
-    
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
-            </div>
-            <div class="date"><time datetime="2018-09-30T08:07:23.000Z" itemprop="datePublished">2018-09-30</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/dl-ai-4-1h/">DeepLearning.ai作业:(4-1)-- 卷积神经网络（Foundations of CNN）</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-本周的作业分为了两部分：
-
-卷积神经网络的模型搭建
-用TensorFlow来训练卷积神经网络
-
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/dl-ai-4-1/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg)" alt="DeepLearning.ai笔记:(4-1)-- 卷积神经网络（Foundations of CNN）" class="thumbnail-image"></span>
-    
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
-            </div>
-            <div class="date"><time datetime="2018-09-30T02:20:54.000Z" itemprop="datePublished">2018-09-30</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/dl-ai-4-1/">DeepLearning.ai笔记:(4-1)-- 卷积神经网络（Foundations of CNN）</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-第四门课开始就学习深度学习关于计算机视觉的重要应用—卷积神经网络。
-第一周主要是对卷积神经网络的基本构造和原理做了介绍。
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-
-    </div></section>
-
-
-    <nav id="page-nav">
-        <span class="pages">第 2 页，共 5 页</span>
-        <a class="extend prev" rel="prev" href="/archives/2018/">&laquo;</a><a class="page-number" href="/archives/2018/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2018/page/3/">3</a><a class="page-number" href="/archives/2018/page/4/">4</a><a class="page-number" href="/archives/2018/page/5/">5</a><a class="extend next" rel="next" href="/archives/2018/page/3/">&raquo;</a>
-    </nav>
-
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
 
                         </div>
                     </section>
@@ -651,6 +477,19 @@ GitHub地址：https://github.com/ZJUFangzh/cs231n
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/20191213002/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Fast Online Object Tracking and Segmentation:A Unifying Approach</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -925,11 +764,13 @@ GitHub地址：https://github.com/ZJUFangzh/cs231n
     var disqus_shortname = 'hexo-theme-hueman';
     
     
+    var disqus_url = 'http://fangzh.top/2019/2019121899/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
