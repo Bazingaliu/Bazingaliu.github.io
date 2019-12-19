@@ -16,7 +16,7 @@
 <meta name="keywords" content="cs231n,homework">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cs231n作业：assignment1 - two_layer_net">
-<meta property="og:url" content="http://fangzh.top/2018/cs231n-1h-4/index.html">
+<meta property="og:url" content="http://yuanquanquan.top/2018/cs231n-1h-4/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="github地址：https://github.com/ZJUFangzh/cs231n 搭建一个两层的神经网络。">
 <meta property="og:locale" content="zh-CN">
@@ -231,7 +231,7 @@
 <p>检验一下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">loss, _ = net.loss(X, y, reg=0.05)</span><br><span class="line">correct_loss = 1.30378789133</span><br><span class="line"></span><br><span class="line"># should be very small, we get &lt; 1e-12</span><br><span class="line">print(&apos;Difference between your loss and correct loss:&apos;)</span><br><span class="line">print(np.sum(np.abs(loss - correct_loss)))</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Difference between your loss and correct loss:</span><br><span class="line">1.7985612998927536e-13</span><br></pre></td></tr></table></figure>
-<h1 id="Backword-pass"><a href="#Backword-pass" class="headerlink" title="Backword pass"></a>Backword pass</h1><p>依旧是这个loss函数里面，根据W1,b1,W2,b2，求出grads，求导的公式课程里没给，不过NG老师给了，<a href="http://fangzh.top/2018/2018091216/">shallow neural networks</a>，但是表示的维度不太一样，需要做稍微的修改:</p>
+<h1 id="Backword-pass"><a href="#Backword-pass" class="headerlink" title="Backword pass"></a>Backword pass</h1><p>依旧是这个loss函数里面，根据W1,b1,W2,b2，求出grads，求导的公式课程里没给，不过NG老师给了，<a href="http://fangzh.top/2018/2018091216/" target="_blank" rel="noopener">shallow neural networks</a>，但是表示的维度不太一样，需要做稍微的修改:</p>
 <p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8euz8cj21to0z4wwp.jpg" alt></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># Backward pass: compute gradients</span></span><br><span class="line">grads = &#123;&#125;</span><br><span class="line"><span class="comment">#############################################################################</span></span><br><span class="line"><span class="comment"># <span class="doctag">TODO:</span> Compute the backward pass, computing the derivatives of the weights #</span></span><br><span class="line"><span class="comment"># and biases. Store the results in the grads dictionary. For example,       #</span></span><br><span class="line"><span class="comment"># grads['W1'] should store the gradient on W1, and be a matrix of same size #</span></span><br><span class="line"><span class="comment">#############################################################################</span></span><br><span class="line">dZ2 = probs-y_label</span><br><span class="line">dW2 = A1.T.dot(dZ2)</span><br><span class="line">dW2 /= N</span><br><span class="line">dW2 += <span class="number">2</span> * reg*W2</span><br><span class="line">db2 = np.sum(dZ2,axis=<span class="number">0</span>) / N</span><br><span class="line">dZ1 = (dZ2).dot(W2.T) * (A1 &gt; <span class="number">0</span>)</span><br><span class="line">dW1 = X.T.dot(dZ1) / N + <span class="number">2</span> * reg * W1</span><br><span class="line">db1 = np.sum(dZ1,axis=<span class="number">0</span>) / N</span><br><span class="line">grads[<span class="string">'W2'</span>] = dW2</span><br><span class="line">grads[<span class="string">'b2'</span>] = db2</span><br><span class="line">grads[<span class="string">'W1'</span>] = dW1</span><br><span class="line">grads[<span class="string">'b1'</span>] = db1</span><br><span class="line"><span class="comment">#############################################################################</span></span><br><span class="line"><span class="comment">#                              END OF YOUR CODE                             #</span></span><br><span class="line"><span class="comment">#############################################################################</span></span><br></pre></td></tr></table></figure>
 <p>检验一下：</p>
@@ -255,7 +255,7 @@
 
 
 
-    <a data-url="http://fangzh.top/2018/cs231n-1h-4/" data-id="ck4c6xdtb004i9ov8phl9svfq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yuanquanquan.top/2018/cs231n-1h-4/" data-id="ck4cmdzai005xmov8pfms0zpa" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -435,7 +435,7 @@
                             <a href="/2019/2019121899/" class="thumbnail">
     
     
-        <span style="background-image:url(https:////upload-images.jianshu.io/upload_images/5755028-34d8ac2822a2fb51.png?imageMogr2/auto-orient/strip|imageView2/2/w/644)" alt="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes" class="thumbnail-image"></span>
+        <span style="background-image:url(http://i1.fuimg.com/706216/912fff8efa8ec71f.png)" alt="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes" class="thumbnail-image"></span>
     
     
 </a>
@@ -690,7 +690,7 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://fangzh.top/2018/cs231n-1h-4/';
+    var disqus_url = 'http://yuanquanquan.top/2018/cs231n-1h-4/';
     
     (function() {
     var dsq = document.createElement('script');

@@ -16,16 +16,16 @@
 <meta name="keywords" content="人工智能、计算机、机器学习、linux、程序员">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes">
-<meta property="og:url" content="http://fangzh.top/2019/2019121899/index.html">
+<meta property="og:url" content="http://yuanquanquan.top/2019/2019121899/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。1、MCNN的多列设计没有显著作用：​    以前的拥挤场景分析工作主要基于mul">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5755028-34d8ac2822a2fb51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/644">
-<meta property="og:updated_time" content="2019-12-19T03:53:22.349Z">
+<meta property="og:image" content="http://i1.fuimg.com/706216/912fff8efa8ec71f.png">
+<meta property="og:updated_time" content="2019-12-19T11:03:28.679Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes">
 <meta name="twitter:description" content="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。1、MCNN的多列设计没有显著作用：​    以前的拥挤场景分析工作主要基于mul">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5755028-34d8ac2822a2fb51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/644">
+<meta name="twitter:image" content="http://i1.fuimg.com/706216/912fff8efa8ec71f.png">
     
 
     
@@ -217,21 +217,21 @@
         
         <div class="article-entry" itemprop="articleBody">
             <h3 id="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1-8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域，-生成高质量的人群分布密度图。"><a href="#主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1-8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域，-生成高质量的人群分布密度图。" class="headerlink" title="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。"></a>主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。</h3><h5 id="1、MCNN的多列设计没有显著作用："><a href="#1、MCNN的多列设计没有显著作用：" class="headerlink" title="1、MCNN的多列设计没有显著作用："></a>1、MCNN的多列设计没有显著作用：</h5><p>​    以前的拥挤场景分析工作主要基于<code>multi-scale architectures</code>。它们在该领域取得了很高的性能，但是当网络变得更深时，它们使用的设计也带来了两个显着的缺点：大量的训练时间和无效的分支结构（例如，MCNN ）。我们设计了一个实验来证明MCNN与表1中更深入的常规网络相比表现不佳。</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/5755028-34d8ac2822a2fb51.png?imageMogr2/auto-orient/strip|imageView2/2/w/644" alt="img"></p>
+<p><img src="http://i1.fuimg.com/706216/912fff8efa8ec71f.png" alt></p>
 <pre><code>如我们先前所知，MCNN的每列专用于某一级别的拥塞场景。但是，使用MCNN的有效性可能并不突出。我们在图2中展示了MCNN中三个独立列（代表大，中，小的感受野）所学习的特征，并用ShanghaiTech Part A [18]数据集进行评估。该图中的三条曲线与具有不同拥塞密度的50个测试案例共享非常相似的模式（估计的错误率），这意味着这种分支结构中的每个列学习几乎相同的特征。它违背了MCNN设计的初衷，用于学习每列的不同功能。
-</code></pre><p><img src="https:////upload-images.jianshu.io/upload_images/5755028-5460d374cb5eb598.png?imageMogr2/auto-orient/strip|imageView2/2/w/635" alt="img"></p>
+</code></pre><p><img src="http://i1.fuimg.com/706216/c0b69c6df04e6684.png" alt></p>
 <h5 id="2、膨胀卷积优于反卷积"><a href="#2、膨胀卷积优于反卷积" class="headerlink" title="2、膨胀卷积优于反卷积"></a>2、膨胀卷积优于反卷积</h5><p>​    已经在分割任务中证明了膨胀卷积层，其精度得到显着提高，并且它是池化层的良好替代方案。 尽管池化层（例如，最大和平均池化）被广泛用于维持不变性和控制过度拟合，但是它们还显着地降低了空间分辨率，这意味着丢失了特征映射的空间信息。 反卷积层可以减轻信息的丢失，但额外的复杂性和执行延迟可能并不适合所有情况。 膨胀卷积是一个更好的选择，它使用稀疏内核（如图3所示）来交替汇集和卷积层。 该字符在不增加参数数量或计算量的情况下扩大了感受野（例如，添加更多卷积层可以产生更大的感受野但引入更多操作）。<br>​     为了保持特征图的分辨率，与使用<code>卷积+池化+反卷积</code>的方案相比，<code>膨胀卷积</code>显示出明显的优点。我们在图4中选择一个例子用于说明。输入是人群的图像，并且它分别通过两种方法处理以产生具有相同大小的输出。在第一种方法中，输入由具有因子2的最大池化层进行下采样，然后将其传递到具有3X3 Sobel内核的卷积层。由于生成的特征映射仅是原始输入的1/2，因此需要通过解卷积层（双线性插值）<code>bilinear interpolation</code>对其进行上采样。在另一种方法中，我们尝试扩张卷积并使相同的3X3 Sobel内核适应具有因子= 2步幅的扩张内核。输出与输入共享相同的维度。最重要的是，扩张卷积的输出包含更详细的信息。</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/5755028-831ea76be9d81e42.png?imageMogr2/auto-orient/strip|imageView2/2/w/649" alt="img"></p>
+<p><img src="http://i1.fuimg.com/706216/39f9273771846a6b.png" alt></p>
 <h3 id="贡献："><a href="#贡献：" class="headerlink" title="贡献："></a>贡献：</h3><p>​    在本文中，我们设计了一个更深入的网络，称为<code>CSR-Net</code>，用于计算人群和生成高质量的密度图。我们的模型使用<code>纯卷积层</code>作为主干，以灵活的分辨率支持输入图像。为了限制网络的复杂性，我们在所有层中使用<code>小尺寸</code>的卷积滤波器（如3x3）。我们将VGG-16 [21]的前10层作为前端和<code>膨胀卷积层</code>作为后端部署，以扩大感受域并提取更深的特征而不会丢失分辨率（因为不使用池化层）。</p>
 <h3 id="主要实现："><a href="#主要实现：" class="headerlink" title="主要实现："></a>主要实现：</h3><h5 id="网络结构："><a href="#网络结构：" class="headerlink" title="网络结构："></a>网络结构：</h5><p>​    此前端网络的输出大小是原始输入大小的<code>1/8</code>。如果我们继续堆叠更多卷积层和池化层（VGG-16中的基本组件），输出大小将进一步缩小，并且很难生成高质量的密度映射。 我们尝试将膨胀卷积层作为后端来提取更深层的显着性信息以及维持输出分辨率。<br>​     我们在表3中提出了四种CSRNet网络配置，它们具有相同的前端结构但后端的扩展速率不同。 关于前端，我们采用VGG-16网络（全连接层除外）并仅使用3X3内核。 根据VGG的论文，当使用相同大小的感受野时，使用具有小内核的更多卷积层比使用具有更大内核的更少层更有效。<br>​     通过移除完全连接的层，我们尝试确定需要从VGG-16使用的层数。 最关键的部分是在准确性和资源开销（包括训练时间，内存消耗和参数数量）之间进行权衡。 实验表明，在保持前十层VGG-16 [21]只有3个池化层而不是五层时，可以实现最佳权衡，以抑制由池化操作引起的对输出精度的不利影响。 由于CSRNet的输出（密度图）较小（输入尺寸的1/8），我们选择因子为8的双线性插值进行缩放，并确保<code>输出与输入图像具有相同的分辨率</code>。 使用相同的大小，CSRNet生成的结果与使用<code>PSNR</code>（峰值信噪比）和<code>SSIM</code>（图像中的结构相似性）的基础事实结果相当。</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/5755028-2b178b35c8499118.png?imageMogr2/auto-orient/strip|imageView2/2/w/510" alt="img"></p>
-<h5 id="高斯核："><a href="#高斯核：" class="headerlink" title="高斯核："></a>高斯核：</h5><p><img src="https:////upload-images.jianshu.io/upload_images/5755028-481efae51de757d1.png?imageMogr2/auto-orient/strip|imageView2/2/w/524" alt="img"></p>
+<p><img src="http://i1.fuimg.com/706216/5a6ecfa4bb73acef.png" alt="Markdown"></p>
+<h5 id="高斯核："><a href="#高斯核：" class="headerlink" title="高斯核："></a>高斯核：</h5><p><img src="http://i1.fuimg.com/706216/7bf155f476a47312.png" alt="Markdown"></p>
 <h5 id="数据增强："><a href="#数据增强：" class="headerlink" title="数据增强："></a>数据增强：</h5><p>​    我们从不同位置的每个图像裁剪9个patches，原始图像的大小为1/4。 前四个patches包含四分之三的图像而没有重叠，而其他五个patches则从输入图像中随机裁剪。 之后，我们镜像patches，以便我们将训练集加倍。</p>
 <h5 id="损失函数："><a href="#损失函数：" class="headerlink" title="损失函数："></a>损失函数：</h5><p>​    使用简单的方法将CSRNet作为端到端结构进行培训。 前10个卷积层由训练有素的VGG-16进行微调[21]。 对于其他层，初始值来自具有0.01标准偏差的高斯初始化。 随机梯度下降（SGD）在训练期间以1e-6的固定学习率应用。 此外，我们选择欧氏距离来测量地面实况与我们生成的估计密度图之间的差异，这与其他工作类似[19,18,4]。 损失函数如下：</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/5755028-8869ec65cec50152.png?imageMogr2/auto-orient/strip|imageView2/2/w/529" alt="img"></p>
-<h3 id="实验："><a href="#实验：" class="headerlink" title="实验："></a>实验：</h3><h5 id="评估指标："><a href="#评估指标：" class="headerlink" title="评估指标："></a>评估指标：</h5><p><img src="https:////upload-images.jianshu.io/upload_images/5755028-fb4132ba92b2fc8c.png?imageMogr2/auto-orient/strip|imageView2/2/w/517" alt="img"></p>
+<p><img src="http://i1.fuimg.com/706216/aa66b1e5a19c197b.png" alt="Markdown"></p>
+<h3 id="实验："><a href="#实验：" class="headerlink" title="实验："></a>实验：</h3><h5 id="评估指标："><a href="#评估指标：" class="headerlink" title="评估指标："></a>评估指标：</h5><p><img src="http://i1.fuimg.com/706216/f329a0f89d08cab5.png" alt="Markdown"></p>
 <pre><code>我们还使用和来评估ShanghaiTech Part A数据集上输出密度图的质量。 为了计算和，我们遵循[5]给出的预处理，其中包括密度图调整大小（与原始输入相同的大小），对地面实况和预测密度图进行插值和归一化。     除了人群计数之外，我们在TRANCOS数据集[44]上设置了一个实验，用于车辆计数，以证明我们的方法的稳健性和一般化。 TRANCOS是一个公共交通数据集，包含由监控摄像机捕获的1244个不同拥挤交通场景的图像，其中包含46796个带注释的车辆。 此外，提供感兴趣区域（ROI）用于评估。 图像的视角不固定，图像是从非常不同的场景中收集的。 网格平均值平均绝对误差（GAME）[44]用于此测试中的估值。 GAME定义如下：
-</code></pre><p><img src="https:////upload-images.jianshu.io/upload_images/5755028-f1ad66fd5f997286.png?imageMogr2/auto-orient/strip|imageView2/2/w/528" alt="img"></p>
+</code></pre><p><img src="http://i1.fuimg.com/706216/faee7fbfe515c69a.png" alt="Markdown"></p>
 <h5 id="代码：https-github-com-leeyeehoo-CSRNet-pytorch"><a href="#代码：https-github-com-leeyeehoo-CSRNet-pytorch" class="headerlink" title="代码：https://github.com/leeyeehoo/CSRNet-pytorch"></a>代码：<a href="https://github.com/leeyeehoo/CSRNet-pytorch" target="_blank" rel="noopener">https://github.com/leeyeehoo/CSRNet-pytorch</a></h5><p>我在根据作者的github（<a href="https://github.com/leeyeehoo/CSRNet-pytorch）" target="_blank" rel="noopener">https://github.com/leeyeehoo/CSRNet-pytorch）</a>, 构建环境时遇到了一些问题。我调试过，百度花了很长时间才解决。写这一章的目的是帮助大家学得更好，少走弯路。</p>
 <p><img src="http://i1.fuimg.com/706216/ddc3d6661db91f8f.png" alt></p>
 <hr>
@@ -339,7 +339,7 @@
 
 
 
-    <a data-url="http://fangzh.top/2019/2019121899/" data-id="ck4c6xe63009r9ov8pfmlht8y" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yuanquanquan.top/2019/2019121899/" data-id="ck4cme02b0096mov80h9x3py9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -509,7 +509,7 @@
                             <a href="/2019/2019121899/" class="thumbnail">
     
     
-        <span style="background-image:url(https:////upload-images.jianshu.io/upload_images/5755028-34d8ac2822a2fb51.png?imageMogr2/auto-orient/strip|imageView2/2/w/644)" alt="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes" class="thumbnail-image"></span>
+        <span style="background-image:url(http://i1.fuimg.com/706216/912fff8efa8ec71f.png)" alt="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes" class="thumbnail-image"></span>
     
     
 </a>
@@ -764,7 +764,7 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://fangzh.top/2019/2019121899/';
+    var disqus_url = 'http://yuanquanquan.top/2019/2019121899/';
     
     (function() {
     var dsq = document.createElement('script');
