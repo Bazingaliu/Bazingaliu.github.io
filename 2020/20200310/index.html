@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>iMX287A多种方法实现流水灯效果 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content>
+    
+    <meta name="description" content="序：鸽了快两个月没写博客，其实也是因为这两月都没怎么学习（逃，不过确实接触了一些新东西，在B站和知乎看到了一个电科毕业的大佬，一个人能抵一个项目组……于是也燃起了学习单片机的兴趣，想在做程序员的同时做一个业余电子工程师，这段时间零零散散做了一些东西 一张用来装逼的PCB名片(https://github.com/Bazingaliu/PCB-card) 一个根据经典开源飞控pix2.4.6原理图，">
+<meta name="keywords" content="人工智能、计算机、机器学习、linux、程序员">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iMX287A多种方法实现流水灯效果">
+<meta property="og:url" content="http://yuanquanquan.top/2020/20200310/index.html">
+<meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
+<meta property="og:description" content="序：鸽了快两个月没写博客，其实也是因为这两月都没怎么学习（逃，不过确实接触了一些新东西，在B站和知乎看到了一个电科毕业的大佬，一个人能抵一个项目组……于是也燃起了学习单片机的兴趣，想在做程序员的同时做一个业余电子工程师，这段时间零零散散做了一些东西 一张用来装逼的PCB名片(https://github.com/Bazingaliu/PCB-card) 一个根据经典开源飞控pix2.4.6原理图，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200303194631145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3doaWsxMTk0,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2020-03-10T15:52:32.967Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iMX287A多种方法实现流水灯效果">
+<meta name="twitter:description" content="序：鸽了快两个月没写博客，其实也是因为这两月都没怎么学习（逃，不过确实接触了一些新东西，在B站和知乎看到了一个电科毕业的大佬，一个人能抵一个项目组……于是也燃起了学习单片机的兴趣，想在做程序员的同时做一个业余电子工程师，这段时间零零散散做了一些东西 一张用来装逼的PCB名片(https://github.com/Bazingaliu/PCB-card) 一个根据经典开源飞控pix2.4.6原理图，">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200303194631145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3doaWsxMTk0,size_16,color_FFFFFF,t_70">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon_1.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+    <!--百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?c48627a60135ae47d77a79844f7e5b04";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <!--百度SEO-->
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+        </script>
+    <!--googleseo-->
+    <meta name="google-site-verification" content="p1u63jgcp2J7NsJHR_UxQX2Fzj_UY6Zwf8C1zTRpONM">
+    
+    <meta name="google-site-verification" content="8ojU19tXQIB94wIY0cAPI5BKSsrqV-xxrlx46C_-WMg">
+	<!--xiongzhang-->
+	<script src="https://xiongzhang.baidu.com/sdk/c.js?appid=1608109025415176"></script>
+	<!--shougou-->
+	<meta name="sogou_site_verification" content="tRwGjUhpuk">
+	<!--360-->
+	<meta name="360-site-verification" content="06663b5113fe8a05769074a579c4d4ea">
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">我愿做你光华中淡淡的一笔</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives">归档</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AI/">AI</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AI/Deep-Learning/">Deep Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AI/Machine-Learning-Data/">Machine Learning & Data</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/">日常技术</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/Linux/">Linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/jupyter/">jupyter</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/博客搭建/">博客搭建</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/汇总帖/">汇总帖</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/">生活</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/旅行/">旅行</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/随笔/">随笔</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/笔记/">笔记</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/笔记/凸优化笔记/">凸优化笔记</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/笔记/强化学习笔记/">强化学习笔记</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/笔记/论文笔记/">论文笔记</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/算法/">算法</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/算法/LeetCode/">LeetCode</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/算法/codeforces/">codeforces</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/算法/kick-start/">kick start</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/board">留言板</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-pcb1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        iMX287A多种方法实现流水灯效果
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2020/20200310/" class="article-date">
+            <time datetime="2020-03-10T15:15:24.000Z" itemprop="datePublished">2020-03-10</time>
+        </a>
+    </div>
+
+		
+
+                
+                <!---cloud阅读量统计系统-->
+                阅读数量:<span id="/2020/20200310/" class="leancloud_visitors" data-flag-title="iMX287A多种方法实现流水灯效果"></span>次
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>序：鸽了快两个月没写博客，其实也是因为这两月都没怎么学习（逃，不过确实接触了一些新东西，在B站和知乎看到了一个电科毕业的大佬，一个人能抵一个项目组……于是也燃起了学习单片机的兴趣，想在做程序员的同时做一个业余电子工程师，这段时间零零散散做了一些东西</p>
+<p>一张用来装逼的PCB名片(<a href="https://github.com/Bazingaliu/PCB-card" target="_blank" rel="noopener">https://github.com/Bazingaliu/PCB-card</a>)</p>
+<p>一个根据经典开源飞控pix2.4.6原理图，用ad设计了一个仿制版(<a href="https://github.com/Bazingaliu/PCB-px41" target="_blank" rel="noopener">https://github.com/Bazingaliu/PCB-px41</a>)</p>
+<p>一个用EMMC芯片实现的U盘(<a href="https://github.com/Bazingaliu/PCB_EMMC" target="_blank" rel="noopener">https://github.com/Bazingaliu/PCB_EMMC</a>)</p>
+<p>以及不得不说的流水灯。</p>
+<h3 id="1-流水灯在电子电路中的地位"><a href="#1-流水灯在电子电路中的地位" class="headerlink" title="1.流水灯在电子电路中的地位"></a>1.流水灯在电子电路中的地位</h3><p>​       第一次接触单片机时，用的还是AT89S52单片机，第1个程序是点亮一个LED，然后再实现LED流水灯的效果。在这个过程中，可以了解整个程序的结构，GPIO的使用，延时的使用等。可以说单片机学习中的点灯，就相当于程序员的”Hello World”！好的，我们来看一下在ARM Linux下如何控制GPIO。</p>
+<h3 id="2-硬件电路分析"><a href="#2-硬件电路分析" class="headerlink" title="2.硬件电路分析"></a>2.硬件电路分析</h3><p>点灯的根本是控制LED对应GPIO输出高低电平，那要控制哪个GPIO呢？这就需要查看原理图，看LED是连接到了哪个GPIO管脚。</p>
+<p>iMX287的扩展板AP-283Demo原理图中，LED的驱动电路：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200303194631145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3doaWsxMTk0,size_16,color_FFFFFF,t_70" alt></p>
+<p>与连接器的连接关系：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020030319511460.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3doaWsxMTk0,size_16,color_FFFFFF,t_70" alt></p>
+<p>这里我们把：4个LED的管脚和J8C的４个管脚使用跳线帽短接起来，即</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">J8A_1=LED1 -&gt; J8C_1=IO3.26</span><br><span class="line">J8A_2=LED2 -&gt; J8C_2=IO3.22</span><br><span class="line">J8A_3=LED3 -&gt; J8C_3=IO3.20</span><br><span class="line">J8A_4=LED4 -&gt; J8C_4=IO2.7</span><br></pre></td></tr></table></figure>
+<p>即：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GPIO3_26 = LED1</span><br><span class="line">GPIO3_22 = LED2</span><br><span class="line">GPIO3_20 = LED3</span><br><span class="line">GPIO2_7  = LED4</span><br></pre></td></tr></table></figure>
+<p>所以，我们只需要控制这几个GPIO的高低电平，可以控制LED了。</p>
+<p>连接方式：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200304090817816.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3doaWsxMTk0,size_16,color_FFFFFF,t_70" alt></p>
+<h3 id="3-先点个灯吧"><a href="#3-先点个灯吧" class="headerlink" title="3.先点个灯吧"></a>3.先点个灯吧</h3><p>iMX28 系列处理器的 IO 端口分为 7 个 BANK，其中 BANK0~4 具有 GPIO 功能，每个BANK 具有 32 个 I/O。iMX283 部分 BANK 的引脚不支持 GPIO 功能，具体需要参考《IMX28CEC_Datasheet.pdf》手册。在导出 GPIO 功能引脚时，需要先计算 GPIO 引脚的排列序号，其序号计算公式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GPIO序号 = Bank * 32 + N</span><br><span class="line"></span><br><span class="line">#LED对应的序号</span><br><span class="line">LED1 -&gt; GPIO3_26 = 3 * 32 + 26 = 122</span><br><span class="line">LED2 -&gt; GPIO3_22 = 3 * 32 + 22 = 118 </span><br><span class="line">LED3 -&gt; GPIO3_20 = 3 * 32 + 20 = 116</span><br><span class="line">LED4 -&gt; GPIO2_7  = 2 * 32 + 7  = 71</span><br></pre></td></tr></table></figure>
+<p>串口或SSH登录开发板之后，通过如下过程可导出对应GPIO的功能，以LED1对应的122为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#进入到gpio驱动所在的文件夹</span><br><span class="line">cd /sys/class/gpio</span><br><span class="line"></span><br><span class="line">#生成LED1操作的相关文件</span><br><span class="line">echo 122 &gt; export</span><br><span class="line"></span><br><span class="line">#进入到LED1控制文件夹</span><br><span class="line">cd gpio122</span><br><span class="line"></span><br><span class="line">#设置GPIO为输出方向</span><br><span class="line">echo out &gt; direction</span><br><span class="line"></span><br><span class="line">#查看当前GPIO的输入输出方向</span><br><span class="line">cat direction</span><br><span class="line"></span><br><span class="line">#设置GPIO输出0点亮LED</span><br><span class="line">echo 0 &gt; value</span><br><span class="line"></span><br><span class="line">#查看当前GPIO的输出状态</span><br><span class="line">cat value</span><br><span class="line"></span><br><span class="line">#设置GPIO输出1熄灭LED</span><br><span class="line">echo 1 &gt; value</span><br><span class="line"></span><br><span class="line">#查看当前GPIO的输出状态</span><br></pre></td></tr></table></figure>
+<p>在这里，就体现了<strong>Linux系统下一切皆文件</strong>的含义。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200303201350859.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3doaWsxMTk0,size_16,color_FFFFFF,t_70" alt></p>
+<p>这样，就实现了某个GPIO输出高低电平的目的，其他LED的控制，只需要修改对应的序号即可。</p>
+<p>如果想取消LED1的GPIO功能，可以通过如下命令实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 122 &gt; unexport</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200303201820272.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3doaWsxMTk0,size_16,color_FFFFFF,t_70" alt></p>
+<p>当然，如果是读取输入，如按键等，就设置方向为in输入，通过<code>cat value</code>来读取输入的状态。</p>
+<h3 id="4-shell脚本实现流水灯"><a href="#4-shell脚本实现流水灯" class="headerlink" title="4.shell脚本实现流水灯"></a>4.shell脚本实现流水灯</h3><p>好了，知道了如何实现GPIO的控制，那么如何方便、快捷的执行以上步骤呢？我们这里先介绍一种通过shell脚本的方式控制LED实现流水灯的效果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#在home目录新建led_blink.sh脚本文件</span><br><span class="line">touch led_blink.sh</span><br><span class="line"></span><br><span class="line">#输入控制LED实现流水灯效果的代码</span><br><span class="line">vi led_blink.sh</span><br></pre></td></tr></table></figure>
+<p><strong>led_blink.sh的文件内容：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">#LED对应的GPIO</span><br><span class="line">led1_pin=122</span><br><span class="line">led2_pin=118</span><br><span class="line">led3_pin=116</span><br><span class="line">led4_pin=71</span><br><span class="line"></span><br><span class="line">#echo $led1_pin $led2_pin $led3_pin $led4_pin</span><br><span class="line"></span><br><span class="line">#GPIO操作文件如果不存在则创建,否则不创建</span><br><span class="line">for pin in $led1_pin $led2_pin $led3_pin $led4_pin</span><br><span class="line">do</span><br><span class="line">    #如果文件夹存在</span><br><span class="line">    if [ ! -d &quot;/sys/class/gpio/gpio$pin/&quot; ];</span><br><span class="line">        then echo $pin &gt; /sys/class/gpio/export</span><br><span class="line">    else echo &quot;$pin dir exist!&quot;</span><br><span class="line">    fi done</span><br><span class="line"></span><br><span class="line">#GPIO方向设置为输出</span><br><span class="line">for pin in $led1_pin $led2_pin $led3_pin $led4_pin</span><br><span class="line">do echo out &gt; /sys/class/gpio/gpio$pin/direction</span><br><span class="line">done </span><br><span class="line"></span><br><span class="line">#死循环</span><br><span class="line">while true do</span><br><span class="line">    #GPIO输出0/1</span><br><span class="line">    for pin in $led1_pin $led2_pin $led3_pin $led4_pin</span><br><span class="line">    do echo &quot;点亮$pin&quot;</span><br><span class="line">        echo 0 &gt; /sys/class/gpio/gpio$pin/value</span><br><span class="line">        sleep 1</span><br><span class="line">        </span><br><span class="line">        echo &quot;熄灭$pin&quot;</span><br><span class="line">        echo 1 &gt; /sys/class/gpio/gpio$pin/value</span><br><span class="line">    done done</span><br></pre></td></tr></table></figure>
+<p>保存退出之后，通过如下命令执行这个脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#添加可执行权限</span><br><span class="line">chmod +x led_blink.sh</span><br><span class="line"></span><br><span class="line">#执行脚本文件</span><br><span class="line">./led_blink.sh</span><br></pre></td></tr></table></figure>
+<p>然后就可以看到流水灯效果了：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200303203032483.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3doaWsxMTk0,size_16,color_FFFFFF,t_70" alt></p>
+<p>这种方式，没什么高深的技术，就是把之前通过一行一行的命令，转换成了自动化的脚本文件。为了写这种shell脚本，需要学习一些基本的shell语法。下面我们来介绍两种比较通用的方法，通过C语言文件读写的方式来实现流水灯效果。</p>
+<h3 id="5-ANSI-C文件操作实现流水灯"><a href="#5-ANSI-C文件操作实现流水灯" class="headerlink" title="5.ANSI C文件操作实现流水灯"></a>5.ANSI C文件操作实现流水灯</h3><p>只使用标准ANSI C文件操作来实现流水灯效果。标准C语言操作，常用的函数有 <code>fopen/fclose/fwrite/fread/fseek</code>等。无论是Linux还是Windows都是通用的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">/* ANSI C文件操作实现流水灯 By whik */</span><br><span class="line"></span><br><span class="line">//包含printf和sleep等</span><br><span class="line">#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;string.h&gt; </span><br><span class="line">#define LED1_PIN 122 #define LED2_PIN 118 #define LED3_PIN 116 #define LED4_PIN 71 </span><br><span class="line">#define GPIO_PATH &quot;/sys/class/gpio/&quot; </span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    int led_table[4] = &#123;LED1_PIN, LED2_PIN, LED3_PIN, LED4_PIN&#125;;</span><br><span class="line">    char path[100];</span><br><span class="line">    char cmd_export[100];</span><br><span class="line">    int i;</span><br><span class="line">    </span><br><span class="line">    char *str;</span><br><span class="line">    FILE *fp;       //文件指针</span><br><span class="line">    int cnt_w;      //写入的字节数</span><br><span class="line"></span><br><span class="line">    //判断LED对应的操作文件夹是否存在，不存在自动创建</span><br><span class="line">    for(i = 0; i &lt; 4; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sprintf(path, &quot;%sgpio%d&quot;, GPIO_PATH, led_table[i]); //sys/class/gpio/gpio122</span><br><span class="line"></span><br><span class="line">        if (!access(path, 0))</span><br><span class="line">            printf(&quot;%s 文件夹存在\n&quot;, path);</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;%s 文件夹不存在\n&quot;, path);</span><br><span class="line">            sprintf(cmd_export, &quot;echo %d &gt; %sexport&quot;, led_table[i], GPIO_PATH);//echo 122 &gt; /sys/class/gpio/export</span><br><span class="line">            system(cmd_export); //执行export命令</span><br><span class="line"></span><br><span class="line">            if(!access(path, 0))    //访问文件夹,确认创建成功</span><br><span class="line">                printf(&quot;%s 导出成功\n&quot;, path);</span><br><span class="line">            else </span><br><span class="line">                return -1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //设置输出方向</span><br><span class="line">    for(i = 0; i &lt; 4; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sprintf(path, &quot;%sgpio%d/direction&quot;, GPIO_PATH, led_table[i]);</span><br><span class="line">        fp = fopen(path, &quot;r+&quot;);</span><br><span class="line">        if(fp != NULL)      //打开成功</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;%s 打开成功\n&quot;, path);</span><br><span class="line">            cnt_w = fwrite(&quot;out&quot;, 3, 1, fp);</span><br><span class="line">            if(cnt_w == EOF)</span><br><span class="line">            &#123;</span><br><span class="line">                printf(&quot;方向写入失败\n&quot;);</span><br><span class="line">                return -1;</span><br><span class="line">            &#125;</span><br><span class="line">            else </span><br><span class="line">                printf(&quot;方向写入成功\n&quot;);</span><br><span class="line">            fclose(fp);     //文件关闭</span><br><span class="line">        &#125;</span><br><span class="line">        else </span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;%s 文件打开失败\n&quot;, path);</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //流水灯效果</span><br><span class="line">    while(1)</span><br><span class="line">    &#123;</span><br><span class="line">        for(i = 0; i &lt; 4; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sprintf(path, &quot;%sgpio%d/value&quot;, GPIO_PATH, led_table[i]);</span><br><span class="line">            </span><br><span class="line">            fp = fopen(path, &quot;w+&quot;);</span><br><span class="line">            if(fp != NULL)</span><br><span class="line">            &#123;</span><br><span class="line">                fwrite(&quot;0&quot;, 1, 1, fp);</span><br><span class="line">                fseek(fp, 0, SEEK_SET); //重新定位到文件起始</span><br><span class="line">                printf(&quot;%s 写入0\n&quot;, path);</span><br><span class="line">                sleep(1);</span><br><span class="line"></span><br><span class="line">                fwrite(&quot;1&quot;, 1, 1, fp);</span><br><span class="line">                printf(&quot;%s 写入1\n&quot;, path);</span><br><span class="line">                fseek(fp, 0, SEEK_SET);</span><br><span class="line"></span><br><span class="line">                fclose(fp);</span><br><span class="line">            &#125;</span><br><span class="line">            else </span><br><span class="line">            &#123;</span><br><span class="line">                printf(&quot;%s 文件打开失败\n&quot;, path);</span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现原理和之前的shell脚本也是一样的思路：</p>
+<ul>
+<li>先判断LED对应的GPIO操作文件是否导出，如果没有导出则执行导出命令，否则不执行。</li>
+<li>循环的方式，依次设置4个LED的方向为输出</li>
+<li>循环的方式，控制4个GPIO的输出高低电平，外面是一个死循环</li>
+</ul>
+<h3 id="6-Linux-系统调用实现流水灯"><a href="#6-Linux-系统调用实现流水灯" class="headerlink" title="6.Linux 系统调用实现流水灯"></a>6.Linux 系统调用实现流水灯</h3><p>Linux系统调用，常用的文件IO操作函数有<code>open/close/read/write/lseek/ulink</code>等。函数用法也很简单，和标准C语言用法几乎一样，这里不再介绍。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">/* Linux 系统函数实现流水灯 */</span><br><span class="line">//涉及到设备操作的,需包含以下头文件</span><br><span class="line">#include &lt;sys/types.h&gt; #include &lt;sys/stat.h&gt; #include &lt;fcntl.h&gt; //包含close/read/write/lseek等函数</span><br><span class="line">#include &lt;unistd.h&gt; </span><br><span class="line">//包含printf/sprintf函数</span><br><span class="line">#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;string.h&gt; </span><br><span class="line">#define LED1_PIN 122 #define LED2_PIN 118 #define LED3_PIN 116 #define LED4_PIN 71 </span><br><span class="line">#define GPIO_PATH &quot;/sys/class/gpio/&quot; </span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    int led_table[4] = &#123;LED1_PIN, LED2_PIN, LED3_PIN, LED4_PIN&#125;;</span><br><span class="line">    char path[100];</span><br><span class="line">    char cmd_export[100];</span><br><span class="line">    int i;</span><br><span class="line">    </span><br><span class="line">    char *str;</span><br><span class="line">    int fd;</span><br><span class="line">    int cnt_w;      //写入的字节数</span><br><span class="line"></span><br><span class="line">    //判断LED对应的操作文件夹是否存在，不存在自动创建</span><br><span class="line">    for(i = 0; i &lt; 4; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sprintf(path, &quot;%sgpio%d&quot;, GPIO_PATH, led_table[i]); //sys/class/gpio/gpio122</span><br><span class="line"></span><br><span class="line">        if (!access(path, 0))</span><br><span class="line">            printf(&quot;%s 文件夹存在\n&quot;, path);</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;%s 文件夹不存在\n&quot;, path);</span><br><span class="line">            sprintf(cmd_export, &quot;echo %d &gt; %sexport&quot;, led_table[i], GPIO_PATH);//echo 122 &gt; /sys/class/gpio/export</span><br><span class="line">            system(cmd_export); //执行export命令</span><br><span class="line"></span><br><span class="line">            if(!access(path, 0))    //访问文件夹,确认创建成功</span><br><span class="line">                printf(&quot;%s 导出成功\n&quot;, path);</span><br><span class="line">            else </span><br><span class="line">                return -1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //设置输出方向</span><br><span class="line">    for(i = 0; i &lt; 4; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sprintf(path, &quot;%sgpio%d/direction&quot;, GPIO_PATH, led_table[i]);</span><br><span class="line">        fd = open(path, O_RDWR);    //linux系统函数,失败返回-1</span><br><span class="line">        if(fd != -1)      //打开成功</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;%s 打开成功\n&quot;, path);</span><br><span class="line">            cnt_w = write(fd, &quot;out&quot;, 3);    //linux系统函数</span><br><span class="line">            if(cnt_w &lt;= 0)</span><br><span class="line">            &#123;</span><br><span class="line">                printf(&quot;方向写入失败\n&quot;);</span><br><span class="line">                return -1;</span><br><span class="line">            &#125;</span><br><span class="line">            else </span><br><span class="line">                printf(&quot;方向写入成功\n&quot;);</span><br><span class="line">            close(fd);     //linux系统函数,成功返回0</span><br><span class="line">        &#125;</span><br><span class="line">        else </span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;%s 文件打开失败\n&quot;, path);</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //流水灯效果</span><br><span class="line">    while(1)</span><br><span class="line">    &#123;</span><br><span class="line">        for(i = 0; i &lt; 4; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sprintf(path, &quot;%sgpio%d/value&quot;, GPIO_PATH, led_table[i]);</span><br><span class="line">            </span><br><span class="line">            fd = open(path, O_RDWR);    //linux系统函数</span><br><span class="line">            if(fd != -1)</span><br><span class="line">            &#123;</span><br><span class="line">                write(fd, &quot;0&quot;, 1);</span><br><span class="line">                lseek(fd, 0, SEEK_SET); //重新定位到文件起始</span><br><span class="line">                printf(&quot;%s 写入0\n&quot;, path);</span><br><span class="line">                sleep(1);</span><br><span class="line"></span><br><span class="line">                write(fd, &quot;1&quot;, 1);</span><br><span class="line">                printf(&quot;%s 写入1\n&quot;, path);</span><br><span class="line">                lseek(fd, 0, SEEK_SET);</span><br><span class="line"></span><br><span class="line">                close(fd);</span><br><span class="line">            &#125;</span><br><span class="line">            else </span><br><span class="line">            &#123;</span><br><span class="line">                printf(&quot;%s 文件打开失败\n&quot;, path);</span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yuanquanquan.top/2020/20200310/" data-id="ck7m2pi6l0000z0v8go81qxnn" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+
+        </footer>
+    </div>
+</article>
+<!--
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+-->
+<!--来比力评论系统，在commetn/livebe.ejs中-->
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQ4OC8xNjAxNQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/LQNhgeygPuSzm62?s=09" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/profile.php?id=100042920468816" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/Bazingaliu" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/20191230/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">2019年计算机视觉综述论文汇聚</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/20200310/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://img-blog.csdnimg.cn/20200303194631145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3doaWsxMTk0,size_16,color_FFFFFF,t_70)" alt="iMX287A多种方法实现流水灯效果" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/20200310/" class="title">iMX287A多种方法实现流水灯效果</a></p>
+                            <p class="item-date"><time datetime="2020-03-10T15:15:24.000Z" itemprop="datePublished">2020-03-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/20191230/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4102261544,420722754&amp;fm=26&amp;gp=0.jpg)" alt="2019年计算机视觉综述论文汇聚" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/笔记/论文笔记/">论文笔记</a></p>
+                            <p class="item-title"><a href="/2019/20191230/" class="title">2019年计算机视觉综述论文汇聚</a></p>
+                            <p class="item-date"><time datetime="2019-12-30T13:23:38.000Z" itemprop="datePublished">2019-12-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/2019122011/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://static.leetcode-cn.com/cn-mono-assets/production/head/f2ece5fe978d056f5a425ad3387216ee.svg)" alt="leetcode 483.最小好进制" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/算法/">算法</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/算法/LeetCode/">LeetCode</a></p>
+                            <p class="item-title"><a href="/2019/2019122011/" class="title">leetcode 483.最小好进制</a></p>
+                            <p class="item-date"><time datetime="2019-12-20T03:09:20.000Z" itemprop="datePublished">2019-12-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/2019121899/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://i1.fuimg.com/706216/912fff8efa8ec71f.png)" alt="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/笔记/论文笔记/">论文笔记</a></p>
+                            <p class="item-title"><a href="/2019/2019121899/" class="title">CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes</a></p>
+                            <p class="item-date"><time datetime="2019-12-18T11:49:36.000Z" itemprop="datePublished">2019-12-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/20191213002/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://cugtyt.github.io/blog/papers/2019/R/SiamMask-fig1.png)" alt="Fast Online Object Tracking and Segmentation:A Unifying Approach" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/笔记/论文笔记/">论文笔记</a></p>
+                            <p class="item-title"><a href="/2019/20191213002/" class="title">Fast Online Object Tracking and Segmentation:A Unifying Approach</a></p>
+                            <p class="item-date"><time datetime="2019-12-12T23:41:41.000Z" itemprop="datePublished">2019-12-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系方式</h3>
+        <div class="widget">
+            <!--yuanquanquan29@gmail.com-->
+		<p>yuanquanquan29@gmail.com</p>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">37</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/Deep-Learning/">Deep Learning</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/AI/Machine-Learning-Data/">Machine Learning & Data</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/">日常技术</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/jupyter/">jupyter</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/博客搭建/">博客搭建</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/汇总帖/">汇总帖</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/旅行/">旅行</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/随笔/">随笔</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/凸优化笔记/">凸优化笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/强化学习笔记/">强化学习笔记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/论文笔记/">论文笔记</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/LeetCode/">LeetCode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/codeforces/">codeforces</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/kick-start/">kick start</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">29</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AutoML/" style="font-size: 10px;">AutoML</a> <a href="/tags/CV/" style="font-size: 10px;">CV</a> <a href="/tags/CVPR/" style="font-size: 13.33px;">CVPR</a> <a href="/tags/GAN/" style="font-size: 10px;">GAN</a> <a href="/tags/ICLR/" style="font-size: 10px;">ICLR</a> <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Machine-Learning-Data/" style="font-size: 10px;">Machine Learning & Data</a> <a href="/tags/SAS/" style="font-size: 11.67px;">SAS</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/codeforces/" style="font-size: 10px;">codeforces</a> <a href="/tags/cs231n/" style="font-size: 16.67px;">cs231n</a> <a href="/tags/dl-ai/" style="font-size: 20px;">dl.ai</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/homework/" style="font-size: 18.33px;">homework</a> <a href="/tags/install/" style="font-size: 13.33px;">install</a> <a href="/tags/python/" style="font-size: 11.67px;">python</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/优化理论/" style="font-size: 10px;">优化理论</a> <a href="/tags/强化学习/" style="font-size: 13.33px;">强化学习</a> <a href="/tags/招聘/" style="font-size: 10px;">招聘</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/算法/" style="font-size: 13.33px;">算法</a> <a href="/tags/航拍/" style="font-size: 10px;">航拍</a> <a href="/tags/视频/" style="font-size: 10px;">视频</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://f-mu.github.io">咸鱼学弟</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 理科生写给世界的情书</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+
+				<!--coding pages and github-->
+                <p><span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span> and <span><a href="https://github.com" style="font-weight: bold">Github</a></span></p>
+                <!--这一段是不蒜子的访问量统计脚本-->
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次 &nbsp;   </span>
+                <span id="busuanzi_container_site_uv">
+                    访客数<span id="busuanzi_value_site_uv"></span>人次
+                  </span>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--往下是cloud的文章阅读量系统-->
+<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+<script>
+    var APP_ID = 'YVSE8R91f8Qc6d6FwMTnwytk-gzGzoHsz';
+    var APP_KEY = 'ajFB9Ueh08Y5pIvkDsXSOW56';
+    AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+    });
+    // 显示次数
+    function showTime(Counter) {
+        var query = new AV.Query("Counter");
+        if($(".leancloud_visitors").length > 0){
+            var url = $(".leancloud_visitors").attr('id').trim();
+            // where field
+            query.equalTo("words", url);
+            // count
+            query.count().then(function (number) {
+                // There are number instances of MyClass where words equals url.
+                $(document.getElementById(url)).text(number?  number : '--');
+            }, function (error) {
+                // error is an instance of AVError.
+            });
+        }
+    }
+    // 追加pv
+    function addCount(Counter) {
+        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+        var Counter = AV.Object.extend("Counter");
+        var query = new Counter;
+        query.save({
+            words: url
+        }).then(function (object) {
+        })
+    }
+    $(function () {
+        var Counter = AV.Object.extend("Counter");
+        addCount(Counter);
+        showTime(Counter);
+    });
+</script>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://yuanquanquan.top/2020/20200310/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
