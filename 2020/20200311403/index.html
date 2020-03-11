@@ -21,7 +21,7 @@
 <meta property="og:description" content="写在前面：之前两个月没有看过cv方向的东西…..所以打算开个系列来写目标检测，图像分割的爆款算法，算是回顾一遍吧，当然一些太经典鼻祖级的模型就懒得看了……目标检测的第一篇就从Faster R-CNN开始吧，Faster R-CNN 是目标检测中的一个很经典的two stage算法，许多其他的目标检测算法都会运用到Faster R-CNN的部分结构或思想。而且了解Faster R-CNN对理解其他R">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img-blog.csdn.net/20180712105327622?">
-<meta property="og:updated_time" content="2020-03-11T13:47:42.533Z">
+<meta property="og:updated_time" content="2020-03-11T14:44:03.357Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Object Detection】-Faster r-cnn">
 <meta name="twitter:description" content="写在前面：之前两个月没有看过cv方向的东西…..所以打算开个系列来写目标检测，图像分割的爆款算法，算是回顾一遍吧，当然一些太经典鼻祖级的模型就懒得看了……目标检测的第一篇就从Faster R-CNN开始吧，Faster R-CNN 是目标检测中的一个很经典的two stage算法，许多其他的目标检测算法都会运用到Faster R-CNN的部分结构或思想。而且了解Faster R-CNN对理解其他R">
@@ -225,7 +225,7 @@
 <p><img src="https://img-blog.csdn.net/20180712105327622?" alt></p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Faster R-CNN由R-CNN，Fast R-NN改进演变而来，相对于前两者，Faster R-CNN具有训练速度快，消耗内存减少，精度与检测速度都有大幅提升的优点。</p>
 <p>先来一张Faster R-CNN的网络基本结构图</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/WeBJrWZvu3mZ5wu0LZoL35aQI7Tds5NWia410IWW46DXfppBmEBNau9iaZliasuqOgBmP0X23FFMEM2jalOwW12jA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/faster%20r-cnn%281%29.webp" alt></p>
 <p>个人认为网络主要分为五个部分：</p>
 <ul>
 <li>提取feature map（特征图）的<strong>Conv layer</strong>。该部分使用VGG-net作为预处理网络，运用多个conv，relu，pooling层提取图像特征图，为后面的网络提供图像信息。</li>
@@ -235,12 +235,12 @@
 <li>使用<strong>full connection</strong>，<strong>softmax</strong>对ROI进行分类与bounding box回归，确定bounding box的位置。</li>
 </ul>
 <p>下面从这五个部分进行说明。先上一个网上总结的Faster R-CNN的结构图。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/WeBJrWZvu3mZ5wu0LZoL35aQI7Tds5NWGvmbDa1icFFDUFv8RMibnibQmtlJVKlnGK6VpQc35yMAqPWIT78u4Xwew/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/faster%20r-cnn%EF%BC%882%EF%BC%89.webp" alt></p>
 <h2 id="Conv-layer"><a href="#Conv-layer" class="headerlink" title="Conv layer"></a>Conv layer</h2><p>Conv layers包含3种层，分别是conv层，pooling层，relu层。<strong>conv</strong>层的卷积核大小都是3 * 3 , 步长都为1，并且都做了扩边处理，也就是经过conv层后图像的大小没有改变，只是深度改变。<strong>pooling</strong> 层的kernel_size=2,步长也为2，也就是说每经过一次pooling层后，图像尺寸减小一半。</p>
 <p>Faster RCNN在将图片传入网络之前，会将图片缩放为<strong>M * N</strong>(VGG 为 800 * 600），从原图到feature map一共经过4次pooling，也就是feature map的大小为（int(M/16)，int(N/16)）。</p>
 <h2 id="anchor"><a href="#anchor" class="headerlink" title="anchor"></a>anchor</h2><p>anchor其实是在图像上的一个个先验框，用来对后面检测框的修正以及region proposal。这里说一下anchor的生成过程。</p>
 <p>先来看看作者的图</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WeBJrWZvu3mZ5wu0LZoL35aQI7Tds5NWHvbjnoXhAgrZh5ficYWgbpq0OKYxxTAnlQDHlx7LLsvEsk8GHn1WhpA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/faster%20r-cnn%EF%BC%883%EF%BC%89.webp" alt></p>
 <p>可以看到，anchor的长宽比有[0.5, 1, 2]三种比例，每种anchor有[8, 16, 32]三个尺度比例，所以anchors一共有3 * 3 = 9个anchor。</p>
 <p>生成anchor的主要分为一下步骤：</p>
 <ul>
@@ -249,9 +249,9 @@
 <li>将3个anchor长宽分别再乘3个尺度比例，这样就得到9个anchor，再将anchor的表示转换为左上角和右下角的坐标[x_l, y_l, x_r, y_r]。</li>
 </ul>
 <p>此时每个feature map上的点都有9个anchor，也就是一共有（800/16）<em>（600/16） </em> 9=17100个anchor。再将这些anchor通过原图与feature map的映射关系，将其anchor映射回原图。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/WeBJrWZvu3mZ5wu0LZoL35aQI7Tds5NWnI0LXibxaicqaJHAooUhFyfiacQSI2esiaZCF0gt0kyBJL0wc8iaZgsdcnQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/faster%20r-cnn%EF%BC%884%EF%BC%89.webp" alt></p>
 <h2 id="RPN"><a href="#RPN" class="headerlink" title="RPN"></a>RPN</h2><p>RPN的主要结构如图</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/WeBJrWZvu3mZ5wu0LZoL35aQI7Tds5NWMT0LApqRZBgII4E2njKkfmYz2y8J755tdEgotF08ZVqiaw8V5ddsSTA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/faster%20r-cnn%EF%BC%885%EF%BC%89.webp" alt></p>
 <p>首先将feature map在经过一次conv卷积（这里设得到的网络层为conv5_3)，然后分开两条线进行：</p>
 <ul>
 <li>先将conv5_3使用1 <em> 1 </em> 18的卷积核对anchor进行softmax分类，将anchor分为postivte和negative（rpn_cls_prob)，二分类。（18 = 2（positiv and negative）* 9（9个anchor）。</li>
@@ -262,9 +262,9 @@
 <h3 id="bounding-box-predict"><a href="#bounding-box-predict" class="headerlink" title="bounding box predict"></a>bounding box predict</h3><p>conv5_3经过1 <em> 1 </em> 36 卷积变为[W, H, 36]，第三个维度为每个anchor的2个坐标的偏移量，用于后面的bounding box regression。</p>
 <h3 id="bounding-box-regression"><a href="#bounding-box-regression" class="headerlink" title="bounding box regression"></a>bounding box regression</h3><p>在训练时需要对anchor进行转换才能贴合GT_bbox。怎样转换呢，最简单的做法就是平移加缩放。</p>
 <p>下面是转换的关系式：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WeBJrWZvu3mZ5wu0LZoL35aQI7Tds5NW4nwvYPznTNMIGnicg28MWqhiciboicuCYSUn7UZLLvibCZjQaOAd91icfMzg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/faster%20r-cnn%EF%BC%886%EF%BC%89.jpg" alt></p>
 <p>损失函数为：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WeBJrWZvu3mZ5wu0LZoL35aQI7Tds5NWpWmOUSJzfXV0XicIFP8JRWnGuPfRa3OtmNcz0kw3TncsYVUvA6Vus3A/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/faster%20r-cnn%EF%BC%887%EF%BC%89.png" alt></p>
 <h2 id="ROI-proposal"><a href="#ROI-proposal" class="headerlink" title="ROI proposal"></a>ROI proposal</h2><p>ROI prosposal负责综合所有的关于anchor的变换和对softmax的分类positive anchor，在feature map上计算出精确的ROI，将其送入后面的ROI Pooling层。</p>
 <p>主要步骤为：</p>
 <ul>
@@ -273,12 +273,12 @@
 <li>修正大于图像边缘的anchor。</li>
 <li>对w或h小于设定阈值的anchor剔除。</li>
 </ul>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WeBJrWZvu3mZ5wu0LZoL35aQI7Tds5NWetMOib9iaG2xAgia6ZwuVrQ2JTq9lgPvibfianWgNgDYoezBHDMkyTSF4kw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/fast%20r-cnn%288%29.webp" alt></p>
 <p>​         <em>最后传入的ROI类似这样</em></p>
 <p>至此，RPN的任务到此完成。</p>
 <h2 id="ROI-pooling"><a href="#ROI-pooling" class="headerlink" title="ROI pooling"></a>ROI pooling</h2><p>Faster RCNN最后的Classification和bounding box 的预测需要用到全连接层，所以在将图片传入全连接层时需要将其变为固定大小。但是一般输入的ROI大小都不固定，如果利用采样的方法进行变换为所需要的大小，会对图像的结构产生影响。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WeBJrWZvu3mZ5wu0LZoL35aQI7Tds5NWdL4R54gxYGl7lf2cNzOcD4FgU4zAbOUB7Q44ibmB4LeJibgtTSaO0UIQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WeBJrWZvu3mZ5wu0LZoL35aQI7Tds5NWjKLQ1H478cic2aabVbUiaQG25ck1GJiclcqqC1ciaAHE0etkqa7QG0dEPQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/fast%20r-cnn%289%29.jpg" alt></p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/fast%20r-cnn%2810%29.jpg" alt></p>
 <p>为了解决这个问题，Faster RCNN提出了ROI pooling的方法。</p>
 <p>具体方法为：</p>
 <ul>
@@ -293,10 +293,10 @@
 <p><strong>假设输出为2 * 2 大小</strong></p>
 </li>
 </ul>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WeBJrWZvu3mZ5wu0LZoL35aQI7Tds5NWYoyUYDJYZP4b5eVK3RaBEXXqQhiaSjUUqiaYRb8kDx1zEY25TllibHCeg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/WeBJrWZvu3mZ5wu0LZoL35aQI7Tds5NWMaficHkk9eA2ozlg4a54LpBohkzCMjEwSHhYzGib7jEhASsk18Iz15YA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/fast%20r-cnn%2811%29.jpg" alt></p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/fast%20r-cnn%2812%29.webp" alt></p>
 <h2 id="Classification-，bounding-box-predict"><a href="#Classification-，bounding-box-predict" class="headerlink" title="Classification ，bounding box predict"></a>Classification ，bounding box predict</h2><p>这个没什么好说的了，就是使用全连接层和softmax层进行分类和预测bounding box坐标值。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/WeBJrWZvu3mZ5wu0LZoL35aQI7Tds5NWby7G5ib4TjEtDW5WXNZw3Gu3zCGqC0Hkicm6Jmhb9yQKA9E5ayqhrbEQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/fast%20r-cnn%2813%29.webp" alt></p>
 <table>
 <thead>
 <tr>
@@ -334,7 +334,7 @@
 
 
 
-    <a data-url="http://yuanquanquan.top/2020/20200311403/" data-id="ck7ne5gbk00697kv89n3daekd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yuanquanquan.top/2020/20200311403/" data-id="ck7nfq7cy006y38v8w0312sys" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
