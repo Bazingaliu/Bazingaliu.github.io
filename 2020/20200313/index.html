@@ -6,21 +6,26 @@
     
 
     
-    <title>分类: 生活 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+    <title>SqueezeNAS:Fast neural architecture search for faster semantic segmentation | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="人工智能、计算机、机器学习、linux、程序员">
-<meta name="keywords" content="人工智能、计算机、机器学习、linux、程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:url" content="http://yuanquanquan.top/categories/生活/index.html">
+        <meta name="keywords" content="CV">
+    
+    <meta name="description" content="用NAS做语义分割，1.不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。 2.使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系ABSTRACT真实场景下，需要DNN在目标任务上准确率高，在目标计算平台上推断延迟低。NAS已经被用于低延迟的图像分类，但是其他任务还很少。这是第一篇用于密集语义分割的无代理硬件感">
+<meta name="keywords" content="CV">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SqueezeNAS:Fast neural architecture search for faster semantic segmentation">
+<meta property="og:url" content="http://yuanquanquan.top/2020/20200313/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta property="og:description" content="用NAS做语义分割，1.不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。 2.使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系ABSTRACT真实场景下，需要DNN在目标任务上准确率高，在目标计算平台上推断延迟低。NAS已经被用于低延迟的图像分类，但是其他任务还很少。这是第一篇用于密集语义分割的无代理硬件感">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://q719r0aui.bkt.clouddn.com/squeeze-nas-fig2.png">
+<meta property="og:updated_time" content="2020-03-17T08:14:00.737Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta name="twitter:description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta name="twitter:title" content="SqueezeNAS:Fast neural architecture search for faster semantic segmentation">
+<meta name="twitter:description" content="用NAS做语义分割，1.不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。 2.使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系ABSTRACT真实场景下，需要DNN在目标任务上准确率高，在目标计算平台上推断延迟低。NAS已经被用于低延迟的图像分类，但是其他任务还很少。这是第一篇用于密集语义分割的无代理硬件感">
+<meta name="twitter:image" content="http://q719r0aui.bkt.clouddn.com/squeeze-nas-fig2.png">
     
 
     
@@ -175,280 +180,204 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-folder-open"></i>分类: <em class="page-title-link">生活</em>
+    <a class="page-title-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/笔记/论文笔记/">论文笔记</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-论文笔记-11" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2019" class="archive-year"><i class="icon fa fa-calendar-o"></i>2019</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2019/2019120800/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1575751702447&amp;di=043ba885e29e0e29604a1930003995af&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201605%2F11%2F20160511213352_42sRW.thumb.700_0.jpeg)" alt="艾萨克的英雄主义" class="thumbnail-image"></span>
-    
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/生活/">生活</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/生活/随笔/">随笔</a>
-            </div>
-            <div class="date"><time datetime="2019-12-07T17:33:52.000Z" itemprop="datePublished">2019-12-08</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2019/2019120800/">艾萨克的英雄主义</a>
+        SqueezeNAS:Fast neural architecture search for faster semantic segmentation
         </h1>
     
 
-        <p class="article-excerpt">
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2020/20200313/" class="article-date">
+            <time datetime="2020-03-13T03:32:41.000Z" itemprop="datePublished">2020-03-13</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/CV/">CV</a>
+    </div>
+
+                <!---cloud阅读量统计系统-->
+                阅读数量:<span id="/2020/20200313/" class="leancloud_visitors" data-flag-title="SqueezeNAS:Fast neural architecture search for faster semantic segmentation"></span>次
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h3 id="用NAS做语义分割，1-不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。-2-使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系"><a href="#用NAS做语义分割，1-不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。-2-使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系" class="headerlink" title="用NAS做语义分割，1.不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。 2.使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系"></a>用NAS做语义分割，1.不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。 2.使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系</h3><h2 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h2><p>真实场景下，需要DNN在目标任务上准确率高，在目标计算平台上推断延迟低。NAS已经被用于低延迟的图像分类，但是其他任务还很少。这是第一篇用于密集语义分割的无代理硬件感知的搜索。在Cityscapes数据集上达到最好的性能。我们证明了利用NAS对任务和推断同时优化可以获得极大地性能提升。</p>
+<h2 id="1-Introduction-and-Motivation"><a href="#1-Introduction-and-Motivation" class="headerlink" title="1. Introduction and Motivation"></a>1. Introduction and Motivation</h2><p>在做非图像分类任务（如语义分割或目标检测）时，流行的方法是结构迁移：从一个图像分类网络开始，在网络末尾添加一些针对特定任务的层。</p>
+<p>这种结构迁移的主流主要是一些传统假设，我们罗列一些并证明为什么他们已经过时了。</p>
+<ul>
+<li><strong>假设1： 在ImageNet上准确率最高的网络也应该是目标任务上准确率最好的骨干网络</strong></li>
+</ul>
+<p>实际上，ImageNet的准确率与目标任务准确率关系不太大。SqueezeNet在ImageNet上准确率低于VGG，但是对上定位图像相似部分的任务上更好。正确的网络设计取决于目标任务。</p>
+<ul>
+<li><strong>假设2： NAS成本过高</strong></li>
+</ul>
+<p>实际上，有些方法的确需要数千个GPU天，但是最近的“supernetwork”方法例如DARTS和FBNet可以在10个GPU天上取得最优结果。</p>
+<ul>
+<li><strong>假设3： 低MAC（Fewer multiply-accumulate）运算在目标平台上有较低的延迟</strong></li>
+</ul>
+<p>实际上，有工作证明了相同的平台上，同样的MAC可以有10x的延迟差异。取决于处理器和内核实现，即使是相同的MAC也有不同的速度。</p>
+<p>为了在目标计算平台和任务上获得更低的延迟，更高的准确率：</p>
+<ol>
+<li>直接对目标任务运行NAS，例如目标检测、语义分割，不要去优化代理任务，如图像分类。</li>
+<li>使用现代的基于supernetwork的NAS，相信搜索可以快速收敛。</li>
+<li>让NAS同时优化准确率和延迟。</li>
+</ol>
+<h2 id="2-Related-work"><a href="#2-Related-work" class="headerlink" title="2. Related work"></a>2. Related work</h2><p>【略】</p>
+<h2 id="3-Architecture-Search-Space"><a href="#3-Architecture-Search-Space" class="headerlink" title="3. Architecture Search Space"></a>3. Architecture Search Space</h2><p>我们探索了顺序反向残差模块的语义分割网络编码器的空间。这些块参数化如图2。每次结构搜索，我们约束宏观结构，对每个块寻找最优参数。搜索空间和FBNet，MobileNetV2，MobileNetV3相似，这样可以直接比较对分割优化的网络和他们对分类优化的网络。</p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/squeeze-nas-fig2.png" alt></p>
+<p>我们网络的基本结构如图1，解码器使用编码器的输出和低层特征。</p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/squeeze-nas-fig1.png" alt></p>
+<h3 id="3-1-Constrained-Macro-Architecture"><a href="#3-1-Constrained-Macro-Architecture" class="headerlink" title="3.1. Constrained Macro-Architecture"></a>3.1. Constrained Macro-Architecture</h3><p>搜索三个空间，Small, Large, XLarge。为了定义结构空间，先约束编码网络的宏观结构。宏观结构描述了编码器的模块数量N，解码器也是这么多。对于每个模块，固定输入和输出通道，$c_{in} $和$c_{out}$每个块的深度卷积层步长使用1或2。由于运行跳跃连接，所以最终的层数可能小于N。</p>
+<p>在Small和Large的搜索空间，使用LR-ASPP解码器。在XLarge搜索空间，我们使用完全深度卷积的ASPP变种。</p>
+<h3 id="3-2-Block-Search-Space"><a href="#3-2-Block-Search-Space" class="headerlink" title="3.2. Block Search Space"></a>3.2. Block Search Space</h3><p>在每个宏观搜索空间，NAS挑选每个块最优的超参数，或者替换为无运算的跳跃连接。如图2，超参数定义了 1*1 卷积是否分组，深度绝技是否膨胀2倍，深度卷积的核大小k，膨胀率e。如图7，我们挑选12个可能的配置。</p>
+<h2 id="4-Neural-Architecture-Search-Algorithm"><a href="#4-Neural-Architecture-Search-Algorithm" class="headerlink" title="4. Neural Architecture Search Algorithm"></a>4. Neural Architecture Search Algorithm</h2><p>把结构搜索看做是复杂supernetwork的路径选择问题，这样确定的结构可以看做是supernetwork的某些路径。如图3，我们定义supernetwork为superblocks的序列，图4是一个例子。</p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/squeeze-nas-fig3-4.png" alt></p>
+<p>同时优化卷积权重<em>w</em>和结构参数<em>θ</em>, 优化损失函数为L<em>(</em>θ<em>,</em>w<em>)=</em>L<strong>P<em>(</em>θ<em>,</em>w<em>)+</em>α<em>∗</em>L</strong>E<em>(</em>θ*)</p>
+<p>$L_p$表示特定问题的损失，$L_E$是资源感知损失项，超参数<em>α</em>控制两个平衡。由于本工作关注与语义分割，是$L_p$像素级别的交叉熵。对于，$L_E$我们同时实验了目标平台的推断延迟和Multiply-Accumulates的估计值。</p>
+<p><code>表示特定问题的损失，</code><em>α</em><code>LP</code>是像素级别的交叉熵。对于</p>
+<p><code></code>我们同时实验了目标平台的推断延迟和Multiply-Accumulates的估计值。</p>
+<h3 id="4-1-Gumbel-Softmax"><a href="#4-1-Gumbel-Softmax" class="headerlink" title="4.1. Gumbel-Softmax"></a>4.1. Gumbel-Softmax</h3><p>为了让supernetwork的优化和计算可跟踪，每个superblock独立挑选一个候选块。这样，可以把这个选择看成是对独立类别分布的采样，把superblock i的候选块j概率记作<em>p</em>(<em>i</em>,<em>j</em>) , 用softmax定义：$p ( i , j | \theta ) = \frac { e ^ { \theta _ { i , j } } } { \sum _ { j } ^ { 13 } e ^ { \theta _ { i , j } } }$</p>
+<p>类别分布很难高效优化，所以我们使用Gumbel-Softmax松弛。Gumbel-Softmax分布由稳定参数t控制，t趋近于0，Gumbel-Softmax分布等价于类别分布，稳定参数从5.0到1.0退火。</p>
+<h2 id="4-2-Early-Stopping"><a href="#4-2-Early-Stopping" class="headerlink" title="4.2. Early Stopping"></a>4.2. Early Stopping</h2><p>我们的supernetwork方法中，优化过程需要计算每一个候选的block，无论学到的结构分布是什么。当最优的网络结构收敛的时候，性能差的候选块虽然选择的概率低，但是依然需要继续计算。所以当候选概率小于0.5%的时候，直接移除。虽然有可能低概率的候选块可能后面是最优的，但是实践中没有发现这种情况。该优化可以减少一半的搜索时间。</p>
+<h2 id="4-3-Resource-Aware-Architecture-Search"><a href="#4-3-Resource-Aware-Architecture-Search" class="headerlink" title="4.3. Resource-Aware Architecture Search"></a>4.3. Resource-Aware Architecture Search</h2><p>定义资源感知损失为：</p>
+<p>$L _ { E } ( \theta ) = \sum _ { j } ^ { N } \sum _ { i } ^ { 13 } p \left( i , j | \theta _ { i } \right) C ( i , j )$</p>
+<p><em>C</em>(<em>i</em>, <em>j</em>)表示网络块i选择候选j的资源成本。对每个块独立建模资源成本。</p>
+<h2 id="5-Experiments-and-Results"><a href="#5-Experiments-and-Results" class="headerlink" title="5. Experiments and Results"></a>5. Experiments and Results</h2><p>证明两个关键点：第一，NAS是可以产生搞准确率低延迟网络的工具。第二，优化与硬件无直接联系的指标如MAC不是个合适的代理，可能导致局部最优。</p>
+<p>沿用Small, Large, XLarge三种搜索空间。先用NAS在每个空间上对MAC进行搜索，然后在嵌入式设备上查看这些低MAC的网络的延迟作为基线。最后再搜索优化硬件感知的延迟找到3个新的网络。</p>
+<h3 id="5-1-Hardware-Agnostic-Search"><a href="#5-1-Hardware-Agnostic-Search" class="headerlink" title="5.1. Hardware-Agnostic Search"></a>5.1. Hardware-Agnostic Search</h3><p>对于与硬件无关的结构搜索，使用NAS对MAC进行优化，在MAC和mIOU上找到pareto最优，根据查找表计算每个候选块j的MAC，使得<em>C</em>(<em>i</em>,<em>j</em>)=<em>M<strong>A</strong>C<strong>S</strong>i</em>,<em>j</em></p>
+<p>。对每个搜索空间搜索找到最优的SqueezeNAS-MAC网络，结果如下表。</p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/squeeze-nas-tab1.png" alt></p>
+<h3 id="5-2-Hardware-Aware-Search"><a href="#5-2-Hardware-Aware-Search" class="headerlink" title="5.2. Hardware-Aware Search"></a>5.2. Hardware-Aware Search</h3><p>使用相同的NAS算法和搜索空间，但是使用延迟优化目标：<em>C</em>(<em>i</em>,<em>j</em>)=<em>L<strong>a</strong>t<strong>e</strong>n<strong>c</strong>y**i</em>,<em>j</em></p>
+<p>。为了计算每个模块j在候选j上的延迟，我们测量了目标平台上所有候选的推断时间，最后得到三个SqueezeNAS-LAT网络。结果见表1。</p>
+<h3 id="5-3-Implementation"><a href="#5-3-Implementation" class="headerlink" title="5.3. Implementation"></a>5.3. Implementation</h3><h3 id="5-4-Results"><a href="#5-4-Results" class="headerlink" title="5.4. Results"></a>5.4. Results</h3><h2 id="6-Network-Analysis"><a href="#6-Network-Analysis" class="headerlink" title="6. Network Analysis"></a>6. Network Analysis</h2><p>比较三者的模块选择：优化延迟的网络（Latency-aware），优化MAC的网络（MAC-aware），MobileNetV3。由于这三个都使用反向残差块，可以把MobileNetV3的块放入13个候选中，如图7。这里没有考虑SE块。</p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/squeeze-nas-fig7.png" alt></p>
+<p>可视化网络如图8，【略】</p>
+<p><img src="http://q719r0aui.bkt.clouddn.com/squeeze-nas-fig8.png" alt> <img src="http://q719r0aui.bkt.clouddn.com/squeeze-nas-fig9.png" alt> <img src="http://q719r0aui.bkt.clouddn.com/squeeze-nas-fig10.png" alt></p>
+<h2 id="7-Conclusion"><a href="#7-Conclusion" class="headerlink" title="7. Conclusion"></a>7. Conclusion</h2><p>第一、做无代理的语义分割搜索，我们的NAS生成的SqueezeNAS系列模型，相比MobileNet V3达到优越的延迟-准确率平衡。这种优越（至少部分）来自于MobileNetV3是用NAS优化图像分类作为代理实现语义分割任务的。</p>
+<p>第二、虽然MobileNetV3作者使用了几千个GPU天，但是我们的方法每次搜索只需要7-15个GPU天。也就是说，基于supernetwork的NAS在8个GPU上不需要一个周末就可以跑出来最好的结果。</p>
+<p>第三、我们做了两类NAS实验，一个搜索低MAC模型，一个搜索目标平台上低延迟模型。第二个我们获得了非常快同时准确率高的模型。最后，考虑到芯片的速度提升和计算平台的省级，NAS可以继续获得更低的延迟</p>
+
+        </div>
+        <footer class="article-footer">
             
-再有一个月2019年就要过去了，这一年里好像什么都发生了，又好像什么都没改变。
-我的生活在发生着什么呢？大概…..我变得喜欢听汪峰、Adele、还有Johnny Cash的歌；我变得会望着车窗外飞逝的光景没来由地泪湿眼眶；我变得越来越喜欢仰望天空；我变得越来越不敢在深夜推演公式。
-各种ddl日常砸脸，论文也是毫无头绪，也做不出理想的实验数据；但最难的其实是生活，作为一个人去生活。
-把自己的生活打
-        </p>
+
+
+
+    <a data-url="http://yuanquanquan.top/2020/20200313/" data-id="ck7vlyf3w0000wwv8u0kt8cec" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+
+        </footer>
     </div>
 </article>
+<!--
+    <section id="comments">
     
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <a href="/2019/2019120722/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/生活/">生活</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/生活/随笔/">随笔</a>
-            </div>
-            <div class="date"><time datetime="2019-12-06T16:28:29.000Z" itemprop="datePublished">2019-12-07</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2019/2019120722/">初次面试-字节跳动</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            有东西被加密了, 请输入密码查看.
-        </p>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-    
-        </div>
-    
 
     
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2019/2019091122/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/ml-data/2018/R/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191122184312.jpg?raw=true)" alt="十问 | 沉思录及其他" class="thumbnail-image"></span>
-    
-    
-</a>
+    </section>
 
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/生活/">生活</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/生活/随笔/">随笔</a>
-            </div>
-            <div class="date"><time datetime="2019-11-22T10:35:03.000Z" itemprop="datePublished">2019-11-22</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2019/2019091122/">十问 | 沉思录及其他</a>
-        </h1>
-    
+-->
+<!--来比力评论系统，在commetn/livebe.ejs中-->
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQ4OC8xNjAxNQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
 
-        <p class="article-excerpt">
-            ​     终于完了这本霍金沉思录，也是霍金先生的遗作，这位伟大的思想家留给世界的最后的礼物。作为多年来的霍金粉丝，读这部作品是酣畅淋漓，但也不乏惆怅满腹。毕竟，我们不会再有机会读到先生的作品了。
+       if (typeof LivereTower === 'function') { return; }
 
-​      史蒂芬 ·  霍金在2018年3月14日逝世，这天恰好是爱因斯坦的生日，霍金出生于1942年1月8日，又恰好是伽利略逝世三百周年，很多人都在感慨历史的惊人巧合；而他自己，在和脊髓侧索硬化
-        </p>
-    </div>
-</article>
-    
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2019/2019091117/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3545615097,2982278649&amp;fm=26&amp;gp=0.jpg)" alt="芝诺之圆 | 方向、迷失与北京三年" class="thumbnail-image"></span>
-    
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/生活/">生活</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/生活/随笔/">随笔</a>
-            </div>
-            <div class="date"><time datetime="2019-11-17T03:34:04.000Z" itemprop="datePublished">2019-11-17</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2019/2019091117/">芝诺之圆 | 方向、迷失与北京三年</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            ​        
-​        物理学家喜欢模型思维，并且笃信奥卡姆剃刀原则，也就是说，在一个好的模型下，我们可以简洁、优雅地，更重要的是，用最少的知识与经验来作出正确的，符合自然行为的预测。
-​        历史上这样成功的模型不多，牛顿的机械世界观，爱因斯坦的时空论，而大多数其他的工作都有赖于足够多的知识，也就是经验来作出预测，理解世界。近年来火的一塌糊涂的人工智能就是在尝试更高效地利
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-        
-            </div></section>
-        
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2018" class="archive-year"><i class="icon fa fa-calendar-o"></i>2018</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/2018091015/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrksz5k6bj213p0laqv5.jpg)" alt="你见过什么样的云霄？" class="thumbnail-image"></span>
-    
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/生活/">生活</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/生活/旅行/">旅行</a>
-            </div>
-            <div class="date"><time datetime="2018-09-10T07:21:32.000Z" itemprop="datePublished">2018-09-10</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/2018091015/">你见过什么样的云霄？</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-花了三年时间做的家乡的航拍视频，有点生涩，顺便放上来试试hexo的视频嵌入。
-你见过什么样的云霄？
-
-
-
-
-123456789&lt;iframe 	height=300 width=510 	src=&apos;http://player.youku.com/embed/XMzc4NzA3Njg0MA==&apos; 	frameborder=0  allowfullscreen&gt;&lt
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/2018090413/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://ww1.sinaimg.cn/large/d40b6c29gy1fvrkt26bguj24he288u0z.jpg)" alt="开篇博客" class="thumbnail-image"></span>
-    
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/生活/">生活</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/生活/随笔/">随笔</a>
-            </div>
-            <div class="date"><time datetime="2018-09-04T05:38:44.000Z" itemprop="datePublished">2018-09-04</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/2018090413/">开篇博客</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-开个博客，写写东西。
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-
-    </div></section>
-
-
-
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
 
                         </div>
                     </section>
@@ -492,6 +421,19 @@
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/20200312/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">【Object Detection】-YOLOV1</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -756,11 +698,13 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
+    var disqus_url = 'http://yuanquanquan.top/2020/20200313/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
