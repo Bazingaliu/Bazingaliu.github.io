@@ -20,12 +20,12 @@
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="YOLO算法简介 YOLO十分简单，一个网络同时对多个物体进行分类和定位，没有proposal的概念，是one-stage实时检测网络的里程碑，标准版在TitanX达到45 fps，快速版达到150fps，但精度不及当时的SOTA网络 YOLO算法使用深度神经网络进行对象的位置检测以及分类，主要的特点是速度够快，而且准确率也很高，采用直接预测目标对象的边界框的方法，将候选区和对象识别这两个阶段合二">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://q719r0aui.bkt.clouddn.com/yolov1%EF%BC%881%EF%BC%89.png">
-<meta property="og:updated_time" content="2020-03-12T06:22:02.937Z">
+<meta property="og:image" content="http://q8pl344z8.bkt.clouddn.com/yolov1%EF%BC%881%EF%BC%89.png">
+<meta property="og:updated_time" content="2020-04-13T04:38:17.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Object Detection】-YOLOV1">
 <meta name="twitter:description" content="YOLO算法简介 YOLO十分简单，一个网络同时对多个物体进行分类和定位，没有proposal的概念，是one-stage实时检测网络的里程碑，标准版在TitanX达到45 fps，快速版达到150fps，但精度不及当时的SOTA网络 YOLO算法使用深度神经网络进行对象的位置检测以及分类，主要的特点是速度够快，而且准确率也很高，采用直接预测目标对象的边界框的方法，将候选区和对象识别这两个阶段合二">
-<meta name="twitter:image" content="http://q719r0aui.bkt.clouddn.com/yolov1%EF%BC%881%EF%BC%89.png">
+<meta name="twitter:image" content="http://q8pl344z8.bkt.clouddn.com/yolov1%EF%BC%881%EF%BC%89.png">
     
 
     
@@ -226,7 +226,7 @@
 <p>YOLO算法使用深度神经网络进行对象的位置检测以及分类，主要的特点是速度够快，而且准确率也很高，采用直接预测目标对象的边界框的方法，将候选区和对象识别这两个阶段合二为一。</p>
 <p>Yolo算法不再是窗口滑动了，而是直接将原始图片分割成互不重合的小方块，然后通过卷积最后生产这样大小的特征图，基于上面的分析，可以认为特征图的每个元素也是对应原始图片的一个小方块，然后用每个元素来可以预测那些中心点在该小方格内的目标，这就是Yolo算法的朴素思想，而YOLOv3算法再以往的结构上做出了改进，增加了多尺度检测，以及更深的网络结构darknet53,这是比较主要的改进，还有某些细节上的变动。</p>
 <p><em>Unified Detection</em></p>
-<p><img src="http://q719r0aui.bkt.clouddn.com/yolov1%EF%BC%881%EF%BC%89.png" alt></p>
+<p><img src="http://q8pl344z8.bkt.clouddn.com/yolov1%EF%BC%881%EF%BC%89.png" alt></p>
 <p>将输入分为S*S的格子，如果GT的中心点在格子中，则格子负责该GT的预测：</p>
 <p>对于PASCAL VOC数据集来说，设定s=7如图所示，分为7*7个小格子，每个格子预测两个bounding box。</p>
 <p>如果一个目标的中心落入一个网格单元中，该网格单元负责检测该目标。</p>
@@ -243,7 +243,7 @@
 <p>其次，YOLO在进行预测时，会对图像进行全面地推理。与基于滑动窗口和区域提出的技术不同，YOLO在训练期间和测试时会看到整个图像，所以它隐式地编码了</p>
 <p>关于类的上下文信息以及它们的外观。快速R-CNN是一种顶级的检测方法，但是它看不到更大的上下文信息，所以在图像中会将背景块误检为目标。与快速R-CNN相比，YOLO的背景误检数量少了一半</p>
 <p>然后，由于YOLO具有高度泛化能力，因此在应用于新领域或碰到意外的输入时不太可能出故障。</p>
-<p> <img src="http://q719r0aui.bkt.clouddn.com/yolov1%EF%BC%882%EF%BC%89.png" alt></p>
+<p> <img src="http://q8pl344z8.bkt.clouddn.com/yolov1%EF%BC%882%EF%BC%89.png" alt></p>
 <p>所使用的卷积结构如图所示：受到GoogLeNet图像分类模型的启发。网络有24个卷积层，后面是2个全连接层，最后输出层用线性函数做激活函数，其它层激活函数都是Leaky ReLU。</p>
 <p>我们 只使用1×1降维层，后面是3×3卷积层，</p>
 <p><strong>Training</strong></p>
@@ -256,7 +256,7 @@
 <p><strong>第一部分</strong>为坐标回归，使用平方差损失，为了使得模型更关注小目标的小误差，而不是大目标的小误差，对宽高使用了平方根损失进行变相加权。这里$\mathbb { 1 } _ { i j } ^ { \mathrm { obj } }$指代当前b box是否负责GT的预测，需要满足2个条件，首先GT的中心点在该b box对应的格子中，其次该b box要是对应的格子的个box中与GT的IOU最大</p>
 <p><strong>第二部分</strong>为b box置信度的回归，$\mathbb { 1 } _ { i j } ^ { \mathrm { obj } }$跟上述一样，$\mathbb { 1 } _ { i j } ^ { \mathrm { nooobj } }$为$$\mathbb { 1 } _ { i j } ^ { \mathrm { obj } }$$的b box，由于负样本数量较多，所以给了个低权重。若有目标，$\begin{array} hat { C }\end{array}$实际为IOU，虽然很多实现直接取1.</p>
 <p><strong>第三部</strong>分为分类置信度，相对于格子而言，$\mathbb { 1 } _ { i j } ^ { \mathrm { obj } }$指代GT中心是否在格子中</p>
-<p><img src="http://q719r0aui.bkt.clouddn.com/yolov1%EF%BC%883%EF%BC%89.png" alt="如图所示"></p>
+<p><img src="http://q8pl344z8.bkt.clouddn.com/yolov1%EF%BC%883%EF%BC%89.png" alt="如图所示"></p>
 <p>YOLO在ImageNet分类任务上以一半的分辨率（224*224的输入图像）预训练卷积层，然后将分辨 率加倍来进行检测。</p>
 <p>训练中采用了drop out和数据增强（data augmentation）来防止过拟合.</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>  开创性的one-stage detector，在卷积网络后面接两个全连接层进行定位和置信度的预测，并设计了一个新的轻量级主干网络，虽然准确率与SOTA有一定距离，但是模型的速度真的很快<br>  作者提到了YOLO的几点局限性：</p>
@@ -272,7 +272,7 @@
 
 
 
-    <a data-url="http://yuanquanquan.top/2020/20200312/" data-id="ck84gkluz004focv82a3ymapq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yuanquanquan.top/2020/20200312/" data-id="ck8xznylw002ra4v809o3lfgc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -452,7 +452,7 @@
                             <a href="/2020/20200323/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q719r0aui.bkt.clouddn.com/EfficientDet-3.jpg)" alt="EfficientDet:Scalable and Efficient Object Detection" class="thumbnail-image"></span>
+        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/EfficientDet-3.jpg)" alt="EfficientDet:Scalable and Efficient Object Detection" class="thumbnail-image"></span>
     
     
 </a>
@@ -472,7 +472,7 @@
                             <a href="/2020/20200321/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q719r0aui.bkt.clouddn.com/%E7%BA%A2%E5%A4%96-3.jpg)" alt="红外循迹传感器" class="thumbnail-image"></span>
+        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/%E7%BA%A2%E5%A4%96-3.jpg)" alt="红外循迹传感器" class="thumbnail-image"></span>
     
     
 </a>
@@ -492,7 +492,7 @@
                             <a href="/2020/20200313/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q719r0aui.bkt.clouddn.com/squeeze-nas-fig2.png)" alt="SqueezeNAS:Fast neural architecture search for faster semantic segmentation" class="thumbnail-image"></span>
+        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig2.png)" alt="SqueezeNAS:Fast neural architecture search for faster semantic segmentation" class="thumbnail-image"></span>
     
     
 </a>
@@ -512,7 +512,7 @@
                             <a href="/2020/20200312/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q719r0aui.bkt.clouddn.com/yolov1%EF%BC%881%EF%BC%89.png)" alt="【Object Detection】-YOLOV1" class="thumbnail-image"></span>
+        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/yolov1%EF%BC%881%EF%BC%89.png)" alt="【Object Detection】-YOLOV1" class="thumbnail-image"></span>
     
     
 </a>
