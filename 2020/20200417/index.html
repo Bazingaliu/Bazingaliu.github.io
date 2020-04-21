@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>逆向工程：从Gerber到PCB | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Altium">
+    
+    <meta name="description" content="序​       最近将PCB图纸送去工厂打样，需要将Gerber转换成PCB文件，如何将Gerber转换成PCB的文章在网上可以找到很多，但大部分文章只是简单罗列了其中的几个步骤。对于初学者来说，只是”知其然而不知其所以然”，如果转换不成功、甚至于转换完成之后的PCB的逻辑连接发生了错误，也只能是一脸懵逼，不知道错在哪里。 ​        所以这篇博客记录一下Gerber转换PCB过程中的每个">
+<meta name="keywords" content="Altium">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逆向工程：从Gerber到PCB">
+<meta property="og:url" content="http://yuanquanquan.top/2020/20200417/index.html">
+<meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
+<meta property="og:description" content="序​       最近将PCB图纸送去工厂打样，需要将Gerber转换成PCB文件，如何将Gerber转换成PCB的文章在网上可以找到很多，但大部分文章只是简单罗列了其中的几个步骤。对于初学者来说，只是”知其然而不知其所以然”，如果转换不成功、甚至于转换完成之后的PCB的逻辑连接发生了错误，也只能是一脸懵逼，不知道错在哪里。 ​        所以这篇博客记录一下Gerber转换PCB过程中的每个">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://q8pl344z8.bkt.clouddn.com/Gerber-1.webp">
+<meta property="og:updated_time" content="2020-04-21T08:04:39.037Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="逆向工程：从Gerber到PCB">
+<meta name="twitter:description" content="序​       最近将PCB图纸送去工厂打样，需要将Gerber转换成PCB文件，如何将Gerber转换成PCB的文章在网上可以找到很多，但大部分文章只是简单罗列了其中的几个步骤。对于初学者来说，只是”知其然而不知其所以然”，如果转换不成功、甚至于转换完成之后的PCB的逻辑连接发生了错误，也只能是一脸懵逼，不知道错在哪里。 ​        所以这篇博客记录一下Gerber转换PCB过程中的每个">
+<meta name="twitter:image" content="http://q8pl344z8.bkt.clouddn.com/Gerber-1.webp">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon_1.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+    <!--百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?c48627a60135ae47d77a79844f7e5b04";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <!--百度SEO-->
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+        </script>
+    <!--googleseo-->
+    <meta name="google-site-verification" content="p1u63jgcp2J7NsJHR_UxQX2Fzj_UY6Zwf8C1zTRpONM">
+    
+    <meta name="google-site-verification" content="8ojU19tXQIB94wIY0cAPI5BKSsrqV-xxrlx46C_-WMg">
+	<!--xiongzhang-->
+	<script src="https://xiongzhang.baidu.com/sdk/c.js?appid=1608109025415176"></script>
+	<!--shougou-->
+	<meta name="sogou_site_verification" content="tRwGjUhpuk">
+	<!--360-->
+	<meta name="360-site-verification" content="06663b5113fe8a05769074a579c4d4ea">
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">我愿做你光华中淡淡的一笔</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives">归档</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AI/">AI</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AI/Deep-Learning/">Deep Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AI/Machine-Learning-Data/">Machine Learning & Data</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/">日常技术</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/Linux/">Linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/jupyter/">jupyter</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/博客搭建/">博客搭建</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/日常技术/硬件学习/">硬件学习</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/汇总帖/">汇总帖</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/">生活</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/旅行/">旅行</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活/随笔/">随笔</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/笔记/">笔记</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/笔记/凸优化笔记/">凸优化笔记</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/笔记/复健计划/">复健计划</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/笔记/强化学习笔记/">强化学习笔记</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/笔记/论文笔记/">论文笔记</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/算法/">算法</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/算法/LeetCode/">LeetCode</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/算法/codeforces/">codeforces</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/算法/kick-start/">kick start</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/board">留言板</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/日常技术/">日常技术</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/日常技术/硬件学习/">硬件学习</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Gerber" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        逆向工程：从Gerber到PCB
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2020/20200417/" class="article-date">
+            <time datetime="2020-04-17T06:40:40.000Z" itemprop="datePublished">2020-04-17</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Altium/">Altium</a>
+    </div>
+
+                <!---cloud阅读量统计系统-->
+                阅读数量:<span id="/2020/20200417/" class="leancloud_visitors" data-flag-title="逆向工程：从Gerber到PCB"></span>次
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="序"><a href="#序" class="headerlink" title="序"></a><em>序</em></h1><p>​       最近将PCB图纸送去工厂打样，需要将Gerber转换成PCB文件，如何将Gerber转换成PCB的文章在网上可以找到很多，但大部分文章只是简单罗列了其中的几个步骤。对于初学者来说，只是”知其然而不知其所以然”，如果转换不成功、甚至于转换完成之后的PCB的逻辑连接发生了错误，也只能是一脸懵逼，不知道错在哪里。</p>
+<p>​        所以这篇博客记录一下Gerber转换PCB过程中的每个步骤以及执行该步骤的原因、目的，能对这一”逆向工程“的过程有一个清晰的了解。</p>
+<p><strong>Gerber文件是什么？</strong></p>
+<p><strong>Gerber</strong>，又称光绘文件，是一种标准的文件格式。PCB板厂可以通过Gerber直接生产出最终的PCB。目前常用的格式为RS-274X，大部分板厂也支持最新Gerber X2格式(多了板的层叠信息与属性)。</p>
+<p>国内很多工程师喜欢把PCB设计文件直接发给板厂，其实这一做法是有风险的。因为板厂最终还是需要把PCB文件转换成Gerber才能进行生产，而从PCB到Gerber的这一过程存在很多潜在的问题：</p>
+<ul>
+<li>由于Gerber精度设置的问题，PCB上连通的网络未必在Gerber上连通</li>
+<li>由于EDA工具版本的问题，可能板厂打开的PCB文件已经发生了变化</li>
+<li>由于缺乏沟通，PCB上一些不需要显示的参数也遗留在成品上</li>
+</ul>
+<p>总而言之，PCB转成Gerber的这一过程未必是copy不走样，设计师应对这一过程负责。所以一般有经验的老工程师都会亲手把PCB转成Gerber，然后通过CAM350之类的软件，检查一下Gerber是否有问题，然后再送板厂加工。</p>
+<p>另外，无论您使用Altium、Allegro或者是Expedition，只要转成了Gerber，板厂都可以正确识别。</p>
+<p>还有一点，从Gerber反向生成PCB是比较困难的，出于安全性的考虑，企业也不愿意把设计源文件直接发给板厂。</p>
+<p><strong>Gerber的组成</strong></p>
+<p>Gerber由两个重要的组成部分，缺一不可：</p>
+<ul>
+<li>Gerber光绘文件：PCB的每个层都对应一个独立的Gerber文件，用于描述该层中的内容(有点类似于胶片)</li>
+<li>NC Drill钻孔文件：垂直方向上的钻孔，决定了不同层中导线的连接</li>
+</ul>
+<p>从3D的角度，完整的Gerber文件包含了每个层的信息以及各个层中用于信号连接的钻孔(过孔)：<img src="http://q8pl344z8.bkt.clouddn.com/Gerber-1.webp" alt></p>
+<p>以AD为例，生成Gerber文件时，不是一个文件，而是一组文件，包含了PCB中每个层中的信息。下表是AD生成的Gerber文件后缀极其代表的意义。</p>
+<table>
+<thead>
+<tr>
+<th><strong>GERBER后缀</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G1，G2，etc</td>
+<td>Mid-layer 1, 2(中间信号层)</td>
+</tr>
+<tr>
+<td>GBL</td>
+<td>Bottom Layer(底层)</td>
+</tr>
+<tr>
+<td>GBO</td>
+<td>Bottom Overlay(底层丝印)</td>
+</tr>
+<tr>
+<td>GBP</td>
+<td>Bottom Paste Mask(底层助焊)</td>
+</tr>
+<tr>
+<td>GBS</td>
+<td>Bottom Solder Mask(底层阻焊)</td>
+</tr>
+<tr>
+<td>GD1, GD2, etc.</td>
+<td>Drill Drawing(钻孔图)</td>
+</tr>
+<tr>
+<td>GG1, GG2, etc.</td>
+<td>Drill Guide(钻孔向导)</td>
+</tr>
+<tr>
+<td>GKO</td>
+<td>Keep Out Layer</td>
+</tr>
+<tr>
+<td>GM1, GM2, etc.</td>
+<td>Mechanical Layer 1, 2(机械层)</td>
+</tr>
+<tr>
+<td>GP1, GP2, etc.</td>
+<td>Internal Plane Layer 1, 2(内电层)</td>
+</tr>
+<tr>
+<td>GPB</td>
+<td>Pad Master Bottom(底层焊盘)</td>
+</tr>
+<tr>
+<td>GPT</td>
+<td>Pad Master Top(顶层焊盘)</td>
+</tr>
+<tr>
+<td>GTL</td>
+<td>Top Layer(顶层)</td>
+</tr>
+<tr>
+<td>GTO</td>
+<td>Top Overlay(顶层丝印)</td>
+</tr>
+<tr>
+<td>GTP</td>
+<td>Top Paste Mask(底层助焊)</td>
+</tr>
+<tr>
+<td>GTS</td>
+<td>Top Solder Mask(顶层阻焊)</td>
+</tr>
+</tbody>
+</table>
+<p>如果是Allegro，那就是一堆的*.art文件(Artwork)。</p>
+<p>当然，只有Gerber文件是不够的，因为Gerber并没有层与层之间导线连接的关系。如果一个信号流过了多个层，肯定需要由过孔进行过渡。NC Drill文件记录了PCB上所有需要钻孔的信息(包括位置、孔的大小等)，也是制造PCB不可或缺的关键信息。</p>
+<p>以下是AD生成的NC Drill钻孔文件：</p>
+<table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FileName.DRL(可选)</td>
+<td>二进制格式的钻孔文件。对于一个存在盲、埋孔的多层PCB，每个Layer Pair(层对)都会生成一个单独后缀的TX*</td>
+</tr>
+<tr>
+<td>FileName.DRR</td>
+<td>钻孔报告 - 包括tool的详细信息，孔的尺寸、数量、Tool travel等</td>
+</tr>
+<tr>
+<td>FileName.TXT</td>
+<td>ASCII格式的钻孔文件。对于一个存在盲、埋孔的多层PCB，每个Layer Pair(层对)都会生成一个单独后缀的TX*</td>
+</tr>
+<tr>
+<td>FileName-Plated.TXT(可选)</td>
+<td>ASCII格式的钻孔文件. 选择后只文件中只记录PTH的钻孔。对于不通类型的钻孔(比如Slot、方形)，会生成单独的文件</td>
+</tr>
+<tr>
+<td>FileName-NonPlated.TXT(可选)</td>
+<td>ASCII格式的钻孔文件. 选择后只文件中只记录NPTH的钻孔。对于不通类型的钻孔(比如Slot、方形)，会生成单独的文件</td>
+</tr>
+<tr>
+<td>FileName-BoardEdgeRout.TXT(可选)</td>
+<td>ASCII格式的rout文件。记录了板形以及板子的cutout</td>
+</tr>
+<tr>
+<td>FileName.LDP</td>
+<td>ASCII格式的钻孔对报告。被CAM编辑器用来检测盲、埋孔</td>
+</tr>
+</tbody>
+</table>
+<p>下图是一个默认状态下AD生成的NC Drill示例：</p>
+<p><img src="http://q8pl344z8.bkt.clouddn.com/Geber-2.webp" alt></p>
+<p>示例中含有盲、埋孔，生成NC Drill时每种类型的盲、埋孔都会单独生成一个*.TX1/2/3的文件。不同类型的孔(Slot、方形)也会单独生成一个TXT文件。</p>
+<p>说了那么多无非是要强调一点，无论正向还是逆向，这两个类型的文件是绝对不可以少的：</p>
+<ol>
+<li>一个叫Gerber</li>
+<li>一个叫NC Drill</li>
+</ol>
+<p><strong>如何从Gerber生成PCB</strong></p>
+<p>Altium Designer自带了一个类似CAM350的工具，叫Camtastic。虽然用起来不如CAM350那么顺手，但基本的功能都是没有问题的。从Gerber到PCB的逆向工程，就由Camtastic工具来完成。</p>
+<p><strong>第一步：新建一个Cam文档</strong></p>
+<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-3.png" alt></p>
+<p><strong>第二步：导入Gerber及NC Drill</strong></p>
+<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-4.jpg" alt></p>
+<p>这是比较关键的一步，如果只导入Gerber，不导入NC Drill，会导致后续无法解压网表。如果有IPC Netlist，也可以一起导入，这样在解压网表时，网表的名称就会与源设计相同，而默认情况下系统会自定义网表的名称。</p>
+<p>在Preference中，可以定义CAM识别的文件后缀。如果要导入Allegro或者Expedition的Gerber，可以在这里添加相应的后缀以便于快速识别。</p>
+<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-5.webp" alt></p>
+<p>导入完成后，就可以在AD中查看或编辑Gerber文件了：</p>
+<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-6.png" alt></p>
+<p><strong>第三步：层的映射</strong></p>
+<p>这也是比较关键的一步，点击<strong>Tables » Layers</strong>打开映射界面：</p>
+<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-7.jpg" alt></p>
+<p>左侧的Gerber层必须和Type列中的PCB层正确映射。其中信号层的映射尤其重要：顶层/底层分别映射为Top/Bottom；中间信号层映射为Internal；内电层映射为Pos Plane/Neg Plane。</p>
+<p>除此之外，NC Drill的TXT文件也需要正确映射到Drill Top/Bottom/Int。</p>
+<p><strong>第四步：层的顺序(Layer Order)</strong></p>
+<p>层映射完毕之后，会弹出Create / Update Layer Order对话框(也可以通过<strong>Layer » Order</strong>菜单访问)：</p>
+<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-8.png" alt></p>
+<p>在这里，需要定义所有的信号层(包括Top、Bottom、中间信号层及内电层)的物理顺序。这一步也相当关键，如果存在盲、埋孔，这里定义错误的话会直接导致PCB导出的错误。记住，Top层的Physical  Order始终是1，其它层的顺序按实际的板层结构依次类推。Physical Order中的数字是不可以重复的。</p>
+<p><strong>第五步：解压网表(Extract Net)</strong></p>
+<p>如果以上步骤都没有问题的话，就可以通过Gerber和NC Drill反推出PCB中的网表信息。点击<strong>Tools</strong> <strong>»</strong> <strong>Netlist</strong> <strong>»</strong> <strong>Extract</strong>菜单得到PCB的网表：</p>
+<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-9.png" alt></p>
+<p><strong>第六步：导出PCB</strong></p>
+<p>一切就绪，最后一步是导出PCB。如果缺少Net List或其它信息，Export to PCB的菜单是灰色不能点击的。</p>
+<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-10.jpg" alt></p>
+<p><strong>第七步：清理PCB文件</strong></p>
+<p>​      逆向工程导出的PCB只是Track和Pad的组合体，压根就没有器件(Component)的概念。您还需要通过无数次的Ctrl+C、Ctrl+V才能重新把这些零零碎碎的对象组合成正常的PCBLib。向工程只是复原PCB的样式和逻辑连接而已，并非是恢复到原始的PCB设计文件。</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yuanquanquan.top/2020/20200417/" data-id="ck99mlacf003a1cv8wrue84m7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+
+        </footer>
+    </div>
+</article>
+<!--
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+-->
+<!--来比力评论系统，在commetn/livebe.ejs中-->
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zOTQ4OC8xNjAxNQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/LQNhgeygPuSzm62?s=09" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/profile.php?id=100042920468816" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/Bazingaliu" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/20200323/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">EfficientDet:Scalable and Efficient Object Detection</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/20200417/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/Gerber-1.webp)" alt="逆向工程：从Gerber到PCB" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/日常技术/">日常技术</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/日常技术/硬件学习/">硬件学习</a></p>
+                            <p class="item-title"><a href="/2020/20200417/" class="title">逆向工程：从Gerber到PCB</a></p>
+                            <p class="item-date"><time datetime="2020-04-17T06:40:40.000Z" itemprop="datePublished">2020-04-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/20200323/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/EfficientDet-3.jpg)" alt="EfficientDet:Scalable and Efficient Object Detection" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/笔记/论文笔记/">论文笔记</a></p>
+                            <p class="item-title"><a href="/2020/20200323/" class="title">EfficientDet:Scalable and Efficient Object Detection</a></p>
+                            <p class="item-date"><time datetime="2020-03-23T09:54:14.000Z" itemprop="datePublished">2020-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/20200321/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/%E7%BA%A2%E5%A4%96-3.jpg)" alt="红外循迹传感器" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/日常技术/">日常技术</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/日常技术/硬件学习/">硬件学习</a></p>
+                            <p class="item-title"><a href="/2020/20200321/" class="title">红外循迹传感器</a></p>
+                            <p class="item-date"><time datetime="2020-03-21T12:37:40.000Z" itemprop="datePublished">2020-03-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/20200313/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig2.png)" alt="SqueezeNAS:Fast neural architecture search for faster semantic segmentation" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/笔记/论文笔记/">论文笔记</a></p>
+                            <p class="item-title"><a href="/2020/20200313/" class="title">SqueezeNAS:Fast neural architecture search for faster semantic segmentation</a></p>
+                            <p class="item-date"><time datetime="2020-03-13T03:32:41.000Z" itemprop="datePublished">2020-03-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/20200312/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/yolov1%EF%BC%881%EF%BC%89.png)" alt="【Object Detection】-YOLOV1" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/笔记/复健计划/">复健计划</a></p>
+                            <p class="item-title"><a href="/2020/20200312/" class="title">【Object Detection】-YOLOV1</a></p>
+                            <p class="item-date"><time datetime="2020-03-12T02:36:03.000Z" itemprop="datePublished">2020-03-12</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">联系方式</h3>
+        <div class="widget">
+            <!--yuanquanquan29@gmail.com-->
+		<p>yuanquanquan29@gmail.com</p>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">37</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/Deep-Learning/">Deep Learning</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/AI/Machine-Learning-Data/">Machine Learning & Data</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/">日常技术</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/jupyter/">jupyter</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/博客搭建/">博客搭建</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日常技术/硬件学习/">硬件学习</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/汇总帖/">汇总帖</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/旅行/">旅行</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/随笔/">随笔</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">17</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/凸优化笔记/">凸优化笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/复健计划/">复健计划</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/强化学习笔记/">强化学习笔记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/论文笔记/">论文笔记</a><span class="category-list-count">11</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/LeetCode/">LeetCode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/codeforces/">codeforces</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/kick-start/">kick start</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">29</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Altium/" style="font-size: 10px;">Altium</a> <a href="/tags/AutoML/" style="font-size: 10px;">AutoML</a> <a href="/tags/CV/" style="font-size: 13.33px;">CV</a> <a href="/tags/CVPR/" style="font-size: 13.33px;">CVPR</a> <a href="/tags/GAN/" style="font-size: 10px;">GAN</a> <a href="/tags/ICLR/" style="font-size: 10px;">ICLR</a> <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Machine-Learning-Data/" style="font-size: 10px;">Machine Learning & Data</a> <a href="/tags/Object-Detection/" style="font-size: 11.67px;">Object Detection</a> <a href="/tags/SAS/" style="font-size: 11.67px;">SAS</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/codeforces/" style="font-size: 10px;">codeforces</a> <a href="/tags/cs231n/" style="font-size: 16.67px;">cs231n</a> <a href="/tags/dl-ai/" style="font-size: 20px;">dl.ai</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/homework/" style="font-size: 18.33px;">homework</a> <a href="/tags/install/" style="font-size: 13.33px;">install</a> <a href="/tags/python/" style="font-size: 11.67px;">python</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/优化理论/" style="font-size: 10px;">优化理论</a> <a href="/tags/单片机/" style="font-size: 11.67px;">单片机</a> <a href="/tags/强化学习/" style="font-size: 13.33px;">强化学习</a> <a href="/tags/招聘/" style="font-size: 10px;">招聘</a> <a href="/tags/教程/" style="font-size: 13.33px;">教程</a> <a href="/tags/旅行/" style="font-size: 10px;">旅行</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/算法/" style="font-size: 13.33px;">算法</a> <a href="/tags/航拍/" style="font-size: 10px;">航拍</a> <a href="/tags/视频/" style="font-size: 10px;">视频</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://f-mu.github.io">咸鱼学弟</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 理科生写给世界的情书</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+
+				<!--coding pages and github-->
+                <p><span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span> and <span><a href="https://github.com" style="font-weight: bold">Github</a></span></p>
+                <!--这一段是不蒜子的访问量统计脚本-->
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次 &nbsp;   </span>
+                <span id="busuanzi_container_site_uv">
+                    访客数<span id="busuanzi_value_site_uv"></span>人次
+                  </span>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--往下是cloud的文章阅读量系统-->
+<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+<script>
+    var APP_ID = 'YVSE8R91f8Qc6d6FwMTnwytk-gzGzoHsz';
+    var APP_KEY = 'ajFB9Ueh08Y5pIvkDsXSOW56';
+    AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+    });
+    // 显示次数
+    function showTime(Counter) {
+        var query = new AV.Query("Counter");
+        if($(".leancloud_visitors").length > 0){
+            var url = $(".leancloud_visitors").attr('id').trim();
+            // where field
+            query.equalTo("words", url);
+            // count
+            query.count().then(function (number) {
+                // There are number instances of MyClass where words equals url.
+                $(document.getElementById(url)).text(number?  number : '--');
+            }, function (error) {
+                // error is an instance of AVError.
+            });
+        }
+    }
+    // 追加pv
+    function addCount(Counter) {
+        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+        var Counter = AV.Object.extend("Counter");
+        var query = new Counter;
+        query.save({
+            words: url
+        }).then(function (object) {
+        })
+    }
+    $(function () {
+        var Counter = AV.Object.extend("Counter");
+        addCount(Counter);
+        showTime(Counter);
+    });
+</script>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://yuanquanquan.top/2020/20200417/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

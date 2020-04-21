@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yuanquanquan.top/"/>
-  <updated>2020-04-13T04:30:43.598Z</updated>
+  <updated>2020-04-21T08:04:39.037Z</updated>
   <id>http://yuanquanquan.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>逆向工程：从Gerber到PCB</title>
+    <link href="http://yuanquanquan.top/2020/20200417/"/>
+    <id>http://yuanquanquan.top/2020/20200417/</id>
+    <published>2020-04-17T06:40:40.000Z</published>
+    <updated>2020-04-21T08:04:39.037Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="序"><a href="#序" class="headerlink" title="序"></a><em>序</em></h1><p>​       最近将PCB图纸送去工厂打样，需要将Gerber转换成PCB文件，如何将Gerber转换成PCB的文章在网上可以找到很多，但大部分文章只是简单罗列了其中的几个步骤。对于初学者来说，只是”知其然而不知其所以然”，如果转换不成功、甚至于转换完成之后的PCB的逻辑连接发生了错误，也只能是一脸懵逼，不知道错在哪里。</p><p>​        所以这篇博客记录一下Gerber转换PCB过程中的每个步骤以及执行该步骤的原因、目的，能对这一”逆向工程“的过程有一个清晰的了解。</p><p><strong>Gerber文件是什么？</strong></p><p><strong>Gerber</strong>，又称光绘文件，是一种标准的文件格式。PCB板厂可以通过Gerber直接生产出最终的PCB。目前常用的格式为RS-274X，大部分板厂也支持最新Gerber X2格式(多了板的层叠信息与属性)。</p><p>国内很多工程师喜欢把PCB设计文件直接发给板厂，其实这一做法是有风险的。因为板厂最终还是需要把PCB文件转换成Gerber才能进行生产，而从PCB到Gerber的这一过程存在很多潜在的问题：</p><ul><li>由于Gerber精度设置的问题，PCB上连通的网络未必在Gerber上连通</li><li>由于EDA工具版本的问题，可能板厂打开的PCB文件已经发生了变化</li><li>由于缺乏沟通，PCB上一些不需要显示的参数也遗留在成品上</li></ul><p>总而言之，PCB转成Gerber的这一过程未必是copy不走样，设计师应对这一过程负责。所以一般有经验的老工程师都会亲手把PCB转成Gerber，然后通过CAM350之类的软件，检查一下Gerber是否有问题，然后再送板厂加工。</p><p>另外，无论您使用Altium、Allegro或者是Expedition，只要转成了Gerber，板厂都可以正确识别。</p><p>还有一点，从Gerber反向生成PCB是比较困难的，出于安全性的考虑，企业也不愿意把设计源文件直接发给板厂。</p><p><strong>Gerber的组成</strong></p><p>Gerber由两个重要的组成部分，缺一不可：</p><ul><li>Gerber光绘文件：PCB的每个层都对应一个独立的Gerber文件，用于描述该层中的内容(有点类似于胶片)</li><li>NC Drill钻孔文件：垂直方向上的钻孔，决定了不同层中导线的连接</li></ul><p>从3D的角度，完整的Gerber文件包含了每个层的信息以及各个层中用于信号连接的钻孔(过孔)：<img src="http://q8pl344z8.bkt.clouddn.com/Gerber-1.webp" alt></p><p>以AD为例，生成Gerber文件时，不是一个文件，而是一组文件，包含了PCB中每个层中的信息。下表是AD生成的Gerber文件后缀极其代表的意义。</p><table><thead><tr><th><strong>GERBER后缀</strong></th><th><strong>描述</strong></th></tr></thead><tbody><tr><td>G1，G2，etc</td><td>Mid-layer 1, 2(中间信号层)</td></tr><tr><td>GBL</td><td>Bottom Layer(底层)</td></tr><tr><td>GBO</td><td>Bottom Overlay(底层丝印)</td></tr><tr><td>GBP</td><td>Bottom Paste Mask(底层助焊)</td></tr><tr><td>GBS</td><td>Bottom Solder Mask(底层阻焊)</td></tr><tr><td>GD1, GD2, etc.</td><td>Drill Drawing(钻孔图)</td></tr><tr><td>GG1, GG2, etc.</td><td>Drill Guide(钻孔向导)</td></tr><tr><td>GKO</td><td>Keep Out Layer</td></tr><tr><td>GM1, GM2, etc.</td><td>Mechanical Layer 1, 2(机械层)</td></tr><tr><td>GP1, GP2, etc.</td><td>Internal Plane Layer 1, 2(内电层)</td></tr><tr><td>GPB</td><td>Pad Master Bottom(底层焊盘)</td></tr><tr><td>GPT</td><td>Pad Master Top(顶层焊盘)</td></tr><tr><td>GTL</td><td>Top Layer(顶层)</td></tr><tr><td>GTO</td><td>Top Overlay(顶层丝印)</td></tr><tr><td>GTP</td><td>Top Paste Mask(底层助焊)</td></tr><tr><td>GTS</td><td>Top Solder Mask(顶层阻焊)</td></tr></tbody></table><p>如果是Allegro，那就是一堆的*.art文件(Artwork)。</p><p>当然，只有Gerber文件是不够的，因为Gerber并没有层与层之间导线连接的关系。如果一个信号流过了多个层，肯定需要由过孔进行过渡。NC Drill文件记录了PCB上所有需要钻孔的信息(包括位置、孔的大小等)，也是制造PCB不可或缺的关键信息。</p><p>以下是AD生成的NC Drill钻孔文件：</p><table><thead><tr><th>文件名</th><th>描述</th></tr></thead><tbody><tr><td>FileName.DRL(可选)</td><td>二进制格式的钻孔文件。对于一个存在盲、埋孔的多层PCB，每个Layer Pair(层对)都会生成一个单独后缀的TX*</td></tr><tr><td>FileName.DRR</td><td>钻孔报告 - 包括tool的详细信息，孔的尺寸、数量、Tool travel等</td></tr><tr><td>FileName.TXT</td><td>ASCII格式的钻孔文件。对于一个存在盲、埋孔的多层PCB，每个Layer Pair(层对)都会生成一个单独后缀的TX*</td></tr><tr><td>FileName-Plated.TXT(可选)</td><td>ASCII格式的钻孔文件. 选择后只文件中只记录PTH的钻孔。对于不通类型的钻孔(比如Slot、方形)，会生成单独的文件</td></tr><tr><td>FileName-NonPlated.TXT(可选)</td><td>ASCII格式的钻孔文件. 选择后只文件中只记录NPTH的钻孔。对于不通类型的钻孔(比如Slot、方形)，会生成单独的文件</td></tr><tr><td>FileName-BoardEdgeRout.TXT(可选)</td><td>ASCII格式的rout文件。记录了板形以及板子的cutout</td></tr><tr><td>FileName.LDP</td><td>ASCII格式的钻孔对报告。被CAM编辑器用来检测盲、埋孔</td></tr></tbody></table><p>下图是一个默认状态下AD生成的NC Drill示例：</p><p><img src="http://q8pl344z8.bkt.clouddn.com/Geber-2.webp" alt></p><p>示例中含有盲、埋孔，生成NC Drill时每种类型的盲、埋孔都会单独生成一个*.TX1/2/3的文件。不同类型的孔(Slot、方形)也会单独生成一个TXT文件。</p><p>说了那么多无非是要强调一点，无论正向还是逆向，这两个类型的文件是绝对不可以少的：</p><ol><li>一个叫Gerber</li><li>一个叫NC Drill</li></ol><p><strong>如何从Gerber生成PCB</strong></p><p>Altium Designer自带了一个类似CAM350的工具，叫Camtastic。虽然用起来不如CAM350那么顺手，但基本的功能都是没有问题的。从Gerber到PCB的逆向工程，就由Camtastic工具来完成。</p><p><strong>第一步：新建一个Cam文档</strong></p><p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-3.png" alt></p><p><strong>第二步：导入Gerber及NC Drill</strong></p><p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-4.jpg" alt></p><p>这是比较关键的一步，如果只导入Gerber，不导入NC Drill，会导致后续无法解压网表。如果有IPC Netlist，也可以一起导入，这样在解压网表时，网表的名称就会与源设计相同，而默认情况下系统会自定义网表的名称。</p><p>在Preference中，可以定义CAM识别的文件后缀。如果要导入Allegro或者Expedition的Gerber，可以在这里添加相应的后缀以便于快速识别。</p><p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-5.webp" alt></p><p>导入完成后，就可以在AD中查看或编辑Gerber文件了：</p><p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-6.png" alt></p><p><strong>第三步：层的映射</strong></p><p>这也是比较关键的一步，点击<strong>Tables » Layers</strong>打开映射界面：</p><p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-7.jpg" alt></p><p>左侧的Gerber层必须和Type列中的PCB层正确映射。其中信号层的映射尤其重要：顶层/底层分别映射为Top/Bottom；中间信号层映射为Internal；内电层映射为Pos Plane/Neg Plane。</p><p>除此之外，NC Drill的TXT文件也需要正确映射到Drill Top/Bottom/Int。</p><p><strong>第四步：层的顺序(Layer Order)</strong></p><p>层映射完毕之后，会弹出Create / Update Layer Order对话框(也可以通过<strong>Layer » Order</strong>菜单访问)：</p><p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-8.png" alt></p><p>在这里，需要定义所有的信号层(包括Top、Bottom、中间信号层及内电层)的物理顺序。这一步也相当关键，如果存在盲、埋孔，这里定义错误的话会直接导致PCB导出的错误。记住，Top层的Physical  Order始终是1，其它层的顺序按实际的板层结构依次类推。Physical Order中的数字是不可以重复的。</p><p><strong>第五步：解压网表(Extract Net)</strong></p><p>如果以上步骤都没有问题的话，就可以通过Gerber和NC Drill反推出PCB中的网表信息。点击<strong>Tools</strong> <strong>»</strong> <strong>Netlist</strong> <strong>»</strong> <strong>Extract</strong>菜单得到PCB的网表：</p><p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-9.png" alt></p><p><strong>第六步：导出PCB</strong></p><p>一切就绪，最后一步是导出PCB。如果缺少Net List或其它信息，Export to PCB的菜单是灰色不能点击的。</p><p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-10.jpg" alt></p><p><strong>第七步：清理PCB文件</strong></p><p>​      逆向工程导出的PCB只是Track和Pad的组合体，压根就没有器件(Component)的概念。您还需要通过无数次的Ctrl+C、Ctrl+V才能重新把这些零零碎碎的对象组合成正常的PCBLib。向工程只是复原PCB的样式和逻辑连接而已，并非是恢复到原始的PCB设计文件。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;序&quot;&gt;&lt;a href=&quot;#序&quot; class=&quot;headerlink&quot; title=&quot;序&quot;&gt;&lt;/a&gt;&lt;em&gt;序&lt;/em&gt;&lt;/h1&gt;&lt;p&gt;​       最近将PCB图纸送去工厂打样，需要将Gerber转换成PCB文件，如何将Gerber转换成PCB的文章在网上可以找
+      
+    
+    </summary>
+    
+      <category term="日常技术" scheme="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="硬件学习" scheme="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E7%A1%AC%E4%BB%B6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="Altium" scheme="http://yuanquanquan.top/tags/Altium/"/>
+    
+  </entry>
   
   <entry>
     <title>EfficientDet:Scalable and Efficient Object Detection</title>
@@ -522,34 +549,6 @@
     
     
       <category term="SAS" scheme="http://yuanquanquan.top/tags/SAS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>十问 | 沉思录及其他</title>
-    <link href="http://yuanquanquan.top/2019/2019091122/"/>
-    <id>http://yuanquanquan.top/2019/2019091122/</id>
-    <published>2019-11-22T10:35:03.000Z</published>
-    <updated>2019-11-22T10:49:24.082Z</updated>
-    
-    <content type="html"><![CDATA[<p>​     终于完了这本霍金沉思录，也是霍金先生的遗作，这位伟大的思想家留给世界的最后的礼物。作为多年来的霍金粉丝，读这部作品是酣畅淋漓，但也不乏惆怅满腹。毕竟，我们不会再有机会读到先生的作品了。</p><p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/ml-data/2018/R/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191122184312.jpg?raw=true" alt></p><p>​      史蒂芬 ·  霍金在2018年3月14日逝世，这天恰好是爱因斯坦的生日，霍金出生于1942年1月8日，又恰好是伽利略逝世三百周年，很多人都在感慨历史的惊人巧合；而他自己，在和脊髓侧索硬化症搏斗了55年之后离开了这蓝色的星球，结束了传奇的一生，飞向那浩渺的星空。</p><p>​      爱因斯坦曾说，“If you can’t explain it simply, you don’t really understand  it.”-  即如果你不能简单地解释一件事，那么你就没有真正理解那个东西。从这个角度说，霍金先生是真正理解他研究的宇宙的人，因为他可以用简单明了生动的方式来阐述物理，但很多职业物理学家缺乏这样的能力。这也是为什么鲜有职业物理学家涉足科普，因为实际上用文字去表达本应用数学来表达的东西本身就是一个巨大的挑战，除非你真正理解那件事并且恰好是个充满激情与想象力的思想家。显然，霍金先生正是这样的人。否则在历史上也不会有时间简史的巨大成功。</p><p>​        “十问”中的文字除了严密的科学思维和物理学家一本正经做科普的决心，还有从时间简史以来一以贯之的霍金式幽默，比如说吐槽语音合成器给他带来的美国口音，吐槽英国脱欧，又比如调侃幼年的自己曾经在二战德国V2导弹的爆炸范围内幸免于难，或者是坦率的回忆起中学同学的嘲笑：“史蒂芬·霍金将不会有所作为。”</p><p>​    当然，也有幸福与快乐的流露，比如在夕阳下看着孩子们在草坪上玩耍，又比如在国际空间站体验零重力的纯粹的快乐，那是真正摆脱轮椅束缚的自由时刻。</p><p>​       所以很明显，这本书和以前的作品相比更多的是霍金本人对于个人生命轨迹的回顾和对人类命运的关怀；对于家人和孩子们的爱，特别是对于第一任妻子简·怀尔德多年无私照料与付出的谢意；以及他自己经年累月与脊髓侧索硬化症的斗争、妥协与学会共存的心路历程；还有，不可不提的是，诸多重要物理学贡献，如黑洞熵理论、宇宙奇点、霍金辐射、包括他自己认为的最重要成就  - 宇宙无边界理论的建立过程中 - 那些无数的筚路蓝缕和灵光一现的时刻。</p><p>​      所有这些特质 -  残疾的天才物理学家、超过职业范围的好奇心、对公共事务的关心与表达，从哪个维度上说，都超越了一个物理学家的职业关切，而让霍金成为一个颇具争议性的人物。很少有人质疑他作为一个物理学家的杰出，但我相信，反对他的有关社会和外星人观点的人和赞同他的人一样多。但恐怕每个人都必须承认他热切的好奇心和探索欲，以及深思熟虑的能力，因为我们不得不惊讶于他对那些超过自己专业领域问题的见解仍然是发人深省的。</p><p>​      霍金喜欢问那些大问题，并且愿意去不懈探索它们的答案，正如这本书所展示的十个大问题。提出它们的意义不是去解决这些问题，事实上这些问题甚至我们都不知道是否是可以被解决的，遑论完成的具体步骤。但霍金对它们的思索却给了我们方向和可能性，从本质上说，他有着一种朴素的世界观，既然物理确实描述了这个世界，那么它一定包含着回答这些大问题所需要的信息，即使只是间接的提示。他清楚地知道，长期来说，我们的未来取决于我们对自然的理解程度。显然，他走在正确的道路上。并且正是由无数的霍金先生这样的巨擘不断地提出大问题，我们才越来越深入地认识这个陌生的世界，从而指引我们的生存，发展，寻得与自然的共存之道。</p><p>​       历史不会撒谎，这条道路早已显示出它的轮廓。正是因为对牛顿力学和热力学的掌握，才迎来了蒸汽机和内燃机的时代；正是因为电磁学的发展，才迎来了电力时代和信息时代；而计算机技术和量子技术的发展将带领我们进入新的未知时代，我们的计算能力将获得巨大的提升，我们将以前所未有的精度和速度去研究、模拟这个星球上的极其复杂的重要问题，比如环球大气运动、洋流、还有我们自己的细胞的运作、社会的演化等等。我不是盲目的技术乐观主义者，但我相信，这些时代的开创至少多养活了世界上大多数的人口，极大减少了来自环境的生存压力，虽然它们也带来了特定的问题，但相比于只有极少数高大强壮的人才能躲过野兽追击并存活下来的蛮荒年代，现代的依赖科学和技术维持的社会系统要宽容的多。我们可以依靠自己的思想获得生存的机会，我们不需要那样的身材去生存（虽然那样的人仍然更受异性的欢迎），生命的意义是多元化的，就像霍金先生这样只有眼和手指能动的人，同样对整个人类做出了大的贡献。</p><p>​      事实是，有很多身体残疾的杰出的人，这种东西原本不应该成为评判的一部分标准。但即便如此，你仍然无法将霍金先生的巨大贡献同他所忍受的经年之病痛割离开来。五十五年同病魔的斗争，同时还取得了正常人都难以望其项背的成就，真的是一件叹为观止的事。那个卧在轮椅上，依靠电脑合成发声的智者形象，激励了一代又一代崇尚真理的人努力奋斗，这是一种额外的津贴，或许比他的工作所产生的直接贡献更有意义。</p><p>​      这个额外的津贴，就像他在21岁被诊断患有脊髓侧索硬化症并被告知余日不多时他说的那样：“从那之后，一切都成为了额外津贴”。“我对生活的期望降到了最低，我抓紧所有的时间去做那些最要紧的事”。苹果的开创者乔布斯说，不要去患得患失，永远去做你想做的最重要的事，就好像生命的最后一天。对于霍金先生而言，这个最后一天，推迟了五十五年才来到，而他也成为了那个“不会有所作为的人”的相反面。</p><p>​       在我看来，霍金是绝世聪明的科学家没错，但绝不是同时代最聪明的，正如杨振宁先生常谈论霍金为什么拿不到诺贝尔奖。但霍金绝对是有着最好的科学直觉与远见的人之一，用英语来说，他是一个visionary的人。他晓得哪些东西对于认识世界是真正重要的，而不会囿于旁枝末节。这是一种惊人的能力，这恰恰也是爱因斯坦相比他同时代的智者们更高明的地方。再次引用杨先生的话，这是一种既能看到全景（big   picture）,又能注意到细节的微妙之处的洞察力。而霍金先生就具备这样的能力。或许他只是不够幸运，正年轻事业启航就被命运禁锢到轮椅之上；而或许他已经足够幸运，束缚于轮椅之上还能有着莎士比亚戏剧名言-“即使身处果壳之中，我也是无限空间之王”的乐观。此“王”不是统治压迫和权威的王，而是彻悟的自由。最后他能长眠于牛顿和达尔文的墓碑之间，委实也是世界对他的最高的认可了罢，诺奖之于此，也显得不那么重要了。</p><p>​       于我个人而言，霍金的人生，正如上述文字，启迪太多，我也如千千万万被他的故事感动的人们一样，虔诚地瞻仰与阅读他留给世界的回音。这回音很可能仍会在人类社会中激荡多年，因为它杰出地代表着人类最重要的特质  -  对真理的纯粹探索与理性精神。但最震撼我的，却是霍金在其博士论文封面上写下的这句话，那时的他已经逐渐无法握稳一支笔，歪歪扭扭的字体，却无比感动。完全能够想象他艰难地书写着这几个简单的单词的样子，坚毅而灵性。</p><p><img src="https://raw.githubusercontent.com/Bazingaliu/Bazingaliu.github.ios/master/blog/ml-data/2018/R/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191122184812.jpg" alt></p><p>This dissertation is my original work.</p><p>—- S. W. Hawking</p><p>这篇博士论文是我的原创性工作。</p><p>—-S. W. 霍金</p><p>​    其实，科学家能做的最酷的一件事，莫过于，说出这样的话了。因为每一个深刻而原创的理论都是真理在灵童耳畔的轻吟。</p><p>​       我有时候也在想，究竟是什么在支撑着一个有着残缺的躯体，但心灵却异常美丽而完整的灵魂不断地坚持探索下去。难道仅仅是因为对物理学的热爱么？可能答案不止于此。在2014年上映的电影《万物理论》中，“小雀斑”埃迪·雷德梅恩扮演的霍金本尊可能已经回答了这个问题。正是在那个他本人在书中调侃的美国口音的合成声音里，他说：</p><p>There is no boundary in human endeavors<br>However bad life seems<br>Where there is life<br>There is hope</p><p>人类的探索是没有边界的<br>无论生活看起来多糟<br>哪里有生命<br>哪里就有希望</p><p>​     我想这就是问题的答案吧。是电影的高潮，也是霍金先生留给我们最大的启示。</p><p><img src="https://raw.githubusercontent.com/Bazingaliu/Bazingaliu.github.ios/master/blog/ml-data/2018/R/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191122184323.jpg" alt></p><p>​     埃迪·雷德梅恩也被邀请给这本十问 | 霍金沉思录作序，在序言的末尾，他引用了奥巴马的一句话：我希望史蒂芬在灿烂的星空中玩得开心。这里快要结束这些零散文字时，我想这句话也正是我内心涌动的音符。</p><p>​     事实上，对于霍金先生而言，是否有我这样一个来自中国的粉丝的欣赏是完全没有意义的。但毕竟像我这样的不够高大强壮无法躲避野兽追击的弱者居然能够在这里欣赏这样美丽的灵魂，并且决定在太阳升起之前依然保持对明天的信心，不能不说是一种奇迹。</p><p>​       最后，也是最重要的，致敬史蒂芬，一个叹为观止的人，以及他传奇的一生。</p><p><img src="https://raw.githubusercontent.com/Bazingaliu/Bazingaliu.github.ios/master/blog/ml-data/2018/R/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191122184337.jpg" alt></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;​     终于完了这本霍金沉思录，也是霍金先生的遗作，这位伟大的思想家留给世界的最后的礼物。作为多年来的霍金粉丝，读这部作品是酣畅淋漓，但也不乏惆怅满腹。毕竟，我们不会再有机会读到先生的作品了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://github.com/Ba
-      
-    
-    </summary>
-    
-      <category term="生活" scheme="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-      <category term="随笔" scheme="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="生活" scheme="http://yuanquanquan.top/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
