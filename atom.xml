@@ -180,13 +180,13 @@
   </entry>
   
   <entry>
-    <title>iMX287A多种方法实现流水灯效果</title>
+    <title>开新坑-硬件学习</title>
     <link href="http://yuanquanquan.top/2020/20200310/"/>
     <id>http://yuanquanquan.top/2020/20200310/</id>
     <published>2020-03-10T15:15:24.000Z</published>
-    <updated>2020-04-13T04:13:04.342Z</updated>
+    <updated>2020-04-23T03:40:11.688Z</updated>
     
-    <content type="html"><![CDATA[<p>序：鸽了快两个月没写博客，其实也是因为这两月都没怎么学习（逃，不过确实接触了一些新东西，在B站和知乎看到了一个电科毕业的大佬，一个人能抵一个项目组……于是也燃起了学习单片机的兴趣，想在做程序员的同时做一个业余电子工程师，这段时间零零散散做了一些东西</p><p>一张用来装逼的PCB名片(<a href="https://github.com/Bazingaliu/PCB-card" target="_blank" rel="noopener">https://github.com/Bazingaliu/PCB-card</a>)</p><p>一个根据经典开源飞控pix2.4.6原理图，用ad设计了一个仿制版(<a href="https://github.com/Bazingaliu/PCB-px41" target="_blank" rel="noopener">https://github.com/Bazingaliu/PCB-px41</a>)</p><p>一个用EMMC芯片实现的U盘(<a href="https://github.com/Bazingaliu/PCB_EMMC" target="_blank" rel="noopener">https://github.com/Bazingaliu/PCB_EMMC</a>)</p>]]></content>
+    <content type="html"><![CDATA[<p>序：鸽了快两个月没写博客，其实也是因为这两月都没怎么学习（逃，不过确实接触了一些新东西，在B站和知乎看到了一个电科毕业的大佬，一个人能抵一个项目组……于是也燃起了学习单片机的兴趣，想在做程序员的同时做一个业余电子工程师，这段时间零零散散做了一些东西</p><p>一张用来装逼的PCB名片(<a href="https://github.com/Bazingaliu/PCB-card)![](http://q8pl344z8.bkt.clouddn.com/PCB-card.png)" target="_blank" rel="noopener">https://github.com/Bazingaliu/PCB-card)![](http://q8pl344z8.bkt.clouddn.com/PCB-card.png)</a></p><p><img src="http://q8pl344z8.bkt.clouddn.com/PCB-card2.png" alt>一个根据经典开源飞控pix2.4.6原理图，用ad设计了一个仿制版(<a href="https://github.com/Bazingaliu/PCB-px41)![](http://q8pl344z8.bkt.clouddn.com/PCB-3.png)" target="_blank" rel="noopener">https://github.com/Bazingaliu/PCB-px41)![](http://q8pl344z8.bkt.clouddn.com/PCB-3.png)</a></p><p>一个用EMMC芯片实现的U盘(<a href="https://github.com/Bazingaliu/PCB_EMMC" target="_blank" rel="noopener">https://github.com/Bazingaliu/PCB_EMMC</a>)</p>]]></content>
     
     <summary type="html">
     
