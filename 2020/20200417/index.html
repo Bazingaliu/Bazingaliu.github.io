@@ -21,7 +21,7 @@
 <meta property="og:description" content="序​       最近将PCB图纸送去工厂打样，需要将Gerber转换成PCB文件，如何将Gerber转换成PCB的文章在网上可以找到很多，但大部分文章只是简单罗列了其中的几个步骤。对于初学者来说，只是”知其然而不知其所以然”，如果转换不成功、甚至于转换完成之后的PCB的逻辑连接发生了错误，也只能是一脸懵逼，不知道错在哪里。 ​        所以这篇博客记录一下Gerber转换PCB过程中的每个">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://q8pl344z8.bkt.clouddn.com/Gerber-1.webp">
-<meta property="og:updated_time" content="2020-04-21T08:04:39.037Z">
+<meta property="og:updated_time" content="2020-05-03T08:55:59.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逆向工程：从Gerber到PCB">
 <meta name="twitter:description" content="序​       最近将PCB图纸送去工厂打样，需要将Gerber转换成PCB文件，如何将Gerber转换成PCB的文章在网上可以找到很多，但大部分文章只是简单罗列了其中的几个步骤。对于初学者来说，只是”知其然而不知其所以然”，如果转换不成功、甚至于转换完成之后的PCB的逻辑连接发生了错误，也只能是一脸懵逼，不知道错在哪里。 ​        所以这篇博客记录一下Gerber转换PCB过程中的每个">
@@ -368,29 +368,28 @@
 <p><strong>如何从Gerber生成PCB</strong></p>
 <p>Altium Designer自带了一个类似CAM350的工具，叫Camtastic。虽然用起来不如CAM350那么顺手，但基本的功能都是没有问题的。从Gerber到PCB的逆向工程，就由Camtastic工具来完成。</p>
 <p><strong>第一步：新建一个Cam文档</strong></p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-3.png" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/GSeLkUrlho5YvTu.png" alt></p>
 <p><strong>第二步：导入Gerber及NC Drill</strong></p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-4.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/CzNMwb9ZYPWjQf1.jpg" alt></p>
 <p>这是比较关键的一步，如果只导入Gerber，不导入NC Drill，会导致后续无法解压网表。如果有IPC Netlist，也可以一起导入，这样在解压网表时，网表的名称就会与源设计相同，而默认情况下系统会自定义网表的名称。</p>
 <p>在Preference中，可以定义CAM识别的文件后缀。如果要导入Allegro或者Expedition的Gerber，可以在这里添加相应的后缀以便于快速识别。</p>
 <p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-5.webp" alt></p>
-<p>导入完成后，就可以在AD中查看或编辑Gerber文件了：</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-6.png" alt></p>
+<p>导入完成后，就可以在AD中查看或编辑Gerber文件了：<img src="https://i.loli.net/2020/05/03/3oBV6FxwCaLASzq.png" alt></p>
 <p><strong>第三步：层的映射</strong></p>
 <p>这也是比较关键的一步，点击<strong>Tables » Layers</strong>打开映射界面：</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-7.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/SewmgryXJZt4vOh.jpg" alt></p>
 <p>左侧的Gerber层必须和Type列中的PCB层正确映射。其中信号层的映射尤其重要：顶层/底层分别映射为Top/Bottom；中间信号层映射为Internal；内电层映射为Pos Plane/Neg Plane。</p>
 <p>除此之外，NC Drill的TXT文件也需要正确映射到Drill Top/Bottom/Int。</p>
 <p><strong>第四步：层的顺序(Layer Order)</strong></p>
 <p>层映射完毕之后，会弹出Create / Update Layer Order对话框(也可以通过<strong>Layer » Order</strong>菜单访问)：</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-8.png" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/KJmFWs8dljNb1R4.png" alt></p>
 <p>在这里，需要定义所有的信号层(包括Top、Bottom、中间信号层及内电层)的物理顺序。这一步也相当关键，如果存在盲、埋孔，这里定义错误的话会直接导致PCB导出的错误。记住，Top层的Physical  Order始终是1，其它层的顺序按实际的板层结构依次类推。Physical Order中的数字是不可以重复的。</p>
 <p><strong>第五步：解压网表(Extract Net)</strong></p>
 <p>如果以上步骤都没有问题的话，就可以通过Gerber和NC Drill反推出PCB中的网表信息。点击<strong>Tools</strong> <strong>»</strong> <strong>Netlist</strong> <strong>»</strong> <strong>Extract</strong>菜单得到PCB的网表：</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-9.png" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/XrwDmWQ2xqKpoLl.png" alt></p>
 <p><strong>第六步：导出PCB</strong></p>
 <p>一切就绪，最后一步是导出PCB。如果缺少Net List或其它信息，Export to PCB的菜单是灰色不能点击的。</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/Gerber-10.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/TLkXbyhQFxs81eo.jpg" alt></p>
 <p><strong>第七步：清理PCB文件</strong></p>
 <p>​      逆向工程导出的PCB只是Track和Pad的组合体，压根就没有器件(Component)的概念。您还需要通过无数次的Ctrl+C、Ctrl+V才能重新把这些零零碎碎的对象组合成正常的PCBLib。向工程只是复原PCB的样式和逻辑连接而已，并非是恢复到原始的PCB设计文件。</p>
 
@@ -400,7 +399,7 @@
 
 
 
-    <a data-url="http://yuanquanquan.top/2020/20200417/" data-id="ck9gmhhsl00155gv8bspm1inj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yuanquanquan.top/2020/20200417/" data-id="ck9qsrign0039l0v80rljrp99" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -580,7 +579,7 @@
                             <a href="/2020/20200425/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/NAS-1.jpg)" alt="Neural Architecture Search" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/7GDwblsxHzTYf4e.png)" alt="Neural Architecture Search" class="thumbnail-image"></span>
     
     
 </a>
@@ -620,7 +619,7 @@
                             <a href="/2020/20200323/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/EfficientDet-3.jpg)" alt="EfficientDet:Scalable and Efficient Object Detection" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/DeR8pidSbA14kPa.jpg)" alt="EfficientDet:Scalable and Efficient Object Detection" class="thumbnail-image"></span>
     
     
 </a>
@@ -640,7 +639,7 @@
                             <a href="/2020/20200321/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/%E7%BA%A2%E5%A4%96-3.jpg)" alt="红外循迹传感器" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/yRGVOFHch7bxqdS.jpg)" alt="红外循迹传感器" class="thumbnail-image"></span>
     
     
 </a>
@@ -660,7 +659,7 @@
                             <a href="/2020/20200313/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig2.png)" alt="SqueezeNAS:Fast neural architecture search for faster semantic segmentation" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/LgdW9ArGtIoKjh2.png)" alt="SqueezeNAS:Fast neural architecture search for faster semantic segmentation" class="thumbnail-image"></span>
     
     
 </a>

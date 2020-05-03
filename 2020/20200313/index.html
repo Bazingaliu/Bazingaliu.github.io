@@ -20,12 +20,12 @@
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="用NAS做语义分割，1.不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。 2.使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系ABSTRACT真实场景下，需要DNN在目标任务上准确率高，在目标计算平台上推断延迟低。NAS已经被用于低延迟的图像分类，但是其他任务还很少。这是第一篇用于密集语义分割的无代理硬件感">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig2.png">
-<meta property="og:updated_time" content="2020-04-13T04:38:27.340Z">
+<meta property="og:image" content="https://i.loli.net/2020/05/03/LgdW9ArGtIoKjh2.png">
+<meta property="og:updated_time" content="2020-05-03T08:51:36.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SqueezeNAS:Fast neural architecture search for faster semantic segmentation">
 <meta name="twitter:description" content="用NAS做语义分割，1.不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。 2.使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系ABSTRACT真实场景下，需要DNN在目标任务上准确率高，在目标计算平台上推断延迟低。NAS已经被用于低延迟的图像分类，但是其他任务还很少。这是第一篇用于密集语义分割的无代理硬件感">
-<meta name="twitter:image" content="http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig2.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/03/LgdW9ArGtIoKjh2.png">
     
 
     
@@ -244,14 +244,14 @@
 </ol>
 <h2 id="2-Related-work"><a href="#2-Related-work" class="headerlink" title="2. Related work"></a>2. Related work</h2><p>【略】</p>
 <h2 id="3-Architecture-Search-Space"><a href="#3-Architecture-Search-Space" class="headerlink" title="3. Architecture Search Space"></a>3. Architecture Search Space</h2><p>我们探索了顺序反向残差模块的语义分割网络编码器的空间。这些块参数化如图2。每次结构搜索，我们约束宏观结构，对每个块寻找最优参数。搜索空间和FBNet，MobileNetV2，MobileNetV3相似，这样可以直接比较对分割优化的网络和他们对分类优化的网络。</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig2.png" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/LgdW9ArGtIoKjh2.png" alt></p>
 <p>我们网络的基本结构如图1，解码器使用编码器的输出和低层特征。</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig1.png" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/Bs4LQoznhZ5drAg.png" alt></p>
 <h3 id="3-1-Constrained-Macro-Architecture"><a href="#3-1-Constrained-Macro-Architecture" class="headerlink" title="3.1. Constrained Macro-Architecture"></a>3.1. Constrained Macro-Architecture</h3><p>搜索三个空间，Small, Large, XLarge。为了定义结构空间，先约束编码网络的宏观结构。宏观结构描述了编码器的模块数量N，解码器也是这么多。对于每个模块，固定输入和输出通道，$c_{in} $和$c_{out}$每个块的深度卷积层步长使用1或2。由于运行跳跃连接，所以最终的层数可能小于N。</p>
 <p>在Small和Large的搜索空间，使用LR-ASPP解码器。在XLarge搜索空间，我们使用完全深度卷积的ASPP变种。</p>
 <h3 id="3-2-Block-Search-Space"><a href="#3-2-Block-Search-Space" class="headerlink" title="3.2. Block Search Space"></a>3.2. Block Search Space</h3><p>在每个宏观搜索空间，NAS挑选每个块最优的超参数，或者替换为无运算的跳跃连接。如图2，超参数定义了 1*1 卷积是否分组，深度绝技是否膨胀2倍，深度卷积的核大小k，膨胀率e。如图7，我们挑选12个可能的配置。</p>
 <h2 id="4-Neural-Architecture-Search-Algorithm"><a href="#4-Neural-Architecture-Search-Algorithm" class="headerlink" title="4. Neural Architecture Search Algorithm"></a>4. Neural Architecture Search Algorithm</h2><p>把结构搜索看做是复杂supernetwork的路径选择问题，这样确定的结构可以看做是supernetwork的某些路径。如图3，我们定义supernetwork为superblocks的序列，图4是一个例子。</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig3-4.png" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/Buy2SrwDzPehUv3.png" alt></p>
 <p>同时优化卷积权重<em>w</em>和结构参数<em>θ</em>, 优化损失函数为L<em>(</em>θ<em>,</em>w<em>)=</em>L<strong>P<em>(</em>θ<em>,</em>w<em>)+</em>α<em>∗</em>L</strong>E<em>(</em>θ*)</p>
 <p>$L_p$表示特定问题的损失，$L_E$是资源感知损失项，超参数<em>α</em>控制两个平衡。由于本工作关注与语义分割，是$L_p$像素级别的交叉熵。对于，$L_E$我们同时实验了目标平台的推断延迟和Multiply-Accumulates的估计值。</p>
 <p><code>表示特定问题的损失，</code><em>α</em><code>LP</code>是像素级别的交叉熵。对于</p>
@@ -266,13 +266,14 @@
 <p>沿用Small, Large, XLarge三种搜索空间。先用NAS在每个空间上对MAC进行搜索，然后在嵌入式设备上查看这些低MAC的网络的延迟作为基线。最后再搜索优化硬件感知的延迟找到3个新的网络。</p>
 <h3 id="5-1-Hardware-Agnostic-Search"><a href="#5-1-Hardware-Agnostic-Search" class="headerlink" title="5.1. Hardware-Agnostic Search"></a>5.1. Hardware-Agnostic Search</h3><p>对于与硬件无关的结构搜索，使用NAS对MAC进行优化，在MAC和mIOU上找到pareto最优，根据查找表计算每个候选块j的MAC，使得<em>C</em>(<em>i</em>,<em>j</em>)=<em>M<strong>A</strong>C<strong>S</strong>i</em>,<em>j</em></p>
 <p>。对每个搜索空间搜索找到最优的SqueezeNAS-MAC网络，结果如下表。</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/squeeze-nas-tab1.png" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/KARr3uocmWqndG4.png" alt></p>
 <h3 id="5-2-Hardware-Aware-Search"><a href="#5-2-Hardware-Aware-Search" class="headerlink" title="5.2. Hardware-Aware Search"></a>5.2. Hardware-Aware Search</h3><p>使用相同的NAS算法和搜索空间，但是使用延迟优化目标：<em>C</em>(<em>i</em>,<em>j</em>)=<em>L<strong>a</strong>t<strong>e</strong>n<strong>c</strong>y**i</em>,<em>j</em></p>
 <p>。为了计算每个模块j在候选j上的延迟，我们测量了目标平台上所有候选的推断时间，最后得到三个SqueezeNAS-LAT网络。结果见表1。</p>
 <h3 id="5-3-Implementation"><a href="#5-3-Implementation" class="headerlink" title="5.3. Implementation"></a>5.3. Implementation</h3><h3 id="5-4-Results"><a href="#5-4-Results" class="headerlink" title="5.4. Results"></a>5.4. Results</h3><h2 id="6-Network-Analysis"><a href="#6-Network-Analysis" class="headerlink" title="6. Network Analysis"></a>6. Network Analysis</h2><p>比较三者的模块选择：优化延迟的网络（Latency-aware），优化MAC的网络（MAC-aware），MobileNetV3。由于这三个都使用反向残差块，可以把MobileNetV3的块放入13个候选中，如图7。这里没有考虑SE块。</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig7.png" alt></p>
-<p>可视化网络如图8，【略】</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig8.png" alt> <img src="http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig9.png" alt> <img src="http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig10.png" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/Cby6WpkJZ7RnAe9.png" alt></p>
+<p>可视化网络如图8，【略】<img src="https://i.loli.net/2020/05/03/rY8g2HIBMncEmGk.png" alt></p>
+<p> <img src="https://i.loli.net/2020/05/03/zZOSA7D9TFeaXWH.png" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/u6zvOZDUQ2RxGWb.png" alt></p>
 <h2 id="7-Conclusion"><a href="#7-Conclusion" class="headerlink" title="7. Conclusion"></a>7. Conclusion</h2><p>第一、做无代理的语义分割搜索，我们的NAS生成的SqueezeNAS系列模型，相比MobileNet V3达到优越的延迟-准确率平衡。这种优越（至少部分）来自于MobileNetV3是用NAS优化图像分类作为代理实现语义分割任务的。</p>
 <p>第二、虽然MobileNetV3作者使用了几千个GPU天，但是我们的方法每次搜索只需要7-15个GPU天。也就是说，基于supernetwork的NAS在8个GPU上不需要一个周末就可以跑出来最好的结果。</p>
 <p>第三、我们做了两类NAS实验，一个搜索低MAC模型，一个搜索目标平台上低延迟模型。第二个我们获得了非常快同时准确率高的模型。最后，考虑到芯片的速度提升和计算平台的省级，NAS可以继续获得更低的延迟</p>
@@ -283,7 +284,7 @@
 
 
 
-    <a data-url="http://yuanquanquan.top/2020/20200313/" data-id="ck9gmhhz4002d5gv88jcnhkiq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yuanquanquan.top/2020/20200313/" data-id="ck9qsrixn005jl0v8b4sopte5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -463,7 +464,7 @@
                             <a href="/2020/20200425/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/NAS-1.jpg)" alt="Neural Architecture Search" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/7GDwblsxHzTYf4e.png)" alt="Neural Architecture Search" class="thumbnail-image"></span>
     
     
 </a>
@@ -503,7 +504,7 @@
                             <a href="/2020/20200323/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/EfficientDet-3.jpg)" alt="EfficientDet:Scalable and Efficient Object Detection" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/DeR8pidSbA14kPa.jpg)" alt="EfficientDet:Scalable and Efficient Object Detection" class="thumbnail-image"></span>
     
     
 </a>
@@ -523,7 +524,7 @@
                             <a href="/2020/20200321/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/%E7%BA%A2%E5%A4%96-3.jpg)" alt="红外循迹传感器" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/yRGVOFHch7bxqdS.jpg)" alt="红外循迹传感器" class="thumbnail-image"></span>
     
     
 </a>
@@ -543,7 +544,7 @@
                             <a href="/2020/20200313/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig2.png)" alt="SqueezeNAS:Fast neural architecture search for faster semantic segmentation" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/LgdW9ArGtIoKjh2.png)" alt="SqueezeNAS:Fast neural architecture search for faster semantic segmentation" class="thumbnail-image"></span>
     
     
 </a>

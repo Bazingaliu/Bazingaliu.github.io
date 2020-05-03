@@ -20,12 +20,12 @@
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="写在前面：之前两个月没有看过cv方向的东西…..所以打算开个系列来写目标检测，图像分割的爆款算法，算是回顾一遍吧，当然一些太经典鼻祖级的模型就懒得看了……于是这个系列就决定叫复健计划了….目标检测的第一篇就从Faster R-CNN开始吧，Faster R-CNN 是目标检测中的一个很经典的two stage算法，许多其他的目标检测算法都会运用到Faster R-CNN的部分结构或思想。而且了解F">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://q8pl344z8.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20200416114808.png">
-<meta property="og:updated_time" content="2020-04-16T03:58:32.066Z">
+<meta property="og:image" content="https://i.loli.net/2020/05/03/WpzKakMxdHJZ4w2.png">
+<meta property="og:updated_time" content="2020-05-03T09:26:10.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Object Detection】-Faster R-CNN">
 <meta name="twitter:description" content="写在前面：之前两个月没有看过cv方向的东西…..所以打算开个系列来写目标检测，图像分割的爆款算法，算是回顾一遍吧，当然一些太经典鼻祖级的模型就懒得看了……于是这个系列就决定叫复健计划了….目标检测的第一篇就从Faster R-CNN开始吧，Faster R-CNN 是目标检测中的一个很经典的two stage算法，许多其他的目标检测算法都会运用到Faster R-CNN的部分结构或思想。而且了解F">
-<meta name="twitter:image" content="http://q8pl344z8.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20200416114808.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/03/WpzKakMxdHJZ4w2.png">
     
 
     
@@ -221,11 +221,9 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><strong><em>写在前面</em></strong>：之前两个月没有看过cv方向的东西…..所以打算开个系列来写目标检测，图像分割的爆款算法，算是回顾一遍吧，当然一些太经典鼻祖级的模型就懒得看了……于是这个系列就决定叫复健计划了….目标检测的第一篇就从Faster R-CNN开始吧，Faster R-CNN 是目标检测中的一个很经典的two stage算法，许多其他的目标检测算法都会运用到Faster R-CNN的部分结构或思想。而且了解Faster R-CNN对理解其他R-CNN系列网络都有一定的帮助，包括Mask R-CNN，Stereo R-CNN 等等。</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20200416114808.png" alt></p>
+            <p><strong><em>写在前面</em></strong>：之前两个月没有看过cv方向的东西…..所以打算开个系列来写目标检测，图像分割的爆款算法，算是回顾一遍吧，当然一些太经典鼻祖级的模型就懒得看了……于是这个系列就决定叫复健计划了….目标检测的第一篇就从Faster R-CNN开始吧，Faster R-CNN 是目标检测中的一个很经典的two stage算法，许多其他的目标检测算法都会运用到Faster R-CNN的部分结构或思想。而且了解Faster R-CNN对理解其他R-CNN系列网络都有一定的帮助，包括Mask R-CNN，Stereo R-CNN 等等。<img src="https://i.loli.net/2020/05/03/WpzKakMxdHJZ4w2.png" alt></p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Faster R-CNN由R-CNN，Fast R-NN改进演变而来，相对于前两者，Faster R-CNN具有训练速度快，消耗内存减少，精度与检测速度都有大幅提升的优点。</p>
-<p>先来一张Faster R-CNN的网络基本结构图</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/faster%20r-cnn%281%29.webp" alt></p>
+<p>先来一张Faster R-CNN的网络基本结构图<img src="https://i.loli.net/2020/05/03/AVMlhnPjQmbqNiZ.png" alt></p>
 <p>个人认为网络主要分为五个部分：</p>
 <ul>
 <li>提取feature map（特征图）的<strong>Conv layer</strong>。该部分使用VGG-net作为预处理网络，运用多个conv，relu，pooling层提取图像特征图，为后面的网络提供图像信息。</li>
@@ -234,13 +232,11 @@
 <li><strong>ROI pooing</strong>，对featuer map中的ROI划分为Pool_h*Poo_w(ROI pooling后特征图的高和宽)）个网格，对每一个网格进行maxpooling。</li>
 <li>使用<strong>full connection</strong>，<strong>softmax</strong>对ROI进行分类与bounding box回归，确定bounding box的位置。</li>
 </ul>
-<p>下面从这五个部分进行说明。先上一个网上总结的Faster R-CNN的结构图。</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/faster%20r-cnn%EF%BC%882%EF%BC%89.webp" alt></p>
+<p>下面从这五个部分进行说明。先上一个网上总结的Faster R-CNN的结构图。<img src="https://i.loli.net/2020/05/03/tTaqJoe8GMj3n6O.png" alt></p>
 <h2 id="Conv-layer"><a href="#Conv-layer" class="headerlink" title="Conv layer"></a>Conv layer</h2><p>Conv layers包含3种层，分别是conv层，pooling层，relu层。<strong>conv</strong>层的卷积核大小都是3 * 3 , 步长都为1，并且都做了扩边处理，也就是经过conv层后图像的大小没有改变，只是深度改变。<strong>pooling</strong> 层的kernel_size=2,步长也为2，也就是说每经过一次pooling层后，图像尺寸减小一半。</p>
 <p>Faster RCNN在将图片传入网络之前，会将图片缩放为<strong>M * N</strong>(VGG 为 800 * 600），从原图到feature map一共经过4次pooling，也就是feature map的大小为（int(M/16)，int(N/16)）。</p>
 <h2 id="anchor"><a href="#anchor" class="headerlink" title="anchor"></a>anchor</h2><p>anchor其实是在图像上的一个个先验框，用来对后面检测框的修正以及region proposal。这里说一下anchor的生成过程。</p>
-<p>先来看看作者的图</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/faster%20r-cnn%EF%BC%883%EF%BC%89.webp" alt></p>
+<p>先来看看作者的图<img src="https://i.loli.net/2020/05/03/b5MvdDNU43rHf8e.png" alt></p>
 <p>可以看到，anchor的长宽比有[0.5, 1, 2]三种比例，每种anchor有[8, 16, 32]三个尺度比例，所以anchors一共有3 * 3 = 9个anchor。</p>
 <p>生成anchor的主要分为一下步骤：</p>
 <ul>
@@ -248,10 +244,8 @@
 <li>然后计算anchor的面积size = w <em> h，将size分别除[0.5, 1, 2]3种比例，再分别对3个新的sizes开根号作为新的anchor的3个w，再将w </em> [0.5, 1, 2]得到h，这样就得到3个anchor的长宽。</li>
 <li>将3个anchor长宽分别再乘3个尺度比例，这样就得到9个anchor，再将anchor的表示转换为左上角和右下角的坐标[x_l, y_l, x_r, y_r]。</li>
 </ul>
-<p>此时每个feature map上的点都有9个anchor，也就是一共有（800/16）<em>（600/16） </em> 9=17100个anchor。再将这些anchor通过原图与feature map的映射关系，将其anchor映射回原图。</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/faster%20r-cnn%EF%BC%884%EF%BC%89.webp" alt></p>
-<h2 id="RPN"><a href="#RPN" class="headerlink" title="RPN"></a>RPN</h2><p>RPN的主要结构如图</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/faster%20r-cnn%EF%BC%885%EF%BC%89.webp" alt></p>
+<p>此时每个feature map上的点都有9个anchor，也就是一共有（800/16）<em>（600/16） </em> 9=17100个anchor。再将这些anchor通过原图与feature map的映射关系，将其anchor映射回原图。<img src="https://i.loli.net/2020/05/03/DzSuMRHPLgarVsZ.png" alt></p>
+<h2 id="RPN"><a href="#RPN" class="headerlink" title="RPN"></a>RPN</h2><p>RPN的主要结构如图<img src="https://i.loli.net/2020/05/03/8A6ejLOcau3KhfX.png" alt></p>
 <p>首先将feature map在经过一次conv卷积（这里设得到的网络层为conv5_3)，然后分开两条线进行：</p>
 <ul>
 <li>先将conv5_3使用1 <em> 1 </em> 18的卷积核对anchor进行softmax分类，将anchor分为postivte和negative（rpn_cls_prob)，二分类。（18 = 2（positiv and negative）* 9（9个anchor）。</li>
@@ -274,8 +268,7 @@
 <p>​         <em>最后传入的ROI类似这样</em></p>
 <p>至此，RPN的任务到此完成。</p>
 <h2 id="ROI-pooling"><a href="#ROI-pooling" class="headerlink" title="ROI pooling"></a>ROI pooling</h2><p>Faster RCNN最后的Classification和bounding box 的预测需要用到全连接层，所以在将图片传入全连接层时需要将其变为固定大小。但是一般输入的ROI大小都不固定，如果利用采样的方法进行变换为所需要的大小，会对图像的结构产生影响。</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/fast%20r-cnn%289%29.jpg" alt></p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/fast%20r-cnn%2810%29.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/kDHwuP7YQKpcoTl.jpg" alt></p>
 <p>为了解决这个问题，Faster RCNN提出了ROI pooling的方法。</p>
 <p>具体方法为：</p>
 <ul>
@@ -290,10 +283,10 @@
 <p><strong>假设输出为2 * 2 大小</strong></p>
 </li>
 </ul>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/fast%20r-cnn%2811%29.jpg" alt></p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/fast%20r-cnn%2812%29.webp" alt></p>
+<p><img src="C:%5CUsers%5CLenovo%5CDesktop%5Cyolov1%5Cfast%20r-cnn(11" alt>.jpg)</p>
+<p><img src="https://i.loli.net/2020/05/03/droM81DilEjPFgN.png" alt></p>
 <h2 id="Classification-，bounding-box-predict"><a href="#Classification-，bounding-box-predict" class="headerlink" title="Classification ，bounding box predict"></a>Classification ，bounding box predict</h2><p>这个没什么好说的了，就是使用全连接层和softmax层进行分类和预测bounding box坐标值。</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/fast%20r-cnn%2813%29.webp" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/lnpwKxfgDUSdHhO.png" alt></p>
 <table>
 <thead>
 <tr>
@@ -331,7 +324,7 @@
 
 
 
-    <a data-url="http://yuanquanquan.top/2020/20200311403/" data-id="ck9gmhhxr00235gv8w7not6qf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yuanquanquan.top/2020/20200311403/" data-id="ck9qsritm004sl0v8qbe496l5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -511,7 +504,7 @@
                             <a href="/2020/20200425/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/NAS-1.jpg)" alt="Neural Architecture Search" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/7GDwblsxHzTYf4e.png)" alt="Neural Architecture Search" class="thumbnail-image"></span>
     
     
 </a>
@@ -551,7 +544,7 @@
                             <a href="/2020/20200323/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/EfficientDet-3.jpg)" alt="EfficientDet:Scalable and Efficient Object Detection" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/DeR8pidSbA14kPa.jpg)" alt="EfficientDet:Scalable and Efficient Object Detection" class="thumbnail-image"></span>
     
     
 </a>
@@ -571,7 +564,7 @@
                             <a href="/2020/20200321/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/%E7%BA%A2%E5%A4%96-3.jpg)" alt="红外循迹传感器" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/yRGVOFHch7bxqdS.jpg)" alt="红外循迹传感器" class="thumbnail-image"></span>
     
     
 </a>
@@ -591,7 +584,7 @@
                             <a href="/2020/20200313/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig2.png)" alt="SqueezeNAS:Fast neural architecture search for faster semantic segmentation" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/LgdW9ArGtIoKjh2.png)" alt="SqueezeNAS:Fast neural architecture search for faster semantic segmentation" class="thumbnail-image"></span>
     
     
 </a>

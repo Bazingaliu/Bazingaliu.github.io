@@ -12,20 +12,20 @@
     
         <meta name="keywords" content>
     
-    <meta name="description" content="整理了一些最近的object detection算法忽然发现。。。。这是要开启NAS时代的神仙打架了嘛/facepalm 不过讲真…Google这些nas论文，计算量贼大，要卡要数据的啊……复现起来不是一点两点困难 “我是FAIR时代的残党！新时代没有能载我的模型！”（说白了就是没卡。。。。） 为了紧跟时代潮流，了解一下AutoML去看了一下《Neural Architecture Search:">
+    <meta name="description" content="整理了一些最近的object detection算法忽然发现。。。。这是要开启NAS时代的神仙打架了嘛/facepalm 不过讲真…Google这些nas论文，计算量贼大，要卡要数据的啊……复现起来不是一点两点困难 “我是FAIR时代的残党！新时代没有能载我的模型！”（说白了就是没卡。。。。） 为了紧跟时代潮流，了解一下AutoML去看了一下《Neural Architecture Search">
 <meta name="keywords" content="人工智能、计算机、机器学习、linux、程序员">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Neural Architecture Search">
 <meta property="og:url" content="http://yuanquanquan.top/2020/20200425/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="整理了一些最近的object detection算法忽然发现。。。。这是要开启NAS时代的神仙打架了嘛/facepalm 不过讲真…Google这些nas论文，计算量贼大，要卡要数据的啊……复现起来不是一点两点困难 “我是FAIR时代的残党！新时代没有能载我的模型！”（说白了就是没卡。。。。） 为了紧跟时代潮流，了解一下AutoML去看了一下《Neural Architecture Search:">
+<meta property="og:description" content="整理了一些最近的object detection算法忽然发现。。。。这是要开启NAS时代的神仙打架了嘛/facepalm 不过讲真…Google这些nas论文，计算量贼大，要卡要数据的啊……复现起来不是一点两点困难 “我是FAIR时代的残党！新时代没有能载我的模型！”（说白了就是没卡。。。。） 为了紧跟时代潮流，了解一下AutoML去看了一下《Neural Architecture Search">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://q8pl344z8.bkt.clouddn.com/NAS-1.jpg">
-<meta property="og:updated_time" content="2020-04-25T04:02:29.300Z">
+<meta property="og:image" content="https://i.loli.net/2020/05/03/7GDwblsxHzTYf4e.png">
+<meta property="og:updated_time" content="2020-05-03T08:30:46.884Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Neural Architecture Search">
-<meta name="twitter:description" content="整理了一些最近的object detection算法忽然发现。。。。这是要开启NAS时代的神仙打架了嘛/facepalm 不过讲真…Google这些nas论文，计算量贼大，要卡要数据的啊……复现起来不是一点两点困难 “我是FAIR时代的残党！新时代没有能载我的模型！”（说白了就是没卡。。。。） 为了紧跟时代潮流，了解一下AutoML去看了一下《Neural Architecture Search:">
-<meta name="twitter:image" content="http://q8pl344z8.bkt.clouddn.com/NAS-1.jpg">
+<meta name="twitter:description" content="整理了一些最近的object detection算法忽然发现。。。。这是要开启NAS时代的神仙打架了嘛/facepalm 不过讲真…Google这些nas论文，计算量贼大，要卡要数据的啊……复现起来不是一点两点困难 “我是FAIR时代的残党！新时代没有能载我的模型！”（说白了就是没卡。。。。） 为了紧跟时代潮流，了解一下AutoML去看了一下《Neural Architecture Search">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/03/7GDwblsxHzTYf4e.png">
     
 
     
@@ -216,13 +216,14 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>整理了一些最近的object detection算法<br>忽然发现。。。。<br>这是要开启NAS时代的神仙打架了嘛/facepalm</p>
+            <p><img src="https://i.loli.net/2020/05/03/7GDwblsxHzTYf4e.png" alt></p>
+<p>整理了一些最近的object detection算法<br>忽然发现。。。。<br>这是要开启NAS时代的神仙打架了嘛/facepalm</p>
 <p>不过讲真…Google这些nas论文，计算量贼大，要卡要数据的啊……复现起来不是一点两点困难</p>
 <p>“我是FAIR时代的残党！新时代没有能载我的模型！”（说白了就是没卡。。。。）</p>
 <p>为了紧跟时代潮流，了解一下AutoML去看了一下<strong>《Neural Architecture Search: A Survey》</strong>这篇综述</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/NAS-1.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/aglGFVQKmU1OzJi.jpg" alt></p>
 <h1 id="序"><a href="#序" class="headerlink" title="序"></a><em>序</em></h1><p>​      深度学习模型在很多任务上都取得了不错的效果，但调参对于深度模型来说是一项非常苦难的事情，众多的超参数和网络结构参数会产生爆炸性的组合，常规的 random search 和 grid search 效率非常低，为此人们想出了自动搜索神经网络架构（Neural Architecture Search）。一方面，自动神经网络架构搜索可以遍历架构找到性能最优的架构，另一方面自动神经网络架构搜索还可以打破人类思维的局限性找到人类所想不到的架构组织方式。</p>
-<p>​      <img src="http://q8pl344z8.bkt.clouddn.com/NAS-2.png" alt></p>
+<p><img src="https://i.loli.net/2020/05/03/ogn1dueI9DtS6PL.png" alt></p>
 <p>本文从网络架构搜索的三个方面进行了分类综述，包括：</p>
 <ul>
 <li><p><strong>搜索空间</strong></p>
@@ -233,8 +234,8 @@
 </li>
 </ul>
 <h3 id="搜索空间"><a href="#搜索空间" class="headerlink" title="搜索空间"></a>搜索空间</h3><p>搜索空间定义了NAS方法原则上可能发现的神经体系结构即优化问题的变量。深度学习模型的性能是由参数来控制和决定的，所以只需要对复杂模型的架构参数和对应的超参数进行优化即可。</p>
-<p><img src="http://q8pl344z8.bkt.clouddn.com/NAS-4.png" alt><br>$$</p>
-<p>$$<br>上图是两种不同的架构空间，图片中每个节点表示神经网络中的一层，例如卷积层，池化层，不同的层由不同的颜色标注。箭头描述了数据的流向。</p>
+<p><img src="https://i.loli.net/2020/05/03/Dd9WIgzb4SacLw2.png" alt></p>
+<p>上图是两种不同的架构空间，图片中每个节点表示神经网络中的一层，例如卷积层，池化层，不同的层由不同的颜色标注。箭头描述了数据的流向。</p>
 <p>左侧的图像是一个链式结构空间的组块，这种结构相当于一个 N 层的序列，每一层有几种可选的算子，比如卷积、池化等，每种算子包括一些超参数，比如卷积尺寸、卷积步长等。</p>
 <p>右侧的图像是一个拥有多分支和跳远链接的搜索空间的组块。</p>
 <p>链式结构神经网络通过层数N，层间操作，卷积核大小步幅等超参对搜索空间进行参数化，注意：搜索空间的参数不是固定长度的，而是条件空间。</p>
@@ -265,7 +266,7 @@
 
 
 
-    <a data-url="http://yuanquanquan.top/2020/20200425/" data-id="ck9gmhhsq00165gv8gagdc2sr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yuanquanquan.top/2020/20200425/" data-id="ck9qsrigw003bl0v8hf0qmhee" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -435,7 +436,7 @@
                             <a href="/2020/20200425/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/NAS-1.jpg)" alt="Neural Architecture Search" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/7GDwblsxHzTYf4e.png)" alt="Neural Architecture Search" class="thumbnail-image"></span>
     
     
 </a>
@@ -475,7 +476,7 @@
                             <a href="/2020/20200323/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/EfficientDet-3.jpg)" alt="EfficientDet:Scalable and Efficient Object Detection" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/DeR8pidSbA14kPa.jpg)" alt="EfficientDet:Scalable and Efficient Object Detection" class="thumbnail-image"></span>
     
     
 </a>
@@ -495,7 +496,7 @@
                             <a href="/2020/20200321/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/%E7%BA%A2%E5%A4%96-3.jpg)" alt="红外循迹传感器" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/yRGVOFHch7bxqdS.jpg)" alt="红外循迹传感器" class="thumbnail-image"></span>
     
     
 </a>
@@ -515,7 +516,7 @@
                             <a href="/2020/20200313/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/squeeze-nas-fig2.png)" alt="SqueezeNAS:Fast neural architecture search for faster semantic segmentation" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/03/LgdW9ArGtIoKjh2.png)" alt="SqueezeNAS:Fast neural architecture search for faster semantic segmentation" class="thumbnail-image"></span>
     
     
 </a>
