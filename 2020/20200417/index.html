@@ -20,12 +20,12 @@
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="序​       最近将PCB图纸送去工厂打样，需要将Gerber转换成PCB文件，如何将Gerber转换成PCB的文章在网上可以找到很多，但大部分文章只是简单罗列了其中的几个步骤。对于初学者来说，只是”知其然而不知其所以然”，如果转换不成功、甚至于转换完成之后的PCB的逻辑连接发生了错误，也只能是一脸懵逼，不知道错在哪里。 ​        所以这篇博客记录一下Gerber转换PCB过程中的每个">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://q8pl344z8.bkt.clouddn.com/Gerber-1.webp">
-<meta property="og:updated_time" content="2020-05-03T08:55:59.536Z">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/fWR5BlijzE73xvT.png">
+<meta property="og:updated_time" content="2020-05-14T10:38:29.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逆向工程：从Gerber到PCB">
 <meta name="twitter:description" content="序​       最近将PCB图纸送去工厂打样，需要将Gerber转换成PCB文件，如何将Gerber转换成PCB的文章在网上可以找到很多，但大部分文章只是简单罗列了其中的几个步骤。对于初学者来说，只是”知其然而不知其所以然”，如果转换不成功、甚至于转换完成之后的PCB的逻辑连接发生了错误，也只能是一脸懵逼，不知道错在哪里。 ​        所以这篇博客记录一下Gerber转换PCB过程中的每个">
-<meta name="twitter:image" content="http://q8pl344z8.bkt.clouddn.com/Gerber-1.webp">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/14/fWR5BlijzE73xvT.png">
     
 
     
@@ -232,7 +232,7 @@
 <li>由于缺乏沟通，PCB上一些不需要显示的参数也遗留在成品上</li>
 </ul>
 <p>总而言之，PCB转成Gerber的这一过程未必是copy不走样，设计师应对这一过程负责。所以一般有经验的老工程师都会亲手把PCB转成Gerber，然后通过CAM350之类的软件，检查一下Gerber是否有问题，然后再送板厂加工。</p>
-<p>另外，无论您使用Altium、Allegro或者是Expedition，只要转成了Gerber，板厂都可以正确识别。</p>
+<p>另外，无论您使用Altium、Allegro或者是Expedition，只要转成了Gerber，板厂都可以正确识别。<img src="https://i.loli.net/2020/05/14/fWR5BlijzE73xvT.png" alt></p>
 <p>还有一点，从Gerber反向生成PCB是比较困难的，出于安全性的考虑，企业也不愿意把设计源文件直接发给板厂。</p>
 <p><strong>Gerber的组成</strong></p>
 <p>Gerber由两个重要的组成部分，缺一不可：</p>
@@ -240,7 +240,7 @@
 <li>Gerber光绘文件：PCB的每个层都对应一个独立的Gerber文件，用于描述该层中的内容(有点类似于胶片)</li>
 <li>NC Drill钻孔文件：垂直方向上的钻孔，决定了不同层中导线的连接</li>
 </ul>
-<p>从3D的角度，完整的Gerber文件包含了每个层的信息以及各个层中用于信号连接的钻孔(过孔)：<img src="http://q8pl344z8.bkt.clouddn.com/Gerber-1.webp" alt></p>
+<p>从3D的角度，完整的Gerber文件包含了每个层的信息以及各个层中用于信号连接的钻孔(过孔)：</p>
 <p>以AD为例，生成Gerber文件时，不是一个文件，而是一组文件，包含了PCB中每个层中的信息。下表是AD生成的Gerber文件后缀极其代表的意义。</p>
 <table>
 <thead>
@@ -399,7 +399,7 @@
 
 
 
-    <a data-url="http://yuanquanquan.top/2020/20200417/" data-id="cka6msvr5002ctov86hvnjw5f" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yuanquanquan.top/2020/20200417/" data-id="cka6n4y9w003f90v8lo2yhftt" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -619,7 +619,7 @@
                             <a href="/2020/20200417/" class="thumbnail">
     
     
-        <span style="background-image:url(http://q8pl344z8.bkt.clouddn.com/Gerber-1.webp)" alt="逆向工程：从Gerber到PCB" class="thumbnail-image"></span>
+        <span style="background-image:url(https://i.loli.net/2020/05/14/fWR5BlijzE73xvT.png)" alt="逆向工程：从Gerber到PCB" class="thumbnail-image"></span>
     
     
 </a>
