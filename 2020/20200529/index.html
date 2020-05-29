@@ -6,26 +6,26 @@
     
 
     
-    <title>DeepLearning.ai笔记:(4-1)-- 卷积神经网络（Foundations of CNN） | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+    <title>PC-DARTS:Partial Channel Connections for Memory-Efficient DifferentiableArchitecture Search | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="dl.ai">
+        <meta name="keywords" content="AutoML">
     
-    <meta name="description" content="第四门课开始就学习深度学习关于计算机视觉的重要应用—卷积神经网络。 第一周主要是对卷积神经网络的基本构造和原理做了介绍。">
-<meta name="keywords" content="dl.ai">
+    <meta name="description" content="DARTS是可微分网络架构搜索，而本文将要解读的PC-DARTS是DARTS的扩展。DARTS方法速度快，但是由于它需要训练一个超网来寻找最优结构，需要消耗大量的内存和计算资源。因此论文作者提出了Partially-ConnectedDARTS，即部分通道连接的DARTS方法，通过对super-net进行一小部分的采样，能够减少网络搜索过程中计算的内存占用。但是由于通过在通道子集上执行运算搜索，而">
+<meta name="keywords" content="AutoML">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DeepLearning.ai笔记:(4-1)-- 卷积神经网络（Foundations of CNN）">
-<meta property="og:url" content="http://yuanquanquan.top/2018/dl-ai-4-1/index.html">
+<meta property="og:title" content="PC-DARTS:Partial Channel Connections for Memory-Efficient DifferentiableArchitecture Search">
+<meta property="og:url" content="http://yuanquanquan.top/2020/20200529/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="第四门课开始就学习深度学习关于计算机视觉的重要应用—卷积神经网络。 第一周主要是对卷积神经网络的基本构造和原理做了介绍。">
+<meta property="og:description" content="DARTS是可微分网络架构搜索，而本文将要解读的PC-DARTS是DARTS的扩展。DARTS方法速度快，但是由于它需要训练一个超网来寻找最优结构，需要消耗大量的内存和计算资源。因此论文作者提出了Partially-ConnectedDARTS，即部分通道连接的DARTS方法，通过对super-net进行一小部分的采样，能够减少网络搜索过程中计算的内存占用。但是由于通过在通道子集上执行运算搜索，而">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
-<meta property="og:updated_time" content="2018-10-23T12:16:33.000Z">
+<meta property="og:image" content="https://i.loli.net/2020/05/30/aWSh36meoy2DkIL.png">
+<meta property="og:updated_time" content="2020-05-29T16:07:21.386Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DeepLearning.ai笔记:(4-1)-- 卷积神经网络（Foundations of CNN）">
-<meta name="twitter:description" content="第四门课开始就学习深度学习关于计算机视觉的重要应用—卷积神经网络。 第一周主要是对卷积神经网络的基本构造和原理做了介绍。">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
+<meta name="twitter:title" content="PC-DARTS:Partial Channel Connections for Memory-Efficient DifferentiableArchitecture Search">
+<meta name="twitter:description" content="DARTS是可微分网络架构搜索，而本文将要解读的PC-DARTS是DARTS的扩展。DARTS方法速度快，但是由于它需要训练一个超网来寻找最优结构，需要消耗大量的内存和计算资源。因此论文作者提出了Partially-ConnectedDARTS，即部分通道连接的DARTS方法，通过对super-net进行一小部分的采样，能够减少网络搜索过程中计算的内存占用。但是由于通过在通道子集上执行运算搜索，而">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/30/aWSh36meoy2DkIL.png">
     
 
     
@@ -180,19 +180,19 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/AI/">AI</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/AI/Deep-Learning/">Deep Learning</a>
+    <a class="page-title-link" href="/categories/笔记/">笔记</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/笔记/论文笔记/">论文笔记</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-dl-ai-4-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-论文笔记-12" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        DeepLearning.ai笔记:(4-1)-- 卷积神经网络（Foundations of CNN）
+        PC-DARTS:Partial Channel Connections for Memory-Efficient DifferentiableArchitecture Search
         </h1>
     
 
@@ -202,8 +202,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2018/dl-ai-4-1/" class="article-date">
-            <time datetime="2018-09-30T02:20:54.000Z" itemprop="datePublished">2018-09-30</time>
+        <a href="/2020/20200529/" class="article-date">
+            <time datetime="2020-05-29T14:34:41.000Z" itemprop="datePublished">2020-05-29</time>
         </a>
     </div>
 
@@ -212,99 +212,41 @@
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dl-ai/">dl.ai</a>
+        <a class="tag-link" href="/tags/AutoML/">AutoML</a>
     </div>
 
                 <!---cloud阅读量统计系统-->
-                阅读数量:<span id="/2018/dl-ai-4-1/" class="leancloud_visitors" data-flag-title="DeepLearning.ai笔记:(4-1)-- 卷积神经网络（Foundations of CNN）"></span>次
+                阅读数量:<span id="/2020/20200529/" class="leancloud_visitors" data-flag-title="PC-DARTS:Partial Channel Connections for Memory-Efficient DifferentiableArchitecture Search"></span>次
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg" alt></p>
-<p>第四门课开始就学习深度学习关于计算机视觉的重要应用—卷积神经网络。</p>
-<p>第一周主要是对卷积神经网络的基本构造和原理做了介绍。</p>
-<a id="more"></a>
-<h1 id="计算机视觉"><a href="#计算机视觉" class="headerlink" title="计算机视觉"></a>计算机视觉</h1><p>计算机视觉是深度学习的一个非常重要的应用。比如图像分类，目标检测，图片风格迁移等。</p>
-<p>用传统的深度学习算法，假设你有一张$64×64$的猫片，又有RGB三通道，那么这个时候是$64×64×3=12288$，input layer的维度就是12288，这样其实也还可以，因为图片很小。那么如果你有$1000×1000$的照片呢，你的向量就会有300万！假设有1000个隐藏神经元，那么就是第一层的参数矩阵$W$有30亿个参数！算到地老天荒。所以用传统的深度学习算法是不现实的。</p>
-<h1 id="边缘检测"><a href="#边缘检测" class="headerlink" title="边缘检测"></a>边缘检测</h1><p>如图，这些边缘检测中，用水平检测和垂直检测会得到不同的结果。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1v3yw2j20hg0813z5.jpg" alt></p>
-<p>垂直检测如下图，用一个$3×3$的过滤器（filter），也叫卷积核，在原图片$6×6$的对应地方按元素相乘，得到$4×4$的图片。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1whcopj20x40iln2i.jpg" alt></p>
-<p>可以看到，用垂直边缘的filter可以将原图片中间的边缘区分出来，也就是得到了最右图中最亮的部分即为检测到的边缘。</p>
-<p>当然，如果左图的亮暗分界线反过来，则输出图片中最暗的部分表示边缘。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1v5z60j216s0o2q4z.jpg" alt></p>
-<p>也自然有水平的边缘分类器。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1v2vcqj20t509ajrh.jpg" alt></p>
-<p>还有更复杂的，但是我们不需要进行人工的决定这些filter是什么，因为我们可以通过训练，让机器自己学到这些参数。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1v72odj21450mh0v0.jpg" alt></p>
-<h1 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h1><p>padding是填充的意思。</p>
-<ul>
-<li><p>我们可以从之前的例子看到，每经过一次卷积运算，图片的像素都会变小，从$6×6 —&gt; 4×4$，这样子图片就会越来越小，后面就毛都不剩了。</p>
-</li>
-<li><p>还有一点就是，从卷积的运算方法来看，边缘和角落的位置卷积的次数少，会丢失有用信息。</p>
-</li>
-</ul>
-<p>所以就有padding的想法了，也就是在图片四周填补上像素。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1v7wyoj20c70avju6.jpg" alt="填充后从$6\times6 -&gt;8\times8$，经过$3\times3$卷积后，还是$6\times6$"></p>
-<p>计算方法如下，</p>
-<p>原数据是$n \times n$，filter为$f \times f$,padding为$p \times p$，</p>
-<p>那么得到的矩阵大小是$(n + 2p -f +1)\times(n + 2p -f +1)$</p>
-<p>padding有两种：</p>
-<ul>
-<li>valid：也就是不填充</li>
-<li>same：输入与输出大小相同的图片, $p=(f - 1) / 2$，一般padding为奇数，因为filter是奇数</li>
-</ul>
-<h1 id="stride（步长）"><a href="#stride（步长）" class="headerlink" title="stride（步长）"></a>stride（步长）</h1><p>卷积的步长也就是每一次运算后平移的距离，之前使用都是stride=1。</p>
-<p>假设stride=2，就会得到：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1wj691j20x60if78d.jpg" alt></p>
-<p>得到的矩阵大小是</p>
-<p>$$\lfloor \frac{n+2p-f}{s}+1\rfloor \times \lfloor \frac{n+2p-f}{s}+1\rfloor$$</p>
-<p>向下取整: 59/60 = 0</p>
-<h1 id="立体卷积"><a href="#立体卷积" class="headerlink" title="立体卷积"></a>立体卷积</h1><p>之前都是单通道的图片进行卷积，如果有RGB三种颜色的话，就要使用立体卷积了。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1v6zxyj211k0lt413.jpg" alt></p>
-<p>这个时候的卷积核就变成了$3 \times 3 \times 3$的三维卷积核，一共27个参数，每次对应着原图片上的RGB一共27个像素运算，然后求和得到输出图片的一个像素。因为只有一个卷积核，这个时候输出的还是$4 \times 4 \times 1$的图片。</p>
-<p><strong>多个卷积核</strong></p>
-<p>因为不同的卷积核可以提取不同的图片特征，所以可以有很多个卷积核，同时提取图片的特征，如分别提取图片的水平和垂直边缘特征。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1vbgemj213t0m6gnu.jpg" alt></p>
-<p>因为有了两个卷积核，这时候输出的图片就是有两通道的图片$4\times 4 \times 2$。</p>
-<p>这里要搞清两个概念，卷积核的通道数和个数：</p>
-<ul>
-<li>通道数channel：即卷积核要作用在原图片上，原图片的通道处$n_c$，卷积核的通道数必须和原图片通道数相同</li>
-<li>个数：即要使用多少个这样的卷积核，使用$n_{c}^{\prime}$表示，卷积核的个数也就是输出图片的通道数，如有两个卷积核，那么生成了$4\times 4 \times 2$的图片，2  就是卷积核的个数</li>
-<li>即 $n \times n \times n_c$ ，乘上的$n_{c}^{\prime}$个卷积核 $ f \times f \times n_c$，得到$(n -f +1)\times (n - f +1 ) \times n_{c}^{\prime}$的新图片</li>
-</ul>
-<h1 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h1><p><strong>单层卷积网络</strong></p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1x8wxmj21ba0qd4nz.jpg" alt></p>
-<p>如图是单层卷积的基本过程，先经过两个卷积核，然后再加上bias进行relu激活函数。</p>
-<p>那么假设某层卷积层有10个$3 \times 3 \times 3$的卷积核，那么一共有$(3\times3\times3+1) \times10=280$个参数，加1是加上了bias</p>
-<p>在这里总结了各个参数的表示方法：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1whr44j20m50bx43e.jpg" alt></p>
-<p><strong>简单神经网络</strong></p>
-<p>一般卷积神经网络层的类型有：</p>
-<ul>
-<li>convolution卷积层</li>
-<li>pool池化层</li>
-<li>fully connected全连接层</li>
-</ul>
-<h1 id="池化层"><a href="#池化层" class="headerlink" title="池化层"></a>池化层</h1><p>pooling 的作用就是用来压缩数据，加速运算，提高提取特征的鲁棒性</p>
-<p><strong>Max pooling</strong></p>
-<p>在范围内取最大值</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1whjhbj20ra0g3wkp.jpg" alt></p>
-<p><strong>Average Pooling</strong></p>
-<p>取平均值</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1vp1w0j20pf0cbtaq.jpg" alt></p>
-<h1 id="卷积神经网络示例"><a href="#卷积神经网络示例" class="headerlink" title="卷积神经网络示例"></a>卷积神经网络示例</h1><p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1w3xmij20z00jl76m.jpg" alt></p>
-<p>一般conv后都会进行pooling，所以可以把conv和pooling当做一层。</p>
-<p>如上图就是$conv-pool-conv-pool-fc-fc-fc-softmax$的卷积神经网络结构。</p>
-<p>各个层的参数是这样的：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrm1vv63zj20lv0bcdjg.jpg" alt></p>
-<p>可以看到，在卷积层的参数非常少，池化层没有参数，大量的参数在全连接层。</p>
-<h1 id="为何用卷积神经网络？"><a href="#为何用卷积神经网络？" class="headerlink" title="为何用卷积神经网络？"></a>为何用卷积神经网络？</h1><p>这里给出了两点主要原因：</p>
-<ul>
-<li>参数共享：卷积核的参数是原图片中各个像素之间共享的，所以大大减少了参数</li>
-<li>连接的稀疏性：每个输出值，实际上只取决于很少量的输入而已。</li>
-</ul>
+            <p><img src="https://i.loli.net/2020/05/30/aWSh36meoy2DkIL.png" alt="PC-DARTS">DARTS是可微分网络架构搜索，而本文将要解读的PC-DARTS是DARTS的扩展。DARTS方法速度快，但是由于它需要训练一个超网来寻找最优结构，需要消耗大量的内存和计算资源。因此论文作者提出了Partially-ConnectedDARTS，即部分通道连接的DARTS方法，通过对super-net进行一小部分的采样，能够减少网络搜索过程中计算的内存占用。<strong>但是由于通过在通道子集上执行运算搜索，而其他部分不变，这可能导致挑选超大网络边时出现不一致，为了解决这个问题，作者提出了边正则化，在搜索中添加边级别的超参数集合，来减少搜索的不确定性。</strong></p>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>DARTS把运算操作进行连续松弛，可以让网络的超参数搜索可微，进而达到端对端的网络搜索。但是由于在一个很大的超网上进行搜索，导致它的搜索空间有大量的冗余，使得计算量和内存占用很大。作者为了减少内存和计算量，采用这样的思路：不用把全部通道都送入运算选择中，而是对通道子集进行随机采样进行运算，其他的通道直接通过。但是这种思路带来了一种问题：由于采样的随机性，网络连接的选择可能是不稳定的。由此作者又引入了边正则化（edgenormalization）进行稳定，添加一个额外的边选择超参数集合。同时得益于部分通道连接的策略，选择1/K的通道可以减少K倍内存，那么就可以增大K倍的batchsize，不仅可以加速K倍，还可以稳定搜索。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>DARTS把网络的搜索拆分为L个cell，每个cell为N个节点的有向无环边，每个节点是一个网络层。Cell的类型有两种：ReductionCell和NormalCell，在整个超网中共享。</p>
+<p>一般网络的每一层代表着一种操作，这个操作可能是卷积、池化、激活等函数，但在超网络SuperNet中，每一层网络是由多种运算组合起来的，每一种运算对应一个系数$\alpha$,，混合运算的加权公式如下：<br>$$<br>f_{i, j}\left(\mathbf{x}<em>{i}\right)=\sum</em>{o \in \mathcal{O}} \frac{\exp \left{\alpha_{i, j}^{o}\right}}{\sum_{o^{\prime} \in \mathcal{O}} \exp \left{\alpha_{i, j}^{o^{\prime}}\right}} \cdot o\left(\mathbf{x}_{i}\right)<br>$$</p>
+<h2 id="Partial-Channel-Connections"><a href="#Partial-Channel-Connections" class="headerlink" title="Partial Channel Connections"></a><strong>Partial Channel Connections</strong></h2><p>DARTS的问题是需要大量内存，为了调节$|\theta|$个运算，需要把每个运算的结果存储起来，需要使用$|\theta|$倍的内存，为了能存下必须降低batchsize大小，这就降低了速度。而本文提出了partially-connectedDARTS方法，简称为PC-DARTS，方法如图1所示。该方法将网络提取的特征在通道维度上进行了1/K采样，只对采样后的通道进行处理，然后将这些特征与剩余的特征进行拼接(concat)。为了减少由采样带来的不确定性，作者又提出了边正则化，添加了边级别的超参数$\beta$</p>
+<p><img src="https://i.loli.net/2020/05/29/3RxMkinqbHE7IAs.png" alt="PC-DARTS方法图示"></p>
+<p>PC-DARTS的运算加权公式为:<br>$$<br>f_{i, j}^{\mathrm{PC}}\left(\mathbf{x}<em>{i} ; \mathbf{S}</em>{i, j}\right)=\sum_{o \in \mathcal{O}} \frac{\exp \left{\alpha_{i, j}^{o}\right}}{\sum_{o^{\prime} \in \mathcal{O}} \exp \left{\alpha_{i, j}^{o^{\prime}}\right}} \cdot o\left(\mathbf{S}<em>{i, j} * \mathbf{x}</em>{i}\right)+\left(1-\mathbf{S}<em>{i, j}\right) * \mathbf{x}</em>{i}<br>$$<br>其中$S_{i,j}$为通道采样mask，标为1的通道直接作为输出。我们随机采样1/K个通道，其中这个K我们作为超参数用来平衡速度和准确率。挑选出通道的1/K可以减少K倍的计算量，还可以有更多的样本来采样，这对于网络搜索尤为重要。</p>
+<p><strong>Edge Normalization</strong></p>
+<p>上一节中对通道进行随机采样的好处是能减少所选操作的偏置，即对于边(i,j)，给定$x_i$,使用两组超参数${\alpha^{o}<em>{i,j}}$和$${\alpha^{o’}</em>{i,j}}$$的差距就减小了。但是它削弱了无权重运算（如跳层连接，最大池化）的优势。在早期，搜索算法更喜欢无权重的运算，因为这些运算没有参数，能够得到输出一致的结果。但是对于有权重的运算，优化过程中会出现不一致的情况。这样无权重的运算会占据很大的比重，后续即使有权重的运算优化的很好，也无法超过它们。这种现象在代理输入比较困难的时候尤其严重，这也导致DARTS在ImageNet上效果不好。</p>
+<p>为此提出了边正则化来抑制该现象。边正则化为基本单元中的第i层网络的每个输入分配了一个$\beta$参数，公式表示如下：<br>$$<br>\mathbf{x}<em>{j}^{\mathrm{PC}}=\sum</em>{i&lt;j} \frac{\exp \left{\beta_{i, j}\right}}{\sum_{i^{\prime}&lt;j} \exp \left{\beta_{i^{\prime}, j}\right}} \cdot f_{i, j}\left(\mathbf{x}_{i}\right)<br>$$</p>
+<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><p>作者在两个常用的公共数据集CIFAR-10和ImageNet进行了实验。</p>
+<p><strong>CIFAR-10实验结果</strong></p>
+<p>CIFAR-10上的实验结果如图2所示。在搜索过程中，网络由8个cell堆叠组成（包含6个normalcells和2个reductioncells），并且每个cell由6个节点构成，normalcell和reductioncell结果如图2所示。</p>
+<p>CIFAR-10上，选用K=4，即只有1/4的通道被采样，因此搜索期间的batchsize增加到256。训练时，SuperNet首先预热15个epochs（即固定架构超参数，只更新网络参数），使用带动量的SGD进行网络参数的优化，使用Adam优化器来对超参数${\alpha^{o}<em>{i,j}}$和$\beta</em>{i,j}$进行更新。</p>
+<p>从表中可以看到，使用PC-DARTS方法，仅需0.1GPU天，错误率就可以达到2.57%，搜索时间和准确率都超过了baseline方法DARTS。在比较的方法中，PC-DARTS是错误率小于3%的方法中速度最快的。</p>
+<p><img src="https://i.loli.net/2020/05/29/z71ISxRg5D2Tic4.png" alt="表1：在CIFAR-10上的实验结果"><img src="https://i.loli.net/2020/05/29/ogBx9ckQMwhSpPJ.png" alt="图2：在CIFAR-10上搜索出的cell结构"></p>
+<h2 id="ImgaeNet上的实验结果"><a href="#ImgaeNet上的实验结果" class="headerlink" title="ImgaeNet上的实验结果"></a><strong>ImgaeNet上的实验结果</strong></h2><p>在ImageNet上的实验结果以及和SOTA方法的比较如表2所示。作者对用于CIFAR-10上的网络结构进行了小修改以适用于ImageNet。为了减小搜索时间，作者分别从ImageNet上随机采样了两个子集，采样率分别为10%和2.5%，前者用于训练网络参数权重，后者用于更新架构超参数。</p>
+<p>由于在ImageNet进行搜索比CIFAR-10更难，为了保留更多的信息，选取K=2，即通道采样率为1/2，是CIFAR-10的两倍。仍然训练50个epochs，但是前35个epochs固定架构超参数，其他训练设置基本和CIFAR-10上的一致。</p>
+<p>在ImageNet上的结果如表2所示，在ImageNet上的实验结果，Top-1和Top-5准确率可以达到24.2%和7.3%，是比较的方法中效果最好的，也证明了本方法在减少内存消耗上是有效的。</p>
+<p><img src="https://i.loli.net/2020/05/29/mylQnNPtcx75V86.png" alt="表2：在ImageNet上的实验结果"></p>
+<p>在ImageNet上搜索得到的normalcell和reductioncell如下图所示。</p>
+<p><img src="https://i.loli.net/2020/05/30/Gr3N6YATl8Ev9XC.png" alt="图3：在ImageNet上搜索得到的cell结果"></p>
+<h2 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a><strong>消融实验</strong></h2><h2 id="1-不同采样率的结果"><a href="#1-不同采样率的结果" class="headerlink" title="1. 不同采样率的结果"></a><strong>1. 不同采样率的结果</strong></h2><p>K是用来控制通道的采样率的一个超参数，在讨论K对实验结果的影响之前，要先明确这么一个信息：增加采样率（即使用一个更小的K值）能使得更精确的信息被传播；而对通道的更小一部分进行采样，会造成更大的正则化，可能会引起过拟合。为了研究K的影响，作者在CIFAR-10上实验了4种K值对性能的影响，分别为1/1,1/2,1/4和1/8，实验结果如图4所示。从图中可以看出来采样率在1/4时的效果最好，准确率最高，搜索速度最快。使用1/8的采样率，尽管会进一步减少搜索时间，但是会产生严重的性能下降。<img src="https://i.loli.net/2020/05/30/QTBl1tOjRS2g9i5.png" alt="图4：不同K值（即采样率）对实验结果的影响"></p>
+<h2 id="2-PC-DARTS不同组件的作用"><a href="#2-PC-DARTS不同组件的作用" class="headerlink" title="2. PC-DARTS不同组件的作用"></a><strong>2. PC-DARTS不同组件的作用</strong></h2><p>作者又探讨PC-DARTS中的partialchannel connection（表中简称为PC）和edgenormalization（表中简称为EN）的作用，结果如表3所示。从表中可以很明显看到，EN及时在通道是全部连接的情况下，也能带来正则化的效果。同时，edgenormalization和partialchannel connection一起使用，可以提供更进一步的改进效果。而不使用edgenormalization，则网络参数的数量和精确度都会受到影响。</p>
+<p><img src="https://i.loli.net/2020/05/30/3tqhK8Vr7bjQpXP.png" alt="表3：在CIFAR-10和ImageNet上的消融实验"></p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>本篇论文提出了一个简单但却有效的PC-DARTS(partially-connecteddifferentiable architecturesearch)方法，<strong>它的核心思想是随机采样一部分通道用于运算搜索，这样能更有效的利用内存，可以使用更大的batchsize获得更高的稳定性。另一个贡献是提出了边标准化(edgenormalization)来稳定搜索的过程，这是个轻量化的模块，基本不需要太多的计算量。此方法在CIFAR-10上完整搜索只需要0.1GPU天，在Imagenet上搜索需要3.8GPU天。</strong></p>
 
         </div>
         <footer class="article-footer">
@@ -312,7 +254,7 @@
 
 
 
-    <a data-url="http://yuanquanquan.top/2018/dl-ai-4-1/" data-id="ckaseheav000oi0v8yznj3ioj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yuanquanquan.top/2020/20200529/" data-id="ckasehf56008qi0v839a0o8c6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -454,20 +396,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2018/dl-ai-4-1h/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            DeepLearning.ai作业:(4-1)-- 卷积神经网络（Foundations of CNN）
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2018/cs231n-1h-5/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2020/202005251/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">cs231n作业：assignment1 - features</p>
+        <p class="article-nav-title">typecho</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -737,7 +669,7 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://yuanquanquan.top/2018/dl-ai-4-1/';
+    var disqus_url = 'http://yuanquanquan.top/2020/20200529/';
     
     (function() {
     var dsq = document.createElement('script');
