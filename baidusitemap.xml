@@ -4,14 +4,173 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2020/20200529/</loc>
-    <lastmod>2020-05-29T16:07:21.386Z</lastmod>
+    <loc>http://yuanquanquan.top/2019/20190911174/</loc>
+    <lastmod>2020-06-09T18:18:10.746Z</lastmod>
     <data>
         <display>
-        <title>PC-DARTS:Partial Channel Connections for Memory-Efficient DifferentiableArchitecture Search</title>
-        <pubTime>2020-05-29T14:34:41.000Z</pubTime>
+        <title>Kick Start 2019-Practice Round</title>
+        <pubTime>2019-11-17T14:18:32.000Z</pubTime>
         
-        <tag>AutoML</tag>
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="kick start" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/kick-start/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/2019122011/</loc>
+    <lastmod>2020-06-09T18:11:40.135Z</lastmod>
+    <data>
+        <display>
+        <title>leetcode 483.最小好进制</title>
+        <pubTime>2019-12-20T03:09:20.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="LeetCode" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/LeetCode/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/20190911215/</loc>
+    <lastmod>2020-06-09T18:11:14.047Z</lastmod>
+    <data>
+        <display>
+        <title>Michael Nielsen对weight初始化的解释</title>
+        <pubTime>2019-11-21T02:50:08.000Z</pubTime>
+        
+        <tag>Machine Learning &amp; Data</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Machine Learning &amp; Data" url="http://yuanquanquan.top/categories/AI/Machine-Learning-Data/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2020/20200425/</loc>
+    <lastmod>2020-06-09T18:10:12.701Z</lastmod>
+    <data>
+        <display>
+        <title>Neural Architecture Search</title>
+        <pubTime>2020-04-25T02:57:05.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2020/20200511/</loc>
+    <lastmod>2020-06-09T18:09:59.253Z</lastmod>
+    <data>
+        <display>
+        <title>Conditional Random Fields</title>
+        <pubTime>2020-05-11T05:30:00.000Z</pubTime>
+        
+        <tag>NLP</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="学习笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2020/20200310/</loc>
+    <lastmod>2020-06-09T18:06:10.999Z</lastmod>
+    <data>
+        <display>
+        <title>开新坑-硬件学习</title>
+        <pubTime>2020-03-10T15:15:24.000Z</pubTime>
+        
+        <tag>单片机</tag>
+         
+         
+           
+             
+              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+          
+             
+              <breadCrumb title="硬件学习" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E7%A1%AC%E4%BB%B6%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2020/20200321/</loc>
+    <lastmod>2020-06-09T18:04:14.430Z</lastmod>
+    <data>
+        <display>
+        <title>红外循迹传感器</title>
+        <pubTime>2020-03-21T12:37:40.000Z</pubTime>
+        
+        <tag>单片机</tag>
+         
+         
+           
+             
+              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+          
+             
+              <breadCrumb title="硬件学习" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E7%A1%AC%E4%BB%B6%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/20190911172/</loc>
+    <lastmod>2020-06-09T18:03:53.861Z</lastmod>
+    <data>
+        <display>
+        <title>MIXED PRECISION TRAINING</title>
+        <pubTime>2019-11-17T03:02:10.000Z</pubTime>
+        
+        <tag>CVPR</tag>
          
          
            
@@ -28,7 +187,7 @@
     
   <url>
     <loc>http://yuanquanquan.top/2020/202005251/</loc>
-    <lastmod>2020-05-25T06:59:40.678Z</lastmod>
+    <lastmod>2020-06-09T18:03:26.041Z</lastmod>
     <data>
         <display>
         <title>typecho</title>
@@ -54,320 +213,8 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2020/20200524/</loc>
-    <lastmod>2020-05-25T06:16:34.995Z</lastmod>
-    <data>
-        <display>
-        <title>胃与真相</title>
-        <pubTime>2020-05-24T15:25:45.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2020/20200417/</loc>
-    <lastmod>2020-05-14T10:38:29.175Z</lastmod>
-    <data>
-        <display>
-        <title>逆向工程：从Gerber到PCB</title>
-        <pubTime>2020-04-17T06:40:40.000Z</pubTime>
-        
-        <tag>Altium</tag>
-         
-         
-           
-             
-              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
-          
-             
-              <breadCrumb title="硬件学习" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E7%A1%AC%E4%BB%B6%E5%AD%A6%E4%B9%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2020/20200511/</loc>
-    <lastmod>2020-05-14T10:09:23.804Z</lastmod>
-    <data>
-        <display>
-        <title>Conditional Random Fields</title>
-        <pubTime>2020-05-11T05:30:00.000Z</pubTime>
-        
-        <tag>NLP</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="学习笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2020/20200313/</loc>
-    <lastmod>2020-05-14T10:02:04.712Z</lastmod>
-    <data>
-        <display>
-        <title>SqueezeNAS:Fast neural architecture search for faster semantic segmentation</title>
-        <pubTime>2020-03-13T03:32:41.000Z</pubTime>
-        
-        <tag>CV</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2020/20200312/</loc>
-    <lastmod>2020-05-03T09:28:51.483Z</lastmod>
-    <data>
-        <display>
-        <title>【Object Detection】-YOLOV1</title>
-        <pubTime>2020-03-12T02:36:03.000Z</pubTime>
-        
-        <tag>Object Detection</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="复健计划" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%A4%8D%E5%81%A5%E8%AE%A1%E5%88%92/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2020/20200311403/</loc>
-    <lastmod>2020-05-03T09:26:10.073Z</lastmod>
-    <data>
-        <display>
-        <title>【Object Detection】-Faster R-CNN</title>
-        <pubTime>2020-03-11T03:40:03.000Z</pubTime>
-        
-        <tag>Object Detection</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="复健计划" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%A4%8D%E5%81%A5%E8%AE%A1%E5%88%92/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2020/20200323/</loc>
-    <lastmod>2020-05-03T09:09:48.992Z</lastmod>
-    <data>
-        <display>
-        <title>EfficientDet:Scalable and Efficient Object Detection</title>
-        <pubTime>2020-03-23T09:54:14.000Z</pubTime>
-        
-        <tag>CV</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/20190911174/</loc>
-    <lastmod>2020-05-03T08:56:44.920Z</lastmod>
-    <data>
-        <display>
-        <title>Kick Start 2019-Practice Round</title>
-        <pubTime>2019-11-17T14:18:32.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/"/>
-          
-             
-              <breadCrumb title="kick start" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/kick-start/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/2019091122/</loc>
-    <lastmod>2020-05-03T08:46:36.417Z</lastmod>
-    <data>
-        <display>
-        <title>十问 | 沉思录及其他</title>
-        <pubTime>2019-11-22T10:35:03.000Z</pubTime>
-        
-        <tag>生活</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活" url="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/"/>
-          
-             
-              <breadCrumb title="随笔" url="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/%E9%9A%8F%E7%AC%94/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2020/20200321/</loc>
-    <lastmod>2020-05-03T08:42:36.157Z</lastmod>
-    <data>
-        <display>
-        <title>红外循迹传感器</title>
-        <pubTime>2020-03-21T12:37:40.000Z</pubTime>
-        
-        <tag>单片机</tag>
-         
-         
-           
-             
-              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
-          
-             
-              <breadCrumb title="硬件学习" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E7%A1%AC%E4%BB%B6%E5%AD%A6%E4%B9%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2020/20200310/</loc>
-    <lastmod>2020-05-03T08:40:53.519Z</lastmod>
-    <data>
-        <display>
-        <title>开新坑-硬件学习</title>
-        <pubTime>2020-03-10T15:15:24.000Z</pubTime>
-        
-        <tag>单片机</tag>
-         
-         
-           
-             
-              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
-          
-             
-              <breadCrumb title="硬件学习" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E7%A1%AC%E4%BB%B6%E5%AD%A6%E4%B9%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2020/20200425/</loc>
-    <lastmod>2020-05-03T08:30:46.884Z</lastmod>
-    <data>
-        <display>
-        <title>Neural Architecture Search</title>
-        <pubTime>2020-04-25T02:57:05.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/20191230/</loc>
-    <lastmod>2019-12-30T14:12:41.751Z</lastmod>
-    <data>
-        <display>
-        <title>2019年计算机视觉综述论文汇聚</title>
-        <pubTime>2019-12-30T13:23:38.000Z</pubTime>
-        
-        <tag>CV</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/2019122011/</loc>
-    <lastmod>2019-12-20T03:29:34.939Z</lastmod>
-    <data>
-        <display>
-        <title>leetcode 483.最小好进制</title>
-        <pubTime>2019-12-20T03:09:20.000Z</pubTime>
-        
-        <tag>LeetCode</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/"/>
-          
-             
-              <breadCrumb title="LeetCode" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/LeetCode/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yuanquanquan.top/2019/20190911164/</loc>
-    <lastmod>2019-12-20T03:24:35.244Z</lastmod>
+    <lastmod>2020-06-09T18:02:30.567Z</lastmod>
     <data>
         <display>
         <title>Yet Another Monster Killing Problem</title>
@@ -389,20 +236,22 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2019/2019121899/</loc>
-    <lastmod>2019-12-19T11:03:28.679Z</lastmod>
+    <loc>http://yuanquanquan.top/2020/20200312/</loc>
+    <lastmod>2020-06-09T18:02:05.821Z</lastmod>
     <data>
         <display>
-        <title>CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes</title>
-        <pubTime>2019-12-18T11:49:36.000Z</pubTime>
+        <title>【Object Detection】-YOLOV1</title>
+        <pubTime>2020-03-12T02:36:03.000Z</pubTime>
         
+        <tag>Object Detection</tag>
+         
          
            
              
               <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
           
              
-              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+              <breadCrumb title="复健计划" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%A4%8D%E5%81%A5%E8%AE%A1%E5%88%92/"/>
           
         </display>
     </data>
@@ -410,20 +259,26 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2019/20191213002/</loc>
-    <lastmod>2019-12-12T23:54:08.321Z</lastmod>
+    <loc>http://yuanquanquan.top/2018/2018091015/</loc>
+    <lastmod>2020-06-09T18:01:42.466Z</lastmod>
     <data>
         <display>
-        <title>Fast Online Object Tracking and Segmentation:A Unifying Approach</title>
-        <pubTime>2019-12-12T23:41:41.000Z</pubTime>
+        <title>你见过什么样的云霄？</title>
+        <pubTime>2018-09-10T07:21:32.000Z</pubTime>
         
+        <tag>航拍</tag>
+         
+        <tag>旅行</tag>
+         
+        <tag>视频</tag>
+         
          
            
              
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+              <breadCrumb title="生活" url="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/"/>
           
              
-              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+              <breadCrumb title="旅行" url="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/%E6%97%85%E8%A1%8C/"/>
           
         </display>
     </data>
@@ -431,20 +286,45 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2019/2019121111/</loc>
-    <lastmod>2019-12-11T04:16:43.667Z</lastmod>
+    <loc>http://yuanquanquan.top/2019/2019091117/</loc>
+    <lastmod>2020-06-09T18:01:20.970Z</lastmod>
     <data>
         <display>
-        <title>jupyter远程连接炼丹</title>
-        <pubTime>2019-12-11T03:55:00.000Z</pubTime>
+        <title>芝诺之圆 | 方向、迷失与北京三年</title>
+        <pubTime>2019-11-17T03:34:04.000Z</pubTime>
         
+        <tag>生活</tag>
+         
          
            
              
-              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+              <breadCrumb title="生活" url="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/"/>
           
              
-              <breadCrumb title="jupyter" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/jupyter/"/>
+              <breadCrumb title="随笔" url="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/%E9%9A%8F%E7%AC%94/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/20190911191/</loc>
+    <lastmod>2020-06-09T18:00:55.349Z</lastmod>
+    <data>
+        <display>
+        <title>SINGLE-SHOT NETWORK PRUNING BASED ON CONNECTION SENSITIVITY</title>
+        <pubTime>2019-11-19T00:38:10.000Z</pubTime>
+        
+        <tag>CVPR</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -453,7 +333,7 @@
     
   <url>
     <loc>http://yuanquanquan.top/2019/2019120912/</loc>
-    <lastmod>2019-12-09T06:11:50.026Z</lastmod>
+    <lastmod>2020-06-09T18:00:37.703Z</lastmod>
     <data>
         <display>
         <title>THE LOTTERY TICKET HYPOTHESIS： FINDING SPARSE, TRAINABLE NEURAL NETWORKS</title>
@@ -475,8 +355,188 @@
 
     
   <url>
+    <loc>http://yuanquanquan.top/2019/20191213002/</loc>
+    <lastmod>2020-06-09T18:00:14.373Z</lastmod>
+    <data>
+        <display>
+        <title>Fast Online Object Tracking and Segmentation:A Unifying Approach</title>
+        <pubTime>2019-12-12T23:41:41.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/2019121899/</loc>
+    <lastmod>2020-06-09T17:59:59.657Z</lastmod>
+    <data>
+        <display>
+        <title>CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes</title>
+        <pubTime>2019-12-18T11:49:36.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/20191230/</loc>
+    <lastmod>2020-06-09T17:59:44.327Z</lastmod>
+    <data>
+        <display>
+        <title>2019年计算机视觉综述论文汇聚</title>
+        <pubTime>2019-12-30T13:23:38.000Z</pubTime>
+        
+        <tag>CV</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2020/20200313/</loc>
+    <lastmod>2020-06-09T17:59:28.791Z</lastmod>
+    <data>
+        <display>
+        <title>SqueezeNAS:Fast neural architecture search for faster semantic segmentation</title>
+        <pubTime>2020-03-13T03:32:41.000Z</pubTime>
+        
+        <tag>CV</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/20190112899/</loc>
+    <lastmod>2020-06-09T17:57:53.865Z</lastmod>
+    <data>
+        <display>
+        <title>Connecting Generative Adversarial Networks and Actor-Critic Methods</title>
+        <pubTime>2019-11-28T07:28:01.000Z</pubTime>
+        
+        <tag>GAN</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/20191206/</loc>
+    <lastmod>2020-06-09T17:57:30.732Z</lastmod>
+    <data>
+        <display>
+        <title>OpenAI Spinning Up Part 1： Key Concepts in RL</title>
+        <pubTime>2019-12-06T15:31:10.000Z</pubTime>
+        
+        <tag>强化学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="强化学习笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/2019120615/</loc>
+    <lastmod>2020-06-09T17:57:12.469Z</lastmod>
+    <data>
+        <display>
+        <title>Two-armed Bandit</title>
+        <pubTime>2019-12-06T15:40:15.000Z</pubTime>
+        
+        <tag>强化学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="强化学习笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/2019091122/</loc>
+    <lastmod>2020-06-09T17:56:52.056Z</lastmod>
+    <data>
+        <display>
+        <title>十问 | 沉思录及其他</title>
+        <pubTime>2019-11-22T10:35:03.000Z</pubTime>
+        
+        <tag>生活</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活" url="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/"/>
+          
+             
+              <breadCrumb title="随笔" url="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/%E9%9A%8F%E7%AC%94/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yuanquanquan.top/2019/2019120800/</loc>
-    <lastmod>2019-12-07T18:00:39.151Z</lastmod>
+    <lastmod>2020-06-09T17:56:36.672Z</lastmod>
     <data>
         <display>
         <title>艾萨克的英雄主义</title>
@@ -498,12 +558,35 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2019/2019120615/</loc>
-    <lastmod>2019-12-07T17:31:50.583Z</lastmod>
+    <loc>http://yuanquanquan.top/2019/201911181/</loc>
+    <lastmod>2020-06-09T17:55:30.036Z</lastmod>
     <data>
         <display>
-        <title>Two-armed Bandit</title>
-        <pubTime>2019-12-06T15:40:15.000Z</pubTime>
+        <title>凸集</title>
+        <pubTime>2019-11-18T03:41:55.000Z</pubTime>
+        
+        <tag>优化理论</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="凸优化笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%87%B8%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/201907201118/</loc>
+    <lastmod>2020-06-09T17:54:36.727Z</lastmod>
+    <data>
+        <display>
+        <title>Q-Learning Agents</title>
+        <pubTime>2019-11-19T03:33:05.000Z</pubTime>
         
         <tag>强化学习</tag>
          
@@ -514,6 +597,299 @@
           
              
               <breadCrumb title="强化学习笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2020/20200524/</loc>
+    <lastmod>2020-06-09T17:54:10.800Z</lastmod>
+    <data>
+        <display>
+        <title>胃与真相</title>
+        <pubTime>2020-05-24T15:25:45.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/2019121111/</loc>
+    <lastmod>2020-06-09T17:53:36.740Z</lastmod>
+    <data>
+        <display>
+        <title>jupyter远程连接炼丹</title>
+        <pubTime>2019-12-11T03:55:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+          
+             
+              <breadCrumb title="jupyter" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/jupyter/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/2019090522/</loc>
+    <lastmod>2020-06-09T17:53:06.542Z</lastmod>
+    <data>
+        <display>
+        <title>statapy——在jupyter里写stata代码</title>
+        <pubTime>2019-11-24T11:24:11.000Z</pubTime>
+        
+        <tag>SAS</tag>
+         
+         
+           
+             
+              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+          
+             
+              <breadCrumb title="jupyter" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/jupyter/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/2019090521/</loc>
+    <lastmod>2020-06-09T17:52:30.171Z</lastmod>
+    <data>
+        <display>
+        <title>saspy——在jupyter里写sas代码</title>
+        <pubTime>2019-11-24T04:59:15.000Z</pubTime>
+        
+        <tag>SAS</tag>
+         
+         
+           
+             
+              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+          
+             
+              <breadCrumb title="jupyter" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/jupyter/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2018/2018090514/</loc>
+    <lastmod>2020-06-09T17:51:19.948Z</lastmod>
+    <data>
+        <display>
+        <title>hexo教程：github page+独立域名搭建(1)</title>
+        <pubTime>2018-09-05T05:38:44.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>blog</tag>
+         
+        <tag>教程</tag>
+         
+         
+           
+             
+              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+          
+             
+              <breadCrumb title="博客搭建" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2020/20200417/</loc>
+    <lastmod>2020-06-09T17:50:24.020Z</lastmod>
+    <data>
+        <display>
+        <title>逆向工程：从Gerber到PCB</title>
+        <pubTime>2020-04-17T06:40:40.000Z</pubTime>
+        
+        <tag>Altium</tag>
+         
+         
+           
+             
+              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+          
+             
+              <breadCrumb title="硬件学习" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E7%A1%AC%E4%BB%B6%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2020/20200311403/</loc>
+    <lastmod>2020-06-09T17:50:05.369Z</lastmod>
+    <data>
+        <display>
+        <title>【Object Detection】-Faster R-CNN</title>
+        <pubTime>2020-03-11T03:40:03.000Z</pubTime>
+        
+        <tag>Object Detection</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="复健计划" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%A4%8D%E5%81%A5%E8%AE%A1%E5%88%92/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/20190911162/</loc>
+    <lastmod>2020-06-09T17:49:48.272Z</lastmod>
+    <data>
+        <display>
+        <title>Evaluation of a Tree-based Pipeline Optimization Tool for Automating Data Science</title>
+        <pubTime>2019-11-16T06:03:45.000Z</pubTime>
+        
+        <tag>AutoML</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2020/20200323/</loc>
+    <lastmod>2020-06-09T17:49:16.852Z</lastmod>
+    <data>
+        <display>
+        <title>EfficientDet:Scalable and Efficient Object Detection</title>
+        <pubTime>2020-03-23T09:54:14.000Z</pubTime>
+        
+        <tag>CV</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/20190911161/</loc>
+    <lastmod>2020-06-09T17:48:12.366Z</lastmod>
+    <data>
+        <display>
+        <title>Deep-Learning-Approach-for-Surface-Defect-Detection</title>
+        <pubTime>2019-11-16T05:12:08.000Z</pubTime>
+        
+        <tag>CVPR</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/20190911165/</loc>
+    <lastmod>2020-06-09T17:46:15.714Z</lastmod>
+    <data>
+        <display>
+        <title>THE CONTEST</title>
+        <pubTime>2019-11-15T18:05:14.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="codeforces" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/codeforces/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2019/20190911214/</loc>
+    <lastmod>2020-06-09T17:45:38.477Z</lastmod>
+    <data>
+        <display>
+        <title>send boxes to alice(easy version)</title>
+        <pubTime>2019-11-21T02:08:14.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="codeforces" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/codeforces/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2020/20200529/</loc>
+    <lastmod>2020-06-09T17:42:45.113Z</lastmod>
+    <data>
+        <display>
+        <title>PC-DARTS:Partial Channel Connections for Memory-Efficient DifferentiableArchitecture Search</title>
+        <pubTime>2020-05-29T14:34:41.000Z</pubTime>
+        
+        <tag>AutoML</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -544,362 +920,12 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2019/20191206/</loc>
-    <lastmod>2019-12-06T15:49:40.473Z</lastmod>
-    <data>
-        <display>
-        <title>OpenAI Spinning Up Part 1： Key Concepts in RL</title>
-        <pubTime>2019-12-06T15:31:10.000Z</pubTime>
-        
-        <tag>强化学习</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="强化学习笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/20190112899/</loc>
-    <lastmod>2019-11-28T08:18:47.404Z</lastmod>
-    <data>
-        <display>
-        <title>Connecting Generative Adversarial Networks and Actor-Critic Methods</title>
-        <pubTime>2019-11-28T07:28:01.000Z</pubTime>
-        
-        <tag>GAN</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/20190911191/</loc>
-    <lastmod>2019-11-28T08:09:09.181Z</lastmod>
-    <data>
-        <display>
-        <title>SINGLE-SHOT NETWORK PRUNING BASED ON CONNECTION SENSITIVITY</title>
-        <pubTime>2019-11-19T00:38:10.000Z</pubTime>
-        
-        <tag>CVPR</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/2019090522/</loc>
-    <lastmod>2019-11-24T11:46:22.695Z</lastmod>
-    <data>
-        <display>
-        <title>statapy——在jupyter里写stata代码</title>
-        <pubTime>2019-11-24T11:24:11.000Z</pubTime>
-        
-        <tag>SAS</tag>
-         
-         
-           
-             
-              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
-          
-             
-              <breadCrumb title="jupyter" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/jupyter/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/2019090521/</loc>
-    <lastmod>2019-11-24T11:22:49.047Z</lastmod>
-    <data>
-        <display>
-        <title>saspy——在jupyter里写sas代码</title>
-        <pubTime>2019-11-24T04:59:15.000Z</pubTime>
-        
-        <tag>SAS</tag>
-         
-         
-           
-             
-              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
-          
-             
-              <breadCrumb title="jupyter" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/jupyter/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/20190911215/</loc>
-    <lastmod>2019-11-21T03:35:18.015Z</lastmod>
-    <data>
-        <display>
-        <title>Michael Nielsen对weight初始化的解释</title>
-        <pubTime>2019-11-21T02:50:08.000Z</pubTime>
-        
-        <tag>Machine Learning &amp; Data</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Machine Learning &amp; Data" url="http://yuanquanquan.top/categories/AI/Machine-Learning-Data/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/20190911214/</loc>
-    <lastmod>2019-11-21T02:25:29.284Z</lastmod>
-    <data>
-        <display>
-        <title>send boxes to alice(easy version)</title>
-        <pubTime>2019-11-21T02:08:14.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/"/>
-          
-             
-              <breadCrumb title="codeforces" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/codeforces/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/201907201118/</loc>
-    <lastmod>2019-11-19T01:33:43.779Z</lastmod>
-    <data>
-        <display>
-        <title>Q-Learning Agents</title>
-        <pubTime>2019-11-19T03:33:05.000Z</pubTime>
-        
-        <tag>强化学习</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="强化学习笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/201911181/</loc>
-    <lastmod>2019-11-18T08:45:46.538Z</lastmod>
-    <data>
-        <display>
-        <title>凸集</title>
-        <pubTime>2019-11-18T03:41:55.000Z</pubTime>
-        
-        <tag>优化理论</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="凸优化笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%87%B8%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/20190911172/</loc>
-    <lastmod>2019-11-18T04:18:33.094Z</lastmod>
-    <data>
-        <display>
-        <title>MIXED PRECISION TRAINING</title>
-        <pubTime>2019-11-17T03:02:10.000Z</pubTime>
-        
-        <tag>CVPR</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/20190911165/</loc>
-    <lastmod>2019-11-17T14:05:25.370Z</lastmod>
-    <data>
-        <display>
-        <title>THE CONTEST</title>
-        <pubTime>2019-11-15T18:05:14.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/"/>
-          
-             
-              <breadCrumb title="codeforces" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/codeforces/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/20190911162/</loc>
-    <lastmod>2019-11-17T14:00:53.110Z</lastmod>
-    <data>
-        <display>
-        <title>Evaluation of a Tree-based Pipeline Optimization Tool for Automating Data Science</title>
-        <pubTime>2019-11-16T06:03:45.000Z</pubTime>
-        
-        <tag>AutoML</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/20190911161/</loc>
-    <lastmod>2019-11-17T14:00:12.842Z</lastmod>
-    <data>
-        <display>
-        <title>Deep-Learning-Approach-for-Surface-Defect-Detection</title>
-        <pubTime>2019-11-16T05:12:08.000Z</pubTime>
-        
-        <tag>CVPR</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/2019091117/</loc>
-    <lastmod>2019-11-17T03:43:39.373Z</lastmod>
-    <data>
-        <display>
-        <title>芝诺之圆 | 方向、迷失与北京三年</title>
-        <pubTime>2019-11-17T03:34:04.000Z</pubTime>
-        
-        <tag>生活</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活" url="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/"/>
-          
-             
-              <breadCrumb title="随笔" url="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/%E9%9A%8F%E7%AC%94/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
-    <loc>http://yuanquanquan.top/2018/2018090522/</loc>
+    <loc>http://yuanquanquan.top/2018/cs231n-1h-5/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>Linux安装shadowcocks</title>
-        <pubTime>2018-09-05T13:53:29.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-        <tag>install</tag>
-         
-        <tag>shadowsocks</tag>
-         
-         
-           
-             
-              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
-          
-             
-              <breadCrumb title="Linux" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2018/cs231n-1h-1/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>cs231n作业：assignment1 - knn</title>
-        <pubTime>2018-09-26T04:41:15.000Z</pubTime>
+        <title>cs231n作业：assignment1 - features</title>
+        <pubTime>2018-09-27T09:25:31.000Z</pubTime>
         
         <tag>cs231n</tag>
          
@@ -944,12 +970,12 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/cs231n-2-3/</loc>
+    <loc>http://yuanquanquan.top/2018/cs231n-1h-1/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>cs231n作业：assignment2 - Convolutional Networks</title>
-        <pubTime>2018-10-22T05:49:41.000Z</pubTime>
+        <title>cs231n作业：assignment1 - knn</title>
+        <pubTime>2018-09-26T04:41:15.000Z</pubTime>
         
         <tag>cs231n</tag>
          
@@ -989,6 +1015,31 @@
           
              
               <breadCrumb title="Linux" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2018/cs231n-2-3/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>cs231n作业：assignment2 - Convolutional Networks</title>
+        <pubTime>2018-10-22T05:49:41.000Z</pubTime>
+        
+        <tag>cs231n</tag>
+         
+        <tag>homework</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
           
         </display>
     </data>
@@ -1054,31 +1105,6 @@
         <pubTime>2018-09-16T13:42:33.000Z</pubTime>
         
         <tag>dl.ai</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2018/cs231n-1h-5/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>cs231n作业：assignment1 - features</title>
-        <pubTime>2018-09-27T09:25:31.000Z</pubTime>
-        
-        <tag>cs231n</tag>
-         
-        <tag>homework</tag>
          
          
            
@@ -1192,13 +1218,15 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-5-1/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-4-4h/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai笔记:(5-1)-- 循环神经网络（Recurrent Neural Networks）</title>
-        <pubTime>2018-10-18T02:26:52.000Z</pubTime>
+        <title>DeepLearning.ai作业:(4-4)-- 特殊应用:人脸识别和神经风格转换</title>
+        <pubTime>2018-10-12T10:55:20.000Z</pubTime>
         
+        <tag>homework</tag>
+         
         <tag>dl.ai</tag>
          
          
@@ -1222,31 +1250,6 @@
         <title>DeepLearning.ai笔记:(4-3)-- 目标检测（Object detection）</title>
         <pubTime>2018-10-11T09:02:09.000Z</pubTime>
         
-        <tag>dl.ai</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-4-4h/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>DeepLearning.ai作业:(4-4)-- 特殊应用:人脸识别和神经风格转换</title>
-        <pubTime>2018-10-12T10:55:20.000Z</pubTime>
-        
-        <tag>homework</tag>
-         
         <tag>dl.ai</tag>
          
          
@@ -1334,26 +1337,45 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/2018090514/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-5-1/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>hexo教程：github page+独立域名搭建(1)</title>
-        <pubTime>2018-09-05T05:38:44.000Z</pubTime>
+        <title>DeepLearning.ai笔记:(5-1)-- 循环神经网络（Recurrent Neural Networks）</title>
+        <pubTime>2018-10-18T02:26:52.000Z</pubTime>
         
-        <tag>hexo</tag>
-         
-        <tag>blog</tag>
-         
-        <tag>教程</tag>
+        <tag>dl.ai</tag>
          
          
            
              
-              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
           
              
-              <breadCrumb title="博客搭建" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2018/2018091215/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>DeepLearning.ai笔记:(1-3)-- 浅层神经网络（Shallow neural networks）</title>
+        <pubTime>2018-09-12T07:34:23.000Z</pubTime>
+        
+        <tag>dl.ai</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
           
         </display>
     </data>
@@ -1388,110 +1410,58 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/2018091215/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>DeepLearning.ai笔记:(1-3)-- 浅层神经网络（Shallow neural networks）</title>
-        <pubTime>2018-09-12T07:34:23.000Z</pubTime>
-        
-        <tag>dl.ai</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2018/2018091015/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>你见过什么样的云霄？</title>
-        <pubTime>2018-09-10T07:21:32.000Z</pubTime>
-        
-        <tag>航拍</tag>
-         
-        <tag>旅行</tag>
-         
-        <tag>视频</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活" url="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/"/>
-          
-             
-              <breadCrumb title="旅行" url="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/%E6%97%85%E8%A1%8C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2018/2018091212/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>hexo中输入数学公式</title>
-        <pubTime>2018-09-12T05:39:33.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-        <tag>blog</tag>
-         
-         
-           
-             
-              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
-          
-             
-              <breadCrumb title="博客搭建" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2018/2018091720/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）</title>
-        <pubTime>2018-09-17T12:19:55.000Z</pubTime>
-        
-        <tag>dl.ai</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yuanquanquan.top/2018/20180901513/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
         <title>DeepLearning.ai笔记:(2-1)-- 深度学习的实践层面（Practical aspects of Deep Learning）</title>
         <pubTime>2018-09-15T05:37:15.000Z</pubTime>
+        
+        <tag>dl.ai</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2018/2018091316/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>DeepLearning.ai笔记:(1-4)-- 深层神经网络（Deep neural networks）</title>
+        <pubTime>2018-09-13T08:54:18.000Z</pubTime>
+        
+        <tag>dl.ai</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2018/2018092016/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>DeepLearning.ai笔记:(3-1)-- 机器学习策略(1)(ML strategy)</title>
+        <pubTime>2018-09-20T08:48:41.000Z</pubTime>
         
         <tag>dl.ai</tag>
          
@@ -1532,12 +1502,12 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/2018092017/</loc>
+    <loc>http://yuanquanquan.top/2018/2018091720/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai笔记:(3-2)-- 机器学习策略(2)(ML strategy)</title>
-        <pubTime>2018-09-20T09:59:04.000Z</pubTime>
+        <title>DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）</title>
+        <pubTime>2018-09-17T12:19:55.000Z</pubTime>
         
         <tag>dl.ai</tag>
          
@@ -1555,12 +1525,12 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/2018091316/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-4-1/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai笔记:(1-4)-- 深层神经网络（Deep neural networks）</title>
-        <pubTime>2018-09-13T08:54:18.000Z</pubTime>
+        <title>DeepLearning.ai笔记:(4-1)-- 卷积神经网络（Foundations of CNN）</title>
+        <pubTime>2018-09-30T02:20:54.000Z</pubTime>
         
         <tag>dl.ai</tag>
          
@@ -1571,6 +1541,56 @@
           
              
               <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2018/dl-ai-4-2/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>DeepLearning.ai笔记:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）</title>
+        <pubTime>2018-10-09T09:17:04.000Z</pubTime>
+        
+        <tag>dl.ai</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2018/2018090522/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>Linux安装shadowcocks</title>
+        <pubTime>2018-09-05T13:53:29.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>install</tag>
+         
+        <tag>shadowsocks</tag>
+         
+         
+           
+             
+              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+          
+             
+              <breadCrumb title="Linux" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/Linux/"/>
           
         </display>
     </data>
@@ -1705,12 +1725,12 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-4-2/</loc>
+    <loc>http://yuanquanquan.top/2018/2018092017/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai笔记:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）</title>
-        <pubTime>2018-10-09T09:17:04.000Z</pubTime>
+        <title>DeepLearning.ai笔记:(3-2)-- 机器学习策略(2)(ML strategy)</title>
+        <pubTime>2018-09-20T09:59:04.000Z</pubTime>
         
         <tag>dl.ai</tag>
          
@@ -1728,13 +1748,15 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-4-1/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-5-1h3/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai笔记:(4-1)-- 卷积神经网络（Foundations of CNN）</title>
-        <pubTime>2018-09-30T02:20:54.000Z</pubTime>
+        <title>DeepLearning.ai作业:(5-1)-- 循环神经网络（Recurrent Neural Networks）（3）</title>
+        <pubTime>2018-10-18T08:20:36.000Z</pubTime>
         
+        <tag>homework</tag>
+         
         <tag>dl.ai</tag>
          
          
@@ -1751,26 +1773,19 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/2018090520/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-summary/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>Linux安装selenium+chromedriver</title>
-        <pubTime>2018-09-05T13:51:41.000Z</pubTime>
+        <title>吴恩达Coursera(DeepLearning.ai)笔记和作业汇总帖</title>
+        <pubTime>2018-10-18T12:01:05.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
-        <tag>install</tag>
-         
-        <tag>python</tag>
+        <tag>dl.ai</tag>
          
          
            
              
-              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
-          
-             
-              <breadCrumb title="Linux" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/Linux/"/>
+              <breadCrumb title="汇总帖" url="http://yuanquanquan.top/categories/%E6%B1%87%E6%80%BB%E5%B8%96/"/>
           
         </display>
     </data>
@@ -1788,31 +1803,6 @@
         <tag>cs231n</tag>
          
         <tag>homework</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2018/2018091318/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>DeepLearning.ai作业:(1-4)-- 深层神经网络（Deep neural networks）</title>
-        <pubTime>2018-09-13T09:59:43.000Z</pubTime>
-        
-        <tag>homework</tag>
-         
-        <tag>dl.ai</tag>
          
          
            
@@ -1853,12 +1843,12 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-4-1h/</loc>
+    <loc>http://yuanquanquan.top/2018/2018091318/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai作业:(4-1)-- 卷积神经网络（Foundations of CNN）</title>
-        <pubTime>2018-09-30T08:07:23.000Z</pubTime>
+        <title>DeepLearning.ai作业:(1-4)-- 深层神经网络（Deep neural networks）</title>
+        <pubTime>2018-09-13T09:59:43.000Z</pubTime>
         
         <tag>homework</tag>
          
@@ -1903,55 +1893,12 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/2018092016/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-4-1h/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai笔记:(3-1)-- 机器学习策略(1)(ML strategy)</title>
-        <pubTime>2018-09-20T08:48:41.000Z</pubTime>
-        
-        <tag>dl.ai</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-summary/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>吴恩达Coursera(DeepLearning.ai)笔记和作业汇总帖</title>
-        <pubTime>2018-10-18T12:01:05.000Z</pubTime>
-        
-        <tag>dl.ai</tag>
-         
-         
-           
-             
-              <breadCrumb title="汇总帖" url="http://yuanquanquan.top/categories/%E6%B1%87%E6%80%BB%E5%B8%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-5-1h3/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>DeepLearning.ai作业:(5-1)-- 循环神经网络（Recurrent Neural Networks）（3）</title>
-        <pubTime>2018-10-18T08:20:36.000Z</pubTime>
+        <title>DeepLearning.ai作业:(4-1)-- 卷积神经网络（Foundations of CNN）</title>
+        <pubTime>2018-09-30T08:07:23.000Z</pubTime>
         
         <tag>homework</tag>
          
@@ -1964,6 +1911,59 @@
           
              
               <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>http://yuanquanquan.top/2018/2018090520/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>Linux安装selenium+chromedriver</title>
+        <pubTime>2018-09-05T13:51:41.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>install</tag>
+         
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+          
+             
+              <breadCrumb title="Linux" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2018/2018091212/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>hexo中输入数学公式</title>
+        <pubTime>2018-09-12T05:39:33.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>blog</tag>
+         
+         
+           
+             
+              <breadCrumb title="日常技术" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+          
+             
+              <breadCrumb title="博客搭建" url="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
           
         </display>
     </data>
