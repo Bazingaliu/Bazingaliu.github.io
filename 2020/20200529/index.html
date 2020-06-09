@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>PC-DARTS:Partial Channel Connections for Memory-Efficient DifferentiableArchitecture Search | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="DARTS是可微分网络架构搜索，而本文将要解读的PC-DARTS是DARTS的扩展。DARTS方法速度快，但是由于它需要训练一个超网来寻找最优结构，需要消耗大量的内存和计算资源。因此论文作者提出了Partially-ConnectedDARTS，即部分通道连接的DARTS方法，通过对super-net进行一小部分的采样，能够减少网络搜索过程中计算的内存占用。**但是由于通过在通道子集上执行运算搜索">
+  <meta name="description" content="DARTS是可微分网络架构搜索，而本文将要解读的PC-DARTS是DARTS的扩展。DARTS方法速度快，但是由于它需要训练一个超网来寻找最优结构，需要消耗大量的内存和计算资源。因此论文作者提出了Partially-ConnectedDARTS，即部分通道连接的DARTS方法，通过对super-net进行一小部分的采样，能够减少网络搜索过程中计算的内存占用。但是由于通过在通道子集上执行运算搜索，">
 <meta name="keywords" content="AutoML">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PC-DARTS:Partial Channel Connections for Memory-Efficient DifferentiableArchitecture Search">
 <meta property="og:url" content="http://yuanquanquan.top/2020/20200529/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="DARTS是可微分网络架构搜索，而本文将要解读的PC-DARTS是DARTS的扩展。DARTS方法速度快，但是由于它需要训练一个超网来寻找最优结构，需要消耗大量的内存和计算资源。因此论文作者提出了Partially-ConnectedDARTS，即部分通道连接的DARTS方法，通过对super-net进行一小部分的采样，能够减少网络搜索过程中计算的内存占用。**但是由于通过在通道子集上执行运算搜索">
+<meta property="og:description" content="DARTS是可微分网络架构搜索，而本文将要解读的PC-DARTS是DARTS的扩展。DARTS方法速度快，但是由于它需要训练一个超网来寻找最优结构，需要消耗大量的内存和计算资源。因此论文作者提出了Partially-ConnectedDARTS，即部分通道连接的DARTS方法，通过对super-net进行一小部分的采样，能够减少网络搜索过程中计算的内存占用。但是由于通过在通道子集上执行运算搜索，">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2020/05/30/aWSh36meoy2DkIL.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/29/3RxMkinqbHE7IAs.png">
@@ -24,18 +24,19 @@
 <meta property="og:image" content="https://i.loli.net/2020/05/30/Gr3N6YATl8Ev9XC.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/30/QTBl1tOjRS2g9i5.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/30/3tqhK8Vr7bjQpXP.png">
-<meta property="og:updated_time" content="2020-06-09T17:42:45.113Z">
+<meta property="og:updated_time" content="2020-06-09T21:01:40.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PC-DARTS:Partial Channel Connections for Memory-Efficient DifferentiableArchitecture Search">
-<meta name="twitter:description" content="DARTS是可微分网络架构搜索，而本文将要解读的PC-DARTS是DARTS的扩展。DARTS方法速度快，但是由于它需要训练一个超网来寻找最优结构，需要消耗大量的内存和计算资源。因此论文作者提出了Partially-ConnectedDARTS，即部分通道连接的DARTS方法，通过对super-net进行一小部分的采样，能够减少网络搜索过程中计算的内存占用。**但是由于通过在通道子集上执行运算搜索">
+<meta name="twitter:description" content="DARTS是可微分网络架构搜索，而本文将要解读的PC-DARTS是DARTS的扩展。DARTS方法速度快，但是由于它需要训练一个超网来寻找最优结构，需要消耗大量的内存和计算资源。因此论文作者提出了Partially-ConnectedDARTS，即部分通道连接的DARTS方法，通过对super-net进行一小部分的采样，能够减少网络搜索过程中计算的内存占用。但是由于通过在通道子集上执行运算搜索，">
 <meta name="twitter:image" content="https://i.loli.net/2020/05/30/aWSh36meoy2DkIL.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/img/favicon.ico">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
+  
   <style type="text/css">
   
     #container.show {
@@ -57,7 +58,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="http://yuanquanquan.top" class="profilepic">
-			<img src="https://avatars0.githubusercontent.com/u/49465393?s=460&amp;u=5cebf1125db8584cc21a57e54ac8eae12de64152&amp;v=4" class="js-avatar">
+			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="http://yuanquanquan.top">理科生写给世界的情书</a></h1>
@@ -113,7 +114,6 @@
 		</nav>
 	</header>		
 </div>
-
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
@@ -125,7 +125,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://avatars0.githubusercontent.com/u/49465393?s=460&amp;u=5cebf1125db8584cc21a57e54ac8eae12de64152&amp;v=4" class="js-avatar">
+				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">理科生写给世界的情书</h1>
@@ -197,6 +197,17 @@
     </h1>
   
 
+        <!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+<!--显示阅读次数完毕-->
         
         <a href="/2020/20200529/" class="archive-article-date">
   	<time datetime="2020-05-29T14:34:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
@@ -206,8 +217,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://i.loli.net/2020/05/30/aWSh36meoy2DkIL.png" alt="PC-DARTS">DARTS是可微分网络架构搜索，而本文将要解读的PC-DARTS是DARTS的扩展。DARTS方法速度快，但是由于它需要训练一个超网来寻找最优结构，需要消耗大量的内存和计算资源。因此论文作者提出了Partially-ConnectedDARTS，即部分通道连接的DARTS方法，通过对super-net进行一小部分的采样，能够减少网络搜索过程中计算的内存占用。**但是由于通过在通道子集上执行运算搜索，而其他部分不变，这可能导致挑选超大网络边时出现不一致，为了解决这个问题，作者提出了边正则化，在搜索中添加边级别的超参数集合，来减少搜索的不确定性。</p>
+        <blockquote>
+<p>DARTS是可微分网络架构搜索，而本文将要解读的PC-DARTS是DARTS的扩展。DARTS方法速度快，但是由于它需要训练一个超网来寻找最优结构，需要消耗大量的内存和计算资源。因此论文作者提出了Partially-ConnectedDARTS，即部分通道连接的DARTS方法，通过对super-net进行一小部分的采样，能够减少网络搜索过程中计算的内存占用。但是由于通过在通道子集上执行运算搜索，而其他部分不变，这可能导致挑选超大网络边时出现不一致，为了解决这个问题，作者提出了边正则化，在搜索中添加边级别的超参数集合，来减少搜索的不确定性。</p>
+</blockquote>
 <a id="more"></a>
+<p><img src="https://i.loli.net/2020/05/30/aWSh36meoy2DkIL.png" alt="PC-DARTS"></p>
 <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>DARTS把运算操作进行连续松弛，可以让网络的超参数搜索可微，进而达到端对端的网络搜索。但是由于在一个很大的超网上进行搜索，导致它的搜索空间有大量的冗余，使得计算量和内存占用很大。作者为了减少内存和计算量，采用这样的思路：不用把全部通道都送入运算选择中，而是对通道子集进行随机采样进行运算，其他的通道直接通过。但是这种思路带来了一种问题：由于采样的随机性，网络连接的选择可能是不稳定的。由此作者又引入了边正则化（edgenormalization）进行稳定，添加一个额外的边选择超参数集合。同时得益于部分通道连接的策略，选择1/K的通道可以减少K倍内存，那么就可以增大K倍的batchsize，不仅可以加速K倍，还可以稳定搜索。</p>
 <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>DARTS把网络的搜索拆分为L个cell，每个cell为N个节点的有向无环边，每个节点是一个网络层。Cell的类型有两种：ReductionCell和NormalCell，在整个超网中共享。</p>
 <p>一般网络的每一层代表着一种操作，这个操作可能是卷积、池化、激活等函数，但在超网络SuperNet中，每一层网络是由多种运算组合起来的，每一种运算对应一个系数$\alpha$,，混合运算的加权公式如下：$f_{i, j}\left(\mathbf{x}<em>{i}\right)=\sum</em>{o \in \mathcal{O}} \frac{\exp \left{\alpha_{i, j}^{o}\right}}{\sum_{o^{\prime} \in \mathcal{O}} \exp \left{\alpha_{i, j}^{o^{\prime}}\right}} \cdot o\left(\mathbf{x}_{i}\right)$</p>
@@ -355,7 +369,7 @@
   
   
     <a href="/2020/202005251/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">typecho</div>
+      <div class="article-nav-title">Typecho</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -374,6 +388,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法"><span class="toc-number">2.</span> <span class="toc-text">方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Partial-Channel-Connections"><span class="toc-number"></span> <span class="toc-text">Partial Channel Connections</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实验"><span class="toc-number">1.</span> <span class="toc-text">实验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ImgaeNet上的实验结果"><span class="toc-number"></span> <span class="toc-text">ImgaeNet上的实验结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消融实验"><span class="toc-number"></span> <span class="toc-text">消融实验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-不同采样率的结果"><span class="toc-number"></span> <span class="toc-text">1. 不同采样率的结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-PC-DARTS不同组件的作用"><span class="toc-number"></span> <span class="toc-text">2. PC-DARTS不同组件的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#结论"><span class="toc-number">1.</span> <span class="toc-text">结论</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -406,6 +433,24 @@
     </div>
   </div>
 </footer>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+  var now = new Date(); 
+  function createtime() { 
+    var grt= new Date("11/23/2018 20:00:00");//此处修改你的建站时间或者网站上线时间 
+    now.setTime(now.getTime()+250); 
+    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+  } 
+  setInterval("createtime()",250);
+</script>
+
     </div>
     <script>
 	var yiliaConfig = {
@@ -449,6 +494,8 @@ MathJax.Hub.Queue(function() {
 <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
+
+<script  async  src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
@@ -506,6 +553,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -515,10 +566,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -534,6 +581,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -546,11 +597,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -562,7 +617,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,23 +641,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">教程</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/05/03/zZOSA7D9TFeaXWH.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/03/u6zvOZDUQ2RxGWb.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/14/KEUDQtho26YVjx9.png">
-<meta property="og:updated_time" content="2020-06-09T17:59:28.791Z">
+<meta property="og:updated_time" content="2020-06-09T21:08:33.318Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SqueezeNAS:Fast neural architecture search for faster semantic segmentation">
 <meta name="twitter:description" content="用NAS做语义分割，1.不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。 2.使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系">
@@ -34,9 +34,10 @@
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/img/favicon.ico">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
+  
   <style type="text/css">
   
     #container.show {
@@ -58,7 +59,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="http://yuanquanquan.top" class="profilepic">
-			<img src="https://avatars0.githubusercontent.com/u/49465393?s=460&amp;u=5cebf1125db8584cc21a57e54ac8eae12de64152&amp;v=4" class="js-avatar">
+			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="http://yuanquanquan.top">理科生写给世界的情书</a></h1>
@@ -114,7 +115,6 @@
 		</nav>
 	</header>		
 </div>
-
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
@@ -126,7 +126,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://avatars0.githubusercontent.com/u/49465393?s=460&amp;u=5cebf1125db8584cc21a57e54ac8eae12de64152&amp;v=4" class="js-avatar">
+				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">理科生写给世界的情书</h1>
@@ -198,6 +198,17 @@
     </h1>
   
 
+        <!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+<!--显示阅读次数完毕-->
         
         <a href="/2020/20200313/" class="archive-article-date">
   	<time datetime="2020-03-13T03:32:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
@@ -207,7 +218,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="用NAS做语义分割，1-不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。-2-使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系"><a href="#用NAS做语义分割，1-不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。-2-使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系" class="headerlink" title="用NAS做语义分割，1.不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。 2.使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系"></a>用NAS做语义分割，1.不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。 2.使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系</h3><a id="more"></a>  
+        <blockquote>
+<p>用NAS做语义分割，1.不使用代理，MobileNetV3先搜索分类任务作为代理，SqueezeNAS直接搜索语义分割。 2.使用资源感知损失，直接优化目标平台上的延迟，而不是优化MAC指标，它对于运行速度没有必然关系</p>
+</blockquote>
+<a id="more"></a>  
 <h2 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h2><p>真实场景下，需要DNN在目标任务上准确率高，在目标计算平台上推断延迟低。NAS已经被用于低延迟的图像分类，但是其他任务还很少。这是第一篇用于密集语义分割的无代理硬件感知的搜索。在Cityscapes数据集上达到最好的性能。我们证明了利用NAS对任务和推断同时优化可以获得极大地性能提升。</p>
 <h2 id="1-Introduction-and-Motivation"><a href="#1-Introduction-and-Motivation" class="headerlink" title="1. Introduction and Motivation"></a>1. Introduction and Motivation</h2><p>在做非图像分类任务（如语义分割或目标检测）时，流行的方法是结构迁移：从一个图像分类网络开始，在网络末尾添加一些针对特定任务的层。</p>
 <p>这种结构迁移的主流主要是一些传统假设，我们罗列一些并证明为什么他们已经过时了。</p>
@@ -414,6 +428,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ABSTRACT"><span class="toc-number">1.</span> <span class="toc-text">ABSTRACT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Introduction-and-Motivation"><span class="toc-number">2.</span> <span class="toc-text">1. Introduction and Motivation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Related-work"><span class="toc-number">3.</span> <span class="toc-text">2. Related work</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Architecture-Search-Space"><span class="toc-number">4.</span> <span class="toc-text">3. Architecture Search Space</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Constrained-Macro-Architecture"><span class="toc-number">4.1.</span> <span class="toc-text">3.1. Constrained Macro-Architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Block-Search-Space"><span class="toc-number">4.2.</span> <span class="toc-text">3.2. Block Search Space</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Neural-Architecture-Search-Algorithm"><span class="toc-number">5.</span> <span class="toc-text">4. Neural Architecture Search Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Gumbel-Softmax"><span class="toc-number">5.1.</span> <span class="toc-text">4.1. Gumbel-Softmax</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-Early-Stopping"><span class="toc-number">6.</span> <span class="toc-text">4.2. Early Stopping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-Resource-Aware-Architecture-Search"><span class="toc-number">7.</span> <span class="toc-text">4.3. Resource-Aware Architecture Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Experiments-and-Results"><span class="toc-number">8.</span> <span class="toc-text">5. Experiments and Results</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-Hardware-Agnostic-Search"><span class="toc-number">8.1.</span> <span class="toc-text">5.1. Hardware-Agnostic Search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-Hardware-Aware-Search"><span class="toc-number">8.2.</span> <span class="toc-text">5.2. Hardware-Aware Search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-Implementation"><span class="toc-number">8.3.</span> <span class="toc-text">5.3. Implementation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-Results"><span class="toc-number">8.4.</span> <span class="toc-text">5.4. Results</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Network-Analysis"><span class="toc-number">9.</span> <span class="toc-text">6. Network Analysis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Conclusion"><span class="toc-number">10.</span> <span class="toc-text">7. Conclusion</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -445,6 +472,24 @@
     </div>
   </div>
 </footer>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+  var now = new Date(); 
+  function createtime() { 
+    var grt= new Date("11/23/2018 20:00:00");//此处修改你的建站时间或者网站上线时间 
+    now.setTime(now.getTime()+250); 
+    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+  } 
+  setInterval("createtime()",250);
+</script>
+
     </div>
     <script>
 	var yiliaConfig = {
@@ -488,6 +533,8 @@ MathJax.Hub.Queue(function() {
 <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
+
+<script  async  src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
@@ -545,6 +592,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -554,10 +605,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,6 +620,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -585,11 +636,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,7 +656,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,23 +680,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">教程</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -16,22 +16,22 @@
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="整理了一些最近的object detection算法忽然发现。。。。这是要开启NAS时代的神仙打架了嘛/facepalm 不过讲真…Google这些nas论文，计算量贼大，要卡要数据的啊……复现起来不是一点两点困难 “我是FAIR时代的残党！新时代没有能载我的模型！”（说白了就是没卡。。。。）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://i.loli.net/2020/05/03/7GDwblsxHzTYf4e.png">
-<meta property="og:image" content="https://i.loli.net/2020/05/03/aglGFVQKmU1OzJi.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/06/10/CLdEjz2VFSqgoXN.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/03/ogn1dueI9DtS6PL.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/03/Dd9WIgzb4SacLw2.png">
-<meta property="og:updated_time" content="2020-06-09T18:10:12.701Z">
+<meta property="og:updated_time" content="2020-06-09T21:05:39.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Neural Architecture Search">
 <meta name="twitter:description" content="整理了一些最近的object detection算法忽然发现。。。。这是要开启NAS时代的神仙打架了嘛/facepalm 不过讲真…Google这些nas论文，计算量贼大，要卡要数据的啊……复现起来不是一点两点困难 “我是FAIR时代的残党！新时代没有能载我的模型！”（说白了就是没卡。。。。）">
-<meta name="twitter:image" content="https://i.loli.net/2020/05/03/7GDwblsxHzTYf4e.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/10/CLdEjz2VFSqgoXN.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/img/favicon.ico">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
+  
   <style type="text/css">
   
     #container.show {
@@ -53,7 +53,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="http://yuanquanquan.top" class="profilepic">
-			<img src="https://avatars0.githubusercontent.com/u/49465393?s=460&amp;u=5cebf1125db8584cc21a57e54ac8eae12de64152&amp;v=4" class="js-avatar">
+			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="http://yuanquanquan.top">理科生写给世界的情书</a></h1>
@@ -109,7 +109,6 @@
 		</nav>
 	</header>		
 </div>
-
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
@@ -121,7 +120,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://avatars0.githubusercontent.com/u/49465393?s=460&amp;u=5cebf1125db8584cc21a57e54ac8eae12de64152&amp;v=4" class="js-avatar">
+				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">理科生写给世界的情书</h1>
@@ -193,6 +192,17 @@
     </h1>
   
 
+        <!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+<!--显示阅读次数完毕-->
         
         <a href="/2020/20200425/" class="archive-article-date">
   	<time datetime="2020-04-25T02:57:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
@@ -202,13 +212,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://i.loli.net/2020/05/03/7GDwblsxHzTYf4e.png" alt></p>
+        <blockquote>
 <p>整理了一些最近的object detection算法<br>忽然发现。。。。<br>这是要开启NAS时代的神仙打架了嘛/facepalm</p>
 <p>不过讲真…Google这些nas论文，计算量贼大，要卡要数据的啊……复现起来不是一点两点困难</p>
 <p>“我是FAIR时代的残党！新时代没有能载我的模型！”（说白了就是没卡。。。。）</p>
+</blockquote>
 <a id="more"></a>  
+<p><img src="https://i.loli.net/2020/06/10/CLdEjz2VFSqgoXN.png" alt></p>
 <p>为了紧跟时代潮流，了解一下AutoML去看了一下<strong>《Neural Architecture Search: A Survey》</strong>这篇综述</p>
-<p><img src="https://i.loli.net/2020/05/03/aglGFVQKmU1OzJi.jpg" alt></p>
 <h1 id="序"><a href="#序" class="headerlink" title="序"></a><em>序</em></h1><p>​      深度学习模型在很多任务上都取得了不错的效果，但调参对于深度模型来说是一项非常苦难的事情，众多的超参数和网络结构参数会产生爆炸性的组合，常规的 random search 和 grid search 效率非常低，为此人们想出了自动搜索神经网络架构（Neural Architecture Search）。一方面，自动神经网络架构搜索可以遍历架构找到性能最优的架构，另一方面自动神经网络架构搜索还可以打破人类思维的局限性找到人类所想不到的架构组织方式。</p>
 <p><img src="https://i.loli.net/2020/05/03/ogn1dueI9DtS6PL.png" alt></p>
 <p>本文从网络架构搜索的三个方面进行了分类综述，包括：</p>
@@ -385,6 +396,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#序"><span class="toc-number">1.</span> <span class="toc-text">序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索空间"><span class="toc-number">1.0.1.</span> <span class="toc-text">搜索空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索策略"><span class="toc-number">1.0.2.</span> <span class="toc-text">搜索策略</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -416,6 +440,24 @@
     </div>
   </div>
 </footer>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+  var now = new Date(); 
+  function createtime() { 
+    var grt= new Date("11/23/2018 20:00:00");//此处修改你的建站时间或者网站上线时间 
+    now.setTime(now.getTime()+250); 
+    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+  } 
+  setInterval("createtime()",250);
+</script>
+
     </div>
     <script>
 	var yiliaConfig = {
@@ -459,6 +501,8 @@ MathJax.Hub.Queue(function() {
 <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
+
+<script  async  src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
@@ -516,6 +560,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -525,10 +573,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,6 +588,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -556,11 +604,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,7 +624,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,23 +648,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">教程</a>
               </li>
              
               <li class="article-tag-list-item">
