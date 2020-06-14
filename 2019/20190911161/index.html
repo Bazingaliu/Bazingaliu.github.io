@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/20191023132239.png?raw=true">
 <meta property="og:image" content="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/20191023132307.png?raw=true">
 <meta property="og:image" content="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/20191023132357.png?raw=true">
-<meta property="og:updated_time" content="2020-06-09T17:48:12.366Z">
+<meta property="og:updated_time" content="2020-06-14T07:42:35.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deep-Learning-Approach-for-Surface-Defect-Detection">
 <meta name="twitter:description" content="表面缺陷检测是工业视觉的热点应用之一，自动的表面缺陷检测技术越来越受到重视，其中以深度学习相关技术应用为代表，它通过大量图像对检测系统进行训练学习得到一个自动的视觉检测系统。这个方面基于深度学习的检测方法基本上可以分为两个大类。  1-基于目标检测网络实现的缺陷检测系统 2-基于图像分割网络实现的缺陷检测系统">
@@ -238,18 +238,20 @@
 
 <div class="article-entry" itemprop="articleBody">
       
-        <p><strong><img src="https://img-blog.csdnimg.cn/2019090516131491.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Zpc2hfbGlrZV9hcHBsZQ==,size_16,color_FFFFFF,t_70" alt="img"></strong></p>
+        <blockquote>
 <pre><code>表面缺陷检测是工业视觉的热点应用之一，自动的表面缺陷检测技术越来越受到重视，其中以深度学习相关技术应用为代表，它通过大量图像对检测系统进行训练学习得到一个自动的视觉检测系统。这个方面基于深度学习的检测方法基本上可以分为两个大类。
 </code></pre><p> 1-基于目标检测网络实现的缺陷检测系统<br> 2-基于图像分割网络实现的缺陷检测系统</p>
+</blockquote>
 <a id="more"></a>  
+<p><img src="https://img-blog.csdnimg.cn/2019090516131491.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Zpc2hfbGlrZV9hcHBsZQ==,size_16,color_FFFFFF,t_70" alt></p>
 <p><strong>网络设计</strong></p>
 <p>​        作者采用后者·实现了一个缺陷检测与缺陷大小分割的网络，实现了一个更加高效与准确的缺陷检测系统。该网络只需要20~30个样本训练量就可以得到很好的效果，避免网络训练需要成千上万的样本收集成本。</p>
 <p>作者在论文中提到，经典的机器视觉方法已经不能满足工业4.0的技术要求，基于深度学习的方法显示出高的灵活性与准确性，传统的手工标准特征提取+SVM/KNN的视觉检测方法不如深度学习的相关方法有效。该网络模型架构策略如下：</p>
-<p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/20191023132239.png?raw=true" alt="20191023132239.png"></p>
+<p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/20191023132239.png?raw=true" alt></p>
 <p>网络在最初设计时候就充分考虑了下面两个关键问题</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-需要的标注数据多少</span><br><span class="line">2-网络参数与浮点数计算量</span><br></pre></td></tr></table></figure>
 <p>​        通过语义分割+决策两阶段网络基于KoletorSDD（缺陷检测公开数据库）达到最好效果，实现了少量样本训练与高精度检测。整个网络架构如下：</p>
-<p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/20191023132307.png?raw=true" alt="20191023132307.png"></p>
+<p><img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/20191023132307.png?raw=true" alt></p>
 <p>​        在网络分割部分，作者认为表面缺陷检测可以被解释成一个图像二值分割问题，所以作者首先通过一个语义分割网络实现像素级的语义分割。然后把分割结果作为输入特征构建决策部分，第一部分称为<strong>分割网络</strong>，第二部分自然就被认为是<strong>决策网络</strong></p>
 <p><strong>分割网络详解</strong></p>
 <p>​        分割网络包括了11个卷积层与3个池化层，在每个卷积层后面跟上一个BN层与ReLU激活层（conv+BN+ReLU），用来优化学习加速收敛。除了最后一层卷积核大小为15 x 15，所有的卷积层都采用5 x 5大小的卷积核。最后使用1 x 1的卷积得到的图像大小是一个单通道的是原图八分之一大小的mask图像，dropout正则化则被完全抛弃，作者认为这样的网络已经足够正则化（事实后面的实验数据证明确实如此），这样的网络架构有能力在高分辨率图像实现小的缺陷检测，网络具备比较大的感受野（5 x 5），同时可以实现比较小的特征捕获（像素级分割），作者还解释了网络的下采样与高层通过大的卷积核（15 x 15）的目的是为了放大感受野大小，以及底层采用多个卷积核与下采样max-pooling层的作用</p>
@@ -266,7 +268,7 @@
 <p>​        值得一提的是，segmentation和decision是分开训练的，先训练segmentation部分再训练decision部分，作者说这种方式应对标准化问题，我对标准化的理解是，损失包括两部分，分别是分割损失和分类部分的损失，这两个损失需要均衡一下（标准化）才能加到一起（不过两者比例很难确定</p>
 <p>优化器是没有momenum的<strong>随机梯度下降（SGD）</strong>batch大小为1，使用逐方差训练时损失为0,005，使用交叉熵训练时损失为0.1，一共训练了100个Epochs，值得一提的是并不是每个epoch包括固定次数的迭代，而是一正常一随机的交替选择样本，33个缺陷样本全部过一遍才算一个epoch，论文中提到也可以同时训练，不过损失函数应都是用交叉熵函数，据作者说效果更佳。</p>
 <p><strong>数据集</strong></p>
-<p>作者使用的数据集是KolertorSDD，这是作者自己搜集的数据集，标签有5种，图片尺寸有两种。数据扩增包括90度旋转和标签膨胀如下图<img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/20191023132357.png?raw=true" alt="20191023132357.png"></p>
+<p>作者使用的数据集是KolertorSDD，这是作者自己搜集的数据集，标签有5种，图片尺寸有两种。数据扩增包括90度旋转和标签膨胀如下图<img src="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/20191023132357.png?raw=true" alt></p>
 <p>数据如何标注：需要两个数据集，一个是拍摄的图像+黑白像素的图像，一个是图像+有无瑕疵，较难的是前一个，建立一个大小一样的1矩阵，然后将瑕疵部分的像素值置为0 。</p>
 <p><strong>个人总结</strong></p>
 <ol>
@@ -617,31 +619,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">install</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,7 +639,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">install</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -662,6 +660,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">homework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -677,7 +679,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -693,19 +707,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">教程</a>
               </li>
              
               <li class="article-tag-list-item">

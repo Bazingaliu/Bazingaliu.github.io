@@ -9,22 +9,22 @@
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>THE LOTTERY TICKET HYPOTHESIS： FINDING SPARSE, TRAINABLE NEURAL NETWORKS | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ABSTRACT神经网络剪枝可以减少超过90%的参数量，同时准确率没有太大影响。但是剪枝后的结构很难从头开始训练，不然就能近似提高训练性能了。 有一些子网络，在初始情况下就可以高效的训练网络，但我们发现标准的剪枝技术天然的没有包括它们。基于这些结果，我们提出了彩票假说：密集的，随机初始化的前馈网络包括一些子网络（中奖者），这些子网络独立训练时可以在相近的迭代次数达到相近的测试准确率。这些中奖者赢得">
+  <meta name="description" content="ABSTRACT神经网络剪枝可以减少超过90%的参数量，同时准确率没有太大影响。但是剪枝后的结构很难从头开始训练，不然就能近似提高训练性能了。 有一些子网络，在初始情况下就可以高效的训练网络，但我们发现标准的剪枝技术天然的没有包括它们。基于这些结果，我们提出了彩票假说：密集的，随机初始化的前馈网络包括一些子网络（中奖者），这些子网络独立训练时可以在相近的迭代次数达到相近的测试准确率。这些中奖者赢">
 <meta name="keywords" content="ICLR">
 <meta property="og:type" content="article">
 <meta property="og:title" content="THE LOTTERY TICKET HYPOTHESIS： FINDING SPARSE, TRAINABLE NEURAL NETWORKS">
 <meta property="og:url" content="http://yuanquanquan.top/2019/2019120912/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="ABSTRACT神经网络剪枝可以减少超过90%的参数量，同时准确率没有太大影响。但是剪枝后的结构很难从头开始训练，不然就能近似提高训练性能了。 有一些子网络，在初始情况下就可以高效的训练网络，但我们发现标准的剪枝技术天然的没有包括它们。基于这些结果，我们提出了彩票假说：密集的，随机初始化的前馈网络包括一些子网络（中奖者），这些子网络独立训练时可以在相近的迭代次数达到相近的测试准确率。这些中奖者赢得">
+<meta property="og:description" content="ABSTRACT神经网络剪枝可以减少超过90%的参数量，同时准确率没有太大影响。但是剪枝后的结构很难从头开始训练，不然就能近似提高训练性能了。 有一些子网络，在初始情况下就可以高效的训练网络，但我们发现标准的剪枝技术天然的没有包括它们。基于这些结果，我们提出了彩票假说：密集的，随机初始化的前馈网络包括一些子网络（中奖者），这些子网络独立训练时可以在相近的迭代次数达到相近的测试准确率。这些中奖者赢">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://cugtyt.github.io/blog/papers/2019/R/lottery-prun-fig1.png">
 <meta property="og:image" content="https://cugtyt.github.io/blog/papers/2019/R/lottery-prun-fig2.png">
 <meta property="og:image" content="https://cugtyt.github.io/blog/papers/2019/R/lottery-prun-fig3.png">
 <meta property="og:image" content="https://cugtyt.github.io/blog/papers/2019/R/lottery-prun-fig4.png">
-<meta property="og:updated_time" content="2020-06-09T18:00:37.703Z">
+<meta property="og:updated_time" content="2020-06-14T07:48:18.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="THE LOTTERY TICKET HYPOTHESIS： FINDING SPARSE, TRAINABLE NEURAL NETWORKS">
-<meta name="twitter:description" content="ABSTRACT神经网络剪枝可以减少超过90%的参数量，同时准确率没有太大影响。但是剪枝后的结构很难从头开始训练，不然就能近似提高训练性能了。 有一些子网络，在初始情况下就可以高效的训练网络，但我们发现标准的剪枝技术天然的没有包括它们。基于这些结果，我们提出了彩票假说：密集的，随机初始化的前馈网络包括一些子网络（中奖者），这些子网络独立训练时可以在相近的迭代次数达到相近的测试准确率。这些中奖者赢得">
+<meta name="twitter:description" content="ABSTRACT神经网络剪枝可以减少超过90%的参数量，同时准确率没有太大影响。但是剪枝后的结构很难从头开始训练，不然就能近似提高训练性能了。 有一些子网络，在初始情况下就可以高效的训练网络，但我们发现标准的剪枝技术天然的没有包括它们。基于这些结果，我们提出了彩票假说：密集的，随机初始化的前馈网络包括一些子网络（中奖者），这些子网络独立训练时可以在相近的迭代次数达到相近的测试准确率。这些中奖者赢">
 <meta name="twitter:image" content="https://cugtyt.github.io/blog/papers/2019/R/lottery-prun-fig1.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
@@ -238,9 +238,11 @@
 
 <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h2><p>神经网络剪枝可以减少超过90%的参数量，同时准确率没有太大影响。但是剪枝后的结构很难从头开始训练，不然就能近似提高训练性能了。</p>
+        <blockquote>
+<h2 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h2><p>神经网络剪枝可以减少超过90%的参数量，同时准确率没有太大影响。但是剪枝后的结构很难从头开始训练，不然就能近似提高训练性能了。</p>
 <p>有一些子网络，在初始情况下就可以高效的训练网络，但我们发现标准的剪枝技术天然的没有包括它们。基于这些结果，我们提出了彩票假说：密集的，随机初始化的前馈网络包括一些子网络（中奖者），这些子网络独立训练时可以在相近的迭代次数达到相近的测试准确率。这些中奖者赢得了初始彩票：它们初始权重就能特别高效的训练。</p>
 <p>我们提出了一个算法来找这些中奖者，一系列的实验也支持了我们的假说和那些偶然初始化的重要性。我们不断的在MNIST和CIFAR10数据集上发现，中奖者的大小只有全连接网络和卷积网络的10%到20%。除了尺寸，我们发现这些中奖者训练更快，测试准确率更高。</p>
+</blockquote>
 <a id="more"></a>  
 <h2 id="1-INTRODUCTION"><a href="#1-INTRODUCTION" class="headerlink" title="1 INTRODUCTION"></a>1 INTRODUCTION</h2><p>有一些方法可以减少90%的参数但是没有准确率影响，但是为什么开始时不用这个更小的结构来训练呢？研究发现这样做的结果比较差。</p>
 <p>在图1中，我们从MNIST的全连接网络和CIFAR10的卷积网络中随机采样训练一个子网络。随机采样建模了非结构化剪枝。在不同的稀疏程度上，虚线表示迭代中的最小验证损失和准确率。网络越稀疏，学的越慢，最后的准确率越低。</p>
@@ -628,31 +630,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">install</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -664,7 +650,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">install</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,6 +671,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">homework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,7 +690,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -704,19 +718,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">教程</a>
               </li>
              
               <li class="article-tag-list-item">

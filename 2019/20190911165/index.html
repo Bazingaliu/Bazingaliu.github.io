@@ -17,12 +17,12 @@
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="题意三个人，每个人有一些数字，组合起来是$1$~$n$，每个人可以给另一个人一个拥有的数字，问最小操作数，使得第一个人拥有$1$~$i$的数，第二个人拥有$i+1$~$j$的数，第三个人拥有$j+1$~$n$的数，即第一个人为前缀，第二个人为中间部分，第三个人为后缀。注意：可以有一个或两个人最后不拥有数字。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://sta.codeforces.com/s/91655/images/codeforces-logo-with-telegram.png">
-<meta property="og:updated_time" content="2020-06-09T17:46:15.714Z">
+<meta property="og:image" content="https://i.loli.net/2020/06/14/tFXQbkZ25IEHoLj.png">
+<meta property="og:updated_time" content="2020-06-14T07:39:45.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="THE CONTEST">
 <meta name="twitter:description" content="题意三个人，每个人有一些数字，组合起来是$1$~$n$，每个人可以给另一个人一个拥有的数字，问最小操作数，使得第一个人拥有$1$~$i$的数，第二个人拥有$i+1$~$j$的数，第三个人拥有$j+1$~$n$的数，即第一个人为前缀，第二个人为中间部分，第三个人为后缀。注意：可以有一个或两个人最后不拥有数字。">
-<meta name="twitter:image" content="http://sta.codeforces.com/s/91655/images/codeforces-logo-with-telegram.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/14/tFXQbkZ25IEHoLj.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -235,9 +235,11 @@
 
 <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://sta.codeforces.com/s/91655/images/codeforces-logo-with-telegram.png" alt="img"></p>
+        <blockquote>
 <p><strong>题意</strong><br>三个人，每个人有一些数字，组合起来是$1$~$n$，每个人可以给另一个人一个拥有的数字，问最小操作数，使得第一个人拥有$1$~$i$的数，第二个人拥有$i+1$~$j$的数，第三个人拥有$j+1$~$n$的数，即第一个人为前缀，第二个人为中间部分，第三个人为后缀。<br>注意：可以有一个或两个人最后不拥有数字。</p>
+</blockquote>
 <a id="more"></a>  
+<p><img src="https://i.loli.net/2020/06/14/tFXQbkZ25IEHoLj.png" alt></p>
 <p><strong>分析</strong><br>看到三个人操作，我们先看两个人操作时的情况：<br>假设到最后，第一个人拥有$1$~$i$，第二个人拥有$i+1$~$n$，那么最小操作数为第二个人$1$~$i$中中拥有的数字加上第一个人$i+1$~$n$中拥有的数字。我们可以采用前缀和，$cnt1[k]$表示第一个人前$k$个数中拥有的个数，$cnt2[k]$表示第二个人前$k$个数中拥有的个数,则表达式为：$$cnt2[i]+cnt1[n]-cnt1[i]$$受到启发我们看三个人操作时的情况：<br>假设到最后，第一个人拥有$1$~$i$，第二个人拥有$i+1$~$j$，第三个人拥有$j+1$~$n$，那么最小操作数为第二个人和第三个人$1$~$i$中拥有的个数加上第一个人和第三个人$i+1$~$j$中拥有的个数加上第一个人和第二个人$j+1$~$n$中拥有的个数。我们可以采用前缀和，$cnt1[k]$表示第一个人前$k$个数中拥有的个数，$cnt2[k]$表示第二个人前$k$个数中拥有的个数，$cnt3[k]$表示第三个人前$k$个数中拥有的个数则表达式为：$$cnt2[i]+cnt3[i]+cnt1[j]-cnt1[i]+cnt3[j]-cnt3[i]+cnt1[n]-cnt1[j]+cnt2[n]-cnt2[j]$$化简得到:$$cnt2[i]-cnt1[i]+cnt3[j]-cnt2[j]+cnt1[n]+cnt2[n]$$我们从$0$~$n$枚举$i$，接下来我们考虑$j$的取值，我们可以看到对于固定的$i$，只需要找到一个$j$使得该式子最小即可，那么我们可以设置一个后缀$minn[]$数组，$minn[i]$表示当$i\leq j\leq n$时，$cnt3[j]-cnt2[j]$最小的值，那么答案即为：$$cnt2[i]-cnt1[i]+minn[i]+cnt1[n]+cnt2[n]$$<br><strong>代码</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC optimize(3, <span class="meta-string">"Ofast"</span>, <span class="meta-string">"inline"</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> start ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = (ll) <span class="number">2e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1000000007</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">int</span> cnt1[maxn], cnt2[maxn], cnt3[maxn];</span><br><span class="line"><span class="keyword">int</span> minn[maxn];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1, v2, v3;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    start;</span><br><span class="line">    <span class="keyword">int</span> k1, k2, k3;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; k1 &gt;&gt; k2 &gt;&gt; k3;</span><br><span class="line">    v1.resize(k1 + <span class="number">5</span>);</span><br><span class="line">    v2.resize(k2 + <span class="number">5</span>);</span><br><span class="line">    v3.resize(k3 + <span class="number">5</span>);</span><br><span class="line">    <span class="comment">/*输入并标记*/</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k1; ++i) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v1[i];</span><br><span class="line">        ++cnt1[v1[i]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k2; ++i) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v2[i];</span><br><span class="line">        ++cnt2[v2[i]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k3; ++i) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v3[i];</span><br><span class="line">        ++cnt3[v3[i]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> n = k1 + k2 + k3;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;<span class="comment">//前缀和</span></span><br><span class="line">        cnt1[i] = cnt1[i - <span class="number">1</span>] + cnt1[i];</span><br><span class="line">        cnt2[i] = cnt2[i - <span class="number">1</span>] + cnt2[i];</span><br><span class="line">        cnt3[i] = cnt3[i - <span class="number">1</span>] + cnt3[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*如分析*/</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; ++i)</span><br><span class="line">        minn[i] = cnt3[i] - cnt2[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">        minn[i] = min(minn[i + <span class="number">1</span>], minn[i]);</span><br><span class="line">    <span class="keyword">int</span> ans = inf;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> t = cnt2[i] - cnt1[i] + minn[i] + cnt1[n] + cnt2[n];</span><br><span class="line">        ans = min(ans, t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>本场比赛$D$和$E$惨痛教训：玩后缀一定要注意边界！！！<br>若有问题可在评论区提出，谢谢。</p>
@@ -586,31 +588,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">install</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,7 +608,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">install</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,6 +629,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">homework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,7 +648,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -662,19 +676,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">教程</a>
               </li>
              
               <li class="article-tag-list-item">

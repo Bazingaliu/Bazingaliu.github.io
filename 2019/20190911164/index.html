@@ -17,12 +17,12 @@
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="题意： 有$n$个怪物，每个怪物有攻击力$a_i$点；有$m$个英雄，每个英雄有攻击力$p_i$点，耐力$s_{i}$点。 怪物需要被依次杀死(按输入顺序)。 每一天可以挑选一个英雄去杀怪物，他可以杀死的怪物攻击力小于等于他本身(即$a\leq p$)，每天最多可以杀死$s$个怪物。(每个英雄可以使用任意次) 问最少需要多少天可以杀死所有怪物(不能则输出$-1$)。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://sta.codeforces.com/s/91655/images/codeforces-logo-with-telegram.png">
-<meta property="og:updated_time" content="2020-06-09T18:02:30.567Z">
+<meta property="og:image" content="https://i.loli.net/2020/06/14/tFXQbkZ25IEHoLj.png">
+<meta property="og:updated_time" content="2020-06-14T07:58:29.573Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yet Another Monster Killing Problem">
 <meta name="twitter:description" content="题意： 有$n$个怪物，每个怪物有攻击力$a_i$点；有$m$个英雄，每个英雄有攻击力$p_i$点，耐力$s_{i}$点。 怪物需要被依次杀死(按输入顺序)。 每一天可以挑选一个英雄去杀怪物，他可以杀死的怪物攻击力小于等于他本身(即$a\leq p$)，每天最多可以杀死$s$个怪物。(每个英雄可以使用任意次) 问最少需要多少天可以杀死所有怪物(不能则输出$-1$)。">
-<meta name="twitter:image" content="http://sta.codeforces.com/s/91655/images/codeforces-logo-with-telegram.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/14/tFXQbkZ25IEHoLj.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -235,13 +235,15 @@
 
 <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://sta.codeforces.com/s/91655/images/codeforces-logo-with-telegram.png" alt="img"></p>
+        <blockquote>
 <p><strong>题意</strong>：</p>
 <p>有$n$个怪物，每个怪物有攻击力$a_i$点；有$m$个英雄，每个英雄有攻击力$p_i$点，耐力$s_{i}$点。</p>
 <p>怪物需要被依次杀死(按输入顺序)。</p>
 <p>每一天可以挑选一个英雄去杀怪物，他可以杀死的怪物攻击力小于等于他本身(即$a\leq p$)，每天最多可以杀死$s$个怪物。(每个英雄可以使用任意次)</p>
 <p>问最少需要多少天可以杀死所有怪物(不能则输出$-1$)。</p>
+</blockquote>
 <a id="more"></a>  
+<p><img src="https://i.loli.net/2020/06/14/tFXQbkZ25IEHoLj.png" alt></p>
 <p><strong>分析</strong>：</p>
 <p>$(1)$我们找到怪物的最大攻击力和英雄的最大攻击力，判断是否要输出$-1$。</p>
 <p>$(2)$将英雄按攻击力$p$值排序，我们可以发现对于英雄$b[i]$而言，如果对于$i&lt;j\leq m$，且有$b[i].s&lt;b[j].s$，我们可以选择英雄$j$，而不是英雄$i$，那么我们可以把$b[i].s$替换为$b[j].s$（意思为选择英雄$i$时选择英雄$j$）。</p>
@@ -595,31 +597,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">install</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,7 +617,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">install</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,6 +638,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">homework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,7 +657,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -671,19 +685,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">教程</a>
               </li>
              
               <li class="article-tag-list-item">

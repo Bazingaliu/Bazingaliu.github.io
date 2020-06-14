@@ -9,13 +9,13 @@
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>MIXED PRECISION TRAINING | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ABSTRACT增大网络通常会提升准确性，但是也增加了内存和计算量。我们的方法可以使用半精度浮点数训练网络，同时不损失准确性，也不需要修改超参数。这近乎减少了一般的内存，在最新的GPU上还能加速运算。权重，激活和梯度都使用IEEE半精度格式。由于这个格式范围比单精度小，我们提出了三种方法来避免重要信息的损失。首先，建议保留权重的单精度拷贝，每次优化器执行后累积梯度（前向和反向传播时，拷贝归整到单精">
+  <meta name="description" content="ABSTRACT增大网络通常会提升准确性，但是也增加了内存和计算量。我们的方法可以使用半精度浮点数训练网络，同时不损失准确性，也不需要修改超参数。这近乎减少了一般的内存，在最新的GPU上还能加速运算。权重，激活和梯度都使用IEEE半精度格式。由于这个格式范围比单精度小，我们提出了三种方法来避免重要信息的损失。首先，建议保留权重的单精度拷贝，每次优化器执行后累积梯度（前向和反向传播时，拷贝归整到单">
 <meta name="keywords" content="CVPR">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MIXED PRECISION TRAINING">
 <meta property="og:url" content="http://yuanquanquan.top/2019/20190911172/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="ABSTRACT增大网络通常会提升准确性，但是也增加了内存和计算量。我们的方法可以使用半精度浮点数训练网络，同时不损失准确性，也不需要修改超参数。这近乎减少了一般的内存，在最新的GPU上还能加速运算。权重，激活和梯度都使用IEEE半精度格式。由于这个格式范围比单精度小，我们提出了三种方法来避免重要信息的损失。首先，建议保留权重的单精度拷贝，每次优化器执行后累积梯度（前向和反向传播时，拷贝归整到单精">
+<meta property="og:description" content="ABSTRACT增大网络通常会提升准确性，但是也增加了内存和计算量。我们的方法可以使用半精度浮点数训练网络，同时不损失准确性，也不需要修改超参数。这近乎减少了一般的内存，在最新的GPU上还能加速运算。权重，激活和梯度都使用IEEE半精度格式。由于这个格式范围比单精度小，我们提出了三种方法来避免重要信息的损失。首先，建议保留权重的单精度拷贝，每次优化器执行后累积梯度（前向和反向传播时，拷贝归整到单">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Bazingaliu/Bazingaliu.github.ios/master/blog/papers/2019/R/mixed-precision-fig1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Bazingaliu/Bazingaliu.github.ios/master/blog/papers/2019/R/mixed-precision-fig2.png">
@@ -26,10 +26,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Bazingaliu/Bazingaliu.github.ios/master/blog/papers/2019/R/mixed-precision-fig4.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Bazingaliu/Bazingaliu.github.ios/master/blog/papers/2019/R/mixed-precision-fig5.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Bazingaliu/Bazingaliu.github.ios/master/blog/papers/2019/R/mixed-precision-fig6.png">
-<meta property="og:updated_time" content="2020-06-09T18:03:53.861Z">
+<meta property="og:updated_time" content="2020-06-14T07:59:05.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MIXED PRECISION TRAINING">
-<meta name="twitter:description" content="ABSTRACT增大网络通常会提升准确性，但是也增加了内存和计算量。我们的方法可以使用半精度浮点数训练网络，同时不损失准确性，也不需要修改超参数。这近乎减少了一般的内存，在最新的GPU上还能加速运算。权重，激活和梯度都使用IEEE半精度格式。由于这个格式范围比单精度小，我们提出了三种方法来避免重要信息的损失。首先，建议保留权重的单精度拷贝，每次优化器执行后累积梯度（前向和反向传播时，拷贝归整到单精">
+<meta name="twitter:description" content="ABSTRACT增大网络通常会提升准确性，但是也增加了内存和计算量。我们的方法可以使用半精度浮点数训练网络，同时不损失准确性，也不需要修改超参数。这近乎减少了一般的内存，在最新的GPU上还能加速运算。权重，激活和梯度都使用IEEE半精度格式。由于这个格式范围比单精度小，我们提出了三种方法来避免重要信息的损失。首先，建议保留权重的单精度拷贝，每次优化器执行后累积梯度（前向和反向传播时，拷贝归整到单">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Bazingaliu/Bazingaliu.github.ios/master/blog/papers/2019/R/mixed-precision-fig1.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
@@ -243,7 +243,9 @@
 
 <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h2><p>增大网络通常会提升准确性，但是也增加了内存和计算量。我们的方法可以使用半精度浮点数训练网络，同时不损失准确性，也不需要修改超参数。这近乎减少了一般的内存，在最新的GPU上还能加速运算。权重，激活和梯度都使用IEEE半精度格式。由于这个格式范围比单精度小，我们提出了三种方法来避免重要信息的损失。首先，建议保留权重的单精度拷贝，每次优化器执行后累积梯度（前向和反向传播时，拷贝归整到单精度）。其次，我们提出了损失放大用于保留小的梯度值。第三，我们使用半精度累积到单精度输出，在存到内存前转为半精度。</p>
+        <blockquote>
+<h2 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h2><p>增大网络通常会提升准确性，但是也增加了内存和计算量。我们的方法可以使用半精度浮点数训练网络，同时不损失准确性，也不需要修改超参数。这近乎减少了一般的内存，在最新的GPU上还能加速运算。权重，激活和梯度都使用IEEE半精度格式。由于这个格式范围比单精度小，我们提出了三种方法来避免重要信息的损失。首先，建议保留权重的单精度拷贝，每次优化器执行后累积梯度（前向和反向传播时，拷贝归整到单精度）。其次，我们提出了损失放大用于保留小的梯度值。第三，我们使用半精度累积到单精度输出，在存到内存前转为半精度。</p>
+</blockquote>
 <a id="more"></a>  
 <h2 id="1-INTRODUCTION"><a href="#1-INTRODUCTION" class="headerlink" title="1 INTRODUCTION"></a>1 INTRODUCTION</h2><p>神经网络两个趋势：更大的数据和更大的模型。大的模型需要更多的计算和内存，可以通过降低精度来减小这些需求。性能（速度）包括了网络的训练和推理，受三个因素先知：算术带宽，内存带宽，或者延迟。减低精度解决了其中的两个限制。内存带宽的压力可以通过更少的比特位来降低。算术时间可以通过更大的低精度吞吐量来降低。例如，在最近的GPU上半精度的吞吐量是单精度的2到8倍。除了速度提升，降低精度也减少了训练的内存。</p>
 <p>现代的深度学习系统是使用单精度（FP32）格式。我们使用更低的精度来训练，同时保持准确率，用IEEE半精度格式FP16来训练网络。由于FP16比FP32动态范围小，我们引入了3个技术来保持准确率：保留权重的FP32主拷贝，梯度变为0时损失放大，用FP16计算累积到FP32。我们证明了这些方法可以让大部分网络匹敌FP32的准确率。而且这些方法不需要修改模型或调整超参数。</p>
@@ -620,31 +622,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">install</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,7 +642,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">install</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,6 +663,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">homework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -680,7 +682,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,19 +710,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">教程</a>
               </li>
              
               <li class="article-tag-list-item">

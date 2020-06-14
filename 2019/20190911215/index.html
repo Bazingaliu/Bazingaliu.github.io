@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://cugtyt.github.io/blog/ml-data/2018/R/weight-initialization4.png">
 <meta property="og:image" content="http://latex.codecogs.com/gif.latex?%5Cinline%201/%5Csqrt%7Bn_%7B%5Crm%20in%7D%7D">
 <meta property="og:image" content="http://latex.codecogs.com/gif.latex?%5Cinline%201/%5Csqrt%7Bn_%7B%5Crm%20in%7D%7D">
-<meta property="og:updated_time" content="2020-06-09T18:11:14.047Z">
+<meta property="og:updated_time" content="2020-06-14T08:09:27.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Michael Nielsen对weight初始化的解释">
 <meta name="twitter:description" content="当我们创建一个神经网络时，我们必须选择weights和biases的初始化方式。我们目前的方式是让weights和biases都使用独立的高斯随机初始化，标准化为均值0，标准差1。这种方式工作得挺好，也挺特别，如果我们回头审视下它，也许能找到设置weights和biase更好的方式，帮助我们的神经网络学得更快。">
@@ -248,7 +248,9 @@
 
 <div class="article-entry" itemprop="articleBody">
       
-        <p>当我们创建一个神经网络时，我们必须选择weights和biases的初始化方式。我们目前的方式是让weights和biases都使用独立的高斯随机初始化，标准化为均值0，标准差1。这种方式工作得挺好，也挺特别，如果我们回头审视下它，也许能找到设置weights和biase更好的方式，帮助我们的神经网络学得更快。</p>
+        <blockquote>
+<p>当我们创建一个神经网络时，我们必须选择weights和biases的初始化方式。我们目前的方式是让weights和biases都使用独立的高斯随机初始化，标准化为均值0，标准差1。这种方式工作得挺好，也挺特别，如果我们回头审视下它，也许能找到设置weights和biase更好的方式，帮助我们的神经网络学得更快。</p>
+</blockquote>
 <a id="more"></a>  
 <p>的确我们可以做的比标准化高斯初始化更好。为了说明原因，假设我们有1000个输入神经元的神经网络。并且我们已经用标准化高斯初始化了连接第一隐层的weights。现在我们只关注输入神经元层和第一隐层间的weights，忽略掉其他部分：</p>
 <p><img src="https://cugtyt.github.io/blog/ml-data/2018/R/weight-initialization1.png" alt></p>
@@ -613,31 +615,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">install</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -649,7 +635,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">install</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,6 +656,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">homework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,7 +675,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -689,19 +703,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">教程</a>
               </li>
              
               <li class="article-tag-list-item">

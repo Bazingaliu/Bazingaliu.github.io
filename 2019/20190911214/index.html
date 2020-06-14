@@ -17,12 +17,12 @@
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="题意 有$n(1\leq n\leq 10^5)$个盒子，每个盒子有$a_i(0\leq a_i \leq 1)$个糖果，你每一次可以将第$i$个盒子里的糖果放到第$i-1$或$i+1$个盒子中（如果盒子存在）。最后要使每个盒子的糖果数量都整除$k(k&amp;gt;1)$（注意盒子可以为空），问最小操作数。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://sta.codeforces.com/s/91655/images/codeforces-logo-with-telegram.png">
-<meta property="og:updated_time" content="2020-06-09T17:45:38.477Z">
+<meta property="og:image" content="https://i.loli.net/2020/06/14/tFXQbkZ25IEHoLj.png">
+<meta property="og:updated_time" content="2020-06-14T07:38:43.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="send boxes to alice(easy version)">
 <meta name="twitter:description" content="题意 有$n(1\leq n\leq 10^5)$个盒子，每个盒子有$a_i(0\leq a_i \leq 1)$个糖果，你每一次可以将第$i$个盒子里的糖果放到第$i-1$或$i+1$个盒子中（如果盒子存在）。最后要使每个盒子的糖果数量都整除$k(k&amp;gt;1)$（注意盒子可以为空），问最小操作数。">
-<meta name="twitter:image" content="http://sta.codeforces.com/s/91655/images/codeforces-logo-with-telegram.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/14/tFXQbkZ25IEHoLj.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -235,10 +235,12 @@
 
 <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://sta.codeforces.com/s/91655/images/codeforces-logo-with-telegram.png" alt="img"></p>
+        <blockquote>
 <p><strong>题意</strong></p>
 <p>有$n(1\leq n\leq 10^5)$个盒子，每个盒子有$a_i(0\leq a_i \leq 1)$个糖果，你每一次可以将第$i$个盒子里的糖果放到第$i-1$或$i+1$个盒子中（如果盒子存在）。最后要使每个盒子的糖果数量都整除$k(k&gt;1)$（注意盒子可以为空），问最小操作数。</p>
+</blockquote>
 <a id="more"></a>  
+<p><img src="https://i.loli.net/2020/06/14/tFXQbkZ25IEHoLj.png" alt></p>
 <p><strong>分析</strong></p>
 <p>$(1)$因为糖果是类似于平铺的形式，堆叠时，我们可以发现所有存在糖果的盒子中数量均为$k$。若存在一个盒子中有$2*k$个糖果，在平铺到堆叠的过程中，将另外$k$个糖果分在更近的盒子能得到更小的答案。</p>
 <p>$(2)$设糖果总数为$cnt$，所有存在糖果的盒子数量均为$k$，我们又可以发现，最小的操作是将$1$~$k$、$k+1$~$2k$、……、$ik+1$~$(i+1)*k$放在一起，即将相邻的$k$个放在一堆。</p>
@@ -597,31 +599,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">install</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,7 +619,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">install</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,6 +640,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">homework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -657,7 +659,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,19 +687,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">教程</a>
               </li>
              
               <li class="article-tag-list-item">
