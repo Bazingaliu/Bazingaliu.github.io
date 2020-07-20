@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yuanquanquan.top/"/>
-  <updated>2020-07-06T08:50:03.794Z</updated>
+  <updated>2020-07-20T00:33:58.119Z</updated>
   <id>http://yuanquanquan.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>APDS-9960 RGB and Gesture Sensor</title>
+    <link href="http://yuanquanquan.top/2020/20200720/"/>
+    <id>http://yuanquanquan.top/2020/20200720/</id>
+    <published>2020-07-20T00:19:47.000Z</published>
+    <updated>2020-07-20T00:33:58.119Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>通过APDS-9960手势识别芯片在Arduino上实现手势识别。</p></blockquote><a id="more"></a><p> <img src="https://i.loli.net/2020/07/20/V7QfZtiyl1X3kOj.png" alt></p><h2 id="HARDWARE"><a href="#HARDWARE" class="headerlink" title="\HARDWARE**"></a><strong><em>\</em>HARDWARE**</strong></h2><p>· Osoyoo UNO Board (Fully compatible with Arduino UNO rev.3) x 1</p><p>· APDS-9960 RGB and Gesture Sensor x 1</p><p>· Jumpers</p><p>· USB Cable x 1</p><p>· PC x 1</p><h2 id="SOFTWARE"><a href="#SOFTWARE" class="headerlink" title="\SOFTWARE**"></a><strong><em>\</em>SOFTWARE**</strong></h2><p>· Arduino IDE (version 1.6.4+)</p><p>· Arduino library: <a href="https://codeload.github.com/adafruit/Adafruit_APDS9960/zip/master" target="_blank" rel="noopener">APDS9960.h</a></p><h1 id="About-APDS-9960-RGB-and-Gesture-Sensor"><a href="#About-APDS-9960-RGB-and-Gesture-Sensor" class="headerlink" title="\About APDS-9960 RGB and Gesture Sensor**"></a><strong><em>\</em>About APDS-9960 RGB and Gesture Sensor**</strong></h1><p><img src="https://i.loli.net/2020/07/20/6fex8zmILMlo5Ua.png" alt> </p><p>This is the  RGB and Gesture Sensor, a small breakout board with a built in APDS-9960 sensor that offers ambient light and color measuring, proximity detection, and touchless gesture sensing. With this RGB and Gesture Sensor you will be able to control a computer, microcontroller, robot, and more with a simple swipe of your hand! This is, in fact, the same sensor that the Samsung Galaxy S5 uses and is probably one of the best gesture sensors on the market for the price.</p><p> <img src="https://i.loli.net/2020/07/20/Qt2qSDv4sdORk7o.png" alt></p><p>The APDS-9960 is a serious little piece of hardware with built in UV and IR blocking filters, four separate diodes sensitive to different directions, and an I2C compatible interface. For your convenience we have broken out the following pins: VL (optional power to IR LED), GND (Ground), VCC (power to APDS-9960 sensor), SDA (I2C data), SCL (I2C clock), and INT (interrupt). Each APDS-9960 also has a detection range of 4 to 8 inches (10 to 20 cm).</p><p><img src="https://i.loli.net/2020/07/20/Rtq621F7UxkYDlH.png" alt> </p><h2 id="PIN-DESCRIPTIONS"><a href="#PIN-DESCRIPTIONS" class="headerlink" title="\PIN DESCRIPTIONS**"></a><strong><em>\</em>PIN DESCRIPTIONS**</strong></h2><table><thead><tr><th><strong><em>\</em>Pin Label**</strong></th><th><strong><em>\</em>Description**</strong></th></tr></thead><tbody><tr><td>VL</td><td>Optional power to the IR LED if PS jumper is disconnected. Must be 3.0 - 4.5V</td></tr><tr><td>GND</td><td>Connect to ground.</td></tr><tr><td>VCC</td><td>Used to power the APDS-9960 sensor. Must be 2.4 - 3.6V</td></tr><tr><td>SDA</td><td>I2C data</td></tr><tr><td>SCL</td><td>I2C clock</td></tr><tr><td>INT</td><td>External interrupt pin. Active LOW on interrupt event</td></tr></tbody></table><h2 id="FEATURES"><a href="#FEATURES" class="headerlink" title="\FEATURES:**"></a><strong><em>\</em>FEATURES:**</strong></h2><p>· Model: GY-APDS 9960-3.3</p><p>· Using chip: APDS-9960</p><p>· Operational Voltage: 3.3V</p><p>· Ambient Light &amp; RGB Color Sensing</p><p>· Proximity Sensing</p><p>· Gesture Detection</p><p>· Operating Range: 4-8in (10-20cm)</p><p>· I2C Interface (I2C Address: 0x39)</p><p>· Size: 20mm * 15.3mm</p><h3 id="Recommended-Reading"><a href="#Recommended-Reading" class="headerlink" title="\Recommended Reading**"></a><strong><em>\</em>Recommended Reading**</strong></h3><p>Before getting started with the APDS-9960, there are a few concepts that you should be familiar with. Consider <a href="http://osoyoo.com/2017/09/21/osoyoo-advanced-kit-for-arduino/" target="_blank" rel="noopener">reading some of these tutorials before continuing.</a></p><h2 id="SETTING-THE-JUMPERS"><a href="#SETTING-THE-JUMPERS" class="headerlink" title="\SETTING THE JUMPERS**"></a><strong><em>\</em>SETTING THE JUMPERS**</strong></h2><p><img src="https://i.loli.net/2020/07/20/Qlw6Am5xdPqIeiW.jpg" alt> </p><p>On the front of the breakout board are 2 solder jumpers:</p><p><strong>·</strong> <strong><em>\</em>PS**</strong> – This jumper connects the power supplies of the sensor and IR LED (also located on the APDS-9960) together. When the jumper is closed (i.e. connected), you only need to supply power to the VCC pin to power both the sensor and the IR LED. If the jumper is open, you need to provide power to both the VCC (2.4 - 3.6V) and VL (3.0 - 4.5V) pins separately. This jumper is <strong><em>\</em>closed**</strong> by default.</p><p><strong>·</strong> <strong><em>\</em>I2C PU**</strong> – This is a 3-way solder jumper that is used to connect and disconnect the I2C pullup resistors. By default, this jumper is <strong><em>\</em>closed**</strong>, which means that both SDA and SCL lines have connected pullup resistors on the breakout board. Use some solder wick to open the jumper if you do not need the pullup resistors (e.g. you have pullup resistors that are located on the I2C bus somewhere else).</p><h2 id="HARDWARE-HOOKUP"><a href="#HARDWARE-HOOKUP" class="headerlink" title="\HARDWARE HOOKUP**"></a><strong><em>\</em>HARDWARE HOOKUP**</strong></h2><h3 id="Add-Headers"><a href="#Add-Headers" class="headerlink" title="\Add Headers**"></a><strong><em>\</em>Add Headers**</strong></h3><p>Solder a row of break away male headers to the 6 headers holes on the board.</p><p><img src="https://i.loli.net/2020/07/20/eVvx14DpdJnFG8M.jpg" alt> </p><h3 id="Connect-the-Breakout-Board"><a href="#Connect-the-Breakout-Board" class="headerlink" title="\Connect the Breakout Board**"></a><strong><em>\</em>Connect the Breakout Board**</strong></h3><p>We will be using the Arduino Pro’s regulated 3.3V power and I2C bus with the APDS-9960. Note that we are leaving VL on the breakout board unconnected. IMPORTANT: You must use 3.3V! If you try to use a 5V power supply  you risk damaging the APDS-9960. Connect the breakout board to the following pins on the Arduino:</p><table><thead><tr><th><strong><em>\</em>APDS-9960 Breakout Board**</strong></th><th><strong><em>\</em>OSOYOO UNO**</strong></th></tr></thead><tbody><tr><td>GND</td><td>GND</td></tr><tr><td>VCC</td><td>3.3V</td></tr><tr><td>SDA</td><td>A4</td></tr><tr><td>SCL</td><td>A5</td></tr></tbody></table><p><strong><em>\</em>NOTE:**</strong></p><p>· Connect the <strong><em>\</em>SCL**</strong> pin to the I2C clock <strong><em>\</em>SCL**</strong> pin on your Arduino. On an UNO &amp; ‘328 based Arduino, this is also known as <strong><em>\</em>A5**</strong>, on a Mega it is also known as <strong><em>\</em>digital 21**</strong> and on a Leonardo/Micro, <strong><em>\</em>digital 3**</strong></p><p>· Connect the <strong><em>\</em>SDA**</strong> pin to the I2C data <strong><em>\</em>SDA**</strong> pin on your Arduino. On an UNO &amp; ‘328 based Arduino, this is also known as <strong><em>\</em>A4**</strong>, on a Mega it is also known as <strong><em>\</em>digital 20**</strong> and on a Leonardo/Micro, <strong><em>\</em>digital 2**</strong></p><p><img src="https://i.loli.net/2020/07/20/Gutm3UWAv95jQgN.png" alt></p><h2 id="ARDUINO-LIBRARY-INSTALLATION"><a href="#ARDUINO-LIBRARY-INSTALLATION" class="headerlink" title="\ARDUINO LIBRARY INSTALLATION**"></a><strong><em>\</em>ARDUINO LIBRARY INSTALLATION**</strong></h2><p>To use the APDS-9960, you will need some supporting software. If you are using an Arduino, then you are in luck! We created an Arduino library that makes the APDS-9960 easy to use. Click the button below to download the latest version of the APDS-9960 breakout board project, which includes the Arduino library. <a href="https://codeload.github.com/adafruit/Adafruit_APDS9960/zip/master" target="_blank" rel="noopener">DOWNLOAD THE PROJECT FILES!</a> Follow <a href="http://osoyoo.com/2017/05/08/how-to-install-additional-arduino-libraries/" target="_blank" rel="noopener">this guide on installing Arduino libraries</a> to install the files within the APDS9960 directory as an Arduino library. </p><h1 id="Gesture-Sensing-Example"><a href="#Gesture-Sensing-Example" class="headerlink" title="\Gesture Sensing Example**"></a><strong><em>\</em>Gesture Sensing Example**</strong></h1><h2 id="UPLOAD-SKETCH"><a href="#UPLOAD-SKETCH" class="headerlink" title="\UPLOAD SKETCH**"></a><strong><em>\</em>UPLOAD SKETCH**</strong></h2><p>After above operations are completed, connect the Arduino board to your computer using the USB cable. The green power LED (labelled <strong><em>\</em>PWR**</strong>) should go on. </p><h2 id="CODE-PROGRAM"><a href="#CODE-PROGRAM" class="headerlink" title="\CODE PROGRAM**"></a><strong><em>\</em>CODE PROGRAM**</strong></h2><p>You can copy below code to your Arduino IDE window, then select corresponding board type and port type for your Arduino board. </p><p><img src="https://i.loli.net/2020/07/20/FEjCHOW8l5XB4Nb.png" alt></p><h1 id="Running-Result"><a href="#Running-Result" class="headerlink" title="\Running Result**"></a><strong><em>\</em>Running Result**</strong></h1><p>Click the Upload button and wait for the program to finish uploading to the Arduino. Once uploaded to your Adruino, open up the serial monitor at 115200 baud speed.More info on the Serial Terminal can be found <a href="http://osoyoo.com/2017/07/06/arduino-lesson-the-serial-monitor/" target="_blank" rel="noopener">here</a>. You should see a messages noting that “Device initialized! ” Hover your hand 4 to 8 inches (10 to 20 cm) above the sensor but off to one side (i.e. not directly above the sensor). While maintaining the same height, swipe your hand over the sensor (into and then immediately out of range of the sensor). If you move too fast, the sensor will not recognize the gesture.</p><p><img src="https://i.loli.net/2020/07/20/hHpdYazO9xjXJ7w.jpg" alt> </p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;通过APDS-9960手势识别芯片在Arduino上实现手势识别。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="日常技术" scheme="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="硬件学习" scheme="http://yuanquanquan.top/categories/%E6%97%A5%E5%B8%B8%E6%8A%80%E6%9C%AF/%E7%A1%AC%E4%BB%B6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="-手势识别" scheme="http://yuanquanquan.top/tags/%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>Arcore-Android</title>
@@ -500,34 +526,6 @@
     
     
       <category term="ICLR" scheme="http://yuanquanquan.top/tags/ICLR/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>艾萨克的英雄主义</title>
-    <link href="http://yuanquanquan.top/2019/2019120800/"/>
-    <id>http://yuanquanquan.top/2019/2019120800/</id>
-    <published>2019-12-07T17:33:52.000Z</published>
-    <updated>2020-06-14T07:53:41.301Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>再有一个月2019年就要过去了，这一年里好像什么都发生了，又好像什么都没改变。</p><p>我的生活在发生着什么呢？大概…..我变得喜欢听汪峰、Adele、还有Johnny Cash的歌；我变得会望着车窗外飞逝的光景没来由地泪湿眼眶；我变得越来越喜欢仰望天空；我变得越来越不敢在深夜推演公式。</p><p>各种ddl日常砸脸，论文也是毫无头绪，也做不出理想的实验数据；但最难的其实是生活，作为一个人去生活。</p></blockquote><a id="more"></a>  <p>把自己的生活打理得井井有条，敢爱，敢恨，有宽阔的胸怀。</p><p>释怀那些曾经伤害过自己的人和事。</p><p>有罗曼罗兰的英雄主义，看清生活的真相之后仍然热爱它。</p><p>就像民谣里唱的</p><p>“如果天黑之前来得及</p><p>我要忘了你的眼睛。”</p><p>有什么不是时间能冲淡的东西呢</p><p>晚年的艾萨克.牛顿在英国铸币局做了二十多年局长，帮助改革了英国的货币，后来获封勋爵，国葬在西敏寺。</p><p>涉足金融的牛顿炒股亏得一塌糊涂，他因此也留下一句名言：</p><p>我可以计算天体运行的轨道，但我无法计算疯狂的人性。</p><p>这句名言大概就像数学家费马本人证明不出费马大定理就写下一句：“我已经知道如何证明，但这里空白太少写不下”，这样略带戏谑和桀骜的托词。他杂糅着牛顿对这个世界的失望，他的傲慢，他的无奈，他的对和谐唯美自然秩序图景的渴望和混乱的人类社会现实的冲突。</p><p>而他自己的人生，在早年的贫穷、困顿、瘦弱中养成了多疑、好胜、自卑的性格，一生未娶，他并没有获得人性美好的眷顾。如果他不是自然科学之父，历史不会记住他。假设会记住他，牛顿的注脚也顶多是一个矮小怪异的加西莫多式的英格兰人，哪里会有艾丝梅拉达们给他爱情的憧憬，遑论天伦之乐。</p><p>他的这句“托词”，在过去几个月一直萦绕在我心头。也萦绕在我看向天空的视角。</p><p>苦难、贫穷、抑或孤独，它们可以塑造我们的性格，可以影响我们的外貌，可以让我们成为丑陋的加西莫多，可以让我们永远也得不到艾丝梅拉达的爱情。但它们唯一不可影响的就是我们的英雄主义。这种英雄主义不单纯基于罗曼罗兰的愿景，它更像牛顿们的勇气和韧劲，乘着思想的羽翼，去飞翔，去探索，去无畏地开疆拓土，发现未知，塑造未来，哪怕倒下，也像海中之鲸，富饶了整个群落。而每当我们看向天空，至少在那一刻，是神圣的，是唯美的，是纯粹的。</p><p>下一刻低头，便只管往前走，不回头。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;再有一个月2019年就要过去了，这一年里好像什么都发生了，又好像什么都没改变。&lt;/p&gt;
-&lt;p&gt;我的生活在发生着什么呢？大概…..我变得喜欢听汪峰、Adele、还有Johnny Cash的歌；我变得会望着车窗外飞逝的光景没来由地泪湿眼眶；我变得越来越喜欢仰望天空；我变得越来越不敢在深夜推演公式。&lt;/p&gt;
-&lt;p&gt;各种ddl日常砸脸，论文也是毫无头绪，也做不出理想的实验数据；但最难的其实是生活，作为一个人去生活。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-      <category term="随笔" scheme="http://yuanquanquan.top/categories/%E7%94%9F%E6%B4%BB/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="生活" scheme="http://yuanquanquan.top/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
