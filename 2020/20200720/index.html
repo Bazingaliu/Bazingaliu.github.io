@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/07/20/Gutm3UWAv95jQgN.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/20/FEjCHOW8l5XB4Nb.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/20/hHpdYazO9xjXJ7w.jpg">
-<meta property="og:updated_time" content="2020-07-20T00:33:58.119Z">
+<meta property="og:updated_time" content="2020-07-21T06:38:39.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="APDS-9960 RGB and Gesture Sensor">
 <meta name="twitter:description" content="通过APDS-9960手势识别芯片在Arduino上实现手势识别。">
@@ -248,19 +248,19 @@
 </blockquote>
 <a id="more"></a>
 <p> <img src="https://i.loli.net/2020/07/20/V7QfZtiyl1X3kOj.png" alt></p>
-<h2 id="HARDWARE"><a href="#HARDWARE" class="headerlink" title="\HARDWARE**"></a><strong><em>\</em>HARDWARE**</strong></h2><p>· Osoyoo UNO Board (Fully compatible with Arduino UNO rev.3) x 1</p>
+<h1 id="1-HARDWARE"><a href="#1-HARDWARE" class="headerlink" title="1. HARDWARE"></a>1. HARDWARE</h1><p>· Osoyoo UNO Board (Fully compatible with Arduino UNO rev.3) x 1</p>
 <p>· APDS-9960 RGB and Gesture Sensor x 1</p>
 <p>· Jumpers</p>
 <p>· USB Cable x 1</p>
 <p>· PC x 1</p>
-<h2 id="SOFTWARE"><a href="#SOFTWARE" class="headerlink" title="\SOFTWARE**"></a><strong><em>\</em>SOFTWARE**</strong></h2><p>· Arduino IDE (version 1.6.4+)</p>
+<h1 id="2-SOFTWARE"><a href="#2-SOFTWARE" class="headerlink" title="2. SOFTWARE"></a>2. SOFTWARE</h1><p>· Arduino IDE (version 1.6.4+)</p>
 <p>· Arduino library: <a href="https://codeload.github.com/adafruit/Adafruit_APDS9960/zip/master" target="_blank" rel="noopener">APDS9960.h</a></p>
-<h1 id="About-APDS-9960-RGB-and-Gesture-Sensor"><a href="#About-APDS-9960-RGB-and-Gesture-Sensor" class="headerlink" title="\About APDS-9960 RGB and Gesture Sensor**"></a><strong><em>\</em>About APDS-9960 RGB and Gesture Sensor**</strong></h1><p><img src="https://i.loli.net/2020/07/20/6fex8zmILMlo5Ua.png" alt> </p>
+<h1 id="3-About-APDS-9960-RGB-and-Gesture-Sensor"><a href="#3-About-APDS-9960-RGB-and-Gesture-Sensor" class="headerlink" title="3. About APDS-9960 RGB and Gesture Sensor"></a>3. About APDS-9960 RGB and Gesture Sensor</h1><p><img src="https://i.loli.net/2020/07/20/6fex8zmILMlo5Ua.png" alt> </p>
 <p>This is the  RGB and Gesture Sensor, a small breakout board with a built in APDS-9960 sensor that offers ambient light and color measuring, proximity detection, and touchless gesture sensing. With this RGB and Gesture Sensor you will be able to control a computer, microcontroller, robot, and more with a simple swipe of your hand! This is, in fact, the same sensor that the Samsung Galaxy S5 uses and is probably one of the best gesture sensors on the market for the price.</p>
 <p> <img src="https://i.loli.net/2020/07/20/Qt2qSDv4sdORk7o.png" alt></p>
 <p>The APDS-9960 is a serious little piece of hardware with built in UV and IR blocking filters, four separate diodes sensitive to different directions, and an I2C compatible interface. For your convenience we have broken out the following pins: VL (optional power to IR LED), GND (Ground), VCC (power to APDS-9960 sensor), SDA (I2C data), SCL (I2C clock), and INT (interrupt). Each APDS-9960 also has a detection range of 4 to 8 inches (10 to 20 cm).</p>
 <p><img src="https://i.loli.net/2020/07/20/Rtq621F7UxkYDlH.png" alt> </p>
-<h2 id="PIN-DESCRIPTIONS"><a href="#PIN-DESCRIPTIONS" class="headerlink" title="\PIN DESCRIPTIONS**"></a><strong><em>\</em>PIN DESCRIPTIONS**</strong></h2><table>
+<h2 id="3-1-PIN-DESCRIPTIONS"><a href="#3-1-PIN-DESCRIPTIONS" class="headerlink" title="3.1 PIN DESCRIPTIONS"></a>3.1 PIN DESCRIPTIONS</h2><table>
 <thead>
 <tr>
 <th><strong><em>\</em>Pin Label**</strong></th>
@@ -294,7 +294,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="FEATURES"><a href="#FEATURES" class="headerlink" title="\FEATURES:**"></a><strong><em>\</em>FEATURES:**</strong></h2><p>· Model: GY-APDS 9960-3.3</p>
+<h2 id="3-2-FEATURES"><a href="#3-2-FEATURES" class="headerlink" title="3.2 FEATURES:"></a>3.2 FEATURES:</h2><p>· Model: GY-APDS 9960-3.3</p>
 <p>· Using chip: APDS-9960</p>
 <p>· Operational Voltage: 3.3V</p>
 <p>· Ambient Light &amp; RGB Color Sensing</p>
@@ -303,14 +303,15 @@
 <p>· Operating Range: 4-8in (10-20cm)</p>
 <p>· I2C Interface (I2C Address: 0x39)</p>
 <p>· Size: 20mm * 15.3mm</p>
-<h3 id="Recommended-Reading"><a href="#Recommended-Reading" class="headerlink" title="\Recommended Reading**"></a><strong><em>\</em>Recommended Reading**</strong></h3><p>Before getting started with the APDS-9960, there are a few concepts that you should be familiar with. Consider <a href="http://osoyoo.com/2017/09/21/osoyoo-advanced-kit-for-arduino/" target="_blank" rel="noopener">reading some of these tutorials before continuing.</a></p>
-<h2 id="SETTING-THE-JUMPERS"><a href="#SETTING-THE-JUMPERS" class="headerlink" title="\SETTING THE JUMPERS**"></a><strong><em>\</em>SETTING THE JUMPERS**</strong></h2><p><img src="https://i.loli.net/2020/07/20/Qlw6Am5xdPqIeiW.jpg" alt> </p>
+<p><strong>Recommended Reading</strong></p>
+<p>Before getting started with the APDS-9960, there are a few concepts that you should be familiar with. Consider <a href="http://osoyoo.com/2017/09/21/osoyoo-advanced-kit-for-arduino/" target="_blank" rel="noopener">reading some of these tutorials before continuing.</a></p>
+<h2 id="3-3-SETTING-THE-JUMPERS"><a href="#3-3-SETTING-THE-JUMPERS" class="headerlink" title="3.3 SETTING THE JUMPERS"></a>3.3 SETTING THE JUMPERS</h2><p><img src="https://i.loli.net/2020/07/20/Qlw6Am5xdPqIeiW.jpg" alt> </p>
 <p>On the front of the breakout board are 2 solder jumpers:</p>
 <p><strong>·</strong> <strong><em>\</em>PS**</strong> – This jumper connects the power supplies of the sensor and IR LED (also located on the APDS-9960) together. When the jumper is closed (i.e. connected), you only need to supply power to the VCC pin to power both the sensor and the IR LED. If the jumper is open, you need to provide power to both the VCC (2.4 - 3.6V) and VL (3.0 - 4.5V) pins separately. This jumper is <strong><em>\</em>closed**</strong> by default.</p>
 <p><strong>·</strong> <strong><em>\</em>I2C PU**</strong> – This is a 3-way solder jumper that is used to connect and disconnect the I2C pullup resistors. By default, this jumper is <strong><em>\</em>closed**</strong>, which means that both SDA and SCL lines have connected pullup resistors on the breakout board. Use some solder wick to open the jumper if you do not need the pullup resistors (e.g. you have pullup resistors that are located on the I2C bus somewhere else).</p>
-<h2 id="HARDWARE-HOOKUP"><a href="#HARDWARE-HOOKUP" class="headerlink" title="\HARDWARE HOOKUP**"></a><strong><em>\</em>HARDWARE HOOKUP**</strong></h2><h3 id="Add-Headers"><a href="#Add-Headers" class="headerlink" title="\Add Headers**"></a><strong><em>\</em>Add Headers**</strong></h3><p>Solder a row of break away male headers to the 6 headers holes on the board.</p>
+<h2 id="3-4-HARDWARE-HOOKUP"><a href="#3-4-HARDWARE-HOOKUP" class="headerlink" title="3.4 HARDWARE HOOKUP"></a>3.4 HARDWARE HOOKUP</h2><h3 id="3-4-1-Add-Headers"><a href="#3-4-1-Add-Headers" class="headerlink" title="3.4.1 Add Headers"></a>3.4.1 Add Headers</h3><p>Solder a row of break away male headers to the 6 headers holes on the board.</p>
 <p><img src="https://i.loli.net/2020/07/20/eVvx14DpdJnFG8M.jpg" alt> </p>
-<h3 id="Connect-the-Breakout-Board"><a href="#Connect-the-Breakout-Board" class="headerlink" title="\Connect the Breakout Board**"></a><strong><em>\</em>Connect the Breakout Board**</strong></h3><p>We will be using the Arduino Pro’s regulated 3.3V power and I2C bus with the APDS-9960. Note that we are leaving VL on the breakout board unconnected. IMPORTANT: You must use 3.3V! If you try to use a 5V power supply  you risk damaging the APDS-9960. Connect the breakout board to the following pins on the Arduino:</p>
+<h3 id="3-4-2-Connect-the-Breakout-Board"><a href="#3-4-2-Connect-the-Breakout-Board" class="headerlink" title="3.4.2 Connect the Breakout Board"></a>3.4.2 Connect the Breakout Board</h3><p>We will be using the Arduino Pro’s regulated 3.3V power and I2C bus with the APDS-9960. Note that we are leaving VL on the breakout board unconnected. IMPORTANT: You must use 3.3V! If you try to use a 5V power supply  you risk damaging the APDS-9960. Connect the breakout board to the following pins on the Arduino:</p>
 <table>
 <thead>
 <tr>
@@ -341,11 +342,11 @@
 <p>· Connect the <strong><em>\</em>SCL**</strong> pin to the I2C clock <strong><em>\</em>SCL**</strong> pin on your Arduino. On an UNO &amp; ‘328 based Arduino, this is also known as <strong><em>\</em>A5**</strong>, on a Mega it is also known as <strong><em>\</em>digital 21**</strong> and on a Leonardo/Micro, <strong><em>\</em>digital 3**</strong></p>
 <p>· Connect the <strong><em>\</em>SDA**</strong> pin to the I2C data <strong><em>\</em>SDA**</strong> pin on your Arduino. On an UNO &amp; ‘328 based Arduino, this is also known as <strong><em>\</em>A4**</strong>, on a Mega it is also known as <strong><em>\</em>digital 20**</strong> and on a Leonardo/Micro, <strong><em>\</em>digital 2**</strong></p>
 <p><img src="https://i.loli.net/2020/07/20/Gutm3UWAv95jQgN.png" alt></p>
-<h2 id="ARDUINO-LIBRARY-INSTALLATION"><a href="#ARDUINO-LIBRARY-INSTALLATION" class="headerlink" title="\ARDUINO LIBRARY INSTALLATION**"></a><strong><em>\</em>ARDUINO LIBRARY INSTALLATION**</strong></h2><p>To use the APDS-9960, you will need some supporting software. If you are using an Arduino, then you are in luck! We created an Arduino library that makes the APDS-9960 easy to use. Click the button below to download the latest version of the APDS-9960 breakout board project, which includes the Arduino library. <a href="https://codeload.github.com/adafruit/Adafruit_APDS9960/zip/master" target="_blank" rel="noopener">DOWNLOAD THE PROJECT FILES!</a> Follow <a href="http://osoyoo.com/2017/05/08/how-to-install-additional-arduino-libraries/" target="_blank" rel="noopener">this guide on installing Arduino libraries</a> to install the files within the APDS9960 directory as an Arduino library. </p>
-<h1 id="Gesture-Sensing-Example"><a href="#Gesture-Sensing-Example" class="headerlink" title="\Gesture Sensing Example**"></a><strong><em>\</em>Gesture Sensing Example**</strong></h1><h2 id="UPLOAD-SKETCH"><a href="#UPLOAD-SKETCH" class="headerlink" title="\UPLOAD SKETCH**"></a><strong><em>\</em>UPLOAD SKETCH**</strong></h2><p>After above operations are completed, connect the Arduino board to your computer using the USB cable. The green power LED (labelled <strong><em>\</em>PWR**</strong>) should go on. </p>
-<h2 id="CODE-PROGRAM"><a href="#CODE-PROGRAM" class="headerlink" title="\CODE PROGRAM**"></a><strong><em>\</em>CODE PROGRAM**</strong></h2><p>You can copy below code to your Arduino IDE window, then select corresponding board type and port type for your Arduino board. </p>
+<h2 id="3-5-ARDUINO-LIBRARY-INSTALLATION"><a href="#3-5-ARDUINO-LIBRARY-INSTALLATION" class="headerlink" title="3.5 ARDUINO LIBRARY INSTALLATION"></a>3.5 ARDUINO LIBRARY INSTALLATION</h2><p>To use the APDS-9960, you will need some supporting software. If you are using an Arduino, then you are in luck! We created an Arduino library that makes the APDS-9960 easy to use. Click the button below to download the latest version of the APDS-9960 breakout board project, which includes the Arduino library. <a href="https://codeload.github.com/adafruit/Adafruit_APDS9960/zip/master" target="_blank" rel="noopener">DOWNLOAD THE PROJECT FILES!</a> Follow <a href="http://osoyoo.com/2017/05/08/how-to-install-additional-arduino-libraries/" target="_blank" rel="noopener">this guide on installing Arduino libraries</a> to install the files within the APDS9960 directory as an Arduino library. </p>
+<h1 id="Gesture-Sensing-Example"><a href="#Gesture-Sensing-Example" class="headerlink" title="\Gesture Sensing Example**"></a><strong><em>\</em>Gesture Sensing Example**</strong></h1><h1 id="4-UPLOAD-SKETCH"><a href="#4-UPLOAD-SKETCH" class="headerlink" title="4. UPLOAD SKETCH"></a>4. UPLOAD SKETCH</h1><p>After above operations are completed, connect the Arduino board to your computer using the USB cable. The green power LED (labelled <strong><em>\</em>PWR**</strong>) should go on. </p>
+<h1 id="5-CODE-PROGRAM"><a href="#5-CODE-PROGRAM" class="headerlink" title="5.CODE PROGRAM"></a>5.CODE PROGRAM</h1><p>You can copy below code to your Arduino IDE window, then select corresponding board type and port type for your Arduino board. </p>
 <p><img src="https://i.loli.net/2020/07/20/FEjCHOW8l5XB4Nb.png" alt></p>
-<h1 id="Running-Result"><a href="#Running-Result" class="headerlink" title="\Running Result**"></a><strong><em>\</em>Running Result**</strong></h1><p>Click the Upload button and wait for the program to finish uploading to the Arduino. Once uploaded to your Adruino, open up the serial monitor at 115200 baud speed.More info on the Serial Terminal can be found <a href="http://osoyoo.com/2017/07/06/arduino-lesson-the-serial-monitor/" target="_blank" rel="noopener">here</a>. You should see a messages noting that “Device initialized! ” Hover your hand 4 to 8 inches (10 to 20 cm) above the sensor but off to one side (i.e. not directly above the sensor). While maintaining the same height, swipe your hand over the sensor (into and then immediately out of range of the sensor). If you move too fast, the sensor will not recognize the gesture.</p>
+<h1 id="6-Running-Result"><a href="#6-Running-Result" class="headerlink" title="6.Running Result"></a>6.Running Result</h1><p>Click the Upload button and wait for the program to finish uploading to the Arduino. Once uploaded to your Adruino, open up the serial monitor at 115200 baud speed.More info on the Serial Terminal can be found <a href="http://osoyoo.com/2017/07/06/arduino-lesson-the-serial-monitor/" target="_blank" rel="noopener">here</a>. You should see a messages noting that “Device initialized! ” Hover your hand 4 to 8 inches (10 to 20 cm) above the sensor but off to one side (i.e. not directly above the sensor). While maintaining the same height, swipe your hand over the sensor (into and then immediately out of range of the sensor). If you move too fast, the sensor will not recognize the gesture.</p>
 <p><img src="https://i.loli.net/2020/07/20/hHpdYazO9xjXJ7w.jpg" alt> </p>
 
       
@@ -495,7 +496,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HARDWARE"><span class="toc-number">1.</span> <span class="toc-text">\HARDWARE**</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SOFTWARE"><span class="toc-number">2.</span> <span class="toc-text">\SOFTWARE**</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#About-APDS-9960-RGB-and-Gesture-Sensor"><span class="toc-number"></span> <span class="toc-text">\About APDS-9960 RGB and Gesture Sensor**</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PIN-DESCRIPTIONS"><span class="toc-number">1.</span> <span class="toc-text">\PIN DESCRIPTIONS**</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FEATURES"><span class="toc-number">2.</span> <span class="toc-text">\FEATURES:**</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Recommended-Reading"><span class="toc-number">2.1.</span> <span class="toc-text">\Recommended Reading**</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SETTING-THE-JUMPERS"><span class="toc-number">3.</span> <span class="toc-text">\SETTING THE JUMPERS**</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HARDWARE-HOOKUP"><span class="toc-number">4.</span> <span class="toc-text">\HARDWARE HOOKUP**</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Headers"><span class="toc-number">4.1.</span> <span class="toc-text">\Add Headers**</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Connect-the-Breakout-Board"><span class="toc-number">4.2.</span> <span class="toc-text">\Connect the Breakout Board**</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ARDUINO-LIBRARY-INSTALLATION"><span class="toc-number">5.</span> <span class="toc-text">\ARDUINO LIBRARY INSTALLATION**</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Gesture-Sensing-Example"><span class="toc-number"></span> <span class="toc-text">\Gesture Sensing Example**</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#UPLOAD-SKETCH"><span class="toc-number">1.</span> <span class="toc-text">\UPLOAD SKETCH**</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CODE-PROGRAM"><span class="toc-number">2.</span> <span class="toc-text">\CODE PROGRAM**</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Running-Result"><span class="toc-number"></span> <span class="toc-text">\Running Result**</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-HARDWARE"><span class="toc-number">1.</span> <span class="toc-text">1. HARDWARE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-SOFTWARE"><span class="toc-number">2.</span> <span class="toc-text">2. SOFTWARE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-About-APDS-9960-RGB-and-Gesture-Sensor"><span class="toc-number">3.</span> <span class="toc-text">3. About APDS-9960 RGB and Gesture Sensor</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-PIN-DESCRIPTIONS"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 PIN DESCRIPTIONS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-FEATURES"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 FEATURES:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-SETTING-THE-JUMPERS"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 SETTING THE JUMPERS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-HARDWARE-HOOKUP"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 HARDWARE HOOKUP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-1-Add-Headers"><span class="toc-number">3.4.1.</span> <span class="toc-text">3.4.1 Add Headers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-2-Connect-the-Breakout-Board"><span class="toc-number">3.4.2.</span> <span class="toc-text">3.4.2 Connect the Breakout Board</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-ARDUINO-LIBRARY-INSTALLATION"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 ARDUINO LIBRARY INSTALLATION</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Gesture-Sensing-Example"><span class="toc-number">4.</span> <span class="toc-text">\Gesture Sensing Example**</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-UPLOAD-SKETCH"><span class="toc-number">5.</span> <span class="toc-text">4. UPLOAD SKETCH</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-CODE-PROGRAM"><span class="toc-number">6.</span> <span class="toc-text">5.CODE PROGRAM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-Running-Result"><span class="toc-number">7.</span> <span class="toc-text">6.Running Result</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -687,10 +688,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
@@ -707,15 +704,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -735,10 +736,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">CV</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -751,11 +748,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -775,15 +780,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+                <a href="javascript:void(0)" class="js-tag color5">强化学习</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">强化学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -803,11 +804,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
               </li>
              
               <li class="article-tag-list-item">
