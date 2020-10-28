@@ -7,19 +7,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
-  <title>Category: Deep Learning | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+  <title>树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(2) | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="人工智能、计算机、机器学习、linux、程序员">
-<meta name="keywords" content="人工智能、计算机、机器学习、linux、程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:url" content="http://yuanquanquan.top/categories/AI/Deep-Learning/page/3/index.html">
+  <meta name="description" content="接上一章，分别在树莓派和Windows上安装了NCS环境，接下来进行格式转换，在windows训练Caffe或TensorFlow模型，编译成NCS可以执行的graph；测试端则面向ncs python mvnc api编程，可以运行在树莓派上raspbian stretch版本，也可以运行在训练端这种机器上。">
+<meta name="keywords" content="Intel-Neural-Compute-stick">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(2)">
+<meta property="og:url" content="http://yuanquanquan.top/2020/20201028/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta property="og:description" content="接上一章，分别在树莓派和Windows上安装了NCS环境，接下来进行格式转换，在windows训练Caffe或TensorFlow模型，编译成NCS可以执行的graph；测试端则面向ncs python mvnc api编程，可以运行在树莓派上raspbian stretch版本，也可以运行在训练端这种机器上。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020010819375385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dhbmtpblRhbw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200110184001358.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dhbmtpblRhbw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200110182837145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dhbmtpblRhbw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200110183739695.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dhbmtpblRhbw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200110191229870.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dhbmtpblRhbw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200110192121519.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dhbmtpblRhbw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200110200435754.png">
+<meta property="og:updated_time" content="2020-10-28T10:45:46.599Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta name="twitter:description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta name="twitter:title" content="树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(2)">
+<meta name="twitter:description" content="接上一章，分别在树莓派和Windows上安装了NCS环境，接下来进行格式转换，在windows训练Caffe或TensorFlow模型，编译成NCS可以执行的graph；测试端则面向ncs python mvnc api编程，可以运行在树莓派上raspbian stretch版本，也可以运行在训练端这种机器上。">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020010819375385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dhbmtpblRhbw==,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -200,579 +209,271 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-NCS-2" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(2)
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/20201028/" class="archive-article-date">
+  	<time datetime="2020-10-28T10:18:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-28</time>
+</a>
+        
+      </header>
     
+
+<div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>接上一章，分别在树莓派和Windows上安装了NCS环境，接下来进行格式转换，在windows训练Caffe或TensorFlow模型，编译成NCS可以执行的graph；测试端则面向ncs python mvnc api编程，可以运行在树莓派上raspbian stretch版本，也可以运行在训练端这种机器上。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="三、格式转换"><a href="#三、格式转换" class="headerlink" title="三、格式转换"></a>三、格式转换</h3><h4 id="1、下载darknet版官网训练模型"><a href="#1、下载darknet版官网训练模型" class="headerlink" title="1、下载darknet版官网训练模型"></a>1、下载darknet版官网训练模型</h4><p>如果没有现成的，可以从<a href="https://pjreddie.com/darknet/yolo/" target="_blank" rel="noopener">pjreddie网站</a>下载</p>
+<p><a href="https://blog.csdn.net/c20081052/article/details/90056746" target="_blank" rel="noopener">Yolo V3 COCO weights</a>（237MB），<a href="https://pjreddie.com/media/files/yolov3-tiny.weights" target="_blank" rel="noopener">Tiny Yolo V3 COCO weights</a>（34MB）， 标签文件 <a href="https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names" target="_blank" rel="noopener">coco.names</a></p>
+<h4 id="2、将weights文件转换为pb文件"><a href="#2、将weights文件转换为pb文件" class="headerlink" title="2、将weights文件转换为pb文件"></a>2、将weights文件转换为pb文件</h4><p>OpenVINO不支持直接使用Yolo V3的.weights文件，目前仅支持ONNX、TensorFlow、Caffe和MXNet。需要先<a href="https://github.com/PINTO0309/OpenVINO-YoloV3" target="_blank" rel="noopener">把.weights文件转换成TensorFlow的.pb文件。</a><br> 自己在桌面新建一个文件夹例如raspberry，将下载的仓库放进新建的文件夹进行解压，并将前面下载的<strong>两个权重</strong>放进解压的仓库中。</p>
+<p><strong>转换yolov3.weights的指令如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python convert_weights_pb.py --weights_file yolov3-tiny.weights --tiny True --size 416 --output_graph frozen_darknet_yolov3_tiny_model.pb --data_format NHWC</span><br></pre></td></tr></table></figure>
+<p>上面指令是将<strong>yolov3-tiny.weights转为pb文件</strong>，传的参数：–tiny必须指定True, –data_format <strong>必须是NHWC</strong>，否则后面你拿转成功的pb，然后再去转xml和bin，然后做目标检测会遇到此类错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[ ERROR ]  Cannot infer shapes or values for node &quot;detector/yolo-v3/meshgrid_1/mul_1/YoloRegion&quot;.</span><br><span class="line">[ ERROR ]  index 2 is out of bounds for axis 0 with size 2</span><br><span class="line">[ ERROR ]</span><br><span class="line">[ ERROR ]  It can happen due to bug in custom shape infer function &lt;function RegionYoloOp.regionyolo_infer at 0x000001DE82253EA0&gt;.</span><br><span class="line">[ ERROR ]  Or because the node inputs have incorrect values/shapes.</span><br><span class="line">[ ERROR ]  Or because input shapes are incorrect (embedded to the model or passed via --input_shape).</span><br><span class="line">[ ERROR ]  Run Model Optimizer with --log_level=DEBUG for more information.</span><br><span class="line">[ ERROR ]  Stopped shape/value propagation at &quot;detector/yolo-v3/meshgrid_1/mul_1/YoloRegion&quot; node.</span><br><span class="line"> For more information please refer to Model Optimizer FAQ (&lt;INSTALL_DIR&gt;/deployment_tools/documentation/docs/MO_FAQ.html),</span><br></pre></td></tr></table></figure>
+<p>错误解析就是数据维度格式不对！参考： <a href="https://software.intel.com/en-us/node/802233" target="_blank" rel="noopener">https://software.intel.com/en-us/node/802233</a><br> 所以必须指定数据格式为NHWC （这种格式支持神经计算棒和CPU设备）</p>
+<p><strong>转换yolov3.weights的指令如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python convert_weights_pb.py --weights_file yolov3.weights --size 416 --data_format NHWC</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/2020010819375385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dhbmtpblRhbw==,size_16,color_FFFFFF,t_70" alt><br> 会在OpenVINO-YoloV3-master目录下生成<strong>frozen_darknet_yolov3_tiny_model.pb</strong> 和 <strong>frozen_darknet_yolov3_model.pb</strong> ；</p>
+<p><img src="https://img-blog.csdnimg.cn/20200110184001358.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dhbmtpblRhbw==,size_16,color_FFFFFF,t_70" alt></p>
+<h4 id="3、将pb模型文件转为IR文件"><a href="#3、将pb模型文件转为IR文件" class="headerlink" title="3、将pb模型文件转为IR文件"></a>3、将pb模型文件转为IR文件</h4><p>将之前安装好的openvino文件夹里的deployment_tools文件夹拷贝出来。<br> <img src="https://img-blog.csdnimg.cn/20200110182837145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dhbmtpblRhbw==,size_16,color_FFFFFF,t_70" alt><br> 将拷贝的文件夹粘贴进raspberry文件夹。<br> <img src="https://img-blog.csdnimg.cn/20200110183739695.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dhbmtpblRhbw==,size_16,color_FFFFFF,t_70" alt><br> 切到deploment_tools目录下的model_optimizer并运行以下命令：<br> <strong>转yolov3.pb的指令是：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\桌面\raspberry\deployment_tools\model_optimizer&gt;python mo_tf.py --input_model E:\桌面\raspberry\OpenVINO-YoloV3-master\frozen_darknet_yolov3_model.pb --tensorflow_use_custom_operations_config E:\桌面\raspberry\deployment_tools\model_optimizer\extensions\front\tf\yolo_v3.json --input_shape [1,416,416,3] --data_type=FP16</span><br></pre></td></tr></table></figure>
+<p>相应文件的路径切换成自己的~需要说明的是树莓派据说支持数据类型是半浮点型的FP16, 官网很多是FP32的是针对PC的。</p>
+<p><strong>转yolov3-tiny.pb的指令如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\桌面\raspberry\deployment_tools\model_optimizer&gt;python mo_tf.py --input_model E:\桌面\raspberry\OpenVINO-YoloV3-master\frozen_darknet_yolov3_tiny_model.pb --tensorflow_use_custom_operations_config E:\桌面\raspberry\deployment_tools\model_optimizer\extensions\front\tf\yolo_v3_tiny.json --input_shape [1,416,416,3] --data_type=FP16</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200110191229870.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dhbmtpblRhbw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>执行完上述指令会生成以下六个文件：<br> <img src="https://img-blog.csdnimg.cn/20200110192121519.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dhbmtpblRhbw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 转换过程中，需要你安装了如下依赖项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. tensorflow&gt;=1.2.0 </span><br><span class="line">2. networkx&gt;=1.11</span><br><span class="line">3. numpy&gt;=1.12.0</span><br><span class="line">4. test-generator==0.1.1</span><br><span class="line">5. defusedxml&gt;=0.5.0</span><br></pre></td></tr></table></figure>
+<p>用pip安装就行</p>
+<h3 id="四、在树莓派上部署"><a href="#四、在树莓派上部署" class="headerlink" title="四、在树莓派上部署"></a>四、在树莓派上部署</h3><h4 id="1、环境激活"><a href="#1、环境激活" class="headerlink" title="1、环境激活"></a>1、环境激活</h4><p>打开树莓派，终端激活OpenVINO工具包环境变量，后续操作都在这个终端窗口下执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /home/pi/Downloads/l_openvino_toolkit_runtime_raspbian_p_2019.3.334/bin/setupvars.sh</span><br></pre></td></tr></table></figure>
+<p>当完成如上操作后，会在终端显示如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[setupvars.sh] OpenVINO environment initialized</span><br></pre></td></tr></table></figure>
+<h4 id="2、编译和运行yoloV3"><a href="#2、编译和运行yoloV3" class="headerlink" title="2、编译和运行yoloV3"></a>2、编译和运行yoloV3</h4><p>将上文转换的六个模型文件拷贝到树莓派上的/home/pi/Downloads/yolo_model目录下（可更改成你自己的目录）；并将coco.names复制两份，分别重命名为：frozen_darknet_yolov3_model.labels 和frozen_darknet_yolov3_tiny_model.labels ，所以/home/pi/Downloads/yolo_model目录下共有以下8个文件<br> <img src="https://img-blog.csdnimg.cn/20200110200435754.png" alt="在这里插入图片描述"><br> 接着</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir build &amp;&amp; cd build</span><br></pre></td></tr></table></figure>
+<p><strong>编译</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=&quot;-march=armv7-a&quot; /home/pi/Downloads/l_openvino_toolkit_runtime_raspbian_p_2019.3.334/deployment_tools/inference_engine/samples</span><br></pre></td></tr></table></figure>
+<p><strong>编译目标检测例子</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -j2 object_detection_demo_yolov3_async</span><br></pre></td></tr></table></figure>
+<p>编译完成后，会在/build/armv 7l/Release下生成可执行文件：object_detection_demo_yolov3_async；接下来就是给执行文件传入模型文件就可以跑深度学习了！</p>
+<p><strong>（测摄像头）运行如下指令：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./armv7l/Release/object_detection_demo_yolov3_async -m /home/pi/Downloads/yolo_model/frozen_darknet_yolov3_model.xml -d MYRIAD -i cam</span><br></pre></td></tr></table></figure>
+<p>此处-i cam表示读取的是camera；</p>
+<p><strong>（测视频文件）运行如下指令：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./armv7l/Release/object_detection_demo_yolov3_async -m /home/pi/Downloads/yolo_model/frozen_darknet_yolov3_model.xml -d MYRIAD -i /path_to_video</span><br></pre></td></tr></table></figure>
+<p>测试视频需要给-i指定视频路径；</p>
+<h4 id="3、编译与运行yoloV3-tiny"><a href="#3、编译与运行yoloV3-tiny" class="headerlink" title="3、编译与运行yoloV3 tiny"></a>3、编译与运行yoloV3 tiny</h4><p>同样的编译和执行流程，在编译前需要你更改下源cpp文件，先找到yolo  v3的源文件，在：/home/pi/Downloads/l_openvino_toolkit_runtime_raspbian_p_2019.3.334/deployment_tools/inference_engine/samples/object_detection_demo_yolov3_async/这个目录下；你可以发现这个目录下有<br> <strong>main.cpp<br> CMakelists.txt<br> object_detection_demo_yolov3_async.hpp<br> README.md</strong><br> 我们需要更改<strong>main.cpp</strong>,更改前先备份一份main.cpp<br> <strong>更改：</strong> 第126行左右，注释掉原先yolov3的锚点框尺寸，更改成yolo v3 tiny的（共12个数：10, 14, 23, 27, 37, 58, 81, 82, 135, 169, 344, 319）<br> 更改完保存并退出。<br> 然后重新编译:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -j2 object_detection_demo_yolov3_async</span><br></pre></td></tr></table></figure>
+<p>再编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./armv7l/Release/object_detection_demo_yolov3_async -m /home/pi/Downloads/yolo_model/frozen_darknet_yolov3_tiny_model.xml -d MYRIAD -i cam</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/cs231n-1h-4/" class="archive-article-date">
-  	<time datetime="2018-09-27T09:05:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/cs231n-1h-4/">cs231n作业：assignment1 - two_layer_net</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">cs231n</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Intel-Neural-Compute-stick</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yuanquanquan.top/2020/20201028/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/cs231n-1h-3/" class="archive-article-date">
-  	<time datetime="2018-09-27T08:02:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/20201027/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(1)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/cs231n-1h-3/">cs231n作业：assignment1 - softmax</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">cs231n</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#三、格式转换"><span class="toc-number">1.</span> <span class="toc-text">三、格式转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、下载darknet版官网训练模型"><span class="toc-number">1.1.</span> <span class="toc-text">1、下载darknet版官网训练模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、将weights文件转换为pb文件"><span class="toc-number">1.2.</span> <span class="toc-text">2、将weights文件转换为pb文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、将pb模型文件转为IR文件"><span class="toc-number">1.3.</span> <span class="toc-text">3、将pb模型文件转为IR文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、在树莓派上部署"><span class="toc-number">2.</span> <span class="toc-text">四、在树莓派上部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、环境激活"><span class="toc-number">2.1.</span> <span class="toc-text">1、环境激活</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、编译和运行yoloV3"><span class="toc-number">2.2.</span> <span class="toc-text">2、编译和运行yoloV3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、编译与运行yoloV3-tiny"><span class="toc-number">2.3.</span> <span class="toc-text">3、编译与运行yoloV3 tiny</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/cs231n-1h-2/" class="archive-article-date">
-  	<time datetime="2018-09-27T06:17:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/cs231n-1h-2/">cs231n作业：assignment1 - svm</a>
-    </h1>
-  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="NCS-2" data-title="树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(2)" data-url="http://yuanquanquan.top/2020/20201028/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">cs231n</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/cs231n-1h-1/" class="archive-article-date">
-  	<time datetime="2018-09-26T04:41:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/cs231n-1h-1/">cs231n作业：assignment1 - knn</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">cs231n</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/2018092017/" class="archive-article-date">
-  	<time datetime="2018-09-20T09:59:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/2018092017/">DeepLearning.ai笔记:(3-2)-- 机器学习策略(2)(ML strategy)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/2018092016/" class="archive-article-date">
-  	<time datetime="2018-09-20T08:48:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/2018092016/">DeepLearning.ai笔记:(3-1)-- 机器学习策略(1)(ML strategy)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/2018091810/" class="archive-article-date">
-  	<time datetime="2018-09-18T02:35:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/2018091810/">DeepLearning.ai作业:(2-3)-- 超参数调试（Hyperparameter tuning）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/2018091720/" class="archive-article-date">
-  	<time datetime="2018-09-17T12:19:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/2018091720/">DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/2018091711/" class="archive-article-date">
-  	<time datetime="2018-09-17T03:06:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/2018091711/">DeepLearning.ai作业:(2-2)-- 优化算法（Optimization algorithms）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/2018091621/" class="archive-article-date">
-  	<time datetime="2018-09-16T13:42:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/2018091621/">DeepLearning.ai笔记:(2-2)-- 优化算法（Optimization algorithms）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/categories/AI/Deep-Learning/page/2/">&laquo; Prev</a><a class="page-number" href="/categories/AI/Deep-Learning/">1</a><a class="page-number" href="/categories/AI/Deep-Learning/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/categories/AI/Deep-Learning/page/4/">4</a><a class="extend next" rel="next" href="/categories/AI/Deep-Learning/page/4/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yuanquanquan.top/2020/20201028/",
+  owner: 'Bazingaliu',
+  repo: 'Bazingaliu.github.io',
+  oauth: {
+    client_id: '86465678bf992f29a879',
+    client_secret: 'e465ff4beea46850d31dc2ebf022410154c0ddac',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -813,10 +514,10 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",

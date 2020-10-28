@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yuanquanquan.top/2020/20201028/</loc>
+    
+    <lastmod>2020-10-28T10:45:46.599Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yuanquanquan.top/2020/20201027/</loc>
     
     <lastmod>2020-10-27T04:05:15.419Z</lastmod>
@@ -324,6 +331,20 @@
   </url>
   
   <url>
+    <loc>http://yuanquanquan.top/2018/cs231n-1h-4/</loc>
+    
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yuanquanquan.top/2018/cs231n-2-2/</loc>
+    
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yuanquanquan.top/2018/cs231n-2-3/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
@@ -338,28 +359,21 @@
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/cs231n-1h-4/</loc>
-    
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yuanquanquan.top/2018/2018091720/</loc>
-    
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-4-1/</loc>
-    
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yuanquanquan.top/2018/2018091621/</loc>
+    
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yuanquanquan.top/board/index.html</loc>
+    
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yuanquanquan.top/2018/2018092016/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -380,7 +394,7 @@
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-4-4h/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-4-4/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -394,14 +408,14 @@
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-5-1h2/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-4-4h/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-4-4/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-5-1h2/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -415,14 +429,14 @@
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-5-3/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-5-3h/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-5-3h/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-5-3/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -443,13 +457,6 @@
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/2018092017/</loc>
-    
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yuanquanquan.top/2018/dl-ai-4-2/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
@@ -457,14 +464,28 @@
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/2018092016/</loc>
+    <loc>http://yuanquanquan.top/2018/2018091212/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/20180901513/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-4-1/</loc>
+    
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yuanquanquan.top/2018/2018091720/</loc>
+    
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yuanquanquan.top/2018/2018091316/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -478,21 +499,7 @@
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/board/index.html</loc>
-    
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-summary/</loc>
-    
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yuanquanquan.top/2018/2018090520/</loc>
+    <loc>http://yuanquanquan.top/2018/20180901513/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -527,13 +534,6 @@
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/2018090522/</loc>
-    
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yuanquanquan.top/2018/2018091215/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
@@ -548,14 +548,14 @@
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/2018091316/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-summary/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/2018091318/</loc>
+    <loc>http://yuanquanquan.top/2018/2018090520/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -563,6 +563,13 @@
   
   <url>
     <loc>http://yuanquanquan.top/2018/cs231n-2-1/</loc>
+    
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yuanquanquan.top/2018/2018091318/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -590,7 +597,14 @@
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/2018091212/</loc>
+    <loc>http://yuanquanquan.top/2018/cs231n-1h-3/</loc>
+    
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yuanquanquan.top/2018/2018090522/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
@@ -604,13 +618,6 @@
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/cs231n-2-2/</loc>
-    
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yuanquanquan.top/todo.html</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
@@ -618,7 +625,7 @@
   </url>
   
   <url>
-    <loc>http://yuanquanquan.top/2018/cs231n-1h-3/</loc>
+    <loc>http://yuanquanquan.top/2018/2018092017/</loc>
     
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     
