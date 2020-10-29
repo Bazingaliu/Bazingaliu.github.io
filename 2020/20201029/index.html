@@ -7,19 +7,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
-  <title>Archives: 2018 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+  <title>树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(3) | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="人工智能、计算机、机器学习、linux、程序员">
-<meta name="keywords" content="人工智能、计算机、机器学习、linux、程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:url" content="http://yuanquanquan.top/archives/2018/page/2/index.html">
+  <meta name="description" content="本系列的最后一篇，NCS这个东西感觉上跑demo是可用的，但是用在产品上开发工作量怕是不小，需要转换成IR文件。调用方式比较复杂，支持的东西不太全。Intel的文档已经算可以了，但是还是少。算力的话标准的边缘端算力，被别人的i7完爆，和我的i7一样，哭。">
+<meta name="keywords" content="Intel-Neural-Compute-stick">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(3)">
+<meta property="og:url" content="http://yuanquanquan.top/2020/20201029/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta property="og:description" content="本系列的最后一篇，NCS这个东西感觉上跑demo是可用的，但是用在产品上开发工作量怕是不小，需要转换成IR文件。调用方式比较复杂，支持的东西不太全。Intel的文档已经算可以了，但是还是少。算力的话标准的边缘端算力，被别人的i7完爆，和我的i7一样，哭。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-4d0c114cf7184e8a97488e52b54d71cc_720w.png">
+<meta property="og:updated_time" content="2020-10-29T02:06:36.550Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta name="twitter:description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta name="twitter:title" content="树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(3)">
+<meta name="twitter:description" content="本系列的最后一篇，NCS这个东西感觉上跑demo是可用的，但是用在产品上开发工作量怕是不小，需要转换成IR文件。调用方式比较复杂，支持的东西不太全。Intel的文档已经算可以了，但是还是少。算力的话标准的边缘端算力，被别人的i7完爆，和我的i7一样，哭。">
+<meta name="twitter:image" content="https://pic1.zhimg.com/80/v2-4d0c114cf7184e8a97488e52b54d71cc_720w.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -200,575 +203,282 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-NCS-3" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(3)
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/20201029/" class="archive-article-date">
+  	<time datetime="2020-10-28T16:18:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-29</time>
+</a>
+        
+      </header>
     
+
+<div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本系列的最后一篇，NCS这个东西感觉上跑demo是可用的，但是用在产品上开发工作量怕是不小，需要转换成IR文件。调用方式比较复杂，支持的东西不太全。Intel的文档已经算可以了，但是还是少。算力的话标准的边缘端算力，被别人的i7完爆，和我的i7一样，哭。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="模型在树莓派上的部署过程"><a href="#模型在树莓派上的部署过程" class="headerlink" title="模型在树莓派上的部署过程"></a>模型在树莓派上的部署过程</h2><ul>
+<li>选择预训练模型；</li>
+<li>使用模型优化器，来转换模型；</li>
+<li>最后在树莓派上推理模型。</li>
+</ul>
+<h3 id="五、如何训练自己的模型"><a href="#五、如何训练自己的模型" class="headerlink" title="五、如何训练自己的模型"></a>五、如何训练自己的模型</h3><h4 id="准备和优化训练好的模型"><a href="#准备和优化训练好的模型" class="headerlink" title="准备和优化训练好的模型"></a>准备和优化训练好的模型</h4><p>推断引擎可以<em>部署</em>经过任何受支持深度学习框架训练的网络模型：Caffe<em>、TensorFlow</em>、Kaldi<em>、MXNet</em> 或转换为 ONNX* 格式。要执行推断，推断引擎不使用原始模型操作，而是使用其中间表示文件  (IR)，后者已为在目标端点设备上执行进行过优化。要为训练好的模型生成中间表示文件，会使用模型优化器工具。</p>
+<h4 id="模型优化器如何工作"><a href="#模型优化器如何工作" class="headerlink" title="模型优化器如何工作"></a>模型优化器如何工作</h4><p>模型优化器将模型加载到内存中、读取模型、构建模型的内部表示文件、优化模型，并生成中间表示文件。中间表示文件是推断引擎接受的唯一格式。</p>
+<blockquote>
+<p><strong>注意</strong>：模型优化器不推断模型。模型优化器是推断发生之前运行的一种离线工具。</p>
+</blockquote>
+<p>模型优化器有两个主要用途：</p>
+<ul>
+<li><strong>生成有效的中间表示文件</strong>。如果这个主要转换文件无效，则推断引擎无法运行。模型优化器的主要责任是生成构成中间表示文件的两个文件（<code>.xml</code>和<code>.bin</code>）。</li>
+<li><strong>生成优化的中间表示文件</strong>。预训练的模型包含对于训练至关重要的层，如<code>Dropout</code>层。这些层在推断过程中毫无用处，反而可能增加推断时间。在许多情况下，这些操作可以自动从由此产生的中间表示文件中移除。但是，如果可以将一组操作表示为单个数学操作，然后成为模型图表中的单个操作节点，那么模型优化器会识别这一模式并用该单个操作节点代替这一组操作节点。结果就是一个运行节点数量比原始模型少的中间表示文件。这就降低了推断时间。</li>
+</ul>
+<p>要生成有效的中间表示文件，模型优化器必须能够读取原始模型包含的操作、处理它们的属性，并以中间表示文件的格式表示它们，同时保持所产生的中间表示文件的有效性。由此产生的模型由<a href="https://docs.openvinotoolkit.org/cn/latest/_docs_ops_opset.html" target="_blank" rel="noopener">操作规格</a>中描述的操作组成。</p>
+<h2 id="有关模型，需要了解哪些内容"><a href="#有关模型，需要了解哪些内容" class="headerlink" title="有关模型，需要了解哪些内容"></a>有关模型，需要了解哪些内容</h2><p>在已知的框架和神经网络拓扑中存在着许多普通层。这类层的例子包括<code>Convolution</code>、<code>Pooling</code>和<code>Activation</code>。要读取原始模型并生成模型的中间表示文件，模型优化器必须能够处理这些层。</p>
+<p>它们的完整列表取决于框架，并可以在<a href="https://docs.openvinotoolkit.org/cn/latest/_docs_MO_DG_prepare_model_Supported_Frameworks_Layers.html" target="_blank" rel="noopener">受支持的框架层</a>部分中找到。如果您的拓扑仅包含来自层列表的层，像大多数用户所使用的拓扑一样，那么模型优化器便可以轻松创建中间表示文件。在这之后，您就可以继续使用推断引擎。</p>
+<p>但是，如果您使用的拓扑含有模型优化器无法识别的层，请查看<a href="https://docs.openvinotoolkit.org/cn/latest/_docs_MO_DG_prepare_model_customize_model_optimizer_Customize_Model_Optimizer.html" target="_blank" rel="noopener">模型优化器中的自定义层</a>以了解如何处理自定义层。</p>
+<h2 id="模型优化器目录结构"><a href="#模型优化器目录结构" class="headerlink" title="模型优化器目录结构"></a>模型优化器目录结构</h2><p>在使用 OpenVINO™ 工具套件或英特尔® Deep Learning Deployment Toolkit 进行安装后，模型优化器文件夹具有以下结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">|-- model_optimizer</span><br><span class="line"></span><br><span class="line">​    |-- extensions</span><br><span class="line"></span><br><span class="line">​        |-- front - Front-End framework agnostic transformations (operations output shapes are not defined yet). </span><br><span class="line"></span><br><span class="line">​            |-- caffe - Front-End Caffe-specific transformations and Caffe layers extractors</span><br><span class="line"></span><br><span class="line">​                |-- CustomLayersMapping.xml.example - example of file for registering custom Caffe layers (compatible</span><br></pre></td></tr></table></figure>
+<p>with the 2017R3 release)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">            |-- kaldi - Front-End Kaldi-specific transformations and Kaldi operations extractors</span><br><span class="line"></span><br><span class="line">​            |-- mxnet - Front-End MxNet-specific transformations and MxNet symbols extractors</span><br><span class="line"></span><br><span class="line">​            |-- onnx - Front-End ONNX-specific transformations and ONNX operators extractors            </span><br><span class="line"></span><br><span class="line">​            |-- tf - Front-End TensorFlow-specific transformations, TensorFlow operations extractors, sub-graph</span><br></pre></td></tr></table></figure>
+<p>replacements configuration files. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">        |-- middle - Middle-End framework agnostic transformations (layers output shapes are defined).</span><br><span class="line"></span><br><span class="line">​        |-- back - Back-End framework agnostic transformations (preparation for IR generation).        </span><br><span class="line"></span><br><span class="line">​    |-- mo</span><br><span class="line"></span><br><span class="line">​        |-- back - Back-End logic: contains IR emitting logic</span><br><span class="line"></span><br><span class="line">​        |-- front - Front-End logic: contains matching between Framework-specific layers and IR specific, calculation of output shapes for each registered layer</span><br><span class="line"></span><br><span class="line">​        |-- graph - Graph utilities to work with internal IR representation</span><br><span class="line"></span><br><span class="line">​        |-- middle - Graph transformations - optimizations of the model</span><br><span class="line"></span><br><span class="line">​        |-- pipeline - Sequence of steps required to create IR for each framework</span><br><span class="line"></span><br><span class="line">​        |-- utils - Utility functions</span><br><span class="line"></span><br><span class="line">​    |-- tf_call_ie_layer - Source code that enables TensorFlow fallback in Inference Engine during model inference</span><br><span class="line"></span><br><span class="line">​    |-- mo.py - Centralized entry point that can be used for any supported framework</span><br><span class="line"></span><br><span class="line">​    |-- mo_caffe.py - Entry point particularly for Caffe</span><br><span class="line"></span><br><span class="line">​    |-- mo_kaldi.py - Entry point particularly for Kaldi</span><br><span class="line"></span><br><span class="line">​    |-- mo_mxnet.py - Entry point particularly for MXNet</span><br><span class="line"></span><br><span class="line">​    |-- mo_onnx.py - Entry point particularly for ONNX</span><br><span class="line"></span><br><span class="line">​    |-- mo_tf.py - Entry point particularly for TensorFlow</span><br></pre></td></tr></table></figure>
+<p>以下部分提供了有关如何使用模型优化器的信息，从配置工具、生成针对给定模型的中间表示文件，到根据您的需求定制工具：</p>
+<ul>
+<li><a href="https://docs.openvinotoolkit.org/cn/latest/_docs_MO_DG_prepare_model_Config_Model_Optimizer.html" target="_blank" rel="noopener">配置模型优化器</a></li>
+<li><a href="https://docs.openvinotoolkit.org/cn/latest/_docs_MO_DG_prepare_model_convert_model_Converting_Model.html" target="_blank" rel="noopener">将模型转换为中间表示文件</a></li>
+<li><a href="https://docs.openvinotoolkit.org/cn/latest/_docs_MO_DG_prepare_model_customize_model_optimizer_Customize_Model_Optimizer.html" target="_blank" rel="noopener">模型优化器中的自定义层</a></li>
+<li><a href="https://docs.openvinotoolkit.org/cn/latest/_docs_MO_DG_prepare_model_Model_Optimization_Techniques.html" target="_blank" rel="noopener">模型优化技术</a></li>
+<li><p><a href="https://docs.openvinotoolkit.org/cn/latest/_docs_MO_DG_prepare_model_Model_Optimizer_FAQ.html" target="_blank" rel="noopener">有关模型优化器的常见问题</a></p>
+</li>
+<li><p>](<a href="https://docs.openvinotoolkit.org/cn/latest/_docs_MO_DG_prepare_model_Model_Optimizer_FAQ.html" target="_blank" rel="noopener">https://docs.openvinotoolkit.org/cn/latest/_docs_MO_DG_prepare_model_Model_Optimizer_FAQ.html</a>)</p>
+</li>
+</ul>
+<p><strong>第一步：</strong></p>
+<p>找到label文件</p>
+<p>C:\Users\（你的用户名）\Documents\Intel\OpenVINO\openvino_models\ir\public\squeezenet1.1\FP16\squeezenet1.1.labels。</p>
+<p>找到模型文件</p>
+<p>C:\Users\（你的用户名）\Documents\Intel\OpenVINO\openvino_models\models\public\squeezenet1.1\squeezenet1.1.caffemodel</p>
+<p>找一个input</p>
+<p>C:\Program Files (x86)\IntelSWTools\openvino_2019.3.379\deployment_tools\demo\car.png</p>
+<p><strong>第二步：</strong></p>
+<p>转换模型，用到model_optimizer下的mo.py. 把上面的文件拷到了D:OPENVN下，用下面的代码转换。就能转换出.xml的文件。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-4d0c114cf7184e8a97488e52b54d71cc_720w.png" alt="img"></p>
+<p><strong>第三步：</strong></p>
+<p>跑转换好的文件。。由于这一步骤其实主要是展示如何转换模型。。。所以我们还是用demo自带的业务逻辑。在这个文件夹夹下有刚才建立好的classification_sample_async.exe文件。。。下面这个文件夹下找。</p>
+<p>C:\Users<username>\Documents\Intel\OpenVINO\inference_engine_samples_build\intel64\Release</username></p>
+<p>cd到上面这个文件夹。</p>
+<p>然后运行</p>
+<p> .\classification_sample_async.exe -i “D:\OPENVN\car.png” -m “D:\OPENVN\squeezenet1.1.xml” -d MYRIAD</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/dl-ai-5-1/" class="archive-article-date">
-  	<time datetime="2018-10-18T02:26:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/dl-ai-5-1/">DeepLearning.ai笔记:(5-1)-- 循环神经网络（Recurrent Neural Networks）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Intel-Neural-Compute-stick</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yuanquanquan.top/2020/20201029/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/dl-ai-4-4h/" class="archive-article-date">
-  	<time datetime="2018-10-12T10:55:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/20201028/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(2)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/dl-ai-4-4h/">DeepLearning.ai作业:(4-4)-- 特殊应用:人脸识别和神经风格转换</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模型在树莓派上的部署过程"><span class="toc-number">1.</span> <span class="toc-text">模型在树莓派上的部署过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#五、如何训练自己的模型"><span class="toc-number">1.1.</span> <span class="toc-text">五、如何训练自己的模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#准备和优化训练好的模型"><span class="toc-number">1.1.1.</span> <span class="toc-text">准备和优化训练好的模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型优化器如何工作"><span class="toc-number">1.1.2.</span> <span class="toc-text">模型优化器如何工作</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有关模型，需要了解哪些内容"><span class="toc-number">2.</span> <span class="toc-text">有关模型，需要了解哪些内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型优化器目录结构"><span class="toc-number">3.</span> <span class="toc-text">模型优化器目录结构</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/dl-ai-4-4/" class="archive-article-date">
-  	<time datetime="2018-10-12T10:55:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/dl-ai-4-4/">DeepLearning.ai笔记:(4-4)-- 特殊应用:人脸识别和神经风格转换</a>
-    </h1>
-  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="NCS-3" data-title="树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(3)" data-url="http://yuanquanquan.top/2020/20201029/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/dl-ai-4-3h/" class="archive-article-date">
-  	<time datetime="2018-10-11T12:15:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/dl-ai-4-3h/">DeepLearning.ai作业:(4-3)-- 目标检测（Object detection）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/dl-ai-4-3/" class="archive-article-date">
-  	<time datetime="2018-10-11T09:02:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/dl-ai-4-3/">DeepLearning.ai笔记:(4-3)-- 目标检测（Object detection）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/dl-ai-4-2h/" class="archive-article-date">
-  	<time datetime="2018-10-09T11:20:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/dl-ai-4-2h/">DeepLearning.ai作业:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/dl-ai-4-2/" class="archive-article-date">
-  	<time datetime="2018-10-09T09:17:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/dl-ai-4-2/">DeepLearning.ai笔记:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/cs231n-2-1/" class="archive-article-date">
-  	<time datetime="2018-09-30T09:52:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/cs231n-2-1/">cs231n作业：assignment2 - Fully-Connected Neural Nets</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">cs231n</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/dl-ai-4-1h/" class="archive-article-date">
-  	<time datetime="2018-09-30T08:07:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/dl-ai-4-1h/">DeepLearning.ai作业:(4-1)-- 卷积神经网络（Foundations of CNN）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/dl-ai-4-1/" class="archive-article-date">
-  	<time datetime="2018-09-30T02:20:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/dl-ai-4-1/">DeepLearning.ai笔记:(4-1)-- 卷积神经网络（Foundations of CNN）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2018/page/3/">3</a><a class="page-number" href="/archives/2018/page/4/">4</a><a class="page-number" href="/archives/2018/page/5/">5</a><a class="extend next" rel="next" href="/archives/2018/page/3/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yuanquanquan.top/2020/20201029/",
+  owner: 'Bazingaliu',
+  repo: 'Bazingaliu.github.io',
+  oauth: {
+    client_id: '86465678bf992f29a879',
+    client_secret: 'e465ff4beea46850d31dc2ebf022410154c0ddac',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -809,8 +519,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
