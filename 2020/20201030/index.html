@@ -7,32 +7,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
-  <title>DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning） | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+  <title>Some Virtual Try-on (VTON) Research | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这周主要讲了这些超参数调试的方法以及batch norm，还有softmax多分类函数的使用。">
-<meta name="keywords" content="dl.ai">
+  <meta name="description" content="最近跟项目在做一些，虚拟试衣Virtual Try-on (VTON）的工作，记录一下调研的数据以及开源的论文以及模型。">
+<meta name="keywords" content="VTON">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）">
-<meta property="og:url" content="http://yuanquanquan.top/2018/2018091720/index.html">
+<meta property="og:title" content="Some Virtual Try-on (VTON) Research">
+<meta property="og:url" content="http://yuanquanquan.top/2020/20201030/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="这周主要讲了这些超参数调试的方法以及batch norm，还有softmax多分类函数的使用。">
+<meta property="og:description" content="最近跟项目在做一些，虚拟试衣Virtual Try-on (VTON）的工作，记录一下调研的数据以及开源的论文以及模型。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlon02u9j20uf0bydjm.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlonce5cj20ms0gvjy9.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomk9bzj207g04mglj.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomk1hzj208002b744.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrloml6ckj20jp0auq3x.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomo21ej20wy0asdl4.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrloml9ztj20bd04ggm5.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomm1xrj20dn07swff.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomoq3hj20m907lacn.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomna9wj20i404lq3m.jpg">
-<meta property="og:updated_time" content="2018-10-23T12:16:33.000Z">
+<meta property="og:updated_time" content="2020-10-29T15:44:32.838Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）">
-<meta name="twitter:description" content="这周主要讲了这些超参数调试的方法以及batch norm，还有softmax多分类函数的使用。">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
+<meta name="twitter:title" content="Some Virtual Try-on (VTON) Research">
+<meta name="twitter:description" content="最近跟项目在做一些，虚拟试衣Virtual Try-on (VTON）的工作，记录一下调研的数据以及开源的论文以及模型。">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -213,14 +201,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-dl-ai-2-3" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-VTON" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）
+      Some Virtual Try-on (VTON) Research
     </h1>
   
 
@@ -236,8 +224,8 @@
 
 <!--显示阅读次数完毕-->
         
-        <a href="/2018/2018091720/" class="archive-article-date">
-  	<time datetime="2018-09-17T12:19:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-17</time>
+        <a href="/2020/20201030/" class="archive-article-date">
+  	<time datetime="2020-10-30T14:51:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-30</time>
 </a>
         
       </header>
@@ -245,63 +233,221 @@
 
 <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg" alt></p>
-<p>这周主要讲了这些超参数调试的方法以及batch norm，还有softmax多分类函数的使用。</p>
+        <blockquote>
+<p>最近跟项目在做一些，虚拟试衣Virtual Try-on (VTON）的工作，记录一下调研的数据以及开源的论文以及模型。</p>
+</blockquote>
 <a id="more"></a>
-<h1 id="调试处理"><a href="#调试处理" class="headerlink" title="调试处理"></a>调试处理</h1><p>之前提到的超参数有：</p>
+<h2 id="Clothing-dataset"><a href="#Clothing-dataset" class="headerlink" title="Clothing dataset"></a>Clothing dataset</h2><p>Over 5,000 images of 20 different classes.</p>
+<p>This dataset can be freely used for any purpose, including commercial:</p>
+<p>For example:</p>
 <ul>
-<li><font color="#FF0000">$\alpha$</font></li>
-<li><font color="#AE8F00">hidden units</font></li>
-<li><font color="#AE8F00">minibatch size</font></li>
-<li><font color="#AE8F00">$\beta$</font>(Momentum)</li>
-<li>layers</li>
-<li>learning rate decay</li>
-<li>$\beta_1,\beta_2,\epsilon$</li>
+<li>Creating a tutorial or a course (free or paid)</li>
+<li>Writing a book</li>
+<li>Kaggle competitions (as an external dataset)</li>
+<li>Training an internal model at any company</li>
 </ul>
-<p>颜色代表重要性。</p>
-<p>在调参中，常用的方式是在网格中取不同的点，然后计算这些点中的最佳值，</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlon02u9j20uf0bydjm.jpg" alt></p>
-<p>但是左边是均匀的选点，这样有可能导致在某一个参数上变化很小，浪费计算时间，所以应该更推荐右边的选点方法，即随机选点。</p>
-<p>而后，当随机选点选到几个结果比较好的点时，逐步缩小范围，进行更精细的选取。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlonce5cj20ms0gvjy9.jpg" alt></p>
-<h1 id="超参数的合适范围"><a href="#超参数的合适范围" class="headerlink" title="超参数的合适范围"></a>超参数的合适范围</h1><p>当然，随机采样并不是在轴上均匀的采样。</p>
-<p>比如说$\alpha = 0.001  — 1$，这样子，那么在$0.1-1$的部分占了90%的概率，显然是不合理的，所以应该将区间对数化，转化成$[0.001,0.01],[0.01,0.1],[0.1,1]$的区间，这样更为合理。思路是：$10^{-3} = 0.001$，所以取值从$[10^{-3},10^{0}]$，我们只要将指数随机就可以了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r = <span class="number">-3</span>*np.random.rand() <span class="comment"># rand()表示在 [0，1]随机取样，再乘以系数，就可以得到[-3,0]</span></span><br><span class="line">a = <span class="number">10</span>**r</span><br></pre></td></tr></table></figure>
-<p>同理,$\beta = 0.9 ,…..,0.999$</p>
-<p>通过$1-\beta = 0.1,….,0.001$，所以$1-\beta = 10^{r}$，$\beta = 1-10^{r}$</p>
-<h1 id="归一化网络的激活函数"><a href="#归一化网络的激活函数" class="headerlink" title="归一化网络的激活函数"></a>归一化网络的激活函数</h1><p>我们之前是将输入的数据X归一化，可以加速训练，其实在神经网络中，也可以同样归一化，一般是对$z^{[l]}$归一化。</p>
-<p>这个方法叫做 batch norm</p>
-<p>公式是：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomk9bzj207g04mglj.jpg" alt></p>
-<p>加上$\epsilon$是为了不至于除以0</p>
-<p>而一般标准化后还会加上两个参数，来表示新的方差$\gamma$和均值$\beta$：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomk1hzj208002b744.jpg" alt></p>
-<p>$\gamma$和$\beta$也是参数，和$w,b$一样，可以在学习中进行更新。</p>
-<h1 id="将batch-norm-放入神经网络"><a href="#将batch-norm-放入神经网络" class="headerlink" title="将batch norm 放入神经网络"></a>将batch norm 放入神经网络</h1><p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrloml6ckj20jp0auq3x.jpg" alt></p>
-<p>可以看到，</p>
-<p>先求的$z^{[1]}$，再进行batch norm，加上参数$\beta^{[1]},\gamma^{[1]}$，得到${\tilde{z}}^{[1]}$,再根据activation function得到$a^{[1]}$</p>
-<p>batch norm同样适用于Momentum、RMSprop 、Adam的梯度下降法来进行更新。</p>
-<h1 id="Batch-Norm为什么有用？"><a href="#Batch-Norm为什么有用？" class="headerlink" title="Batch Norm为什么有用？"></a>Batch Norm为什么有用？</h1><p>如果我们的图片中训练的都是黑猫，这个时候给你一些橘猫的图片，那么大概率是训练不好的。因为相当于样本集合的分布改变了，batch norm就可以解决这个问题。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomo21ej20wy0asdl4.jpg" alt></p>
-<p>如果这个时候要计算第三层，那么很显然计算结果是依赖第二层的数据的。但是如果我们对第二层的数据进行了归一化，那么就可以将第二层的均值和方差都限制在同一分布，而且这两个参数是自动学习的。也就是归一化后的数据可以减弱前层参数的作用与后层参数的作用之间的联系，它使得网络每层都可以自己学习。</p>
-<p>还有就是batch norm在某种程度上有正则化的效果，因为归一化会使各个层之间的依赖性降低，而且归一化有带来一定的噪声，有点像dropout。</p>
-<h1 id="测试集的batch-norm"><a href="#测试集的batch-norm" class="headerlink" title="测试集的batch norm"></a>测试集的batch norm</h1><p>batch norm是在训练集上得到的，那么怎么把它应用在测试集呢？</p>
-<p>这个时候可以直接从训练集中拿到$\mu$和$\sigma^{2}$</p>
-<p>使用指数加权平均，在每一步中保留$\mu$和$\sigma^{2}$，就可以得到训练后的$\mu$和$\sigma^{2}$</p>
-<h1 id="softmax"><a href="#softmax" class="headerlink" title="softmax"></a>softmax</h1><p>之前说的都是二分类问题，如何解决多分类问题呢？</p>
-<p>可以用softmax算法来解决。</p>
-<p>前面的步骤都一样，而到了最后一层output layer，你想要分为多少类，就用多少个神经元。</p>
-<p>这个时候，最后一层的activation function就变成了：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrloml9ztj20bd04ggm5.jpg" alt></p>
-<p>$a^{[l]}_i$就表示了每一个分类的概率。</p>
-<p>计算例子如图：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomm1xrj20dn07swff.jpg" alt></p>
-<p>而它的损失函数用的也是cross-entropy：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomoq3hj20m907lacn.jpg" alt></p>
-<p>最终得到一个关于Y的矩阵：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomna9wj20i404lq3m.jpg" alt></p>
-<p>其实是可以证明，当分类为2时，softmax就是logistic regression</p>
-
+<h3 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h3><p>The <code>images.csv</code> file contains:</p>
+<ul>
+<li><code>image</code> - the ID of the image (use it to load the image from <code>images/&lt;ID&gt;.jpg</code>)</li>
+<li><code>sender_id</code> - the ID of a person who contributed the image</li>
+<li><code>label</code> - the class of the image</li>
+<li><code>kids</code> - flag, <code>True</code> if it’s clothes for kids</li>
+</ul>
+<h3 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h3><ul>
+<li>If you’re looking for a subset of the clothing dataset, check here: <a href="https://github.com/alexeygrigorev/clothing-dataset-small" target="_blank" rel="noopener">https://github.com/alexeygrigorev/clothing-dataset-small</a></li>
+<li>You can read more about this dataset here: <a href="https://medium.com/data-science-insider/clothing-dataset-5b72cd7c3f1f" target="_blank" rel="noopener">https://medium.com/data-science-insider/clothing-dataset-5b72cd7c3f1f</a></li>
+<li>This dataset is also awailable on Kaggle (with images in higher resolution): </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.kaggle.com/agrigorev/clothing-dataset-full/</span><br></pre></td></tr></table></figure>
+<h3 id="Top-10-subset"><a href="#Top-10-subset" class="headerlink" title="Top-10 subset"></a>Top-10 subset</h3><p>Images of some classes don’t appear very often. Training a neural network to predict these classes is quite difficult — we need at least 100-200 images of each class to make a meaningful model.</p>
+<p>That’s why, for educational purposes, we created a subset of the full dataset that covers only the top-10 classes.</p>
+<p>Check it here: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/alexeygrigorev/clothing-dataset-small</span><br></pre></td></tr></table></figure>
+<p>Examples</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.kaggle.com/agrigorev/collage</span><br></pre></td></tr></table></figure>
+<p>Do you use this dataset somewhere? Please submit a PR with a link</p>
+<h3 id="Acknowledgements"><a href="#Acknowledgements" class="headerlink" title="Acknowledgements"></a>Acknowledgements</h3><p>We’d like to thank</p>
+<ul>
+<li><p>Kenes Shangereyev and Tagias.com for helping with 3000 images</p>
+</li>
+<li><p>All the 32 people who contributed their images to the dataset via the forms:</p>
+</li>
+<li><ul>
+<li>Patricia Goldberg</li>
+</ul>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.linkedin.com/in/patricia-goldberg/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Everyone who supported the initiative by engaging with the announcements on social media</p>
+</li>
+</ul>
+<p>It wouldn’t be possible to collect this dataset without your help!</p>
+<p>A curated list of awesome research papers, projects, code, dataset, workshops etc. related to virtual try-on (VTON).</p>
+<ul>
+<li><a href="#Image-based-2D-Virtual-Try-on">Image-based (2D) Virtual Try-on</a></li>
+<li><a href="#3D-virtual-try-on">3D Virtual Try-on</a></li>
+<li><a href="#Multi-Pose-Guided-Virtual-Try-on">Multi-Pose Guided Virtual Try-on</a></li>
+<li><a href="#Video-Virtual-Try-on">Video Virtual Try-on</a></li>
+<li><a href="#non-clothing-virtual-try-on">Non-clothing Virtual Try-on</a></li>
+<li><a href="#pose-guided-human-synthesis">Pose-Guided Human Synthesis</a></li>
+<li><a href="#Datasets-for-Virtual-Try-on">Datasets for Virtual Try-on</a></li>
+<li><a href="#Related-Conference-Workshops">Related Conference Workshops</a></li>
+<li><a href="#Related-Repositories">Related Repositories</a></li>
+</ul>
+<h2 id="Image-based-2D-Virtual-Try-on"><a href="#Image-based-2D-Virtual-Try-on" class="headerlink" title="Image-based (2D) Virtual Try-on"></a>Image-based (2D) Virtual Try-on</h2><h4 id="ACCV-2020"><a href="#ACCV-2020" class="headerlink" title="ACCV 2020"></a>ACCV 2020</h4><ul>
+<li><p>CloTH-VTON: Clothing Three-dimensional reconstruction for Hybrid image-based Virtual Try-ON - <a href="https://minar09.github.io/clothvton/" target="_blank" rel="noopener">Project</a></p>
+<h4 id="ECCV-2020"><a href="#ECCV-2020" class="headerlink" title="ECCV 2020"></a>ECCV 2020</h4></li>
+<li><p>Do Not Mask What You Do Not Need to Mask: a Parser Free Virtual Try-On - <a href="https://arxiv.org/pdf/2007.02721.pdf" target="_blank" rel="noopener">Paper</a></p>
+<h4 id="CVPR-2020"><a href="#CVPR-2020" class="headerlink" title="CVPR 2020"></a>CVPR 2020</h4></li>
+<li><p>Towards Photo-Realistic Virtual Try-On by Adaptively Generating↔Preserving Image Content - <a href="https://github.com/switchablenorms/DeepFashion_Try_On" target="_blank" rel="noopener">Paper/Code/Data</a></p>
+</li>
+<li>Image Based Virtual Try-On Network From Unpaired Data - <a href="http://openaccess.thecvf.com/content_CVPR_2020/html/Neuberger_Image_Based_Virtual_Try-On_Network_From_Unpaired_Data_CVPR_2020_paper.html" target="_blank" rel="noopener">Paper</a></li>
+<li><p>Semantically Multi-modal Image Synthesis - <a href="https://seanseattle.github.io/SMIS/" target="_blank" rel="noopener">Paper/Code/Model</a></p>
+<h4 id="CVPRW-2020"><a href="#CVPRW-2020" class="headerlink" title="CVPRW 2020"></a>CVPRW 2020</h4></li>
+<li><p>CP-VTON+: Clothing Shape and Texture Preserving Image-Based Virtual Try-On - <a href="https://minar09.github.io/cpvtonplus/" target="_blank" rel="noopener">Paper/Code/Data/Model</a></p>
+</li>
+<li><p>3D Reconstruction of Clothes using a Human Body Model and its Application to Image-based Virtual Try-On - <a href="https://minar09.github.io/c3dvton/" target="_blank" rel="noopener">Paper/Project</a></p>
+<h4 id="ICCV-2019"><a href="#ICCV-2019" class="headerlink" title="ICCV 2019"></a>ICCV 2019</h4></li>
+<li><p>VTNFP: An Image-Based Virtual Try-On Network With Body and Clothing Feature Preservation - <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Yu_VTNFP_An_Image-Based_Virtual_Try-On_Network_With_Body_and_Clothing_ICCV_2019_paper.html" target="_blank" rel="noopener">Paper</a></p>
+</li>
+<li><p>ClothFlow: A Flow-Based Model for Clothed Person Generation - <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Han_ClothFlow_A_Flow-Based_Model_for_Clothed_Person_Generation_ICCV_2019_paper.html" target="_blank" rel="noopener">Paper</a></p>
+<h4 id="ICCVW-2019"><a href="#ICCVW-2019" class="headerlink" title="ICCVW 2019"></a>ICCVW 2019</h4></li>
+<li><p>UVTON: UV Mapping to Consider the 3D Structure of a Human in Image-Based Virtual Try-On Network, <a href="http://openaccess.thecvf.com/content_ICCVW_2019/html/CVFAD/Kubo_UVTON_UV_Mapping_to_Consider_the_3D_Structure_of_a_ICCVW_2019_paper.html" target="_blank" rel="noopener">Paper</a></p>
+</li>
+<li>LA-VITON: A Network for Looking-Attractive Virtual Try-On - <a href="http://openaccess.thecvf.com/content_ICCVW_2019/html/CVFAD/Lee_LA-VITON_A_Network_for_Looking-Attractive_Virtual_Try-On_ICCVW_2019_paper.html" target="_blank" rel="noopener">Paper</a></li>
+<li>Robust Cloth Warping via Multi-Scale Patch Adversarial Loss for Virtual Try-On Framework - <a href="http://openaccess.thecvf.com/content_ICCVW_2019/html/HBU/Ayush_Robust_Cloth_Warping_via_Multi-Scale_Patch_Adversarial_Loss_for_Virtual_ICCVW_2019_paper.html" target="_blank" rel="noopener">Paper</a></li>
+<li>Powering Virtual Try-On via Auxiliary Human Segmentation Learning - <a href="http://openaccess.thecvf.com/content_ICCVW_2019/html/CVFAD/Ayush_Powering_Virtual_Try-On_via_Auxiliary_Human_Segmentation_Learning_ICCVW_2019_paper.html" target="_blank" rel="noopener">Paper</a></li>
+<li><p>Generating High-Resolution Fashion Model Images Wearing Custom Outfits - <a href="http://openaccess.thecvf.com/content_ICCVW_2019/html/CVFAD/Yildirim_Generating_High-Resolution_Fashion_Model_Images_Wearing_Custom_Outfits_ICCVW_2019_paper.html" target="_blank" rel="noopener">Paper</a></p>
+<h4 id="ECCV-2018"><a href="#ECCV-2018" class="headerlink" title="ECCV 2018"></a>ECCV 2018</h4></li>
+<li><p>Toward Characteristic-Preserving Image-based Virtual Try-On Network - <a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/Bochao_Wang_Toward_Characteristic-Preserving_Image-based_ECCV_2018_paper.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/sergeywong/cp-vton" target="_blank" rel="noopener">Code</a></p>
+</li>
+<li><p>SwapNet: Garment Transfer in Single View Images - <a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/Amit_Raj_SwapNet_Garment_Transfer_ECCV_2018_paper.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/andrewjong/SwapNet" target="_blank" rel="noopener">Code (unofficial)</a></p>
+<h4 id="CVPR-2018"><a href="#CVPR-2018" class="headerlink" title="CVPR 2018"></a>CVPR 2018</h4></li>
+<li><p>VITON: An Image-based Virtual Try-on Network - <a href="https://arxiv.org/abs/1711.08447" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/xthan/VITON" target="_blank" rel="noopener">Code/Model</a></p>
+<h4 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h4></li>
+<li><p>Keypoints-Based 2D Virtual Try-on Network System, JAKO 2020 - <a href="https://www.koreascience.or.kr/article/JAKO202010163508810.pdf" target="_blank" rel="noopener">Paper</a></p>
+</li>
+<li>Virtual Try-On With Generative Adversarial Networks: A Taxonomical Survey - <a href="https://www.igi-global.com/chapter/virtual-try-on-with-generative-adversarial-networks/260791" target="_blank" rel="noopener">Book chapter</a></li>
+<li>LGVTON: A Landmark Guided Approach to Virtual Try-On - <a href="https://arxiv.org/abs/2004.00562v1" target="_blank" rel="noopener">Paper</a></li>
+<li>SieveNet: A Unified Framework for Robust Image-Based Virtual Try-On, WACV 2020 - <a href="http://openaccess.thecvf.com/content_WACV_2020/html/Jandial_SieveNet_A_Unified_Framework_for_Robust_Image-Based_Virtual_Try-On_WACV_2020_paper.html" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/levindabhi/SieveNet" target="_blank" rel="noopener">Code/Model (unofficial)</a></li>
+<li>GarmentGAN: Photo-realistic Adversarial Fashion Transfer - <a href="https://arxiv.org/abs/2003.01894" target="_blank" rel="noopener">Paper</a></li>
+<li>Toward Accurate and Realistic Virtual Try-on Through Shape Matching and Multiple Warps - <a href="https://arxiv.org/abs/2003.10817" target="_blank" rel="noopener">Paper</a></li>
+<li>FashionFit Analysis of Mapping 3D Pose and neural body fit for custom virtual try-on, IEEE Access 2020 - <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9091008" target="_blank" rel="noopener">Paper</a></li>
+<li>SP-VITON: shape-preserving image-based virtual try-on network, Multimedia Tools and Applications 2019 - <a href="https://link.springer.com/article/10.1007/s11042-019-08363-w" target="_blank" rel="noopener">Paper</a></li>
+<li>VITON-GAN: Virtual Try-on Image Generator Trained with Adversarial Loss, Eurographics 2019 Posters - <a href="https://arxiv.org/abs/1911.07926v1" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/shionhonda/viton-gan" target="_blank" rel="noopener">Code/Model</a></li>
+<li>Image-Based Virtual Try-on Network with Structural Coherence, ICIP 2019 - <a href="https://ieeexplore.ieee.org/document/8803811" target="_blank" rel="noopener">Paper</a></li>
+<li>End-to-End Learning of Geometric Deformations of Feature Maps for Virtual Try-On - <a href="https://arxiv.org/abs/1906.01347v2" target="_blank" rel="noopener">Paper</a></li>
+<li>M2E-Try On Net: Fashion from Model to Everyone - <a href="https://arxiv.org/abs/1811.08599v1" target="_blank" rel="noopener">Paper</a></li>
+</ul>
+<h2 id="3D-Virtual-Try-on"><a href="#3D-Virtual-Try-on" class="headerlink" title="3D Virtual Try-on"></a>3D Virtual Try-on</h2><h4 id="ECCV-2020-1"><a href="#ECCV-2020-1" class="headerlink" title="ECCV 2020"></a>ECCV 2020</h4><ul>
+<li>BCNet: Learning Body and Cloth Shape from A Single Image - <a href="https://arxiv.org/pdf/2004.00214.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/jby1993/BCNet" target="_blank" rel="noopener">Code/Data</a></li>
+<li>GAN-based Garment Generation Using Sewing Pattern Images - <a href="https://gamma.umd.edu/researchdirections/virtualtryon/garmentgeneration/" target="_blank" rel="noopener">Paper/Code/Model/Data</a></li>
+<li>Deep Fashion3D: A Dataset and Benchmark for 3D Garment Reconstruction from Single Images - <a href="https://kv2000.github.io/2020/03/25/deepFashion3DRevisited/" target="_blank" rel="noopener">Paper/Data</a></li>
+<li>SIZER: A Dataset and Model for Parsing 3D Clothing and Learning Size Sensitive 3D Clothing - <a href="https://virtualhumans.mpi-inf.mpg.de/sizer/" target="_blank" rel="noopener">Paper/Code/Data</a></li>
+<li><p>CLOTH3D: Clothed 3D Humans - <a href="https://arxiv.org/pdf/1912.02792.pdf" target="_blank" rel="noopener">Paper</a></p>
+<h4 id="CVPR-2020-1"><a href="#CVPR-2020-1" class="headerlink" title="CVPR 2020"></a>CVPR 2020</h4></li>
+<li><p>Learning to Transfer Texture from Clothing Images to 3D Humans - <a href="http://virtualhumans.mpi-inf.mpg.de/pix2surf/" target="_blank" rel="noopener">Paper/Code</a></p>
+</li>
+<li>TailorNet: Predicting Clothing in 3D as a Function of Human Pose, Shape and Garment Style - <a href="http://virtualhumans.mpi-inf.mpg.de/tailornet/" target="_blank" rel="noopener">Paper/Code/Data</a></li>
+<li><p>Learning to Dress 3D People in Generative Clothing - <a href="https://cape.is.tue.mpg.de/" target="_blank" rel="noopener">Paper/Code/Data</a></p>
+<h4 id="ICCV-2019-1"><a href="#ICCV-2019-1" class="headerlink" title="ICCV 2019"></a>ICCV 2019</h4></li>
+<li><p>Multi-Garment Net: Learning to Dress 3D People from Images - <a href="http://virtualhumans.mpi-inf.mpg.de/mgn/" target="_blank" rel="noopener">Paper/Code/Data</a></p>
+</li>
+<li>3DPeople: Modeling the Geometry of Dressed Humans - <a href="https://arxiv.org/abs/1904.04571" target="_blank" rel="noopener">Paper</a></li>
+<li><p>GarNet: A Two-Stream Network for Fast and Accurate 3D Cloth Draping - <a href="https://www.epfl.ch/labs/cvlab/research/garment-simulation/garnet/" target="_blank" rel="noopener">Paper/Data</a></p>
+<h4 id="ECCV-2018-1"><a href="#ECCV-2018-1" class="headerlink" title="ECCV 2018"></a>ECCV 2018</h4></li>
+<li><p>DeepWrinkles: Accurate and Realistic Clothing Modeling - <a href="https://arxiv.org/abs/1808.03417" target="_blank" rel="noopener">Paper</a></p>
+<h4 id="CVPR-2018-1"><a href="#CVPR-2018-1" class="headerlink" title="CVPR 2018"></a>CVPR 2018</h4></li>
+<li><p>Video Based Reconstruction of 3D People Models - <a href="http://gvv.mpi-inf.mpg.de/projects/wxu/VideoAvatar/" target="_blank" rel="noopener">Paper/Code/Data</a></p>
+<h4 id="Others-1"><a href="#Others-1" class="headerlink" title="Others"></a>Others</h4></li>
+<li><p>CloTH-VTON: Clothing Three-dimensional reconstruction for Hybrid image-based Virtual Try-ON, ACCV 2020 - <a href="https://minar09.github.io/clothvton/" target="_blank" rel="noopener">Project</a></p>
+</li>
+<li>Fully Convolutional Graph Neural Networks for Parametric Virtual Try-On, ACM SCA 2020 - <a href="http://mslab.es/projects/FullyConvolutionalGraphVirtualTryOn" target="_blank" rel="noopener">Paper/Project</a></li>
+<li>DeePSD: Automatic Deep Skinning And Pose Space Deformation For 3D Garment Animation - <a href="https://arxiv.org/pdf/2009.02715.pdf" target="_blank" rel="noopener">Paper</a></li>
+<li>3D Reconstruction of Clothes using a Human Body Model and its Application to Image-based Virtual Try-On, CVPRW 2020 - <a href="https://minar09.github.io/c3dvton/" target="_blank" rel="noopener">Paper/Project</a></li>
+<li>Learning-Based Animation of Clothing for Virtual Try-On, Eurographics 2019 - <a href="http://dancasas.github.io/projects/LearningBasedVirtualTryOn/index.html" target="_blank" rel="noopener">Paper/Project</a></li>
+<li>Learning an Intrinsic Garment Space for Interactive Authoring of Garment Animation, SIGGRAPH Asia 2019 - <a href="http://geometry.cs.ucl.ac.uk/projects/2019/garment_authoring/" target="_blank" rel="noopener">Paper/Code</a></li>
+<li>3D Virtual Garment Modeling from RGB Images, ISMAR 2019 - <a href="https://arxiv.org/abs/1908.00114" target="_blank" rel="noopener">Paper</a></li>
+<li>Deep Garment Image Matting for a Virtual Try-on System, ICCVW 2019 - <a href="http://openaccess.thecvf.com/content_ICCVW_2019/html/CVFAD/Shin_Deep_Garment_Image_Matting_for_a_Virtual_Try-on_System_ICCVW_2019_paper.html" target="_blank" rel="noopener">Paper</a></li>
+<li>Learning a Shared Shape Space for Multimodal Garment Design, SIGGRAPH Asia 2018 - <a href="http://geometry.cs.ucl.ac.uk/projects/2018/garment_design/" target="_blank" rel="noopener">Paper/Code/Data</a></li>
+<li>Detailed Garment Recovery from a Single-View Image, ACM TOG 2018 - <a href="https://arxiv.org/abs/1608.01250" target="_blank" rel="noopener">Paper</a></li>
+<li>ClothCap: Seamless 4D Clothing Capture and Retargeting, SIGGRAPH 2017 - <a href="http://clothcap.is.tue.mpg.de/" target="_blank" rel="noopener">Paper</a></li>
+<li>Virtual Try-On through Image-Based Rendering, IEEE T-VCG 2013 - <a href="https://ieeexplore.ieee.org/document/6487501" target="_blank" rel="noopener">Paper</a></li>
+<li>Markerless Garment Capture, ACM TOG 2008 - <a href="http://www.cs.ubc.ca/labs/imager/tr/2008/MarkerlessGarmentCapture/" target="_blank" rel="noopener">Paper/Data</a></li>
+</ul>
+<h2 id="Multi-Pose-Guided-Virtual-Try-on"><a href="#Multi-Pose-Guided-Virtual-Try-on" class="headerlink" title="Multi-Pose Guided Virtual Try-on"></a>Multi-Pose Guided Virtual Try-on</h2><ul>
+<li><p>Down to the Last Detail: Virtual Try-on with Detail Carving - <a href="https://arxiv.org/abs/1912.06324v2" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/JDAI-CV/Down-to-the-Last-Detail-Virtual-Try-on-with-Detail-Carving" target="_blank" rel="noopener">Code/Model</a></p>
+</li>
+<li><p>Towards Multi-pose Guided Virtual Try-on Network, ICCV 2019 - <a href="https://arxiv.org/abs/1902.11026" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/thaithanhtuan/MyMGVTON" target="_blank" rel="noopener">Code</a></p>
+</li>
+<li><p>FIT-ME: IMAGE-BASED VIRTUAL TRY-ON WITH ARBITRARY POSES, ICIP 2019 - <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8803681&amp;casa_token=2CL5K9pwy1IAAAAA:OTa5P-h6RWj9BdQVvkxQURR8tDy4Eg1BZynYOizMyQACnE-zL_EHu2xRzyXBOWijP_cItaO4" target="_blank" rel="noopener">Paper</a></p>
+</li>
+<li><p>Virtually Trying on New Clothing with Arbitrary Poses, ACM MM 2019 - <a href="https://dl.acm.org/doi/pdf/10.1145/3343031.3350946?casa_token=w7EzejnZIaEAAAAA:KvDBsi1xYswuQuzEdJO-rsTDvysnSLYlAYi1J2st5lf8lnyotm5-umPKQupGaMEPUGxyBzijUkA9" target="_blank" rel="noopener">Paper</a></p>
+</li>
+<li><p>FashionOn: Semantic-guided Image-based Virtual Try-on with Detailed Human and Clothing Information, ACM MM 2019 - <a href="https://dl.acm.org/doi/pdf/10.1145/3343031.3351075?casa_token=7y85FCo6B-QAAAAA:diZbVYmcSK13bMQ94MzrMG_-VvVG_oNFoGpI8wCBFJ_dHEzYnLBAPn2ZwbAgj_pmOWFMD6_1hOuk" target="_blank" rel="noopener">Paper</a></p>
+</li>
+</ul>
+<h2 id="Video-Virtual-Try-on"><a href="#Video-Virtual-Try-on" class="headerlink" title="Video Virtual Try-on"></a>Video Virtual Try-on</h2><ul>
+<li>FW-GAN: Flow-Navigated Warping GAN for Video Virtual Try-On, ICCV 2019 - <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Dong_FW-GAN_Flow-Navigated_Warping_GAN_for_Video_Virtual_Try-On_ICCV_2019_paper.html" target="_blank" rel="noopener">Paper</a></li>
+<li>Unsupervised Image-to-Video Clothing Transfer, ICCVW 2019 - <a href="http://openaccess.thecvf.com/content_ICCVW_2019/html/CVFAD/Pumarola_Unsupervised_Image-to-Video_Clothing_Transfer_ICCVW_2019_paper.html" target="_blank" rel="noopener">Paper</a></li>
+</ul>
+<h2 id="Non-clothing-Virtual-Try-on"><a href="#Non-clothing-Virtual-Try-on" class="headerlink" title="Non-clothing Virtual Try-on"></a>Non-clothing Virtual Try-on</h2><ul>
+<li>CA-GAN: Weakly Supervised Color Aware GAN for Controllable Makeup Transfer - <a href="https://arxiv.org/pdf/2008.10298.pdf" target="_blank" rel="noopener">Paper</a></li>
+<li>Regularized Adversarial Training for Single-Shot Virtual Try-On, ICCVW 2019 - <a href="http://openaccess.thecvf.com/content_ICCVW_2019/html/CVFAD/Kikuchi_Regularized_Adversarial_Training_for_Single-Shot_Virtual_Try-On_ICCVW_2019_paper.html" target="_blank" rel="noopener">Paper</a></li>
+<li>Disentangled Makeup Transfer with Generative Adversarial Network - <a href="https://arxiv.org/pdf/1907.01144v1.pdf" target="_blank" rel="noopener">Paper</a></li>
+<li>PIVTONS: Pose Invariant Virtual Try-On Shoe with Conditional Image Completion, ACCV 2018 - <a href="https://winstonhsu.info/wp-content/uploads/2018/09/chou18PIVTONS.pdf" target="_blank" rel="noopener">Paper</a></li>
+<li>Virtual Try-on of Eyeglasses using 3D Model of the Head - <a href="https://dl.acm.org/doi/pdf/10.1145/2087756.2087838" target="_blank" rel="noopener">Paper</a></li>
+<li>A MIXED REALITY SYSTEM FOR VIRTUAL GLASSES TRY-ON - <a href="https://dl.acm.org/doi/pdf/10.1145/2087756.2087816" target="_blank" rel="noopener">Paper</a></li>
+<li>A virtual try-on system in augmented reality using RGB-D cameras for footwear personalization - <a href="https://www.sciencedirect.com/science/article/abs/pii/S0278612514000594" target="_blank" rel="noopener">Paper</a></li>
+</ul>
+<h2 id="Pose-Guided-Human-Synthesis"><a href="#Pose-Guided-Human-Synthesis" class="headerlink" title="Pose-Guided Human Synthesis"></a>Pose-Guided Human Synthesis</h2><ul>
+<li>PoNA: Pose-Guided Non-Local Attention for Human Pose Transfer, IEEE T-IP 2020 - <a href="https://ieeexplore.ieee.org/abstract/document/9222550" target="_blank" rel="noopener">Paper</a></li>
+<li>Pose-Guided High-Resolution Appearance Transfer via Progressive Training - <a href="https://arxiv.org/pdf/2008.11898.pdf" target="_blank" rel="noopener">Paper</a></li>
+<li>Recapture as You Want - <a href="https://arxiv.org/pdf/2006.01435.pdf" target="_blank" rel="noopener">Paper</a></li>
+<li>Generating Person Images with Appearance-aware Pose Stylizer, IJCAI 2020 - <a href="https://arxiv.org/pdf/2007.09077.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/siyuhuang/PoseStylizer" target="_blank" rel="noopener">Code</a></li>
+<li>Controllable Person Image Synthesis with Attribute-Decomposed GAN, CVPR 2020 - <a href="https://arxiv.org/pdf/2003.12267.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/menyifang/ADGAN" target="_blank" rel="noopener">Code</a></li>
+<li>Deep Image Spatial Transformation for Person Image Generation, CVPR 2020 - <a href="https://arxiv.org/pdf/2003.00696v2.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/RenYurui/Global-Flow-Local-Attention" target="_blank" rel="noopener">Code</a></li>
+<li>Neural Pose Transfer by Spatially Adaptive Instance Normalization, CVPR 2020 - <a href="https://arxiv.org/pdf/2003.07254v2.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/jiashunwang/Neural-Pose-Transfer" target="_blank" rel="noopener">Code</a></li>
+<li>Guided Image-to-Image Translation with Bi-Directional Feature Transformation, ICCV 2019 - <a href="https://arxiv.org/pdf/1910.11328v1.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/vt-vl-lab/Guided-pix2pix" target="_blank" rel="noopener">Code</a></li>
+<li>Liquid Warping GAN: A Unified Framework for Human Motion Imitation, Appearance Transfer and Novel View Synthesis, ICCV 2019 - <a href="https://arxiv.org/pdf/1909.12224.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/svip-lab/impersonator" target="_blank" rel="noopener">Code</a></li>
+<li>ClothFlow: A Flow-Based Model for Clothed Person Generation, ICCV 2019 - <a href="http://openaccess.thecvf.com/content_ICCV_2019/html/Han_ClothFlow_A_Flow-Based_Model_for_Clothed_Person_Generation_ICCV_2019_paper.html" target="_blank" rel="noopener">Paper</a></li>
+<li>Progressive Pose Attention for Person Image Generation, CVPR 2019 - <a href="https://arxiv.org/pdf/1904.03349.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/tengteng95/Pose-Transfer" target="_blank" rel="noopener">Code</a></li>
+<li>Dense Intrinsic Appearance Flow for Human Pose Transfer, CVPR 2019 - <a href="https://arxiv.org/pdf/1903.11326v1.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/ly015/intrinsic_flow" target="_blank" rel="noopener">Code</a></li>
+<li>Unsupervised Person Image Generation with Semantic Parsing Transformation, CVPR 2019, TPAMI 2020 - <a href="https://arxiv.org/pdf/1904.03379.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/SijieSong/person_generation_spt" target="_blank" rel="noopener">Code</a></li>
+<li>Pose Guided Fashion Image Synthesis Using Deep Generative Model - <a href="https://arxiv.org/pdf/1906.07251.pdf" target="_blank" rel="noopener">Paper</a></li>
+<li>Synthesizing Images of Humans in Unseen Poses, CVPR 2018 - <a href="https://arxiv.org/pdf/1804.07739.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/balakg/posewarp-cvpr2018" target="_blank" rel="noopener">Code</a></li>
+<li>Soft-Gated Warping-GAN for Pose-Guided Person Image Synthesis, NeurIPS 2018 - <a href="https://arxiv.org/pdf/1810.11610.pdf" target="_blank" rel="noopener">Paper</a></li>
+<li>Deformable GANs for Pose-based Human Image Generation, CVPR 2018 - <a href="https://openaccess.thecvf.com/content_cvpr_2018/papers/Siarohin_Deformable_GANs_for_CVPR_2018_paper.pdf" target="_blank" rel="noopener">Paper</a></li>
+<li>Pose-Normalized Image Generation for Person Re-identification, ECCV 2018 - <a href="https://arxiv.org/pdf/1712.02225.pdf" target="_blank" rel="noopener">Paper</a></li>
+<li>Disentangled Person Image Generation, CVPR 2018 - <a href="https://homes.esat.kuleuven.be/~liqianma/CVPR18_DPIG/index.html" target="_blank" rel="noopener">Paper/Code/Data</a></li>
+<li>A Variational U-Net for Conditional Appearance and Shape Generation, CVPR 2018 - <a href="https://arxiv.org/pdf/1804.04694.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/CompVis/vunet" target="_blank" rel="noopener">Code</a></li>
+<li>Human Appearance Transfer, CVPR 2018 - <a href="https://openaccess.thecvf.com/content_cvpr_2018/papers/Zanfir_Human_Appearance_Transfer_CVPR_2018_paper.pdf" target="_blank" rel="noopener">Paper</a></li>
+<li>Pose guided person image generation, NeurIPS 2017 - <a href="https://arxiv.org/pdf/1705.09368.pdf" target="_blank" rel="noopener">Paper</a>, <a href="https://github.com/charliememory/Pose-Guided-Person-Image-Generation" target="_blank" rel="noopener">Code</a></li>
+</ul>
+<h2 id="Datasets-for-Virtual-Try-on"><a href="#Datasets-for-Virtual-Try-on" class="headerlink" title="Datasets for Virtual Try-on"></a>Datasets for Virtual Try-on</h2><ul>
+<li>VITON - <a href="https://drive.google.com/file/d/1MxCUvKxejnwWnoZ-KoCyMCXo3TLhRuTo/view" target="_blank" rel="noopener">Download</a>, <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Han_VITON_An_Image-Based_CVPR_2018_paper.pdf" target="_blank" rel="noopener">Paper</a></li>
+<li>MPV - <a href="https://drive.google.com/drive/folders/1e3ThRpSj8j9PaCUw8IrqzKPDVJK_grcA" target="_blank" rel="noopener">Download</a>, <a href="https://arxiv.org/abs/1902.11026" target="_blank" rel="noopener">Paper</a></li>
+<li>Deep Fashion3D - <a href="https://arxiv.org/abs/2003.12753" target="_blank" rel="noopener">Paper</a></li>
+<li>Digital Wardrobe - <a href="http://virtualhumans.mpi-inf.mpg.de/mgn/" target="_blank" rel="noopener">Download/Paper/Project</a></li>
+<li>TailorNet Dataset - <a href="https://github.com/zycliao/TailorNet_dataset" target="_blank" rel="noopener">Download</a>, <a href="http://virtualhumans.mpi-inf.mpg.de/tailornet/" target="_blank" rel="noopener">Project</a></li>
+<li>CLOTH3D - <a href="https://arxiv.org/abs/1912.02792" target="_blank" rel="noopener">Paper</a></li>
+<li>3DPeople - <a href="https://www.albertpumarola.com/research/3DPeople/index.html" target="_blank" rel="noopener">Project</a></li>
+<li>THUman Dataset - <a href="http://www.liuyebin.com/deephuman/deephuman.html" target="_blank" rel="noopener">Project</a></li>
+<li>Garment Dataset, Wang et al. 2018 - <a href="http://geometry.cs.ucl.ac.uk/projects/2018/garment_design/" target="_blank" rel="noopener">Project</a></li>
+</ul>
+<h2 id="Related-Conference-Workshops"><a href="#Related-Conference-Workshops" class="headerlink" title="Related Conference Workshops"></a>Related Conference Workshops</h2><ul>
+<li>Workshop on Computer Vision for Fashion, Art and Design: <a href="https://sites.google.com/view/cvcreative2020" target="_blank" rel="noopener">CVPR 2020</a>, <a href="https://sites.google.com/view/cvcreative" target="_blank" rel="noopener">ICCV 2019</a>, <a href="https://sites.google.com/view/eccvfashion" target="_blank" rel="noopener">ECCV 2018</a></li>
+<li>Workshop on Towards Human-Centric Image/Video Synthesis: <a href="https://vuhcs.github.io/" target="_blank" rel="noopener">CVPR 2020</a>, <a href="https://vuhcs.github.io/vuhcs-2019/index.html" target="_blank" rel="noopener">CVPR 2019</a></li>
+</ul>
+<h2 id="Related-Repositories"><a href="#Related-Repositories" class="headerlink" title="Related Repositories"></a>Related Repositories</h2><ul>
+<li><a href="https://github.com/ayushidalmia/awesome-fashion-ai" target="_blank" rel="noopener">awesome-fashion-ai</a></li>
+<li><a href="https://github.com/lzhbrian/Cool-Fashion-Papers" target="_blank" rel="noopener">Cool Fashion Papers</a></li>
+<li><a href="https://github.com/lzhbrian/Clothes-3D" target="_blank" rel="noopener">Clothes-3D</a></li>
+<li><a href="https://github.com/lijiaman/awesome-3d-human" target="_blank" rel="noopener">Awesome 3D Human</a></li>
+<li><a href="https://github.com/openMVG/awesome_3DReconstruction_list" target="_blank" rel="noopener">Awesome 3D reconstruction list</a></li>
+<li><a href="https://github.com/chenweikai/Body_Reconstruction_References" target="_blank" rel="noopener">Human Body Reconstruction</a></li>
+</ul>
+<h4 id="Pull-requests-are-welcome"><a href="#Pull-requests-are-welcome" class="headerlink" title="Pull requests are welcome!"></a>Pull requests are welcome!</h4>
       
 
       
@@ -335,28 +481,13 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">VTON</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -406,7 +537,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yuanquanquan.top/2018/2018091720/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yuanquanquan.top/2020/20201030/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -420,18 +551,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/2018091810/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          DeepLearning.ai作业:(2-3)-- 超参数调试（Hyperparameter tuning）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/2018091711/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">DeepLearning.ai作业:(2-2)-- 优化算法（Optimization algorithms）</div>
+    <a href="/2020/20201029/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(3)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -458,7 +580,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#调试处理"><span class="toc-number">1.</span> <span class="toc-text">调试处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#超参数的合适范围"><span class="toc-number">2.</span> <span class="toc-text">超参数的合适范围</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#归一化网络的激活函数"><span class="toc-number">3.</span> <span class="toc-text">归一化网络的激活函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将batch-norm-放入神经网络"><span class="toc-number">4.</span> <span class="toc-text">将batch norm 放入神经网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Batch-Norm为什么有用？"><span class="toc-number">5.</span> <span class="toc-text">Batch Norm为什么有用？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试集的batch-norm"><span class="toc-number">6.</span> <span class="toc-text">测试集的batch norm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#softmax"><span class="toc-number">7.</span> <span class="toc-text">softmax</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Clothing-dataset"><span class="toc-number">1.</span> <span class="toc-text">Clothing dataset</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Data"><span class="toc-number">1.1.</span> <span class="toc-text">Data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Links"><span class="toc-number">1.2.</span> <span class="toc-text">Links</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Top-10-subset"><span class="toc-number">1.3.</span> <span class="toc-text">Top-10 subset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Acknowledgements"><span class="toc-number">1.4.</span> <span class="toc-text">Acknowledgements</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Image-based-2D-Virtual-Try-on"><span class="toc-number">2.</span> <span class="toc-text">Image-based (2D) Virtual Try-on</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ACCV-2020"><span class="toc-number">2.0.1.</span> <span class="toc-text">ACCV 2020</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ECCV-2020"><span class="toc-number">2.0.2.</span> <span class="toc-text">ECCV 2020</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CVPR-2020"><span class="toc-number">2.0.3.</span> <span class="toc-text">CVPR 2020</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CVPRW-2020"><span class="toc-number">2.0.4.</span> <span class="toc-text">CVPRW 2020</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ICCV-2019"><span class="toc-number">2.0.5.</span> <span class="toc-text">ICCV 2019</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ICCVW-2019"><span class="toc-number">2.0.6.</span> <span class="toc-text">ICCVW 2019</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ECCV-2018"><span class="toc-number">2.0.7.</span> <span class="toc-text">ECCV 2018</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CVPR-2018"><span class="toc-number">2.0.8.</span> <span class="toc-text">CVPR 2018</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Others"><span class="toc-number">2.0.9.</span> <span class="toc-text">Others</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3D-Virtual-Try-on"><span class="toc-number">3.</span> <span class="toc-text">3D Virtual Try-on</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ECCV-2020-1"><span class="toc-number">3.0.1.</span> <span class="toc-text">ECCV 2020</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CVPR-2020-1"><span class="toc-number">3.0.2.</span> <span class="toc-text">CVPR 2020</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ICCV-2019-1"><span class="toc-number">3.0.3.</span> <span class="toc-text">ICCV 2019</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ECCV-2018-1"><span class="toc-number">3.0.4.</span> <span class="toc-text">ECCV 2018</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CVPR-2018-1"><span class="toc-number">3.0.5.</span> <span class="toc-text">CVPR 2018</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Others-1"><span class="toc-number">3.0.6.</span> <span class="toc-text">Others</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multi-Pose-Guided-Virtual-Try-on"><span class="toc-number">4.</span> <span class="toc-text">Multi-Pose Guided Virtual Try-on</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Video-Virtual-Try-on"><span class="toc-number">5.</span> <span class="toc-text">Video Virtual Try-on</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Non-clothing-Virtual-Try-on"><span class="toc-number">6.</span> <span class="toc-text">Non-clothing Virtual Try-on</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pose-Guided-Human-Synthesis"><span class="toc-number">7.</span> <span class="toc-text">Pose-Guided Human Synthesis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Datasets-for-Virtual-Try-on"><span class="toc-number">8.</span> <span class="toc-text">Datasets for Virtual Try-on</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Related-Conference-Workshops"><span class="toc-number">9.</span> <span class="toc-text">Related Conference Workshops</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Related-Repositories"><span class="toc-number">10.</span> <span class="toc-text">Related Repositories</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Pull-requests-are-welcome"><span class="toc-number">10.0.1.</span> <span class="toc-text">Pull requests are welcome!</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -472,7 +594,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="dl-ai-2-3" data-title="DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）" data-url="http://yuanquanquan.top/2018/2018091720/"></div>
+	<div class="ds-thread" data-thread-key="VTON" data-title="Some Virtual Try-on (VTON) Research" data-url="http://yuanquanquan.top/2020/20201030/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -503,7 +625,7 @@
 <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yuanquanquan.top/2018/2018091720/",
+  id: "http://yuanquanquan.top/2020/20201030/",
   owner: 'Bazingaliu',
   repo: 'Bazingaliu.github.io',
   oauth: {

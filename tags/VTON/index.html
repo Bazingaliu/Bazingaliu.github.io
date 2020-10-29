@@ -7,32 +7,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
-  <title>DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning） | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+  <title>Tag: VTON | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这周主要讲了这些超参数调试的方法以及batch norm，还有softmax多分类函数的使用。">
-<meta name="keywords" content="dl.ai">
-<meta property="og:type" content="article">
-<meta property="og:title" content="DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）">
-<meta property="og:url" content="http://yuanquanquan.top/2018/2018091720/index.html">
+  <meta name="description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta name="keywords" content="人工智能、计算机、机器学习、linux、程序员">
+<meta property="og:type" content="website">
+<meta property="og:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
+<meta property="og:url" content="http://yuanquanquan.top/tags/VTON/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="这周主要讲了这些超参数调试的方法以及batch norm，还有softmax多分类函数的使用。">
+<meta property="og:description" content="人工智能、计算机、机器学习、linux、程序员">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlon02u9j20uf0bydjm.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlonce5cj20ms0gvjy9.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomk9bzj207g04mglj.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomk1hzj208002b744.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrloml6ckj20jp0auq3x.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomo21ej20wy0asdl4.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrloml9ztj20bd04ggm5.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomm1xrj20dn07swff.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomoq3hj20m907lacn.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomna9wj20i404lq3m.jpg">
-<meta property="og:updated_time" content="2018-10-23T12:16:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）">
-<meta name="twitter:description" content="这周主要讲了这些超参数调试的方法以及batch norm，还有softmax多分类函数的使用。">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
+<meta name="twitter:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
+<meta name="twitter:description" content="人工智能、计算机、机器学习、linux、程序员">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -213,307 +200,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-dl-ai-2-3" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/20201030/" class="archive-article-date">
+  	<time datetime="2020-10-30T14:51:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-30</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/20201030/">Some Virtual Try-on (VTON) Research</a>
     </h1>
   
 
-        <!--显示阅读次数-->
-
-  <br/>
-  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
-  <span class="icon-sort"></span>
-  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
-            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
-  </span>
-  </a>
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2018/2018091720/" class="archive-article-date">
-  	<time datetime="2018-09-17T12:19:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-17</time>
-</a>
-        
-      </header>
-    
-
-<div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg" alt></p>
-<p>这周主要讲了这些超参数调试的方法以及batch norm，还有softmax多分类函数的使用。</p>
-<a id="more"></a>
-<h1 id="调试处理"><a href="#调试处理" class="headerlink" title="调试处理"></a>调试处理</h1><p>之前提到的超参数有：</p>
-<ul>
-<li><font color="#FF0000">$\alpha$</font></li>
-<li><font color="#AE8F00">hidden units</font></li>
-<li><font color="#AE8F00">minibatch size</font></li>
-<li><font color="#AE8F00">$\beta$</font>(Momentum)</li>
-<li>layers</li>
-<li>learning rate decay</li>
-<li>$\beta_1,\beta_2,\epsilon$</li>
-</ul>
-<p>颜色代表重要性。</p>
-<p>在调参中，常用的方式是在网格中取不同的点，然后计算这些点中的最佳值，</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlon02u9j20uf0bydjm.jpg" alt></p>
-<p>但是左边是均匀的选点，这样有可能导致在某一个参数上变化很小，浪费计算时间，所以应该更推荐右边的选点方法，即随机选点。</p>
-<p>而后，当随机选点选到几个结果比较好的点时，逐步缩小范围，进行更精细的选取。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlonce5cj20ms0gvjy9.jpg" alt></p>
-<h1 id="超参数的合适范围"><a href="#超参数的合适范围" class="headerlink" title="超参数的合适范围"></a>超参数的合适范围</h1><p>当然，随机采样并不是在轴上均匀的采样。</p>
-<p>比如说$\alpha = 0.001  — 1$，这样子，那么在$0.1-1$的部分占了90%的概率，显然是不合理的，所以应该将区间对数化，转化成$[0.001,0.01],[0.01,0.1],[0.1,1]$的区间，这样更为合理。思路是：$10^{-3} = 0.001$，所以取值从$[10^{-3},10^{0}]$，我们只要将指数随机就可以了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r = <span class="number">-3</span>*np.random.rand() <span class="comment"># rand()表示在 [0，1]随机取样，再乘以系数，就可以得到[-3,0]</span></span><br><span class="line">a = <span class="number">10</span>**r</span><br></pre></td></tr></table></figure>
-<p>同理,$\beta = 0.9 ,…..,0.999$</p>
-<p>通过$1-\beta = 0.1,….,0.001$，所以$1-\beta = 10^{r}$，$\beta = 1-10^{r}$</p>
-<h1 id="归一化网络的激活函数"><a href="#归一化网络的激活函数" class="headerlink" title="归一化网络的激活函数"></a>归一化网络的激活函数</h1><p>我们之前是将输入的数据X归一化，可以加速训练，其实在神经网络中，也可以同样归一化，一般是对$z^{[l]}$归一化。</p>
-<p>这个方法叫做 batch norm</p>
-<p>公式是：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomk9bzj207g04mglj.jpg" alt></p>
-<p>加上$\epsilon$是为了不至于除以0</p>
-<p>而一般标准化后还会加上两个参数，来表示新的方差$\gamma$和均值$\beta$：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomk1hzj208002b744.jpg" alt></p>
-<p>$\gamma$和$\beta$也是参数，和$w,b$一样，可以在学习中进行更新。</p>
-<h1 id="将batch-norm-放入神经网络"><a href="#将batch-norm-放入神经网络" class="headerlink" title="将batch norm 放入神经网络"></a>将batch norm 放入神经网络</h1><p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrloml6ckj20jp0auq3x.jpg" alt></p>
-<p>可以看到，</p>
-<p>先求的$z^{[1]}$，再进行batch norm，加上参数$\beta^{[1]},\gamma^{[1]}$，得到${\tilde{z}}^{[1]}$,再根据activation function得到$a^{[1]}$</p>
-<p>batch norm同样适用于Momentum、RMSprop 、Adam的梯度下降法来进行更新。</p>
-<h1 id="Batch-Norm为什么有用？"><a href="#Batch-Norm为什么有用？" class="headerlink" title="Batch Norm为什么有用？"></a>Batch Norm为什么有用？</h1><p>如果我们的图片中训练的都是黑猫，这个时候给你一些橘猫的图片，那么大概率是训练不好的。因为相当于样本集合的分布改变了，batch norm就可以解决这个问题。</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomo21ej20wy0asdl4.jpg" alt></p>
-<p>如果这个时候要计算第三层，那么很显然计算结果是依赖第二层的数据的。但是如果我们对第二层的数据进行了归一化，那么就可以将第二层的均值和方差都限制在同一分布，而且这两个参数是自动学习的。也就是归一化后的数据可以减弱前层参数的作用与后层参数的作用之间的联系，它使得网络每层都可以自己学习。</p>
-<p>还有就是batch norm在某种程度上有正则化的效果，因为归一化会使各个层之间的依赖性降低，而且归一化有带来一定的噪声，有点像dropout。</p>
-<h1 id="测试集的batch-norm"><a href="#测试集的batch-norm" class="headerlink" title="测试集的batch norm"></a>测试集的batch norm</h1><p>batch norm是在训练集上得到的，那么怎么把它应用在测试集呢？</p>
-<p>这个时候可以直接从训练集中拿到$\mu$和$\sigma^{2}$</p>
-<p>使用指数加权平均，在每一步中保留$\mu$和$\sigma^{2}$，就可以得到训练后的$\mu$和$\sigma^{2}$</p>
-<h1 id="softmax"><a href="#softmax" class="headerlink" title="softmax"></a>softmax</h1><p>之前说的都是二分类问题，如何解决多分类问题呢？</p>
-<p>可以用softmax算法来解决。</p>
-<p>前面的步骤都一样，而到了最后一层output layer，你想要分为多少类，就用多少个神经元。</p>
-<p>这个时候，最后一层的activation function就变成了：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrloml9ztj20bd04ggm5.jpg" alt></p>
-<p>$a^{[l]}_i$就表示了每一个分类的概率。</p>
-<p>计算例子如图：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomm1xrj20dn07swff.jpg" alt></p>
-<p>而它的损失函数用的也是cross-entropy：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomoq3hj20m907lacn.jpg" alt></p>
-<p>最终得到一个关于Y的矩阵：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlomna9wj20i404lq3m.jpg" alt></p>
-<p>其实是可以证明，当分类为2时，softmax就是logistic regression</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">VTON</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
+          
 
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yuanquanquan.top/2018/2018091720/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/2018091810/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          DeepLearning.ai作业:(2-3)-- 超参数调试（Hyperparameter tuning）
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/2018091711/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">DeepLearning.ai作业:(2-2)-- 优化算法（Optimization algorithms）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#调试处理"><span class="toc-number">1.</span> <span class="toc-text">调试处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#超参数的合适范围"><span class="toc-number">2.</span> <span class="toc-text">超参数的合适范围</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#归一化网络的激活函数"><span class="toc-number">3.</span> <span class="toc-text">归一化网络的激活函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将batch-norm-放入神经网络"><span class="toc-number">4.</span> <span class="toc-text">将batch norm 放入神经网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Batch-Norm为什么有用？"><span class="toc-number">5.</span> <span class="toc-text">Batch Norm为什么有用？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试集的batch-norm"><span class="toc-number">6.</span> <span class="toc-text">测试集的batch norm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#softmax"><span class="toc-number">7.</span> <span class="toc-text">softmax</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  <div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="dl-ai-2-3" data-title="DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）" data-url="http://yuanquanquan.top/2018/2018091720/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
-<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "http://yuanquanquan.top/2018/2018091720/",
-  owner: 'Bazingaliu',
-  repo: 'Bazingaliu.github.io',
-  oauth: {
-    client_id: '86465678bf992f29a879',
-    client_secret: 'e465ff4beea46850d31dc2ebf022410154c0ddac',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
+    
 
 
           </div>
@@ -553,9 +293,9 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
