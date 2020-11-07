@@ -202,6 +202,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-论文笔记-13" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/20201103/">Effective AER Object Classification Using Segmented Probability-Maximization Learning in Spiking Neural Networks</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/20201103/" class="archive-article-date">
+  	<time datetime="2020-11-02T17:30:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-03</time>
+</a>
+        
+      </header>
+    
+
+<div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>之前因为一些emmmm俗事，很久没看论文了，现在因为要做毕设，又久违看起了论文，这次是浙大普适与智能实验室AAAI 2020的论文《基于脉冲神经网络的事件表示的物体分类方法》</p>
+</blockquote>
+<p>事件相机是一种神经拟态视觉传感器，通过模拟人类的视网膜机制来记录场景。与传统相机不同，事件相机没有 “帧” 的概念。当它捕捉到视野中任意位置发生了一定程度的光线变化时，就会产生一些像素级的输出（即事件）。一个事件中包括三个信息：事件在2D空间的像素坐标，事件的时间戳，以及事件的极性（1和-1，表示是由光线变亮或变暗触发的）。由于事件相机关注的是场景中的光线变化，因此它只会记录场景中的动态信息，忽略不变的静态冗余信息，从而能显著减少内存使用和能源消耗。</p>
+<p>这种基于事件的数据形式与脉冲神经网络（Spiking Neural Network，SNN）不谋而合。脉冲神经网络通过脉冲传递信息，而脉冲也具有事件的属性。相比传统人工神经网络，脉冲神经网络更具有生物解释性，在处理时空数据的能力上也有更大的潜力。</p>
+<p>然而，将这种新的事件表示与SNN相结合来进行物体分类，还存在着若干挑战。首先，与传统相机的视频流数据形式相比，事件相机产生的事件流是不稳定的。由于事件相机对视觉感受域内的动态信息非常敏感，在场景记录过程中，除了与目标的相关的事件被记录下来，相机抖动和环境光的变化等因素也会产生大量的噪声事件，影响SNN网络中神经元响应的可靠性和网络学习性能。其次，事件相机输出的事件流记录了一段时间内的信息，我们希望SNN的响应能够足够快，以便在提供的测试信息还不完整的情况下，仍达到具有竞争力的准确性水平。</p>
+        
+          <a class="article-more-a" href="/2020/20201103/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SNN</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/笔记/论文笔记//" class="article-tag-list-link color5">论文笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/20201103/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-VTON" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -985,107 +1085,9 @@
 
 
   
-    <article id="post-NLP-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/20200511/">Conditional Random Fields</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/20200511/" class="archive-article-date">
-  	<time datetime="2020-05-11T05:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-11</time>
-</a>
-        
-      </header>
-    
-
-<div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>条件随机场(conditional random fields，简称 $CRF$，或$CRFs$)，是一种判别式概率模型，常用于标注或分析序列资料，如自然语言文字或是生物序列。</p>
-<p>条件随机场是条件概率分布模型P(Y|X)，表示的是给定一组输入随机变量X的条件下另一组输出随机变量Y的马尔可夫随机场，也就是说$CRF$的特点是假设输出随机变量构成马尔可夫随机场。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/20200511/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NLP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/20200511/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1224,11 +1226,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1245,6 +1247,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">-手势识别</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1288,10 +1298,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
@@ -1308,6 +1314,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
               </li>
              
@@ -1320,6 +1330,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
              
@@ -1328,15 +1342,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">-手势识别</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Intel-Neural-Compute-stick</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1345,10 +1355,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">GAN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
               </li>
              
               <li class="article-tag-list-item">
