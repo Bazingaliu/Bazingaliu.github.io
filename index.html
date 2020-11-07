@@ -229,26 +229,9 @@
         <blockquote>
 <p>选的毕设题目是《脉冲信号的智能提取软件设计》，虽然之前基本没处理过脉冲数据，但是数据处理的套路都差不多，无非先进行数据清洗，然后去直流、降噪，再对信号进行加窗（滤波、分析信号得到想要频段内的信号），再通过一些方法，如FFT、小波或者一些其他变换，通过这些变换得出频率成分，异常特征值。</p>
 </blockquote>
-<p>关于这个题目我大概有两种思路，一种较为传统，基本就是将之前各种传统算法整合在一起，另一种则是基于特征编码和一维CNN卷积神经网络对信号对脉冲矩阵进行信号提取。</p>
-<h3 id="一、使用传统算法对脉冲信号进行提取："><a href="#一、使用传统算法对脉冲信号进行提取：" class="headerlink" title="一、使用传统算法对脉冲信号进行提取："></a>一、使用传统算法对脉冲信号进行提取：</h3><p><strong>1、首先，在特征提取之前需明确是怎样的信号，怎样的应用，怎样的场景，因为针对不同应用和场景选择的特征提取也不近相同</strong></p>
-<p><strong>2、信号特征的提取往往都是用最简单有效的参数表示信号中的信息，这是根本目的。</strong></p>
-<p><strong>3、针对不同后端模型需要确定特征维度。</strong></p>
-<p><strong>4、开始特征提取前，信号往往需要做一些预处理，如滤波、去均值、去异常等等。</strong></p>
-<h3 id="特征提取有哪些方法："><a href="#特征提取有哪些方法：" class="headerlink" title="特征提取有哪些方法："></a><strong>特征提取有哪些方法：</strong></h3><p><strong>1、时域一维信号简单统计和运算可以得到的特征有：均值，方差，均方根，峰值因子，峭度系数，波形因子，裕度因子、脉冲因子。</strong></p>
-<p><strong>2、估计–分布参数一般服从某一类分布；</strong></p>
-<p><strong>3、频域，特征频率，均方频率，重心频率，频率方差；</strong></p>
-<p><strong>4、小波方法提取的系数，小波滤波后的特征频率等等；</strong></p>
-<p><strong>5、信号熵，谱熵，排列熵，小波熵，EMD熵，包络谱熵等；</strong></p>
-<p><strong>6、谱峭度，快速谱峭度、小波谱峭度等；</strong></p>
-<p><strong>7、基于数学工具和降维的特征，如PCA，矩阵特征向量，矩阵的秩，特征根，SVD-奇异值、ICA等等；</strong></p>
-<p><strong>8、一些基于距离的度量、范数、马氏距离、分形参数，同胚流行等等；</strong></p>
-<p><strong>9、任何能表征信号特征的自定义参数均可以，注意有意义有时是结合实际需求的。</strong></p>
-<h3 id="二、基于特征编码和一维CNN卷积神经网络"><a href="#二、基于特征编码和一维CNN卷积神经网络" class="headerlink" title="二、基于特征编码和一维CNN卷积神经网络"></a>二、基于特征编码和一维CNN卷积神经网络</h3><p><strong>目前已有的脉冲信号识别方法大多是基于脉间特征和使用机器学习方法来实现。整体上来说，已有的方法已经能对大多数的脉冲信号进行较为准确的识别，但是对于一些参数较为相近的信号识别效果并不好。</strong></p>
-<p><strong>我的思路是根据脉冲信号的载频(RF)、重频(PRI)、脉宽(PW)等参数构建脉冲描述矩阵。</strong></p>
-<p><img src="https://i.loli.net/2020/11/07/LX1V6mlEw7WhiHZ.png" alt="脉冲信号及其特征"></p>
-<p><strong>通过传感器获取的脉冲信号，经过信号分选等处理后得到属于一组脉冲描述字(PDW)信息，组成脉冲描述矩阵（PDM）。</strong></p>
-<p>$\mathrm{PDM}=\left(\begin{array}{c}\mathrm{PDW}<em>{1} \ \mathrm{PDW}</em>{2} \ \ldots \ \mathrm{PDW}<em>{\mathrm{n}}\end{array}\right)=\left(\begin{array}{c}\mathrm{PA}</em>{0}, \mathrm{AOA}<em>{0}, \mathrm{TOA}</em>{0}, \mathrm{PW}<em>{0}, \mathrm{RF}</em>{0} \ \mathrm{PA}<em>{1}, \mathrm{AOA}</em>{1}, \mathrm{TOA}<em>{1}, \mathrm{PW}</em>{1}, \mathrm{RF}<em>{1} \ \ldots \ \mathrm{PA}</em>{\mathrm{n}}, \mathrm{AOA}<em>{\mathrm{n}}, \mathrm{TOA}</em>{\mathrm{n}}, \mathrm{PW}<em>{\mathrm{n}}, \mathrm{RF}</em>{\mathrm{n}}\end{array}\right)$</p>
-
+        
+          <a class="article-more-a" href="/2020/202011077/#more">more >></a>
+        
       
 
       
@@ -1246,11 +1229,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1274,15 +1261,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1294,67 +1273,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">CV</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">教程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">单片机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">航拍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">视频</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">毕设</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">强化学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+                <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1374,11 +1293,71 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">航拍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">视频</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">强化学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">毕设</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SNN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">招聘</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1387,6 +1366,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">VTON</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
               </li>
              
               <li class="article-tag-list-item">
