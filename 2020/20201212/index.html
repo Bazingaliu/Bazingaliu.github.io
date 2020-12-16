@@ -9,18 +9,18 @@
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>图像语义融合关键技术知识点 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="图像融合是将两个或多个具有互补信息和冗余特性的图像进行多层次、多级别、多方向的综合处理，减小图像的冗余性和模糊性，使得融合后的图像信息更丰富、更精准、更可靠，为后续的图像检测、图像识别、图像分类、图像理解等相关研究和应用提供技术基础。  ​      机器识别图像主要依赖图像的各种底层视觉特性信息，提取出图像的形状、颜色直方图、纹理、轮廓等底层视觉特征，分析不同的底层视觉特征之间的联系，实现图像">
+  <meta name="description" content="图像融合是将两个或多个具有互补信息和冗余特性的图像进行多层次、多级别、多方向的综合处理，减小图像的冗余性和模糊性，使得融合后的图像信息更丰富、更精准、更可靠，为后续的图像检测、图像识别、图像分类、图像理解等相关研究和应用提供技术基础。">
 <meta name="keywords" content="cv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图像语义融合关键技术知识点">
 <meta property="og:url" content="http://yuanquanquan.top/2020/20201212/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="图像融合是将两个或多个具有互补信息和冗余特性的图像进行多层次、多级别、多方向的综合处理，减小图像的冗余性和模糊性，使得融合后的图像信息更丰富、更精准、更可靠，为后续的图像检测、图像识别、图像分类、图像理解等相关研究和应用提供技术基础。  ​      机器识别图像主要依赖图像的各种底层视觉特性信息，提取出图像的形状、颜色直方图、纹理、轮廓等底层视觉特征，分析不同的底层视觉特征之间的联系，实现图像">
+<meta property="og:description" content="图像融合是将两个或多个具有互补信息和冗余特性的图像进行多层次、多级别、多方向的综合处理，减小图像的冗余性和模糊性，使得融合后的图像信息更丰富、更精准、更可靠，为后续的图像检测、图像识别、图像分类、图像理解等相关研究和应用提供技术基础。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-12-16T03:36:49.235Z">
+<meta property="og:updated_time" content="2020-12-16T06:32:50.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图像语义融合关键技术知识点">
-<meta name="twitter:description" content="图像融合是将两个或多个具有互补信息和冗余特性的图像进行多层次、多级别、多方向的综合处理，减小图像的冗余性和模糊性，使得融合后的图像信息更丰富、更精准、更可靠，为后续的图像检测、图像识别、图像分类、图像理解等相关研究和应用提供技术基础。  ​      机器识别图像主要依赖图像的各种底层视觉特性信息，提取出图像的形状、颜色直方图、纹理、轮廓等底层视觉特征，分析不同的底层视觉特征之间的联系，实现图像">
+<meta name="twitter:description" content="图像融合是将两个或多个具有互补信息和冗余特性的图像进行多层次、多级别、多方向的综合处理，减小图像的冗余性和模糊性，使得融合后的图像信息更丰富、更精准、更可靠，为后续的图像检测、图像识别、图像分类、图像理解等相关研究和应用提供技术基础。">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -236,7 +236,8 @@
         <blockquote>
 <p>图像融合是将两个或多个具有互补信息和冗余特性的图像进行多层次、多级别、多方向的综合处理，减小图像的冗余性和模糊性，使得融合后的图像信息更丰富、更精准、更可靠，为后续的图像检测、图像识别、图像分类、图像理解等相关研究和应用提供技术基础。</p>
 </blockquote>
-<p>​      <strong>机器识别图像</strong>主要依赖图像的各种底层视觉特性信息，提取出<em>图像的形状</em>、<em>颜色直方图</em>、<em>纹理</em>、<em>轮廓</em>等底层视觉特征，分析不同的底层视觉特征之间的联系，实现图像的分类，进而达到图像识别的目的。其缺点是：纯粹的依赖图像底层特征的做法，缺乏对图像内容潜在的语义分析，难以捕捉到图像的直接视觉效果以外的人文或情感信息。<strong>图像的底层视觉特性和图像的高级语义之间存在语义鸿沟</strong>，导致图像的检索不理想。在图像检索，图像识别和分类一定程度上依赖于图像语义标注，这使得研究图像的语义标注算法成为图像理解领域的热点，也是人工智能的重要研究课题。</p>
+ <a id="more"></a> 
+<p>​     <strong>机器识别图像</strong>主要依赖图像的各种底层视觉特性信息，提取出<em>图像的形状</em>、<em>颜色直方图</em>、<em>纹理</em>、<em>轮廓</em>等底层视觉特征，分析不同的底层视觉特征之间的联系，实现图像的分类，进而达到图像识别的目的。其缺点是：纯粹的依赖图像底层特征的做法，缺乏对图像内容潜在的语义分析，难以捕捉到图像的直接视觉效果以外的人文或情感信息。<strong>图像的底层视觉特性和图像的高级语义之间存在语义鸿沟</strong>，导致图像的检索不理想。在图像检索，图像识别和分类一定程度上依赖于图像语义标注，这使得研究图像的语义标注算法成为图像理解领域的热点，也是人工智能的重要研究课题。</p>
 <h4 id="图像标注算法和模型的涌现"><a href="#图像标注算法和模型的涌现" class="headerlink" title="图像标注算法和模型的涌现"></a>图像标注算法和模型的涌现</h4><ul>
 <li>共现模型。利用统计学建立图像与标注词之间的映射关系。共现模型首先把图像划分成若干规则区域，然后对分割得到的区域进行分类，得到图像的区域与关键词之间的共生概率，然后选择对分割得到的区域进行分类，得到图像的区域与关键词之间的共生概率，然后选择共生概率大的关键词对图像进行标注。</li>
 <li>机器翻译模型。利用传统的语言统计翻译模型，同样基于分割图像的做法，但是机器翻译模型的分割强调有意义的分割，分割过程能够实现对象识别，从标注图像中分割出来的图像区域与现实对象存在对应关系，以便于把分割出的区域能与具体对象建立关联，并将视觉特征转化为语义标注词。</li>
@@ -599,22 +600,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -624,6 +609,22 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -647,19 +648,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">-手势识别</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,6 +661,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -691,27 +688,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Intel-Neural-Compute-stick</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">cv</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -723,7 +704,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -735,15 +716,35 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">-手势识别</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Intel-Neural-Compute-stick</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">AR</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
               </li>
              
               <li class="article-tag-list-item">
