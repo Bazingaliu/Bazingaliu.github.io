@@ -202,6 +202,128 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-图像融合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/20201212/">图像语义融合关键技术知识点</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/20201212/" class="archive-article-date">
+  	<time datetime="2020-12-10T11:27:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-10</time>
+</a>
+        
+      </header>
+    
+
+<div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>图像融合是将两个或多个具有互补信息和冗余特性的图像进行多层次、多级别、多方向的综合处理，减小图像的冗余性和模糊性，使得融合后的图像信息更丰富、更精准、更可靠，为后续的图像检测、图像识别、图像分类、图像理解等相关研究和应用提供技术基础。</p>
+</blockquote>
+<p>​      <strong>机器识别图像</strong>主要依赖图像的各种底层视觉特性信息，提取出<em>图像的形状</em>、<em>颜色直方图</em>、<em>纹理</em>、<em>轮廓</em>等底层视觉特征，分析不同的底层视觉特征之间的联系，实现图像的分类，进而达到图像识别的目的。其缺点是：纯粹的依赖图像底层特征的做法，缺乏对图像内容潜在的语义分析，难以捕捉到图像的直接视觉效果以外的人文或情感信息。<strong>图像的底层视觉特性和图像的高级语义之间存在语义鸿沟</strong>，导致图像的检索不理想。在图像检索，图像识别和分类一定程度上依赖于图像语义标注，这使得研究图像的语义标注算法成为图像理解领域的热点，也是人工智能的重要研究课题。</p>
+<h4 id="图像标注算法和模型的涌现"><a href="#图像标注算法和模型的涌现" class="headerlink" title="图像标注算法和模型的涌现"></a>图像标注算法和模型的涌现</h4><ul>
+<li>共现模型。利用统计学建立图像与标注词之间的映射关系。共现模型首先把图像划分成若干规则区域，然后对分割得到的区域进行分类，得到图像的区域与关键词之间的共生概率，然后选择对分割得到的区域进行分类，得到图像的区域与关键词之间的共生概率，然后选择共生概率大的关键词对图像进行标注。</li>
+<li>机器翻译模型。利用传统的语言统计翻译模型，同样基于分割图像的做法，但是机器翻译模型的分割强调有意义的分割，分割过程能够实现对象识别，从标注图像中分割出来的图像区域与现实对象存在对应关系，以便于把分割出的区域能与具体对象建立关联，并将视觉特征转化为语义标注词。</li>
+<li>CMRM模型（ cross modia relevance model）</li>
+<li>CRM模型（continous-space relevance model）</li>
+<li>图学习模型 自然语言处理中的语义上下文关系被用来图像底层视觉特征和高级语义之间建立关联。其中：</li>
+<li>LSA模型（latent semantic analysis）</li>
+<li>PLSA模型（probailistic latent semantic analysis） 这两种模型被用来分析图像和标注词之间的关系。</li>
+</ul>
+<p><strong>图像融合</strong>解释：<strong>将两个或多个具有互补信息和冗余特性的图像进行多层次、多级别、多方向的综合性处理</strong>，减小图像的冗余性和模糊性，使得融合后的图像信息更丰富、更为精准可靠、具有更佳的互补性、更有利于理解，更加适合人类接受和计算机理解，为后续图像的检测和识别、图像分类和图像理解等处理提供了技术支撑。</p>
+<h4 id="图像分割算法现状"><a href="#图像分割算法现状" class="headerlink" title="图像分割算法现状"></a>图像分割算法现状</h4><p><strong>阈值分割算法</strong>，<strong>边缘检测分割算法</strong>，<strong>区域分割算法</strong>，以及近年流行的<strong>图论分割算法</strong>，<strong>聚类分割算法</strong></p>
+<p><em>基于边缘分割算法</em>有：<strong>Prewitt算法</strong>、<strong>Roberts算法</strong>、<strong>Laplacian算法</strong>以及<strong>Sobel算法</strong>等。想要取得理想分割效果经常需要合理运用各种边缘检测算法。</p>
+<p><em>基于区域的分割算法</em>，利用灰度级的不连续性来查找区域的边界。常用的操作是区域生长，以及区域的分离与合并。</p>
+<p><em>基于图论的分割算法</em>，将图像映射成带有权重的无向图，然后对图进行划分处理，得到若干个不同的子图。<strong>归一化割</strong>的图划分方法，简称“<strong>N-cut</strong>”。<strong>最小割算法</strong>（<strong>Min-cut</strong>）是一种典型的N-cut算法。Min-cut利用图像的局部信息计算图结点之间的距离。</p>
+<p><em>基于聚类的分割算法</em>；缺点：图像的空间信息没有得到处理。例如<strong>基于模糊C-均值聚类</strong>（<strong>FCM</strong>）对噪声比较敏感。FCM算法的改进算法如下：针对FCM算法的空间信息的改进：</p>
+<ul>
+<li><strong>FCM_S</strong>算法，加入了领域信息</li>
+<li><strong>FCM_S1</strong>算法，利用预算值进行聚类。</li>
+<li><strong>FCM_S2</strong>算法</li>
+</ul>
+<p>针对FCM_S是像素级的改进</p>
+<ul>
+<li><strong>EnFCM</strong>算法，结合图像的统计信息，把计算工作量降低到灰度级量级。</li>
+<li><strong>FGFCM</strong>算法，建立空间相关性和灰度相关性，提高算法抗造性。</li>
+<li><strong>NWFCM</strong>算法，利用非局部空间信息来计算领域像素到聚类中心的距离。</li>
+</ul>
+<p>针对FCM聚类算法和邻域加权的FCM聚类算法中的参数问题的改进：</p>
+<ul>
+<li><strong>FLICM</strong>算法，使用模糊因子取代参数。</li>
+<li><strong>NDFCM</strong>算法，基于核函数的局部FCM算法。</li>
+</ul>
+<p>基于非局部空间信息的改进：</p>
+<ul>
+<li>FCM_NLS算法，基于非局部空间信息，提前对原图像的非局部空间进行滤波。</li>
+<li>FCM_SNLS算法，基于自调节非局部空间信息的FCM聚类算法。</li>
+</ul>
+<p>新的图像分割理论：</p>
+<ul>
+<li>图像的颜色分布和纹理空间处理方面的经验模态分解EMD。</li>
+</ul>
+<h4 id="图像融合算法现状"><a href="#图像融合算法现状" class="headerlink" title="图像融合算法现状"></a>图像融合算法现状</h4><p>图像融合的主要流程是先进行图像的配准和特征提取，再进行决策，最后进行图像融合。依据所处上述处理流程中的不同阶段，图像融合可分为像素级融合、特征级融合和决策级融合三个层次。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cv</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/20201212/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-毕设" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -987,111 +1109,6 @@
 
 
   
-    <article id="post-typecho" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/202005251/">Typecho</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/202005251/" class="archive-article-date">
-  	<time datetime="2020-05-25T06:17:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-25</time>
-</a>
-        
-      </header>
-    
-
-<div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>最近因为疫情<a href="https://developer.aliyun.com/adc/student/?pid=mm_25282911_3455987_122436732" target="_blank" rel="noopener">阿里云可以白嫖半年的服务器</a>,刚好5.20快到了用服务器给妹妹搭一个情侣博客</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/202005251/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">教程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">typecho</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/日常技术//" class="article-tag-list-link color5">日常技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/日常技术/博客搭建//" class="article-tag-list-link color5">博客搭建</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/202005251/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1233,11 +1250,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
+                <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1254,10 +1275,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1285,15 +1302,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Intel-Neural-Compute-stick</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1309,19 +1322,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1334,6 +1335,26 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">视频</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Intel-Neural-Compute-stick</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">cv</a>
               </li>
              
               <li class="article-tag-list-item">
