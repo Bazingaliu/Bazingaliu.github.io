@@ -229,74 +229,9 @@
         <blockquote>
 <p>几个月前，lyft在kaggle平台上组织了一个比赛[1]：<a href="https://www.kaggle.com/c/lyft-motion-prediction-autonomous-vehicles" target="_blank" rel="noopener">Lyft Motion Prediction for Autonomous Vehicles</a>，用算法预测自动驾驶汽车周围的交通参与者的运动轨迹。和几个同学参加了这个比赛排名8%，拿了个铜牌，这篇博客是对比赛的总结。</p>
 </blockquote>
-<p><strong>赛题背景：</strong>The ridesharing company Lyft started Level 5 to take on the self-driving challenge and build a full self-driving system they’re hiring!). Their previous competition tasked participants with identifying 3D objects, an important step prior to detecting their movement. Now, they’re challenging you to predict the motion of these traffic agents.</p>
-<p><strong>赛题任务：</strong>In this competition, you’ll apply your data science skills to build motion prediction models for self-driving vehicles. You’ll have access to the largest Prediction Dataset ever released to train and test your models. Your knowledge of machine learning will then be required to predict how cars, cyclists,and pedestrians move in the AV’s environment.</p>
-<p><strong>Loss：</strong>The goal of this competition is to predict the trajectories of other traffic participants. You can employ uni-modal models yielding a single prediction per sample, or multi-modal ones generating multiple hypotheses (up to 3) - further described by a confidence vector.</p>
-<p>Due to the high amount of multi-modality and ambiguity in traffic scenes, the used evaluation metric to score this competition is tailored to account for multiple predictions.</p>
-<p><strong>Note:</strong> The following is a brief excerpt of our <a href="https://github.com/lyft/l5kit/blob/master/competition.md" target="_blank" rel="noopener">metrics page in the L5Kit repository</a></p>
-<p>We calculate the negative log-likelihood of the ground truth data given the multi-modal predictions. Let us take a closer look at this. Assume, ground truth positions of a sample trajectory are<br>$$<br>x_{1}, \ldots, x_{T}, y_{1}, \ldots, y_{T}<br>$$<br>and we predict K hypotheses, represented by means<br>$$<br>\bar{x}<em>{1}^{k}, \ldots, \bar{x}</em>{T}^{k}, \bar{y}<em>{1}^{k}, \ldots, \bar{y}</em>{T}^{k}<br>$$<br>In addition, we predict confidences c of these K hypotheses. We assume the ground truth positions to be modeled by a mixture of multi-dimensional independent Normal distributions over time, yielding the likelihood<br>$$<br>p\left(x_{1, \ldots, T}, y_{1, \ldots, T} \mid c^{1, \ldots, K}, \bar{x}<em>{1, \ldots, T}^{1, \ldots, K}, \bar{y}</em>{1, \ldots, T}^{1, \ldots, K}\right)<br>=\sum_{k} c^{k} \mathcal{N}\left(x_{1, \ldots, T} \mid \bar{x}<em>{1, \ldots, T}^{k}, \Sigma=1\right) \mathcal{N}\left(y</em>{1, \ldots, T} \mid \bar{y}<em>{1, \ldots, T}^{k}, \Sigma=1\right)<br>=\sum</em>{k} c^{k} \prod_{t} \mathcal{N}\left(x_{t} \mid \bar{x}<em>{t}^{k}, \sigma=1\right) \mathcal{N}\left(y</em>{t} \mid \bar{y}_{t}^{k}, \sigma=1\right)<br>$$</p>
-<p>which results in the loss<br>$$<br>L=-\log p\left(x_{1, \ldots, T}, y_{1, \ldots, T} \mid c^{1, \ldots, K}, \bar{x}<em>{1, \ldots, T}^{1, \ldots, K}, \bar{y}</em>{1, \ldots, T}^{1, \ldots, K}\right)<br>=-\log \sum_{k} e^{\log \left(c^{k}\right)-\frac{1}{2} \sum_{t}\left(\bar{x}<em>{t}^{k}-x</em>{t}\right)^{2}+\left(\bar{y}<em>{t}^{k}-y</em>{t}\right)^{2}}<br>$$<br>01</p>
-<h3 id="问题定义和数据集"><a href="#问题定义和数据集" class="headerlink" title="问题定义和数据集"></a>问题定义和数据集</h3><p>自动驾驶中的运动预测或轨迹预测，在这里我们<strong>定义为</strong>：</p>
-<blockquote>
-<p>给定</p>
-<ul>
-<li>交通参与者（例如行人、骑车人、车辆）在过去一段时间的路径/轨迹</li>
-<li>道路信息（例如道路结构、交通灯信息）</li>
-<li>相关交通参与者过去一段时间对路径/轨迹等</li>
-</ul>
-<p>对</p>
-<ul>
-<li>未来一段时间的（一段或多段可能）路径/轨迹</li>
-<li>或运动意图</li>
-<li>或占用格栅图</li>
-</ul>
-<p>进行预测。</p>
-</blockquote>
-<p>上面这段文字便定义了问题的输入（“给定”部分）和输出（“对”部分），基于问题的定义，现存的研究有诸多方法，传统的方法如：</p>
-<ul>
-<li>基于运动学和动力学的预测（如卡尔曼滤波），缺点在于没有考虑到环境中其他交通参与者对被预测目标运动的影响；</li>
-<li>考虑了环境因素的方法，如社会力模型、逆强化学习等。</li>
-</ul>
-<p><strong>基于deep learning的方法可以大致分为</strong>：</p>
-<ul>
-<li>循环神经网络（RNN）方法，由于轨迹具有明显的时序信息，通过RNN对时间维度建模；</li>
-<li>卷积神经网络（CNN）方法，将轨迹和环境信息编码成图的形式（例如多通道的鸟瞰图），用CNN方法进行建模。在比赛中的baseline和大多数参赛者的方法均基于此；</li>
-<li>其他，例如图神经网络、RNN+CNN的结合等；</li>
-</ul>
-<h3 id="Tips："><a href="#Tips：" class="headerlink" title="Tips："></a>Tips：</h3><p>由于这个官方baseline并不弱，并且为参赛选手提供了便利，因此大多数参赛者都是基于此进行了修改。从赛道上top解决方案[5]来看，有一些重要的修改技巧摘选如下（都是图像比赛的基本操作，但根据问题领域的不同有所调整）：</p>
-<ol>
-<li><h4 id="对样本的筛选："><a href="#对样本的筛选：" class="headerlink" title="对样本的筛选："></a>对样本的筛选：</h4></li>
-<li><ol>
-<li>对训练样本进行筛选，使其与评测样本保持一致。例如在这个赛题中，评测样本基本在未来十帧都有数据，因此在训练样本筛选时也只保留有未来十帧数据的样本；</li>
-</ol>
-</li>
-<li><h4 id="对数据的编码："><a href="#对数据的编码：" class="headerlink" title="对数据的编码："></a>对数据的编码：</h4></li>
-<li><ol>
-<li>历史帧的数目：第一名方案中history_num_frames=30，即构建了66通道的“图像”输入，包括30通道自车运动历史轨迹、30通道他车运动历史轨迹、3通道语义地图、3通道卫星地图；</li>
-<li>其他可以实验的参数：例如“图像”的整体大小、“图像”每个像素点代表的物理范围；</li>
-</ol>
-</li>
-<li><h4 id="数据增强："><a href="#数据增强：" class="headerlink" title="数据增强："></a>数据增强：</h4></li>
-<li><ol>
-<li>图像级增强：如 cutout、模糊、下采样；</li>
-<li>栅格级增强：如 随机丢弃他车数据；</li>
-</ol>
-</li>
-<li><h4 id="对训练过程的加速："><a href="#对训练过程的加速：" class="headerlink" title="对训练过程的加速："></a>对训练过程的加速：</h4><p>lyft官方提供的上述数据栅格编码过程复杂，一次训练中的大部分时间都耗费在CPU上的数据处理中。因此可以优化编码部分代码，解决CPU运算瓶颈，提升多GPU训练效率，有助于在比赛中快速实验；</p>
-</li>
-<li><h4 id="单模型的选择和训练："><a href="#单模型的选择和训练：" class="headerlink" title="单模型的选择和训练："></a>单模型的选择和训练：</h4></li>
-<li><ol>
-<li>第一名方案：EfficientNetB3模型，先用低分辨率图像预训练4个epoch，而后从第5个epoch开始，在原图上用余弦退火和阶梯下降学习率的方式进行训练；</li>
-</ol>
-</li>
-<li><h4 id="多模型的融合："><a href="#多模型的融合：" class="headerlink" title="多模型的融合："></a>多模型的融合：</h4></li>
-<li><ol>
-<li>第一名方案：用不同的数据编码参数训练得到5个模型，用stacking方法进行融合；</li>
-<li>第四名方案：用GMM方法将多模型的多条轨迹采样并拟合成最终的三条轨迹；</li>
-</ol>
-</li>
-</ol>
-
+        
+          <a class="article-more-a" href="/2020/20201216/#more">more >></a>
+        
       
 
       
@@ -1260,11 +1195,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
+                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1284,11 +1219,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
+                <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
+                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1324,11 +1259,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">自动驾驶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1344,11 +1295,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">单片机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+                <a href="javascript:void(0)" class="js-tag color3">cv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1356,11 +1303,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">强化学习</a>
+                <a href="javascript:void(0)" class="js-tag color3">毕设</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">毕设</a>
+                <a href="javascript:void(0)" class="js-tag color5">强化学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1373,10 +1320,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">cv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1413,14 +1356,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">自动驾驶</a>
               </li>
             
             <div class="clearfix"></div>
