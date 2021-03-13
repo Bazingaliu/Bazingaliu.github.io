@@ -202,6 +202,240 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-zuheyouhua" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/20210314/">《组合优化》部分结果整理-1</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2021/20210314/" class="archive-article-date">
+  	<time datetime="2021-03-13T17:11:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-14</time>
+</a>
+        
+      </header>
+    
+
+<div class="article-entry" itemprop="articleBody">
+      
+        <p>《Combinatorial Optimization Theory and Algorithms(6th,2018)》是一本内容相当广泛而全面的教材，但因其证明的晦涩使人望而却步，本文的目的是整理本学期所学内容涉及的相关结果，仅给出概括性描述，如对相关结果感兴趣，可从此书中找到相关内容及引文。</p>
+<ul>
+<li><p>多项式时间算法：算法运行时间为<br>$$<br>O(n^k)<br>$$</p>
+</li>
+<li><p>强多项式时间算法：此问题的运行时间不因输入的数字大小而变动，而是依照输入数据的结构复杂度</p>
+</li>
+<li><p>给定图的极小连通支撑子图是支撑树，我们的目标是找一个最小（权）的树</p>
+</li>
+<li><p><strong>钻孔问题：</strong>在完全图中寻找一条含有所有顶点的最短路(最短的Hamiltonian path)。</p>
+</li>
+<li><p><strong>最小树形图</strong>（带有方向的树）<strong>问题：</strong>在有向图中找一个带有方向的最小支撑树。</p>
+</li>
+<li><p>求解<strong>最小支撑树问题</strong>的“贪婪算法”：</p>
+</li>
+<li><p><strong>Kruskal算法</strong>(多项式时间算法):O(mn) → O(mlogn) → O(mα(m,n))(几乎是线性的)</p>
+</li>
+</ul>
+<p><em>Idea：</em>从一个空图开始，每次增加原图中权最小的边，同时要避开长出圈。</p>
+<ul>
+<li><strong>Prim算法</strong>(多项式时间算法)：O(n2)→O(m+nlogn)（结合Fibonacci堆）→O(mlogβ(n,m))</li>
+</ul>
+<p><em>Idea:</em> 任选一个顶点作为初始集，每次不断选取初始集同剩余集间的最小权边，最终将一个点的初始集长成V(G)。</p>
+<ul>
+<li><p>(<strong>Cheriton, Tarjan 1976</strong>) 平面图的最小支撑树问题能线性时间被求解。</p>
+</li>
+<li><p>平面上n个点的最小支撑树问题能在O(nlogn)时间内被求解。</p>
+</li>
+<li><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/sS0opaQ3hkicicgib9zV8g8a3xvcBcCn6we3b9F2D6Dvx8bd0sjEBUpNpJUGwMhVXibibrKaAQvt1YicmqJPicSgyBN0A/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt></p>
+</li>
+<li><p>(<strong>Karger,Klein,Tarjan 1976</strong>)寻找最小支撑树的一个<strong>随机算法有线性期望</strong>的运行时间。</p>
+</li>
+<li></li>
+<li><p>最小树形图（带有方向的树）问题等价于<strong>最大权分支问题</strong>：</p>
+</li>
+<li><p><strong>Edmonds分支算法</strong> O(mn) →O(m+nlogn)（<strong>Gabow等1986</strong> 用Fibonacci得到）</p>
+</li>
+<li><p>寻求<strong>有向图G中边不交支撑树形图(根节点r)的最大集</strong>的多项式时间算法：目前最有效算法由<strong>Gabow(1995)</strong>给出。</p>
+</li>
+<li><p>处理更困难的组合最优化问题最常见的子问题：<strong>最小支撑树+最短路。</strong></p>
+</li>
+<li><p><strong>非负边权的最短路问题</strong>：</p>
+</li>
+<li><p>如果<strong>所有权值为1</strong>，则最短路问题可直接由BFS求解；</p>
+</li>
+<li><p>对<strong>权值都为正整数</strong>，可将边e替换成长度为c(e)的路，然后再运用BFS(可能增加指数多条边，很笨！)；</p>
+</li>
+<li><p>更为高明的构思是<strong>Dijkstra(1959)算法</strong>(已知最好的强多项式时间算法): O(n2)→ O(m+nlogn)（<strong>Fredman，Tarjan, 1987</strong> 使用Fibonacci堆）；</p>
+</li>
+<li><p>假设权是<strong>固定范围内的整数</strong>（0到C之间的整数），<strong>Dial(1969)</strong>用一个编号为0,…,|V(G)|·C的数组，按照当前的l值去储存顶点，从而得到简单的线性时间算法；</p>
+</li>
+<li><p>对<strong>平面有向图</strong>，<strong>Henzinger等(1997)</strong>给出了线性时间算法；</p>
+</li>
+<li><p>对<strong>非负整数权的无向图</strong>，<strong>Thorup(1999)</strong>找到了线性时间算法。（在无向图中寻找最短路极其困难）</p>
+</li>
+<li><p>一般守恒权（每条边权不需要非负，只要求不存在总权为负的圈(负圈)就好了）</p>
+</li>
+<li><p><strong>Moore-Bellman-Ford算法</strong>(迄今最快的强多项式时间算法)：O(nm)</p>
+</li>
+<li><p>边权为整数且有下界cmin时，<strong>Goldberg(1995)</strong>的缩放尺度法具有运行时间O(√nmlog|cmin|+2)</p>
+</li>
+<li><p>平面图，<strong>Fakcharoenphol和Rao(2006)</strong>阐述了一个O(nlog3n)算法。</p>
+</li>
+<li><p>若G含有负圈，则至今未有多项式时间算法（问题变为NP-hard）</p>
+</li>
+<li><p>对给定一个有向图G，权c:E(G)→R，可在O(nm)时间找到一个可行势，或找到负圈。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>全点对最短路问题</strong>（找一个有向图的所有顶点有序对(s,t)求出最短的s-t路）：</p>
+</li>
+<li><p>调用n次<strong>Moore-Bellman-Ford算法</strong>，每次选定一个s：O(n2m)→O(mn+n2logn)(<strong>P**</strong>ettie 2004**，目前已知最好的时间界)；</p>
+</li>
+</ul>
+<ul>
+<li><p>对于非负权的稠密图，<strong>Chan(2007)</strong>得到界O(n3log3logn/log2n)；</p>
+</li>
+<li><p>对于<strong>所有边权都是较小的正整数</strong>，<strong>Zwick(2002)</strong>运用快速矩阵乘积可以改进Pettie的时间界。</p>
+</li>
+<li><p><strong>Floyd-Warshall**</strong>算法**：O(n3)</p>
+</li>
+<li><p>在<strong>具有守恒权的无向图G</strong>中，求全部点对之间的最短路问题可以在O(n4)时间内解决。<strong>Gabow(1983)</strong>将运行时间改进到O(min{n3,nmlogn})</p>
+</li>
+</ul>
+<ul>
+<li>在一个具有守恒权的有向图中，我们用上述最短路算法容易求出最小总权的圈。</li>
+</ul>
+<ul>
+<li><p>如何求平均权为最小的圈？<strong>最小平均圈问题</strong>。</p>
+</li>
+<li><p><strong>Karp(1978)**</strong>最小平均圈算法**:O(nm) 注：对任意边权的无向图，此算法不能用来求最小平均权的圈。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>最大流问题</strong></p>
+</li>
+<li><p><strong>Ford-Fulkerson(1957**</strong>)最大流算法**：整值容量，指数次增流，存在整值的最大流，所以算法一定在有限步结束。</p>
+</li>
+</ul>
+<p><em>Idea：</em>找可扩路，再沿可扩路增流</p>
+<p>注：如果<strong>允许容量取无理数</strong>，在选择可扩路时运气不好，算法可能不会终止。</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/sS0opaQ3hkicicgib9zV8g8a3xvcBcCn6we8HNpUTnVYz3uQlUKeOEuw3cgaibIQyWficePDcV6oBBGqQACuJ9FOnpA/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt></p>
+<ul>
+<li><strong>Edmonds-Karp(1972)</strong>算法（最大流问题的第一个多项式时间算法）O(m2n)（至多有mn/2次增流，每次增流运用BFS的时间是O(m)）</li>
+</ul>
+<p><em>Idea.</em> 把任选一条可扩路修改为找一条最短的可扩路。</p>
+<ul>
+<li>分层图容易由BFS在O(m)时间构造出来。</li>
+<li><strong>Dinic算法</strong>（多项式时间算法）：至多进行n-1个阶段，每个阶段O(nm)→O(n2)</li>
+</ul>
+<p><strong>Sleator, Tarjan(1983)</strong>用一种称为动态树的数据结构使得Dinic算法成为最大流问题的O(mnlogn)算法</p>
+<ul>
+<li><p><strong>Fujishige(2003)算法</strong>（弱多项式时间算法，简单，缩放尺度技术）：对简单有向图G及整容量可在O(mnlogumax)时间内正确求解最大流问题。</p>
+</li>
+<li><p><strong>Goldberg,Tarjan(1988)**</strong>推流-重标算法<strong>：O(n2√m</strong>)<strong>→O(nmlog(n2/m))（</strong>Goldberg,Tarjan 1988<strong>）→O(nmlog2+m/(nlogn)n)(</strong>King, Rao, Tarjan 1994**)</p>
+</li>
+<li><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/sS0opaQ3hkicicgib9zV8g8a3xvcBcCn6wephibeIZvAjhyp4QFqUba13CxUVVG1JM7ltqTibezTnNr12M4eRib9CTcg/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt></p>
+</li>
+<li><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/sS0opaQ3hkicicgib9zV8g8a3xvcBcCn6weibFz628kLuWVKd44pakqjof1m7H5Sex9UYKYCe4o3v5mXMdHiarGwaKA/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt></p>
+</li>
+</ul>
+<ul>
+<li><p>一个具有n个顶点及m条边的<strong>最小费用流问题</strong>的实例可以变换为等价的<strong>Hitchcock运输问题</strong>的实例，其中有n+m个顶点及2m条边。</p>
+</li>
+<li><p>求解最小费用流的<strong>最小平均圈消去算法</strong>(强多项式时间算法)：O(m3n2logn)</p>
+</li>
+</ul>
+<p><em>Idea.</em> 首先用最大流算法求出一个b-流，然后逐次沿负权的可扩圈增流，直到没有这样的圈为止，为得到多项式的运行时间，每次选择一个平均权最小的圈是有必要的。</p>
+<ul>
+<li><strong>容量缩放算法</strong>(最小费用流问题的第一个多项式时间算法)：O(n(m+nlogn)logbmax)</li>
+<li><strong>Orlin算法</strong>(已知最快捷的强多项式时间算法)：只能处理无容量限制问题 O(nlogm(m+nlogn))</li>
+<li><p>原始的<strong>网络单纯形法</strong>不是多项式时间算法，但它在实用上是十分有效的。<strong>Orlin(1997)</strong>提出一种变形，可在多项式时间运行。多项式时间的<strong>对偶网路单纯形法</strong>由<strong>Orlin, Plotkin</strong>与<strong>Tardos(1993)</strong>以及<strong>Armstrong与Jim(1997)</strong>得到。</p>
+</li>
+<li><p><strong>Ford与Fulkerson(1958)：</strong>动态最大流（每条边上的流量可以随时间变化，而进入一条边的流要在规定的延迟时间之后才能到达另一端）问题可以用同最小费用流问题一样的运行时间求解。</p>
+</li>
+<li><strong>Hoppe与Tardos(2000)</strong>运用子模函数最小化解决了<strong>最速转运问题</strong>，其中有多源多汇且有整数传输时间。</li>
+<li><strong>Klinz, Woeginger(2004)</strong>证明了求最小费用动态流是NP-hard的。</li>
+</ul>
+<hr>
+<p><strong>附录：一些有价值的结论</strong></p>
+<ul>
+<li><p>关于阶乘的一个不等式</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/sS0opaQ3hkicicgib9zV8g8a3xvcBcCn6wegtovZLRCvicmEyaDH3LXFrGIa9kY8bVib0aF3aKnMPr5gibAhp22X6UCQ/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt></p>
+</li>
+<li><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/sS0opaQ3hkicicgib9zV8g8a3xvcBcCn6weQOcafpf5lqaUjbwvy8wTs4UxEicibLqbdAVb0ntYHId51MGHOZKQ5vPA/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+</li>
+<li><p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/sS0opaQ3hkicicgib9zV8g8a3xvcBcCn6weV2E4jNIFlRD8h5WkH9DTGo7rdqUwDp3m4ExZntmKORkA5h3JFTrehg/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+</li>
+<li><p>按照边的权重排边可以使用合并整序算法，时间复杂度O(mlogm)。</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/sS0opaQ3hkicicgib9zV8g8a3xvcBcCn6weXRvmfN2yuZbatGk83ZgticzMyGjda5PjZjOWnrKMQnEvpLgJOrf8uTw/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt></p>
+</li>
+<li><p>判定一个至多有n条边的图中的圈能在O(n)内完成(用DFS\BFS来完成。</p>
+</li>
+<li><p>满足<br>$$<br>|E(G)|&gt;\binom{|V(G)|-1}{2}<br>$$<br>的任一无向图G是连通的。</p>
+</li>
+</ul>
+<hr>
+<p><em>就像格罗滕迪克所说：<strong>“构成一个研究者创造力和想象力的本质，是他们聆听事情内部声音的能力。</strong>”这里没有等级高下，没有阶层之分，在对未知的探索前人人平等，每个人都拥有绝对的自由。</em></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">-优化理论</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/20210314/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-kaggle-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -969,88 +1203,6 @@
 
 
   
-    <article id="post-NCS-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/20201028/">树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(2)</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/20201028/" class="archive-article-date">
-  	<time datetime="2020-10-28T10:18:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-28</time>
-</a>
-        
-      </header>
-    
-
-<div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>接上一章，分别在树莓派和Windows上安装了NCS环境，接下来进行格式转换，在windows训练Caffe或TensorFlow模型，编译成NCS可以执行的graph；测试端则面向ncs python mvnc api编程，可以运行在树莓派上raspbian stretch版本，也可以运行在训练端这种机器上。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/20201028/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Intel-Neural-Compute-stick</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/20201028/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1188,18 +1340,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -1212,7 +1352,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1220,7 +1368,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
+                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1229,6 +1377,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">slam</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1260,35 +1412,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">单片机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">cv</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">强化学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1304,7 +1428,39 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">强化学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">毕设</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">cv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1312,7 +1468,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
+                <a href="javascript:void(0)" class="js-tag color3">招聘</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1336,11 +1492,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
+                <a href="javascript:void(0)" class="js-tag color1">-优化理论</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+                <a href="javascript:void(0)" class="js-tag color4">GAN</a>
               </li>
              
               <li class="article-tag-list-item">

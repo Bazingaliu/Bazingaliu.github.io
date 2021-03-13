@@ -7,23 +7,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
-  <title>DeepLearning.ai作业:(5-1)-- 循环神经网络（Recurrent Neural Networks）（3） | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+  <title>Archives: 2021/3 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第三个作业是用LSTM来生成爵士乐。">
-<meta name="keywords" content="homework,dl.ai">
-<meta property="og:type" content="article">
-<meta property="og:title" content="DeepLearning.ai作业:(5-1)-- 循环神经网络（Recurrent Neural Networks）（3）">
-<meta property="og:url" content="http://yuanquanquan.top/2018/dl-ai-5-1h3/index.html">
+  <meta name="description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta name="keywords" content="人工智能、计算机、机器学习、linux、程序员">
+<meta property="og:type" content="website">
+<meta property="og:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
+<meta property="og:url" content="http://yuanquanquan.top/archives/2021/03/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="第三个作业是用LSTM来生成爵士乐。">
+<meta property="og:description" content="人工智能、计算机、机器学习、linux、程序员">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29ly1fwcgolo43mj21sm0ryq6x.jpg">
-<meta property="og:updated_time" content="2018-10-23T12:16:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DeepLearning.ai作业:(5-1)-- 循环神经网络（Recurrent Neural Networks）（3）">
-<meta name="twitter:description" content="第三个作业是用LSTM来生成爵士乐。">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
+<meta name="twitter:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
+<meta name="twitter:description" content="人工智能、计算机、机器学习、linux、程序员">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -204,280 +200,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-dl-ai-5-1h3" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      DeepLearning.ai作业:(5-1)-- 循环神经网络（Recurrent Neural Networks）（3）
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2021/20210314/" class="archive-article-date">
+  	<time datetime="2021-03-13T17:11:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-14</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/20210314/">《组合优化》部分结果整理-1</a>
     </h1>
   
 
-        <!--显示阅读次数-->
-
-  <br/>
-  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
-  <span class="icon-sort"></span>
-  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
-            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
-  </span>
-  </a>
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2018/dl-ai-5-1h3/" class="archive-article-date">
-  	<time datetime="2018-10-18T08:20:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-18</time>
-</a>
-        
-      </header>
-    
-
-<div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg" alt></p>
-<p>第三个作业是用LSTM来生成爵士乐。</p>
-<a id="more"></a>
-<h1 id="Part3-Improvise-a-Jazz-Solo-with-an-LSTM-Network"><a href="#Part3-Improvise-a-Jazz-Solo-with-an-LSTM-Network" class="headerlink" title="Part3:Improvise a Jazz Solo with an LSTM Network"></a>Part3:Improvise a Jazz Solo with an LSTM Network</h1><p>我们已经对音乐数据做了预处理，以”values”来表示。可以非正式地将每个”value”看作一个音符，它包含音高和持续时间。 例如，如果您按下特定钢琴键0.5秒，那么您刚刚弹奏了一个音符。 在音乐理论中，”value” 实际上比这更复杂。 特别是，它还捕获了同时播放多个音符所需的信息。 例如，在播放音乐作品时，可以同时按下两个钢琴键（同时播放多个音符生成所谓的“和弦”）。 但是这里我们不需要关系音乐理论的细节。对于这个作业，你需要知道的是，我们获得一个”values”的数据集，并将学习一个RNN模型来生成一个序列的”values”。</p>
-<p>我们的音乐生成系统将使用78个独特的值。</p>
-<ul>
-<li>X: 这是一个（m，Tx，78）维数组。 m 表示样本数量，Tx 表示时间步(也即序列的长度)，在每个时间步，输入是78个不同的可能值之一，表示为一个one-hot向量。 因此，例如，X [i，t，：]是表示第i个示例在时间t的值的one-hot向量。</li>
-<li>Y: 与X基本相同，但向左（向前）移动了一步。 与恐龙分配类似，使用先前值预测下一个值，所以我们的序列模型将尝试预测给定的x⟨t⟩。 但是，Y中的数据被重新排序为维（Ty，m，78），其中Ty = Tx。 这种格式使得稍后进入LSTM更方便。</li>
-<li>n_value: 数据集中独立”value”的个数，这里是78</li>
-<li>indices_values: python 字典：key 是0-77，value 是特定音符</li>
-</ul>
-<p>模型结构如下：</p>
-<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fwcgolo43mj21sm0ryq6x.jpg" alt></p>
-<p>这里用了3个keras函数来定义：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">reshapor = Reshape((<span class="number">1</span>, <span class="number">78</span>))                        <span class="comment"># Used in Step 2.B of djmodel(), below</span></span><br><span class="line">LSTM_cell = LSTM(n_a, return_state = <span class="keyword">True</span>)         <span class="comment"># Used in Step 2.C</span></span><br><span class="line">densor = Dense(n_values, activation=<span class="string">'softmax'</span>)     <span class="comment"># Used in Step 2.D</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: djmodel</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">djmodel</span><span class="params">(Tx, n_a, n_values)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Implement the model</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    Tx -- length of the sequence in a corpus</span></span><br><span class="line"><span class="string">    n_a -- the number of activations used in our model</span></span><br><span class="line"><span class="string">    n_values -- number of unique values in the music data </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    model -- a keras model with the </span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Define the input of your model with a shape </span></span><br><span class="line">    X = Input(shape=(Tx, n_values))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Define s0, initial hidden state for the decoder LSTM</span></span><br><span class="line">    a0 = Input(shape=(n_a,), name=<span class="string">'a0'</span>)</span><br><span class="line">    c0 = Input(shape=(n_a,), name=<span class="string">'c0'</span>)</span><br><span class="line">    a = a0</span><br><span class="line">    c = c0</span><br><span class="line"></span><br><span class="line">    <span class="comment">### START CODE HERE ### </span></span><br><span class="line">    <span class="comment"># Step 1: Create empty list to append the outputs while you iterate (≈1 line)</span></span><br><span class="line">    outputs = []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Step 2: Loop</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> range(Tx):</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Step 2.A: select the "t"th time step vector from X. </span></span><br><span class="line">        x = Lambda(<span class="keyword">lambda</span> x: X[:,t,:])(X)</span><br><span class="line">        <span class="comment"># Step 2.B: Use reshapor to reshape x to be (1, n_values) (≈1 line)</span></span><br><span class="line">        x = reshapor(x)</span><br><span class="line">        <span class="comment"># Step 2.C: Perform one step of the LSTM_cell</span></span><br><span class="line">        a, _, c = LSTM_cell(x, initial_state=[a, c])</span><br><span class="line">        <span class="comment"># Step 2.D: Apply densor to the hidden state output of LSTM_Cell</span></span><br><span class="line">        out = densor(a)</span><br><span class="line">        <span class="comment"># Step 2.E: add the output to "outputs"</span></span><br><span class="line">        outputs.append(out)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Step 3: Create model instance</span></span><br><span class="line">    model = Model(inputs=[X, a0, c0], outputs=outputs)</span><br><span class="line"></span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model = djmodel(Tx = 30 , n_a = 64, n_values = 78)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">opt = Adam(lr=0.01, beta_1=0.9, beta_2=0.999, decay=0.01)</span><br><span class="line"></span><br><span class="line">model.compile(optimizer=opt, loss=&apos;categorical_crossentropy&apos;, metrics=[&apos;accuracy&apos;])</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m = 60</span><br><span class="line">a0 = np.zeros((m, n_a))</span><br><span class="line">c0 = np.zeros((m, n_a))</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.fit([X, a0, c0], list(Y), epochs=100)</span><br></pre></td></tr></table></figure>
-<h2 id="生成音乐的模型"><a href="#生成音乐的模型" class="headerlink" title="生成音乐的模型"></a>生成音乐的模型</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: music_inference_model</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">music_inference_model</span><span class="params">(LSTM_cell, densor, n_values = <span class="number">78</span>, n_a = <span class="number">64</span>, Ty = <span class="number">100</span>)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Uses the trained "LSTM_cell" and "densor" from model() to generate a sequence of values.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    LSTM_cell -- the trained "LSTM_cell" from model(), Keras layer object</span></span><br><span class="line"><span class="string">    densor -- the trained "densor" from model(), Keras layer object</span></span><br><span class="line"><span class="string">    n_values -- integer, umber of unique values</span></span><br><span class="line"><span class="string">    n_a -- number of units in the LSTM_cell</span></span><br><span class="line"><span class="string">    Ty -- integer, number of time steps to generate</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    inference_model -- Keras model instance</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Define the input of your model with a shape </span></span><br><span class="line">    x0 = Input(shape=(<span class="number">1</span>, n_values))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Define s0, initial hidden state for the decoder LSTM</span></span><br><span class="line">    a0 = Input(shape=(n_a,), name=<span class="string">'a0'</span>)</span><br><span class="line">    c0 = Input(shape=(n_a,), name=<span class="string">'c0'</span>)</span><br><span class="line">    a = a0</span><br><span class="line">    c = c0</span><br><span class="line">    x = x0</span><br><span class="line"></span><br><span class="line">    <span class="comment">### START CODE HERE ###</span></span><br><span class="line">    <span class="comment"># Step 1: Create an empty list of "outputs" to later store your predicted values (≈1 line)</span></span><br><span class="line">    outputs = []</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Step 2: Loop over Ty and generate a value at every time step</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> range(Ty):</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Step 2.A: Perform one step of LSTM_cell (≈1 line)</span></span><br><span class="line">        a, _, c = LSTM_cell(x, initial_state=[a, c])</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Step 2.B: Apply Dense layer to the hidden state output of the LSTM_cell (≈1 line)</span></span><br><span class="line">        out = densor(a)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Step 2.C: Append the prediction "out" to "outputs". out.shape = (None, 78) (≈1 line)</span></span><br><span class="line">        outputs.append(out)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Step 2.D: Select the next value according to "out", and set "x" to be the one-hot representation of the</span></span><br><span class="line">        <span class="comment">#           selected value, which will be passed as the input to LSTM_cell on the next step. We have provided </span></span><br><span class="line">        <span class="comment">#           the line of code you need to do this. </span></span><br><span class="line">        x = Lambda(one_hot)(out)</span><br><span class="line">        </span><br><span class="line">    <span class="comment"># Step 3: Create model instance with the correct "inputs" and "outputs" (≈1 line)</span></span><br><span class="line">    inference_model = Model(inputs=[x0, a0, c0], outputs=outputs)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> inference_model</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inference_model = music_inference_model(LSTM_cell, densor, n_values = 78, n_a = 64, Ty = 50)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x_initializer = np.zeros((1, 1, 78))</span><br><span class="line">a_initializer = np.zeros((1, n_a))</span><br><span class="line">c_initializer = np.zeros((1, n_a))</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: predict_and_sample</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict_and_sample</span><span class="params">(inference_model, x_initializer = x_initializer, a_initializer = a_initializer, </span></span></span><br><span class="line"><span class="function"><span class="params">                       c_initializer = c_initializer)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Predicts the next value of values using the inference model.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    inference_model -- Keras model instance for inference time</span></span><br><span class="line"><span class="string">    x_initializer -- numpy array of shape (1, 1, 78), one-hot vector initializing the values generation</span></span><br><span class="line"><span class="string">    a_initializer -- numpy array of shape (1, n_a), initializing the hidden state of the LSTM_cell</span></span><br><span class="line"><span class="string">    c_initializer -- numpy array of shape (1, n_a), initializing the cell state of the LSTM_cel</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    results -- numpy-array of shape (Ty, 78), matrix of one-hot vectors representing the values generated</span></span><br><span class="line"><span class="string">    indices -- numpy-array of shape (Ty, 1), matrix of indices representing the values generated</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">### START CODE HERE ###</span></span><br><span class="line">    <span class="comment"># Step 1: Use your inference model to predict an output sequence given x_initializer, a_initializer and c_initializer.</span></span><br><span class="line">    pred = inference_model.predict([x_initializer, a_initializer, c_initializer])</span><br><span class="line">    <span class="comment"># Step 2: Convert "pred" into an np.array() of indices with the maximum probabilities</span></span><br><span class="line">    indices = np.argmax(pred, axis=<span class="number">-1</span>)</span><br><span class="line">    <span class="comment"># Step 3: Convert indices to one-hot vectors, the shape of the results should be (1, )</span></span><br><span class="line">    results = to_categorical(indices, num_classes=x_initializer.shape[<span class="number">-1</span>])</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> results, indices</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">out_stream = generate_music(inference_model)</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">-优化理论</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
+          
 
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yuanquanquan.top/2018/dl-ai-5-1h3/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/dl-ai-5-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          DeepLearning.ai笔记:(5-2) -- 自然语言处理与词嵌入(NLP and Word Embeddings)
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/dl-ai-5-1h2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">DeepLearning.ai作业:(5-1)-- 循环神经网络（Recurrent Neural Networks）（2）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part3-Improvise-a-Jazz-Solo-with-an-LSTM-Network"><span class="toc-number">1.</span> <span class="toc-text">Part3:Improvise a Jazz Solo with an LSTM Network</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#生成音乐的模型"><span class="toc-number">1.1.</span> <span class="toc-text">生成音乐的模型</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  <div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="dl-ai-5-1h3" data-title="DeepLearning.ai作业:(5-1)-- 循环神经网络（Recurrent Neural Networks）（3）" data-url="http://yuanquanquan.top/2018/dl-ai-5-1h3/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
-<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "http://yuanquanquan.top/2018/dl-ai-5-1h3/",
-  owner: 'Bazingaliu',
-  repo: 'Bazingaliu.github.io',
-  oauth: {
-    client_id: '86465678bf992f29a879',
-    client_secret: 'e465ff4beea46850d31dc2ebf022410154c0ddac',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
+    
 
 
           </div>
@@ -517,8 +293,8 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
