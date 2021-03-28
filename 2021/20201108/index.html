@@ -7,54 +7,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
-  <title>CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+  <title>When Non-Convex Modeling meets Hyperspectral Remote Sensing | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。">
-<meta name="keywords" content="人工智能、计算机、机器学习、linux、程序员">
+  <meta name="description" content="第一次看高光谱相关的paper，大概？由于光谱波段之间的高度相关特性，高光谱图像受到信息冗余的影响，这可能会降低在某些极端条件的情况下对材质的判别能力。此外，高光谱纬度沿着光谱域的逐渐增加，需要大存储功能和高性能计算。因此，对高光谱图像进行降维处理，具有重要的研究和实际意义。 本文从无监督、监督和半监督模型三个方面介绍基于非凸模型的高光谱图像降维方法。">
+<meta name="keywords" content="Hyperspectral">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes">
-<meta property="og:url" content="http://yuanquanquan.top/2019/2019121899/index.html">
+<meta property="og:title" content="When Non-Convex Modeling meets Hyperspectral Remote Sensing">
+<meta property="og:url" content="http://yuanquanquan.top/2021/20201108/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。">
+<meta property="og:description" content="第一次看高光谱相关的paper，大概？由于光谱波段之间的高度相关特性，高光谱图像受到信息冗余的影响，这可能会降低在某些极端条件的情况下对材质的判别能力。此外，高光谱纬度沿着光谱域的逐渐增加，需要大存储功能和高性能计算。因此，对高光谱图像进行降维处理，具有重要的研究和实际意义。 本文从无监督、监督和半监督模型三个方面介绍基于非凸模型的高光谱图像降维方法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/enwoR46SIMsZv8l.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/pKdG1rO62jefQv8.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/mgDRkCdfPTN1WOJ.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/Pg6v4LujYbHOsxf.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/pdmkGTUvf6DZFwE.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/tohJys8YT1OXNbd.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/CZNjq5xyzYuJ3Ic.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/KeWcb2EO5Dmjuka.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/nhXEzgB2YT9iWFQ.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/LdpFMxQURclJiau.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/utpH7GJKLF2gN6B.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/uYoVTODtg7EZq4N.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/uYoVTODtg7EZq4N.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/lhQVo4bW1sqXp5L.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/9cj482YACKQGe7I.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/g6rPTmICwBUWJqR.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/K8SWQbPzkq4ei6a.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/IboNJTvDgh8VOa9.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/aMECFyiT6e4LqS7.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/WGPcwDxmfYCjBKQ.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/XmbDW9JzY65CBTV.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/kIjcnEDtfaFwLy7.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/1zHNh6qZI8iSmDT.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/HkBcDnfxN7YuJSV.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/UykOqSaWmBin1Dl.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/tjIKHS7Q29FC5rV.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/tjIKHS7Q29FC5rV.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/HCJvzeDprl64k7N.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/7kcQDAUlC5Z8a36.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/4WRXklYKHSq2Cpe.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/P8GFQJHRwcnq3s1.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/uUj6KkXVzb1Moli.png">
-<meta property="og:image" content="https://i.loli.net/2020/06/14/xvocP3frquXzMKZ.png">
-<meta property="og:updated_time" content="2021-03-28T07:04:49.916Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210328150717518.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210328152012870.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210328145354512.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210328144250420.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210328144250420.png">
+<meta property="og:updated_time" content="2021-03-28T07:20:30.031Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes">
-<meta name="twitter:description" content="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。">
-<meta name="twitter:image" content="https://i.loli.net/2020/06/14/enwoR46SIMsZv8l.png">
+<meta name="twitter:title" content="When Non-Convex Modeling meets Hyperspectral Remote Sensing">
+<meta name="twitter:description" content="第一次看高光谱相关的paper，大概？由于光谱波段之间的高度相关特性，高光谱图像受到信息冗余的影响，这可能会降低在某些极端条件的情况下对材质的判别能力。此外，高光谱纬度沿着光谱域的逐渐增加，需要大存储功能和高性能计算。因此，对高光谱图像进行降维处理，具有重要的研究和实际意义。 本文从无监督、监督和半监督模型三个方面介绍基于非凸模型的高光谱图像降维方法。">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210328150717518.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -235,14 +207,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-论文笔记-8" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-论文笔记-14" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes
+      When Non-Convex Modeling meets Hyperspectral Remote Sensing
     </h1>
   
 
@@ -258,8 +230,8 @@
 
 <!--显示阅读次数完毕-->
         
-        <a href="/2019/2019121899/" class="archive-article-date">
-  	<time datetime="2019-12-18T11:49:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-18</time>
+        <a href="/2021/20201108/" class="archive-article-date">
+  	<time datetime="2021-03-28T07:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-28</time>
 </a>
         
       </header>
@@ -268,111 +240,29 @@
 <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。</p>
+<p>第一次看高光谱相关的paper，大概？由于光谱波段之间的高度相关特性，高光谱图像受到信息冗余的影响，这可能会降低在某些极端条件的情况下对材质的判别能力。此外，高光谱纬度沿着光谱域的逐渐增加，需要大存储功能和高性能计算。因此，对高光谱图像进行降维处理，具有重要的研究和实际意义。</p>
+<p>本文从<strong>无监督、监督和半监督模型</strong>三个方面介绍基于非凸模型的高光谱图像降维方法。</p>
 </blockquote>
 <a id="more"></a>  
-<h5 id="1、MCNN的多列设计没有显著作用："><a href="#1、MCNN的多列设计没有显著作用：" class="headerlink" title="1、MCNN的多列设计没有显著作用："></a>1、MCNN的多列设计没有显著作用：</h5><p>​    以前的拥挤场景分析工作主要基于<code>multi-scale architectures</code>。它们在该领域取得了很高的性能，但是当网络变得更深时，它们使用的设计也带来了两个显着的缺点：大量的训练时间和无效的分支结构（例如，MCNN ）。我们设计了一个实验来证明MCNN与表1中更深入的常规网络相比表现不佳。</p>
-<pre><code>如我们先前所知，MCNN的每列专用于某一级别的拥塞场景。但是，使用MCNN的有效性可能并不突出。我们在图2中展示了MCNN中三个独立列（代表大，中，小的感受野）所学习的特征，并用ShanghaiTech Part A [18]数据集进行评估。该图中的三条曲线与具有不同拥塞密度的50个测试案例共享非常相似的模式（估计的错误率），这意味着这种分支结构中的每个列学习几乎相同的特征。它违背了MCNN设计的初衷，用于学习每列的不同功能。
-</code></pre><h5 id="2、膨胀卷积优于反卷积"><a href="#2、膨胀卷积优于反卷积" class="headerlink" title="2、膨胀卷积优于反卷积"></a>2、膨胀卷积优于反卷积</h5><p>​    已经在分割任务中证明了膨胀卷积层，其精度得到显着提高，并且它是池化层的良好替代方案。 尽管池化层（例如，最大和平均池化）被广泛用于维持不变性和控制过度拟合，但是它们还显着地降低了空间分辨率，这意味着丢失了特征映射的空间信息。 反卷积层可以减轻信息的丢失，但额外的复杂性和执行延迟可能并不适合所有情况。 膨胀卷积是一个更好的选择，它使用稀疏内核（如图3所示）来交替汇集和卷积层。 该字符在不增加参数数量或计算量的情况下扩大了感受野（例如，添加更多卷积层可以产生更大的感受野但引入更多操作）。<br>​     为了保持特征图的分辨率，与使用<code>卷积+池化+反卷积</code>的方案相比，<code>膨胀卷积</code>显示出明显的优点。我们在图4中选择一个例子用于说明。输入是人群的图像，并且它分别通过两种方法处理以产生具有相同大小的输出。在第一种方法中，输入由具有因子2的最大池化层进行下采样，然后将其传递到具有3X3 Sobel内核的卷积层。由于生成的特征映射仅是原始输入的1/2，因此需要通过解卷积层（双线性插值）<code>bilinear interpolation</code>对其进行上采样。在另一种方法中，我们尝试扩张卷积并使相同的3X3 Sobel内核适应具有因子= 2步幅的扩张内核。输出与输入共享相同的维度。最重要的是，扩张卷积的输出包含更详细的信息。</p>
-<h3 id="贡献："><a href="#贡献：" class="headerlink" title="贡献："></a>贡献：</h3><p>​    在本文中，我们设计了一个更深入的网络，称为<code>CSR-Net</code>，用于计算人群和生成高质量的密度图。我们的模型使用<code>纯卷积层</code>作为主干，以灵活的分辨率支持输入图像。为了限制网络的复杂性，我们在所有层中使用<code>小尺寸</code>的卷积滤波器（如3x3）。我们将VGG-16 [21]的前10层作为前端和<code>膨胀卷积层</code>作为后端部署，以扩大感受域并提取更深的特征而不会丢失分辨率（因为不使用池化层）。</p>
-<h3 id="主要实现："><a href="#主要实现：" class="headerlink" title="主要实现："></a>主要实现：</h3><h5 id="网络结构："><a href="#网络结构：" class="headerlink" title="网络结构："></a>网络结构：</h5><p>​    此前端网络的输出大小是原始输入大小的<code>1/8</code>。如果我们继续堆叠更多卷积层和池化层（VGG-16中的基本组件），输出大小将进一步缩小，并且很难生成高质量的密度映射。 我们尝试将膨胀卷积层作为后端来提取更深层的显着性信息以及维持输出分辨率。<br>​     我们在表3中提出了四种CSRNet网络配置，它们具有相同的前端结构但后端的扩展速率不同。 关于前端，我们采用VGG-16网络（全连接层除外）并仅使用3X3内核。 根据VGG的论文，当使用相同大小的感受野时，使用具有小内核的更多卷积层比使用具有更大内核的更少层更有效。<br>​     通过移除完全连接的层，我们尝试确定需要从VGG-16使用的层数。 最关键的部分是在准确性和资源开销（包括训练时间，内存消耗和参数数量）之间进行权衡。 实验表明，在保持前十层VGG-16 [21]只有3个池化层而不是五层时，可以实现最佳权衡，以抑制由池化操作引起的对输出精度的不利影响。 由于CSRNet的输出（密度图）较小（输入尺寸的1/8），我们选择因子为8的双线性插值进行缩放，并确保<code>输出与输入图像具有相同的分辨率</code>。 使用相同的大小，CSRNet生成的结果与使用<code>PSNR</code>（峰值信噪比）和<code>SSIM</code>（图像中的结构相似性）的基础事实结果相当。</p>
-<h5 id="数据增强："><a href="#数据增强：" class="headerlink" title="数据增强："></a>数据增强：</h5><p>​    我们从不同位置的每个图像裁剪9个patches，原始图像的大小为1/4。 前四个patches包含四分之三的图像而没有重叠，而其他五个patches则从输入图像中随机裁剪。 之后，我们镜像patches，以便我们将训练集加倍。</p>
-<h5 id="损失函数："><a href="#损失函数：" class="headerlink" title="损失函数："></a>损失函数：</h5><p>​    使用简单的方法将CSRNet作为端到端结构进行培训。 前10个卷积层由训练有素的VGG-16进行微调[21]。 对于其他层，初始值来自具有0.01标准偏差的高斯初始化。 随机梯度下降（SGD）在训练期间以1e-6的固定学习率应用。 此外，我们选择欧氏距离来测量地面实况与我们生成的估计密度图之间的差异，这与其他工作类似[19,18,4]。 </p>
-<pre><code>我们还使用和来评估ShanghaiTech Part A数据集上输出密度图的质量。 为了计算和，我们遵循[5]给出的预处理，其中包括密度图调整大小（与原始输入相同的大小），对地面实况和预测密度图进行插值和归一化。     除了人群计数之外，我们在TRANCOS数据集[44]上设置了一个实验，用于车辆计数，以证明我们的方法的稳健性和一般化。 TRANCOS是一个公共交通数据集，包含由监控摄像机捕获的1244个不同拥挤交通场景的图像，其中包含46796个带注释的车辆。 此外，提供感兴趣区域（ROI）用于评估。 图像的视角不固定，图像是从非常不同的场景中收集的。 网格平均值平均绝对误差（GAME）[44]用于此测试中的估值。 GAME定义如下：
-</code></pre><h5 id="代码：https-github-com-leeyeehoo-CSRNet-pytorch"><a href="#代码：https-github-com-leeyeehoo-CSRNet-pytorch" class="headerlink" title="代码：https://github.com/leeyeehoo/CSRNet-pytorch"></a>代码：<a href="https://github.com/leeyeehoo/CSRNet-pytorch" target="_blank" rel="noopener">https://github.com/leeyeehoo/CSRNet-pytorch</a></h5><p>我在根据作者的github（<a href="https://github.com/leeyeehoo/CSRNet-pytorch）" target="_blank" rel="noopener">https://github.com/leeyeehoo/CSRNet-pytorch）</a>, 构建环境时遇到了一些问题。我调试过，百度花了很长时间才解决。写这一章的目的是帮助大家学得更好，少走弯路。</p>
-<hr>
-<h2 id="step1-install"><a href="#step1-install" class="headerlink" title="step1. install"></a>step1. install</h2><p>For the specific installation process, you can refer to the author’s github. Here I simply show the command line of my operation.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">conda create -n CSRNet python=3.6</span><br><span class="line">source activate CSRNet</span><br><span class="line">unzip CSRNet-pytorch-master.zip</span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple torch torchvision</span><br><span class="line">pip install decorator cloudpickle&gt;=0.2.1 dask[array]&gt;=1.0.0 matplotlib&gt;=2.0.0 networkx&gt;=1.8 scipy&gt;=0.17.0 bleach python-dateutil&gt;=2.1 decorator</span><br><span class="line">unzip ShanghaiTech_Crowd_Counting_Dataset.zip</span><br><span class="line">jupyter nbconvert --to script make_dataset.ipynb  #Convert .ipynb file to .py file</span><br></pre></td></tr></table></figure>
-<h2 id="step2-make-dataset-py"><a href="#step2-make-dataset-py" class="headerlink" title="step2.  make_dataset.py"></a>step2.  make_dataset.py</h2><p>I just run the command to convert the <strong>make_dataset.ipynb</strong> file to a <strong>make_dataset.py</strong> file.Now you need to modify the contents of the <strong>make_dataset.py</strong> file.</p>
-<p>Find the location where <strong>root</strong> is, add <strong>def main()</strong> in the above line</p>
-<p><img src="https://i.loli.net/2020/06/14/enwoR46SIMsZv8l.png" alt></p>
-<p>Add these two lines at the end of the <strong>make_dataset.py</strong>, adjust the format of the code</p>
-<p><img src="https://i.loli.net/2020/06/14/pKdG1rO62jefQv8.png" alt></p>
-<p>There is an error in the author’s source code, you need to change the code</p>
-<p>Replace <strong>pts = np.array(zip(np.nonzero(gt)[1], np.nonzero(gt)[0]))</strong> with <strong>pts = np.array(list(zip(np.nonzero(gt)[1], np.nonzero(gt)[0])))</strong> </p>
-<p><img src="https://i.loli.net/2020/06/14/mgDRkCdfPTN1WOJ.png" alt></p>
-<p>Then run the <strong>make_dataset.py</strong> file</p>
-<p><img src="https://i.loli.net/2020/06/14/Pg6v4LujYbHOsxf.png" alt></p>
-<hr>
-<p><strong>The above is just a general summary, then we will run and visualize the line-by-line code.</strong></p>
-<p>I will use this image as an example.</p>
-<p><img src="https://i.loli.net/2020/06/14/pdmkGTUvf6DZFwE.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># coding: utf-8</span><br><span class="line">import h5py</span><br><span class="line">import scipy.io as io</span><br><span class="line">import PIL.Image as Image</span><br><span class="line">import numpy as np</span><br><span class="line">import os</span><br><span class="line">import glob</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">from scipy.ndimage.filters import gaussian_filter </span><br><span class="line">import scipy</span><br><span class="line">import json</span><br><span class="line">from matplotlib import cm as CM</span><br><span class="line">from image import *</span><br><span class="line">from model import CSRNet</span><br><span class="line">import torch</span><br><span class="line">img_path=&apos;D:\\paper\\CSRNet\\CSRNet\\dataset\\Shanghai\\part_A_final\\train_data\\images\\IMG_21.jpg&apos;</span><br><span class="line">mat=&apos;D:\\paper\\CSRNet\\CSRNet\\dataset\\Shanghai\\part_A_final\\train_data\\ground_truth\\GT_IMG_21.mat&apos;</span><br><span class="line">mat = io.loadmat(mat)</span><br><span class="line">img= plt.imread(img_path)</span><br><span class="line">k = np.zeros((img.shape[0],img.shape[1]))</span><br></pre></td></tr></table></figure>
-<p>The following is the information of <strong>k</strong></p>
-<p><img src="https://i.loli.net/2020/06/14/tohJys8YT1OXNbd.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gt = mat[&quot;image_info&quot;][0,0][0,0][0]</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/06/14/CZNjq5xyzYuJ3Ic.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in range(0,len(gt)):</span><br><span class="line">    if int(gt[i][1])&lt;img.shape[0] and int(gt[i][0])&lt;img.shape[1]:</span><br><span class="line">        k[int(gt[i][1]),int(gt[i][0])]=1</span><br><span class="line">gt = k</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/06/14/KeWcb2EO5Dmjuka.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">density = np.zeros(gt.shape, dtype=np.float32)</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/06/14/nhXEzgB2YT9iWFQ.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gt_count = np.count_nonzero(gt)</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/06/14/LdpFMxQURclJiau.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pts = np.array(list(zip(np.nonzero(gt)[1], np.nonzero(gt)[0])))</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/06/14/utpH7GJKLF2gN6B.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">leafsize = 2048</span><br><span class="line"># build kdtree</span><br><span class="line">tree = scipy.spatial.KDTree(pts.copy(), leafsize=leafsize)</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/06/14/uYoVTODtg7EZq4N.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">distances, locations = tree.query(pts, k=4)</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/06/14/uYoVTODtg7EZq4N.png" alt></p>
-<p><img src="https://i.loli.net/2020/06/14/lhQVo4bW1sqXp5L.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">print(&apos;generate density...&apos;)</span><br><span class="line">for i, pt in enumerate(pts):</span><br><span class="line">    pt2d = np.zeros(gt.shape, dtype=np.float32)</span><br><span class="line">    pt2d[pt[1],pt[0]] = 1.</span><br><span class="line">    if gt_count &gt; 1:</span><br><span class="line">        sigma = (distances[i][1]+distances[i][2]+distances[i][3])*0.1</span><br><span class="line">    else:</span><br><span class="line">        sigma = np.average(np.array(gt.shape))/2./2. #case: 1 point</span><br><span class="line">    density += scipy.ndimage.filters.gaussian_filter(pt2d, sigma, mode=&apos;constant&apos;)</span><br><span class="line">print(&apos;done.&apos;)</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/06/14/9cj482YACKQGe7I.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">k = density</span><br><span class="line">with h5py.File(img_path.replace(&apos;.jpg&apos;,&apos;.h5&apos;).replace(&apos;images&apos;,&apos;ground_truth&apos;), &apos;w&apos;) as hf:</span><br><span class="line">        hf[&apos;density&apos;] = k</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/06/14/g6rPTmICwBUWJqR.png" alt></p>
-<p>So far, we have generated true values for the image.  At this point I will sort the above code as follows</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"># coding: utf-8</span><br><span class="line">import h5py</span><br><span class="line">import scipy.io as io</span><br><span class="line">import PIL.Image as Image</span><br><span class="line">import numpy as np</span><br><span class="line">import os</span><br><span class="line">import glob</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">from scipy.ndimage.filters import gaussian_filter </span><br><span class="line">import scipy</span><br><span class="line">import json</span><br><span class="line">from matplotlib import cm as CM</span><br><span class="line">from image import *</span><br><span class="line">from model import CSRNet</span><br><span class="line">import torch</span><br><span class="line">def gaussian_filter_density(gt):</span><br><span class="line">    print(gt.shape)</span><br><span class="line">    density = np.zeros(gt.shape, dtype=np.float32)</span><br><span class="line">    gt_count = np.count_nonzero(gt)</span><br><span class="line">    if gt_count == 0:</span><br><span class="line">        return density</span><br><span class="line"></span><br><span class="line">    # pts = np.array(zip(np.nonzero(gt)[1], np.nonzero(gt)[0]))</span><br><span class="line">    pts = np.array(list(zip(np.nonzero(gt)[1], np.nonzero(gt)[0])))</span><br><span class="line">    leafsize = 2048</span><br><span class="line">    # build kdtree</span><br><span class="line">    tree = scipy.spatial.KDTree(pts.copy(), leafsize=leafsize)</span><br><span class="line">    # query kdtree</span><br><span class="line">    distances, locations = tree.query(pts, k=4)</span><br><span class="line"></span><br><span class="line">    print(&apos;generate density...&apos;)</span><br><span class="line">    for i, pt in enumerate(pts):</span><br><span class="line">        pt2d = np.zeros(gt.shape, dtype=np.float32)</span><br><span class="line">        pt2d[pt[1],pt[0]] = 1.</span><br><span class="line">        if gt_count &gt; 1:</span><br><span class="line">            sigma = (distances[i][1]+distances[i][2]+distances[i][3])*0.1</span><br><span class="line">        else:</span><br><span class="line">            sigma = np.average(np.array(gt.shape))/2./2. #case: 1 point</span><br><span class="line">        density += scipy.ndimage.filters.gaussian_filter(pt2d, sigma, mode=&apos;constant&apos;)</span><br><span class="line">    print(&apos;done.&apos;)</span><br><span class="line">    return density</span><br><span class="line">img_path=&apos;D:\\paper\\CSRNet\\CSRNet\\dataset\\Shanghai\\part_A_final\\train_data\\images\\IMG_21.jpg&apos;</span><br><span class="line">mat=&apos;D:\\paper\\CSRNet\\CSRNet\\dataset\\Shanghai\\part_A_final\\train_data\\ground_truth\\GT_IMG_21.mat&apos;</span><br><span class="line">img_paths = []</span><br><span class="line">img_paths.append(img_path)</span><br><span class="line">    for img_path in img_paths:</span><br><span class="line">        print(img_path)</span><br><span class="line">        mat = io.loadmat(mat)</span><br><span class="line">        img= plt.imread(img_path)        </span><br><span class="line">        k = np.zeros((img.shape[0],img.shape[1]))</span><br><span class="line">        gt = mat[&quot;image_info&quot;][0,0][0,0][0]</span><br><span class="line">        for i in range(0,len(gt)):</span><br><span class="line">            if int(gt[i][1])&lt;img.shape[0] and int(gt[i][0])&lt;img.shape[1]:</span><br><span class="line">                k[int(gt[i][1]),int(gt[i][0])]=1</span><br><span class="line">        k = gaussian_filter_density(k)        </span><br><span class="line">        with h5py.File(img_path.replace(&apos;.jpg&apos;,&apos;.h5&apos;).replace(&apos;images&apos;,&apos;ground_truth&apos;), &apos;w&apos;) as hf:</span><br><span class="line">                hf[&apos;density&apos;] = k</span><br></pre></td></tr></table></figure>
-<hr>
-<p>And….then, let’s plot the true values of the image:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gt_file = h5py.File(img_paths[0].replace(&apos;.jpg&apos;,&apos;.h5&apos;).replace(&apos;images&apos;,&apos;ground_truth&apos;),&apos;r&apos;)</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/06/14/K8SWQbPzkq4ei6a.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groundtruth = np.asarray(gt_file[&apos;density&apos;])</span><br></pre></td></tr></table></figure>
-<p>plot the true values of the image</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.imshow(groundtruth,cmap=CM.jet)</span><br></pre></td></tr></table></figure>
-<p>Calculate how many people are in this picture</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.sum(groundtruth)</span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>Based on the same operation above, I generated true values for all images in the dataset. The following operations are performed on the gpu server.</strong></p>
-<p>That is, run the command line <strong>python make_dataset.py</strong> on the server to get the true value of all the pictures.</p>
-<h2 id="step3-Training"><a href="#step3-Training" class="headerlink" title="step3.  Training"></a>step3.  Training</h2><p><strong>Note</strong>: if you use the python3.x</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. In model.py, change the xrange in line 18 to range</span><br><span class="line">2. In model.py, change line 19 to: list(self.frontend.state_dict().items())[i][1].data[:] = list(mod.state_dict().items())[i][1].data[:]</span><br><span class="line">3. In image.py, change line 40 to: target = cv2.resize(target,(target.shape[1]//8,target.shape[0]//8),interpolation = cv2.INTER_CUBIC)*64</span><br></pre></td></tr></table></figure>
-<ul>
-<li>In  part_A_train.json:change the path of images</li>
-<li>In  part_A_val.json: change the path of images</li>
-</ul>
-<p>run </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train.py part_A_train.json part_A_val.json 0 0</span><br></pre></td></tr></table></figure>
-<h2 id="step4-Testing"><a href="#step4-Testing" class="headerlink" title="step4. Testing"></a>step4. Testing</h2><p>These are our test images. number：182</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbconvert --to script val.ipynb</span><br></pre></td></tr></table></figure>
-<p>Finally, the performance of this model on invisible data is tested. We will use the val.py file to verify the results. Remember to change the path to pre-train weights and images.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python val.py</span><br></pre></td></tr></table></figure>
-<p>The average absolute error value that can be obtained by running this val.py file code</p>
-<p>total ：182</p>
-<p><img src="https://i.loli.net/2020/06/14/IboNJTvDgh8VOa9.png" alt></p>
-<p><img src="https://i.loli.net/2020/06/14/aMECFyiT6e4LqS7.png" alt></p>
-<p>The average absolute error value obtained is 65.96636956602663, which is very good.</p>
-<hr>
-<p>Now let’s examine the predicted values on a single image:</p>
-<p>run</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test_single-image.py</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/06/14/WGPcwDxmfYCjBKQ.png" alt><img src="https://i.loli.net/2020/06/14/XmbDW9JzY65CBTV.png" alt><img src="https://i.loli.net/2020/06/14/kIjcnEDtfaFwLy7.png" alt></p>
-<p>another one</p>
-<p><img src="https://i.loli.net/2020/06/14/1zHNh6qZI8iSmDT.png" alt><img src="https://i.loli.net/2020/06/14/HkBcDnfxN7YuJSV.png" alt><img src="https://i.loli.net/2020/06/14/UykOqSaWmBin1Dl.png" alt></p>
-<p>The effect is not too good，maybe the model is not trained enough，i guess。</p>
-<hr>
-<h2 id="Reading-paper-https-arxiv-org-pdf-1802-10062-pdf"><a href="#Reading-paper-https-arxiv-org-pdf-1802-10062-pdf" class="headerlink" title="Reading paper   https://arxiv.org/pdf/1802.10062.pdf"></a>Reading paper   <a href="https://arxiv.org/pdf/1802.10062.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1802.10062.pdf</a></h2><p>先说数据集用的ShanghaiTech dataset，根据.jpg和.mat处理之后生成train_den文件夹下.csv文件和图片一一对应<img src="https://i.loli.net/2020/06/14/tjIKHS7Q29FC5rV.png" alt></p>
-<p><img src="https://i.loli.net/2020/06/14/tjIKHS7Q29FC5rV.png" alt></p>
-<p>数据集扩充处理再补充一下：使用的是高斯模糊作用于图像中的每个人的头部。所有图像都被裁剪成9块，每块的大小是图像原始大小的1/4。</p>
-<hr>
-<p>空洞卷积也有的博客翻译成膨胀卷积、扩张卷积啥的，anyway，使用扩张卷积是在不增加参数的情况下扩大内核。因此，如果扩张率为1就是中间的图在整个图像上进行卷积。将膨胀率增加到2最右边图它可以替代pooling层</p>
-<p><img src="https://i.loli.net/2020/06/14/HCJvzeDprl64k7N.png" alt></p>
-<p>接下来再说它的数学公式上怎么计算的，</p>
-<p><img src="https://i.loli.net/2020/06/14/7kcQDAUlC5Z8a36.png" alt></p>
-<p>由上公式得到这个([k + (k-1)<em>(r-1)] </em> [k + (k-1)*(r-1)])</p>
-<p><img src="https://i.loli.net/2020/06/14/4WRXklYKHSq2Cpe.png" alt="1554628903758"></p>
-<p><img src="https://i.loli.net/2020/06/14/P8GFQJHRwcnq3s1.png" alt="1554628933425"></p>
-<p><img src="https://i.loli.net/2020/06/14/uUj6KkXVzb1Moli.png" alt="1554628946463"></p>
-<p><img src="https://i.loli.net/2020/06/14/xvocP3frquXzMKZ.png" alt="1554628958176"></p>
-<p>这个过程是：首先预测出给定图像的密度图。如果没有人，像素值pixel value设为0。如果该像素对应于人，则将分配某个预定义值。所以图像中的人数就是总共有的像素值total pixel values </p>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210328150717518.png" alt></p>
+<h2 id="1-Abstract"><a href="#1-Abstract" class="headerlink" title="1. Abstract"></a><strong>1. Abstract</strong></h2><p>由于光谱波段之间的高度相关特性，高光谱图像受到信息冗余的影响，这可能会降低在某些极端条件的情况下对材质的判别能力。此外，高光谱纬度沿着光谱域的逐渐增加，需要大存储功能和高性能计算。因此，对高光谱图像进行降维处理，具有重要的研究和实际意义。</p>
+<p>本文从<strong>无监督、监督和半监督模型</strong>三个方面介绍基于非凸模型的高光谱图像降维方法。</p>
+<h2 id="2-无监督模型"><a href="#2-无监督模型" class="headerlink" title="2. 无监督模型"></a><strong>2. 无监督模型</strong></h2><p><strong>非负矩阵分解（NMF）</strong>是一种常用的无监督学习模型，在NMF模型的基础上，Yan等人提出了图正则化正交NMF（GONMF）的高光谱降维方法，Wen等结合多个特征，对GONMF模型进行了扩展，提高了高光谱图像降维性能。Rasti等人设计了一种正交全变分成分分析（OTVCA）的高光谱特征提取方法。下面是论文中总结的常用正则项，主要有稀疏正则化、图正则化、多图正则化、全变分和低秩图正则化。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210328152012870.png" alt></p>
+<p>另外一种无监督降维方法是<strong>图嵌入</strong>，也称之为<strong>流形学习</strong>，这类方法之间的差异主要是图的构建方式。Ma等人将KNN分类器与代表性的流形学习算法进行了融合，包括局部线性嵌入、拉普拉斯特征图等。Huang等人嵌入了稀疏图结构，通过解决L1范数优化问题，实现了高光谱图像降维。He等人在稀疏图结构的基础上，提出了加权稀疏图，Hong等人则提出了一种新的空间-光谱图结构进行高光谱图像降维，称为RLMR。下面是刚才提到的稀疏图、加权稀疏图、空间-光谱图和稀疏低秩图正则项。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210328145354512.png" alt></p>
+<h2 id="3-监督模型"><a href="#3-监督模型" class="headerlink" title="3. 监督模型"></a><strong>3. 监督模型</strong></h2><p>无监督模型主要是依赖于嵌入不同的先验信息来降低高光谱图像纬度，而监督模型则是<strong>使用标签信息学习类别分离的低维表示</strong>。监督模型可以分为两大类，如下图所示，第一类是与图嵌入和流形学习相关的判别分析，使用标签信息来构建图结构，得到更具判别性的子空间。研究人员提出了稀疏图判别分析、协同图判别分析、特征空间判别分析和空间-光谱局部判别嵌入等一系列方法。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210328144250420.png" alt></p>
+<p>第二类方法是<strong>基于回归的监督降维模型</strong>，Hong等人以拉普拉斯矩阵形式学习低维空间表示，更进一步，Hong等人使用k层线性回归将这个模型扩展为一个深度模型，称之为JPlay，该模型试图通过多层线性建模打开深度网络“黑盒子”。</p>
+<h2 id="4-半监督模型"><a href="#4-半监督模型" class="headerlink" title="4. 半监督模型"></a><strong>4. 半监督模型</strong></h2><p>由于带标签信息的数据获取成本高，联合使用带标签和无标签信息逐渐成为热门的研究方向。半监督学习一种简单的方式是<strong>结合监督和无监督模型</strong>，比如局部判别分析和局部保持投影相结合，以及半监督判别分析（SSDA）等方法，Zhao等人使用标签传播预测的伪标签，进一步提升了SSDA性能。类似的，Wu等人使用Dirichlet过程混合模型生成伪标签，学习了低维高光谱嵌入子空间。</p>
+<p>另外一种方式是在半监督降维任务中模拟人类大脑行为，通过在图结构上自适应学习标签传播过程，提出了迭代多任务学习框架，实现了更高效和更有效的高光谱图像降维。</p>
+<h2 id="5-对比实验分析"><a href="#5-对比实验分析" class="headerlink" title="5. 对比实验分析"></a><strong>5. 对比实验分析</strong></h2><p>下面展示了经过不同降维方法后高光谱图像分类精度。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210328144250420.png" alt></p>
+<h2 id="6-挑战"><a href="#6-挑战" class="headerlink" title="6. 挑战"></a><strong>6. 挑战</strong></h2><p>尽管目前已经提出了许多优秀的高光谱图像降维方法，仍然存在诸多的挑战，论文总结了以下三点：</p>
+<p><strong>Optimal Subspace Dimension：最优的子空间维度</strong>，降维后的高光谱图像维度是降维方法最关键的参数，尽管目前已经有一些子空间维度估计算法，仍然需要很多先验信息和人类的干预。</p>
+<p><strong>Effects of Noises：噪声的影响</strong>，高光谱图像中存在复杂的噪声，在降维过程中如何避免不同类型和不同强度噪声的影响，仍然存在很大的挑战。</p>
+<p><strong>Robustness and Generalization：鲁棒性和泛化性</strong>，复杂的噪声类型、有限的训练样本影响了降维方法的鲁棒性和泛化性，下一代降维方法应当考虑更鲁棒和智能模型。</p>
+<p>论文地址：<a href="https://arxiv.org/abs/2103.01449" target="_blank" rel="noopener">https://arxiv.org/abs/2103.01449</a></p>
 
       
 
@@ -402,6 +292,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Hyperspectral</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
@@ -467,7 +368,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yuanquanquan.top/2019/2019121899/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yuanquanquan.top/2021/20201108/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -481,18 +382,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/2019122011/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          leetcode 483.最小好进制
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/20191213002/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Fast Online Object Tracking and Segmentation:A Unifying Approach</div>
+    <a href="/2021/202103225/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">写给憨憨姐姐的远程炼丹指南</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -519,7 +411,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1、MCNN的多列设计没有显著作用："><span class="toc-number">1.</span> <span class="toc-text">1、MCNN的多列设计没有显著作用：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2、膨胀卷积优于反卷积"><span class="toc-number">2.</span> <span class="toc-text">2、膨胀卷积优于反卷积</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#贡献："><span class="toc-number"></span> <span class="toc-text">贡献：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主要实现："><span class="toc-number"></span> <span class="toc-text">主要实现：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#网络结构："><span class="toc-number">1.</span> <span class="toc-text">网络结构：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#数据增强："><span class="toc-number">2.</span> <span class="toc-text">数据增强：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#损失函数："><span class="toc-number">3.</span> <span class="toc-text">损失函数：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#代码：https-github-com-leeyeehoo-CSRNet-pytorch"><span class="toc-number">4.</span> <span class="toc-text">代码：https://github.com/leeyeehoo/CSRNet-pytorch</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step1-install"><span class="toc-number"></span> <span class="toc-text">step1. install</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step2-make-dataset-py"><span class="toc-number"></span> <span class="toc-text">step2.  make_dataset.py</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step3-Training"><span class="toc-number"></span> <span class="toc-text">step3.  Training</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step4-Testing"><span class="toc-number"></span> <span class="toc-text">step4. Testing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reading-paper-https-arxiv-org-pdf-1802-10062-pdf"><span class="toc-number"></span> <span class="toc-text">Reading paper   https://arxiv.org/pdf/1802.10062.pdf</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Abstract"><span class="toc-number">1.</span> <span class="toc-text">1. Abstract</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-无监督模型"><span class="toc-number">2.</span> <span class="toc-text">2. 无监督模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-监督模型"><span class="toc-number">3.</span> <span class="toc-text">3. 监督模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-半监督模型"><span class="toc-number">4.</span> <span class="toc-text">4. 半监督模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-对比实验分析"><span class="toc-number">5.</span> <span class="toc-text">5. 对比实验分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-挑战"><span class="toc-number">6.</span> <span class="toc-text">6. 挑战</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -533,7 +425,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="论文笔记-8" data-title="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes" data-url="http://yuanquanquan.top/2019/2019121899/"></div>
+	<div class="ds-thread" data-thread-key="论文笔记-14" data-title="When Non-Convex Modeling meets Hyperspectral Remote Sensing" data-url="http://yuanquanquan.top/2021/20201108/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -564,7 +456,7 @@
 <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yuanquanquan.top/2019/2019121899/",
+  id: "http://yuanquanquan.top/2021/20201108/",
   owner: 'Bazingaliu',
   repo: 'Bazingaliu.github.io',
   oauth: {
