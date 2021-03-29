@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/11/07/4txYD2QhKeBzkf8.png">
 <meta property="og:image" content="https://i.loli.net/2020/11/07/u16zsqjmZkWHCa9.png">
 <meta property="og:image" content="https://i.loli.net/2020/11/07/RKD8G4jzPtwyuJa.png">
-<meta property="og:updated_time" content="2021-03-28T07:13:36.668Z">
+<meta property="og:updated_time" content="2021-03-29T10:42:24.655Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Effective AER Object Classification Using Segmented Probability-Maximization Learning in Spiking Neural Networks">
 <meta name="twitter:description" content="之前因为一些emmmm俗事，很久没看论文了，现在因为要做毕设，又久违看起了论文，这次是浙大普适与智能实验室AAAI 2020的论文《基于脉冲神经网络的事件表示的物体分类方法》">
@@ -243,6 +243,14 @@
 <p>之前因为一些emmmm俗事，很久没看论文了，现在因为要做毕设，又久违看起了论文，这次是浙大普适与智能实验室AAAI 2020的论文《基于脉冲神经网络的事件表示的物体分类方法》</p>
 </blockquote>
 <a id="more"></a>
+
+
+	<div class="row">
+    <embed src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding/5.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
 <p>事件相机是一种神经拟态视觉传感器，通过模拟人类的视网膜机制来记录场景。与传统相机不同，事件相机没有 “帧” 的概念。当它捕捉到视野中任意位置发生了一定程度的光线变化时，就会产生一些像素级的输出（即事件）。一个事件中包括三个信息：事件在2D空间的像素坐标，事件的时间戳，以及事件的极性（1和-1，表示是由光线变亮或变暗触发的）。由于事件相机关注的是场景中的光线变化，因此它只会记录场景中的动态信息，忽略不变的静态冗余信息，从而能显著减少内存使用和能源消耗。</p>
 <p>这种基于事件的数据形式与脉冲神经网络（Spiking Neural Network，SNN）不谋而合。脉冲神经网络通过脉冲传递信息，而脉冲也具有事件的属性。相比传统人工神经网络，脉冲神经网络更具有生物解释性，在处理时空数据的能力上也有更大的潜力。</p>
 <p>然而，将这种新的事件表示与SNN相结合来进行物体分类，还存在着若干挑战。首先，与传统相机的视频流数据形式相比，事件相机产生的事件流是不稳定的。由于事件相机对视觉感受域内的动态信息非常敏感，在场景记录过程中，除了与目标的相关的事件被记录下来，相机抖动和环境光的变化等因素也会产生大量的噪声事件，影响SNN网络中神经元响应的可靠性和网络学习性能。其次，事件相机输出的事件流记录了一段时间内的信息，我们希望SNN的响应能够足够快，以便在提供的测试信息还不完整的情况下，仍达到具有竞争力的准确性水平。</p>
@@ -611,23 +619,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,15 +635,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Intel-Neural-Compute-stick</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -659,19 +647,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
+                <a href="javascript:void(0)" class="js-tag color2">Intel-Neural-Compute-stick</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CVPR</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">自动驾驶</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">slam</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -683,15 +671,31 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">自动驾驶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">slam</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dl.ai</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+                <a href="javascript:void(0)" class="js-tag color5">远程炼丹</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -707,7 +711,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">远程炼丹</a>
+                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -715,7 +719,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Jupyter</a>
+                <a href="javascript:void(0)" class="js-tag color3">量化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -743,23 +747,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Jupyter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">量化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">强化学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">毕设</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -767,15 +759,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">强化学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+                <a href="javascript:void(0)" class="js-tag color3">毕设</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -784,6 +788,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
             
             <div class="clearfix"></div>
