@@ -7,19 +7,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
-  <title>Category: 复健计划 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+  <title>yolov5的openvino部署 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="人工智能、计算机、机器学习、linux、程序员">
-<meta name="keywords" content="人工智能、计算机、机器学习、linux、程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:url" content="http://yuanquanquan.top/categories/笔记/复健计划/index.html">
+  <meta name="description" content="OpenVINO是一个用于提升深度学习模型部署性能的跨平台的工具包，安装和使用都非常简单，下面 demo 视频是在 Mac 机器上运行的例子，安装过程在上面的文档链接中，安装主要是需要下载大量深度框架相关的库和模型，以及 Intel 已经封装好的一些脚本。 之前在神经计算棒上部署过openvino来测试神经棒的速度。 Demo 大致的过程是下载一个预先训练好的模型，这个模型是用来检测图片车辆的一">
+<meta name="keywords" content="openvino">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yolov5的openvino部署">
+<meta property="og:url" content="http://yuanquanquan.top/2021/20210406/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta property="og:description" content="OpenVINO是一个用于提升深度学习模型部署性能的跨平台的工具包，安装和使用都非常简单，下面 demo 视频是在 Mac 机器上运行的例子，安装过程在上面的文档链接中，安装主要是需要下载大量深度框架相关的库和模型，以及 Intel 已经封装好的一些脚本。 之前在神经计算棒上部署过openvino来测试神经棒的速度。 Demo 大致的过程是下载一个预先训练好的模型，这个模型是用来检测图片车辆的一">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210406193810747.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210406193513763.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210406193617693.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210406193652959.png">
+<meta property="og:updated_time" content="2021-04-06T11:43:03.005Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta name="twitter:description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta name="twitter:title" content="yolov5的openvino部署">
+<meta name="twitter:description" content="OpenVINO是一个用于提升深度学习模型部署性能的跨平台的工具包，安装和使用都非常简单，下面 demo 视频是在 Mac 机器上运行的例子，安装过程在上面的文档链接中，安装主要是需要下载大量深度框架相关的库和模型，以及 Intel 已经封装好的一些脚本。 之前在神经计算棒上部署过openvino来测试神经棒的速度。 Demo 大致的过程是下载一个预先训练好的模型，这个模型是用来检测图片车辆的一">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210406193810747.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -204,128 +210,296 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-yolov5的openvino部署" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/20200312/" class="archive-article-date">
-  	<time datetime="2020-03-12T02:36:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/20200312/">【Object Detection】-YOLOV1</a>
+    <h1 class="article-title" itemprop="name">
+      yolov5的openvino部署
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        <!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2021/20210406/" class="archive-article-date">
+  	<time datetime="2021-04-06T05:30:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-06</time>
+</a>
+        
+        <!-- 开始添加字数统计-->
+
+  <div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+      <span class="post-meta-item-text">  字数统计: </span>
+      <span class="post-count">785字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="fa fa-clock-o" aria-hidden="true"></i>
+      <span class="post-meta-item-text">  阅读时长: </span>
+      <span class="post-count">3分</span>
+    </span>
+  </span>
+</div>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  
+<!-- 添加完成 -->
+      </header>
+    
+
+<div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>OpenVINO是一个用于提升深度学习模型部署性能的跨平台的工具包，安装和使用都非常简单，下面 demo 视频是在 Mac 机器上运行的例子，安装过程在上面的文档链接中，安装主要是需要下载大量深度框架相关的库和模型，以及 Intel 已经封装好的一些脚本。</p>
+<p>之前在<a href="https://yuanquanquan.top/2020/20201027/">神经计算棒</a>上部署过openvino来测试神经棒的速度。</p>
+<p>Demo 大致的过程是下载一个预先训练好的模型，这个模型是用来检测图片车辆的一个模型，然后针对例子中的车的图片，并做 Inference 的过程。</p>
+</blockquote>
+<a id="more"></a> 
+<h2 id="软硬件环境"><a href="#软硬件环境" class="headerlink" title="软硬件环境"></a>软硬件环境</h2><ul>
+<li>ubuntu 18.04 64bit</li>
+<li>openvino_2020.3.341</li>
+<li>yolov5 4.0</li>
+</ul>
+<h2 id="openvino是什么"><a href="#openvino是什么" class="headerlink" title="openvino是什么"></a>openvino是什么</h2><p><code>openvino</code>是一个用于解决在<code>intel</code>硬件平台上进行深度学习部署的方案，支持<code>windows</code>、<code>linux</code>和<code>macOS</code>。</p>
+<h2 id="openvino环境搭建"><a href="#openvino环境搭建" class="headerlink" title="openvino环境搭建"></a>openvino环境搭建</h2><p>下载地址：<a href="https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit/download.html" target="_blank" rel="noopener">https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit/download.html</a></p>
+<p>下载后解压并进入目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar xvf l_openvino_toolkit_p_2020.3.341.tgz</span><br><span class="line">cd l_openvino_toolkit_p_2020.3.341</span><br></pre></td></tr></table></figure>
+<p>执行脚本开始按提示安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 或者使用带GUI界面的安装脚本sudo ./install_GUI.sh</span><br><span class="line">sudo ./install.sh</span><br></pre></td></tr></table></figure>
+<p>接下来测试下安装是否成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/intel/openvino/deployment_tools/demo</span><br><span class="line">./demo_security_barrier_camera.sh</span><br><span class="line">./demo_security_barrier_camera.sh -d GPU(测试gpu环境)</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210406193810747.png" alt></p>
+<p>这就说明，<code>openvino</code>的环境安装成功了。</p>
+<p>这里需要注意下，由于，在安装过程中，脚本已经帮我们设置了相关的环境，所以我们去测试时无需做任何设置。但是如果下次开机，或者打开新的<code>terminal</code>，我们就需要重新来设置环境，执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /opt/intel/openvino/bin/setupvars.sh</span><br></pre></td></tr></table></figure>
+<p>或者直接将上述命令写入<code>~/.bashrc</code>中，就不用每次手动敲了。</p>
+<p>目录<code>/opt/intel</code>下有<code>openvino</code>和<code>openvino_2020.3.341</code>2个目录，其实它们是同一个东西，<code>openvino</code>是个软链接文件。</p>
+<h2 id="pt转onnx"><a href="#pt转onnx" class="headerlink" title="pt转onnx"></a>pt转onnx</h2><p>首先准备依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install onnx coremltools networkx defusedxml</span><br></pre></td></tr></table></figure>
+<p>由于目前<code>openvino</code>的版本对<code>onnx opset</code> 11 版本后的支持有问题，因此需要修改文件<code>model/export.py</code>，将原来<code>opset_version</code>由12改为10，如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.onnx.export(model, img, f, verbose=False, opset_version=10, input_names=[&apos;images&apos;],</span><br><span class="line">                    output_names=[&apos;classes&apos;, &apos;boxes&apos;] if y is None else [&apos;output&apos;])</span><br></pre></td></tr></table></figure>
+<p>接下来就可以将<code>yolov5</code>的<code>pt</code>模型转换成<code>onnx</code>格式了，这里使用其自带的<code>yolov5s.pt</code>模型进行测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python models/export.py --weights weights/yolov5s.pt --img-size 640 --batch-size 1</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210406193513763.png" alt></p>
+<p>转换结束后，就会在<code>weights</code>文件夹下生成<code>yolov5s.onnx</code></p>
+<h2 id="onnx转ir"><a href="#onnx转ir" class="headerlink" title="onnx转ir"></a>onnx转ir</h2><p><code>ir</code>即<code>Intermediate Representation</code>，<code>openvino</code>的模型优化器(<code>Model Optimizer</code>)会将给定的模型转化为标准的<code>ir</code>格式，并对其进行优化。</p>
+<p>使用<code>openvino</code>自带的脚本，就可以完成从<code>.onnx</code>到<code>.bin</code>和<code>.xml</code>的转换，命令如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mo.py --input_model weights/yolov5s.onnx</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210406193617693.png" alt></p>
+<h2 id="openvino测试"><a href="#openvino测试" class="headerlink" title="openvino测试"></a>openvino测试</h2><p>这里使用<code>c++</code>语言编写测试程序，下载地址：<a href="https://github.com/fb029ed/yolov5_cpp_openvino，非常感谢作者`fb029ed`的分享" target="_blank" rel="noopener">https://github.com/fb029ed/yolov5_cpp_openvino，非常感谢作者`fb029ed`的分享</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd yolov5_cpp_openvino/demo</span><br><span class="line">mkdir build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">./detect_test</span><br></pre></td></tr></table></figure>
+<p>需要将前面生成的<code>yolov5s.bin</code>、<code>yolov5s.xml</code>和一张测试图片拷贝到<code>res</code>目录下，图片重命名为<code>bus.jpg</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210406193652959.png" alt></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html" target="_blank" rel="noopener">https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html</a></li>
+<li><a href="https://github.com/violet17/yolov5_demo" target="_blank" rel="noopener">https://github.com/violet17/yolov5_demo</a></li>
+<li><a href="https://github.com/fb029ed/yolov5_cpp_openvino" target="_blank" rel="noopener">https://github.com/fb029ed/yolov5_cpp_openvino</a></li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Object Detection</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">openvino</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记/复健计划//" class="article-tag-list-link color5">复健计划</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yuanquanquan.top/2021/20210406/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/20200311403/" class="archive-article-date">
-  	<time datetime="2020-03-11T03:40:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/20210402/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">模型训练完成后自动发送微信、邮件</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/20200311403/">【Object Detection】-Faster R-CNN</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Object Detection</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记/复健计划//" class="article-tag-list-link color5">复健计划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#软硬件环境"><span class="toc-number">1.</span> <span class="toc-text">软硬件环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#openvino是什么"><span class="toc-number">2.</span> <span class="toc-text">openvino是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#openvino环境搭建"><span class="toc-number">3.</span> <span class="toc-text">openvino环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pt转onnx"><span class="toc-number">4.</span> <span class="toc-text">pt转onnx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#onnx转ir"><span class="toc-number">5.</span> <span class="toc-text">onnx转ir</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#openvino测试"><span class="toc-number">6.</span> <span class="toc-text">openvino测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="yolov5的openvino部署" data-title="yolov5的openvino部署" data-url="http://yuanquanquan.top/2021/20210406/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yuanquanquan.top/2021/20210406/",
+  owner: 'Bazingaliu',
+  repo: 'Bazingaliu.github.io',
+  oauth: {
+    client_id: '86465678bf992f29a879',
+    client_secret: 'e465ff4beea46850d31dc2ebf022410154c0ddac',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -365,10 +539,10 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
