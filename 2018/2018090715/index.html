@@ -500,7 +500,7 @@
 <p>在IOS端，没用过，好像是reader 3可以支持inoreader账户，还有个readon也不错，可以去试试。</p>
 <h3 id="widgets-侧边栏"><a href="#widgets-侧边栏" class="headerlink" title="widgets(侧边栏)"></a>widgets(侧边栏)</h3><p>侧边栏的小标签，如果你想自己增加一个，比如我增加了一个联系方式，那么我把<code>communication</code>写在上面，在<code>zh-CN.yml</code>中的<code>sidebar</code>，添加<code>communication: &#39;中文&#39;</code>。</p>
 <p>然后在<code>hueman/layout/widget</code>中添加一个<code>communicaiton.ejs</code>，填入模板：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (site.posts.length) &#123; %&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"widget-wrap widget-list"</span>&gt;</span><br><span class="line">        &lt;h3 <span class="class"><span class="keyword">class</span></span>=<span class="string">"widget-title"</span>&gt;&lt;%= __('sidebar.communiation') %&gt;&lt;/h3&gt;</span><br><span class="line">        &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"widget"</span>&gt;</span><br><span class="line">            &lt;!--这里添加你要写的内容--&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (site.posts.length) &#123; %&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"widget-wrap widget-list"</span>&gt;</span><br><span class="line">        &lt;h3 <span class="class"><span class="keyword">class</span></span>=<span class="string">"widget-title"</span>&gt;<span class="xml"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">__</span>('<span class="attr">sidebar.communiation</span>') %&gt;</span><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line">        &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"widget"</span>&gt;</span><br><span class="line">            &lt;!--这里添加你要写的内容--&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="search-搜索框"><a href="#search-搜索框" class="headerlink" title="search(搜索框)"></a>search(搜索框)</h3><p>默认搜索框是不能够用的，</p>
 <blockquote>
 <p>you need to install <code>hexo-generator-json-content</code> before using Insight Search</p>
@@ -968,15 +968,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">手势识别</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -996,11 +992,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
+                <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
+                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1016,6 +1012,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
@@ -1028,15 +1028,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">homework</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1048,11 +1048,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1068,7 +1068,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
+                <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1076,7 +1076,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">量化</a>
+                <a href="javascript:void(0)" class="js-tag color2">kaggle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1085,6 +1085,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">openvino</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1100,11 +1108,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">typecho</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">openvino</a>
+                <a href="javascript:void(0)" class="js-tag color3">量化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1112,15 +1116,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">cv</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">毕设</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1128,15 +1128,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">毕设</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
+                <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1149,10 +1153,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
               </li>
             
             <div class="clearfix"></div>
