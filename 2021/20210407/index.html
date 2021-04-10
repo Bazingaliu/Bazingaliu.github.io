@@ -7,19 +7,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
-  <title>Archives | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+  <title>《CUDA权威编程指南》笔记 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="人工智能、计算机、机器学习、linux、程序员">
-<meta name="keywords" content="人工智能、计算机、机器学习、linux、程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:url" content="http://yuanquanquan.top/archives/page/9/index.html">
+  <meta name="description" content="CUDA是一种通用的并行计算平台和编程模型，是在C语言上扩展的。借助于CUDA，你可以像编写C语言程序一样实现并行算法。你可以在NIVDIA的GPU平台上用CUDA为多种系统编写应用程序，范围从嵌入式设备、平板电脑、笔记本电脑、台式机工作站到HPC集群。在CUDA编程平台中，GPU并不是一个独立运行的计算平台，而需要与CPU协同工作，可以看成是CPU的协处理器，因此当我们在说GPU并行计算时，其">
+<meta name="keywords" content="CUDA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《CUDA权威编程指南》笔记">
+<meta property="og:url" content="http://yuanquanquan.top/2021/20210407/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta property="og:description" content="CUDA是一种通用的并行计算平台和编程模型，是在C语言上扩展的。借助于CUDA，你可以像编写C语言程序一样实现并行算法。你可以在NIVDIA的GPU平台上用CUDA为多种系统编写应用程序，范围从嵌入式设备、平板电脑、笔记本电脑、台式机工作站到HPC集群。在CUDA编程平台中，GPU并不是一个独立运行的计算平台，而需要与CPU协同工作，可以看成是CPU的协处理器，因此当我们在说GPU并行计算时，其">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210410133904604.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210410134053193.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210410134140428.png">
+<meta property="og:updated_time" content="2021-04-10T06:34:14.642Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta name="twitter:description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta name="twitter:title" content="《CUDA权威编程指南》笔记">
+<meta name="twitter:description" content="CUDA是一种通用的并行计算平台和编程模型，是在C语言上扩展的。借助于CUDA，你可以像编写C语言程序一样实现并行算法。你可以在NIVDIA的GPU平台上用CUDA为多种系统编写应用程序，范围从嵌入式设备、平板电脑、笔记本电脑、台式机工作站到HPC集群。在CUDA编程平台中，GPU并不是一个独立运行的计算平台，而需要与CPU协同工作，可以看成是CPU的协处理器，因此当我们在说GPU并行计算时，其">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210410133904604.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -204,575 +209,523 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-cuda-1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《CUDA权威编程指南》笔记
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2021/20210407/" class="archive-article-date">
+  	<time datetime="2021-04-07T02:05:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-07</time>
+</a>
+        
+        <!-- 开始添加字数统计-->
+
+  <div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+      <span class="post-meta-item-text">  字数统计: </span>
+      <span class="post-count">2.4k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="fa fa-clock-o" aria-hidden="true"></i>
+      <span class="post-meta-item-text">  阅读时长: </span>
+      <span class="post-count">8分</span>
+    </span>
+  </span>
+</div>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  
+<!-- 添加完成 -->
+      </header>
     
+
+<div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>CUDA是一种通用的并行计算平台和编程模型，是在C语言上扩展的。借助于CUDA，你可以像编写C语言程序一样实现并行算法。你可以在NIVDIA的GPU平台上用CUDA为多种系统编写应用程序，范围从嵌入式设备、平板电脑、笔记本电脑、台式机工作站到HPC集群。在CUDA编程平台中，GPU并不是一个独立运行的计算平台，而需要与CPU协同工作，可以看成是CPU的协处理器，因此当我们在说GPU并行计算时，其实是指的基于CPU+GPU的异构计算架构。在异构计算架构中，GPU与CPU通过PCIe总线连接在一起来协同工作，CPU所在位置称为为主机端（host），而GPU所在位置称为设备端（device），如下图所示。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="并行计算"><a href="#并行计算" class="headerlink" title="并行计算"></a>并行计算</h3><ul>
+<li><p>一个大的问题可以被分解成多个小问题，然后在不同的计算资源上并行处 理这些小问题。</p>
+</li>
+<li><p>并行计算的软件和硬件层面是紧密联系的。</p>
+</li>
+<li><p>事实上，并行计算通常涉及两个不同的计算技术领域。</p>
+</li>
+<li><ul>
+<li>串行编程和并行编程</li>
+<li>大多数现代处理器的哈佛体系结构（Harvard architecture）</li>
+<li>计算机架构（硬件方面）</li>
+<li>并行程序设计（软件方面）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="并行性"><a href="#并行性" class="headerlink" title="并行性"></a>并行性</h3><ul>
+<li><p>多层次的并行性设计是架构设计的驱动力。在应用程序中有两种基本的并行类型。</p>
+<blockquote>
+<p>CUDA编程非常适合解决数据并行计算的问题。本书的重点便是如何使用CUDA编程 解决数据并行问题。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="数据并行程序设计"><a href="#数据并行程序设计" class="headerlink" title="数据并行程序设计"></a>数据并行程序设计</h4><ul>
+<li><ul>
+<li>块划分（block partitioning）</li>
+<li>周期划分（cyclic partitioning）</li>
+<li>一组连续的数据被分到一个块内</li>
+<li>每个数据块以任 意次序被安排给一个线程</li>
+<li>线程通常在同一时间只处理一个数据块</li>
+<li>更少的数据被分到一个块内</li>
+<li>相邻的线程处理相邻的数据块</li>
+<li>每个线程可以处理多个数据块</li>
+<li>为一个待处理的线程选择一个新的块，就意味着要跳过和现有线程一样多的数据块</li>
+<li>第一步是把数据依据线程进行划分，使每个线程处理一部分数据</li>
+<li>利用多核系统对数据进行分配</li>
+<li>利用多核系统对任务进行分配</li>
+<li>任务并行</li>
+<li>数据并行</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210410133904604.png" alt></p>
+<h4 id="计算机架构"><a href="#计算机架构" class="headerlink" title="计算机架构"></a>计算机架构</h4><ul>
+<li><p>弗林分类法（Flynn’s Taxonomy）</p>
+</li>
+<li><ul>
+<li>降低延迟</li>
+<li>提高带宽</li>
+<li>提高吞吐量</li>
+<li>延迟是一个操作从开始到完成所需要的时间，常用微秒来表示</li>
+<li>延迟用来衡量完成一次操作的时间</li>
+<li>带宽是单位时间内可 处理的数据量，通常表示为MB/s或GB/s。</li>
+<li>吞吐量是单位时间内成功处理的运算数量，通常表示为gflops（即每秒十亿次的浮点运算数量），特别是在重点使用浮点计算的科学计算领域经常用到</li>
+<li>而吞吐量用来衡量在给定的单位时 间内处理的操作量</li>
+<li>单指令单数据（SISD）(传统计算机，一种串行架构)</li>
+<li>单指令多数据（SIMD） (按串行逻辑思考但对并行数据操作实现并行加速，而其他细节则由编译器来负责)</li>
+<li>多指令单数据（MISD） (每个核心通过使用多个指令流处理同一个数据流)</li>
+<li>多指令多数据（MIMD）(多个核心使用多个指令流来异步处理多个数据流，从而实现空间上的并行性)</li>
+<li>根据指令和数据进入CPU的方式</li>
+<li>实现以下目的，架构取得了许多进展</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>计算机架构也能根据内存组织方式进行进一步划分</p>
+</li>
+<li><ul>
+<li><p>要么是与同一个物理内存相关联</p>
+</li>
+<li><p>要么共用一个低延迟的链路（如PCIExpress或PCIe）</p>
+</li>
+<li><p>多核架构已经永久地取代了单核架构</p>
+</li>
+<li><p>多线程、 MIMD（多指令多数据）、SIMD（单指令多数据），以及指令级并行。</p>
+<p>NVIDIA公司称这 种架构为SIMT（单指令多线程）</p>
+</li>
+<li><p>“众核”（many-core）通常是指有很多核心（几十或几百个）的多核架构</p>
+</li>
+<li><p>GPU代表了一种众核架构，几乎包括了前文描述的所有并行结构：</p>
+</li>
+<li><p>这种系统常被称作集群</p>
+</li>
+<li><p>分布式内存的多节点系统</p>
+</li>
+<li><p>共享内存的多处理器系统</p>
+</li>
+</ul>
+</li>
+<li></li>
+<li><p>GPU核心和CPU核心</p>
+</li>
+<li><ul>
+<li>较轻，用于优化具有简单控制逻辑的数据并行任务，注重并行程序的吞吐量</li>
+<li>较重，用来处理非常复杂的控制逻辑，以优化串行程序执行</li>
+<li>两种核心是完全不同的</li>
+<li>CPU核心</li>
+<li>GPU核心</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="异构计算"><a href="#异构计算" class="headerlink" title="异构计算"></a>异构计算</h3><blockquote>
+<p>GPU指的是离散的设备从同构系统到异构系统的转变是高性能计算 史上的一个里程碑。</p>
+</blockquote>
+<ul>
+<li><p>同构计算使用的是同一架构下的一个或多个处理器来执行一个应用。</p>
+</li>
+<li><p>而异构计算则使用一个处理器架构来执行一个应用，为任务选择适合它的架构，使其最终对性能有所改进。</p>
+</li>
+<li><ul>
+<li>系统的有效利用 受限于增加应用程序设计的复杂性</li>
+</ul>
+</li>
+</ul>
+<h4 id="异构架构"><a href="#异构架构" class="headerlink" title="异构架构"></a>异构架构</h4><ul>
+<li><p>一个典型的异构计算节点</p>
+</li>
+<li><ul>
+<li>GPU不 是一个独立运行的平台而是CPU的协处理器</li>
+<li>通过PCIe总线与基于CPU的 主机相连来进行操作</li>
+<li>两个多核CPU插槽（主机端）</li>
+<li>两个或更多个的众核GPU （设备端）</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210410134053193.png" alt></p>
+<ul>
+<li><p>一个异构应用包括两个部分</p>
+</li>
+<li><ul>
+<li><p>在计算密集型应用中，往往有很多并行数据的程序段。</p>
+<p>GPU就是用来提高这些并行数据的执行速度的。</p>
+</li>
+<li><p>在设备端加载计算密集型任务之前，CPU代码负责管理设备端的环境、代码和数据。</p>
+</li>
+<li><p>主机代码（CPU上运行）</p>
+</li>
+<li><p>设备代码（GPU上运行）</p>
+</li>
+</ul>
+</li>
+<li><p>NVIDIA公司的GPU计算平台</p>
+</li>
+<li><ul>
+<li>Fermi是Tesla系列产品中的一种，用作GPU加速器，近来在高性能计算中获得了广泛应用</li>
+<li>Fermi之后的新一代GPU 计算架构Kepler，于2012年秋季发布，其处理能力相比以往的GPU有很大提升，并且提供 了新的方法来优化和提高GPU并行工作的执行，有望将高性能计算提升到新的高度</li>
+<li>Tegra系列产品是专为移动和嵌入式设备而设计的，如平板电脑和手机</li>
+<li>GeForce面向图形用户</li>
+<li>Quadro用于专业绘图设计</li>
+<li>Tesla用于大规模的并行计算</li>
+</ul>
+</li>
+<li><p>描述GPU容量的两个重要特征</p>
+</li>
+<li><ul>
+<li>CUDA核心数量</li>
+<li>内存大小</li>
+</ul>
+</li>
+<li><p>两种不同的指标来评估GPU的性能</p>
+</li>
+<li><ul>
+<li>内存带宽是从内存中读取或写入数据的比率。</li>
+<li>内存带宽通常用 GB/s表示。</li>
+<li>峰值计算性能是用来评估计算容量的一个指标，通常定义为每秒能处理的单精度或双 精度浮点运算的数量.</li>
+<li>峰值性能通常用GFlops（每秒十亿次浮点运算）或TFlops（每秒万 亿次浮点运算）来表示。</li>
+<li>峰值计算性能</li>
+<li>内存带宽</li>
+</ul>
+</li>
+<li><p>计算能力</p>
+</li>
+<li><ul>
+<li>NVIDIA使用一个术语“计算能力”（compute capability）来描述整个Tesla系列的GPU加 速器的硬件版本。</li>
+</ul>
+</li>
+</ul>
+<h3 id="异构计算范例"><a href="#异构计算范例" class="headerlink" title="异构计算范例"></a>异构计算范例</h3><blockquote>
+<p>GPU计算并不是要取代CPU计算</p>
+</blockquote>
+<blockquote>
+<p>Tip：这一段我就不写了，本章节的主要内容用一张图即可概括</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210410134140428.png" alt></p>
+<h3 id="CUDA：一种异构计算平台"><a href="#CUDA：一种异构计算平台" class="headerlink" title="CUDA：一种异构计算平台"></a>CUDA：一种异构计算平台</h3><h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><blockquote>
+<p>CUDA提供了两层API来管理GPU设备和组织线程。</p>
+<p>这两种API是相互排斥的，你必须使用两者之一，从两者中混合函数调用是不可能的。</p>
+</blockquote>
+<ul>
+<li><p>CUDA驱动API</p>
+</li>
+<li><ul>
+<li>驱动API是一种低级API，它相对来说较难编程</li>
+<li>对于在GPU设备使用上提供了更多的控制</li>
+</ul>
+</li>
+<li><p>CUDA运行时API</p>
+</li>
+<li><ul>
+<li>运行时API是一个高级API</li>
+<li>它在驱动API的上层实现</li>
+<li>每个运行时API函数都被分解为更多传给驱动API的基本运算</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>也就是说Runtime api 可以看作是由Driver api 封装而成的</p>
+</blockquote>
+<h4 id="CUDA程序"><a href="#CUDA程序" class="headerlink" title="CUDA程序"></a>CUDA程序</h4><ul>
+<li><p>一个CUDA程序包含了以下两个部分的混合。</p>
+</li>
+<li><ul>
+<li>在CPU上运行的主机代码</li>
+<li>在GPU上运行的设备代码</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>一个典型的CUDA编程结构包括5个主要步骤</p>
+</li>
+<li><ul>
+<li>分配GPU内存</li>
+<li>从CPU内存中拷贝数据到GPU内存</li>
+<li>调用CUDA内核函数来完成程序指定的运算</li>
+<li>将数据从GPU拷回CPU内存</li>
+<li>释放GPU内存空间</li>
+</ul>
+</li>
+</ul>
+<h4 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h4><ul>
+<li><p>数据局部性在并行编程中是一个非常重要的概念。</p>
+</li>
+<li><ul>
+<li>时间局部性是指在相对较短的时间段内数据和/或资源的重用。</li>
+<li>空间局部性是指在相对较接近的存储空间内数据元素的重用。</li>
+<li>数据局部性指的是数据重用，以降低内存访问的延迟。</li>
+<li>数据局部性有两种基本类型</li>
+</ul>
+</li>
+<li><p>CUDA中有内存层次和线程层次的概念</p>
+</li>
+<li><ul>
+<li><p>内存层次结构</p>
+</li>
+<li><p>线程层次结构</p>
+</li>
+<li><p>例如：</p>
+<p>在CUDA编程模型中使用的共享内存（一个特殊的内存）。</p>
+<p>共享内存可以视为 一个被软件管理的高速缓存，通过为主内存节省带宽来大幅度提高运行速度。</p>
+<p>有了共享内存，你可以直接控制代码的数据局部性。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/cs231n-1h-2/" class="archive-article-date">
-  	<time datetime="2018-09-27T06:17:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/cs231n-1h-2/">cs231n作业：assignment1 - svm</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">cs231n</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">CUDA</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
+        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
+        			<a href="/categories/笔记/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yuanquanquan.top/2021/20210407/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/cs231n-1h-1/" class="archive-article-date">
-  	<time datetime="2018-09-26T04:41:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/20210406/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">yolov5的openvino部署</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/cs231n-1h-1/">cs231n作业：assignment1 - knn</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">cs231n</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一章"><span class="toc-number">1.</span> <span class="toc-text">第一章</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#并行计算"><span class="toc-number">1.1.</span> <span class="toc-text">并行计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并行性"><span class="toc-number">1.2.</span> <span class="toc-text">并行性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据并行程序设计"><span class="toc-number">1.2.1.</span> <span class="toc-text">数据并行程序设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#计算机架构"><span class="toc-number">1.2.2.</span> <span class="toc-text">计算机架构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异构计算"><span class="toc-number">1.3.</span> <span class="toc-text">异构计算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#异构架构"><span class="toc-number">1.3.1.</span> <span class="toc-text">异构架构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异构计算范例"><span class="toc-number">1.4.</span> <span class="toc-text">异构计算范例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CUDA：一种异构计算平台"><span class="toc-number">1.5.</span> <span class="toc-text">CUDA：一种异构计算平台</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#API"><span class="toc-number">1.5.1.</span> <span class="toc-text">API</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CUDA程序"><span class="toc-number">1.5.2.</span> <span class="toc-text">CUDA程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#进阶"><span class="toc-number">1.5.3.</span> <span class="toc-text">进阶</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/2018092017/" class="archive-article-date">
-  	<time datetime="2018-09-20T09:59:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/2018092017/">DeepLearning.ai笔记:(3-2)-- 机器学习策略(2)(ML strategy)</a>
-    </h1>
-  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="cuda-1" data-title="《CUDA权威编程指南》笔记" data-url="http://yuanquanquan.top/2021/20210407/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/2018092016/" class="archive-article-date">
-  	<time datetime="2018-09-20T08:48:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/2018092016/">DeepLearning.ai笔记:(3-1)-- 机器学习策略(1)(ML strategy)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/2018091810/" class="archive-article-date">
-  	<time datetime="2018-09-18T02:35:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/2018091810/">DeepLearning.ai作业:(2-3)-- 超参数调试（Hyperparameter tuning）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/2018091720/" class="archive-article-date">
-  	<time datetime="2018-09-17T12:19:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/2018091720/">DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/2018091711/" class="archive-article-date">
-  	<time datetime="2018-09-17T03:06:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/2018091711/">DeepLearning.ai作业:(2-2)-- 优化算法（Optimization algorithms）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/2018091621/" class="archive-article-date">
-  	<time datetime="2018-09-16T13:42:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/2018091621/">DeepLearning.ai笔记:(2-2)-- 优化算法（Optimization algorithms）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/2018091515/" class="archive-article-date">
-  	<time datetime="2018-09-15T07:58:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/2018091515/">DeepLearning.ai作业:(2-1)-- 深度学习的实践层面（Practical aspects of Deep Learning）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/20180901513/" class="archive-article-date">
-  	<time datetime="2018-09-15T05:37:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/20180901513/">DeepLearning.ai笔记:(2-1)-- 深度学习的实践层面（Practical aspects of Deep Learning）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/8/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/page/10/">10</a><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/10/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yuanquanquan.top/2021/20210407/",
+  owner: 'Bazingaliu',
+  repo: 'Bazingaliu.github.io',
+  oauth: {
+    client_id: '86465678bf992f29a879',
+    client_secret: 'e465ff4beea46850d31dc2ebf022410154c0ddac',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -813,8 +766,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
