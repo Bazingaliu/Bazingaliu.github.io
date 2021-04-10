@@ -5,10 +5,10 @@
     
   <url>
     <loc>http://yuanquanquan.top/2021/20210407/</loc>
-    <lastmod>2021-04-10T06:38:33.624Z</lastmod>
+    <lastmod>2021-04-10T07:05:42.119Z</lastmod>
     <data>
         <display>
-        <title>《CUDA权威编程指南》笔记-持续更新</title>
+        <title>《CUDA权威编程指南》笔记-1</title>
         <pubTime>2021-04-07T02:05:01.000Z</pubTime>
         
         <tag>CUDA</tag>
@@ -1511,6 +1511,31 @@
 
     
   <url>
+    <loc>http://yuanquanquan.top/2018/cs231n-1h-5/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>cs231n作业：assignment1 - features</title>
+        <pubTime>2018-09-27T09:25:31.000Z</pubTime>
+        
+        <tag>cs231n</tag>
+         
+        <tag>homework</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yuanquanquan.top/2018/cs231n-2-1/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
@@ -1567,31 +1592,6 @@
         <display>
         <title>cs231n作业：assignment2 - Convolutional Networks</title>
         <pubTime>2018-10-22T05:49:41.000Z</pubTime>
-        
-        <tag>cs231n</tag>
-         
-        <tag>homework</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2018/cs231n-1h-5/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>cs231n作业：assignment1 - features</title>
-        <pubTime>2018-09-27T09:25:31.000Z</pubTime>
         
         <tag>cs231n</tag>
          
@@ -1682,6 +1682,31 @@
 
     
   <url>
+    <loc>http://yuanquanquan.top/2018/2018091318/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>DeepLearning.ai作业:(1-4)-- 深层神经网络（Deep neural networks）</title>
+        <pubTime>2018-09-13T09:59:43.000Z</pubTime>
+        
+        <tag>homework</tag>
+         
+        <tag>dl.ai</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yuanquanquan.top/2018/20180901513/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
@@ -1705,12 +1730,12 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/2018091318/</loc>
+    <loc>http://yuanquanquan.top/2018/2018091515/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai作业:(1-4)-- 深层神经网络（Deep neural networks）</title>
-        <pubTime>2018-09-13T09:59:43.000Z</pubTime>
+        <title>DeepLearning.ai作业:(2-1)-- 深度学习的实践层面（Practical aspects of Deep Learning）</title>
+        <pubTime>2018-09-15T07:58:33.000Z</pubTime>
         
         <tag>homework</tag>
          
@@ -1753,29 +1778,6 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/2018091720/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）</title>
-        <pubTime>2018-09-17T12:19:55.000Z</pubTime>
-        
-        <tag>dl.ai</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yuanquanquan.top/2018/2018091711/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
@@ -1801,12 +1803,12 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/2018092016/</loc>
+    <loc>http://yuanquanquan.top/2018/2018091720/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai笔记:(3-1)-- 机器学习策略(1)(ML strategy)</title>
-        <pubTime>2018-09-20T08:48:41.000Z</pubTime>
+        <title>DeepLearning.ai笔记:(2-3)-- 超参数调试（Hyperparameter tuning）</title>
+        <pubTime>2018-09-17T12:19:55.000Z</pubTime>
         
         <tag>dl.ai</tag>
          
@@ -1833,6 +1835,29 @@
         
         <tag>homework</tag>
          
+        <tag>dl.ai</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2018/2018092016/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>DeepLearning.ai笔记:(3-1)-- 机器学习策略(1)(ML strategy)</title>
+        <pubTime>2018-09-20T08:48:41.000Z</pubTime>
+        
         <tag>dl.ai</tag>
          
          
@@ -1920,6 +1945,31 @@
 
     
   <url>
+    <loc>http://yuanquanquan.top/2018/dl-ai-4-2h/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>DeepLearning.ai作业:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）</title>
+        <pubTime>2018-10-09T11:20:57.000Z</pubTime>
+        
+        <tag>homework</tag>
+         
+        <tag>dl.ai</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yuanquanquan.top/2018/dl-ai-4-2/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
@@ -1966,12 +2016,12 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-4-2h/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-4-3h/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai作业:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）</title>
-        <pubTime>2018-10-09T11:20:57.000Z</pubTime>
+        <title>DeepLearning.ai作业:(4-3)-- 目标检测（Object detection）</title>
+        <pubTime>2018-10-11T12:15:58.000Z</pubTime>
         
         <tag>homework</tag>
          
@@ -2039,15 +2089,13 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-4-3h/</loc>
+    <loc>http://yuanquanquan.top/2018/dl-ai-5-1/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
         <display>
-        <title>DeepLearning.ai作业:(4-3)-- 目标检测（Object detection）</title>
-        <pubTime>2018-10-11T12:15:58.000Z</pubTime>
+        <title>DeepLearning.ai笔记:(5-1)-- 循环神经网络（Recurrent Neural Networks）</title>
+        <pubTime>2018-10-18T02:26:52.000Z</pubTime>
         
-        <tag>homework</tag>
-         
         <tag>dl.ai</tag>
          
          
@@ -2073,29 +2121,6 @@
         
         <tag>homework</tag>
          
-        <tag>dl.ai</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-5-1/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>DeepLearning.ai笔记:(5-1)-- 循环神经网络（Recurrent Neural Networks）</title>
-        <pubTime>2018-10-18T02:26:52.000Z</pubTime>
-        
         <tag>dl.ai</tag>
          
          
@@ -2162,6 +2187,29 @@
 
     
   <url>
+    <loc>http://yuanquanquan.top/2018/dl-ai-5-2/</loc>
+    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>DeepLearning.ai笔记:(5-2) -- 自然语言处理与词嵌入(NLP and Word Embeddings)</title>
+        <pubTime>2018-10-18T09:00:17.000Z</pubTime>
+        
+        <tag>dl.ai</tag>
+         
+         
+           
+             
+              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
+          
+             
+              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yuanquanquan.top/2018/dl-ai-5-2h/</loc>
     <lastmod>2018-10-23T12:16:33.000Z</lastmod>
     <data>
@@ -2194,54 +2242,6 @@
         <title>DeepLearning.ai笔记:(5-3) -- 序列模型和注意力机制</title>
         <pubTime>2018-10-18T10:39:10.000Z</pubTime>
         
-        <tag>dl.ai</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2018/dl-ai-5-2/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>DeepLearning.ai笔记:(5-2) -- 自然语言处理与词嵌入(NLP and Word Embeddings)</title>
-        <pubTime>2018-10-18T09:00:17.000Z</pubTime>
-        
-        <tag>dl.ai</tag>
-         
-         
-           
-             
-              <breadCrumb title="AI" url="http://yuanquanquan.top/categories/AI/"/>
-          
-             
-              <breadCrumb title="Deep Learning" url="http://yuanquanquan.top/categories/AI/Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2018/2018091515/</loc>
-    <lastmod>2018-10-23T12:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>DeepLearning.ai作业:(2-1)-- 深度学习的实践层面（Practical aspects of Deep Learning）</title>
-        <pubTime>2018-09-15T07:58:33.000Z</pubTime>
-        
-        <tag>homework</tag>
-         
         <tag>dl.ai</tag>
          
          
