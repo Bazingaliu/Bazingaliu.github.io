@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 <script src="https://use.fontawesome.com/853f20a9f9.js"></script>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>Michael Nielsen对weight初始化的解释 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="当我们创建一个神经网络时，我们必须选择weights和biases的初始化方式。我们目前的方式是让weights和biases都使用独立的高斯随机初始化，标准化为均值0，标准差1。这种方式工作得挺好，也挺特别，如果我们回头审视下它，也许能找到设置weights和biase更好的方式，帮助我们的神经网络学得更快。">
-<meta name="keywords" content="Machine Learning &amp; Data">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Michael Nielsen对weight初始化的解释">
 <meta property="og:url" content="http://yuanquanquan.top/2019/20190911215/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="当我们创建一个神经网络时，我们必须选择weights和biases的初始化方式。我们目前的方式是让weights和biases都使用独立的高斯随机初始化，标准化为均值0，标准差1。这种方式工作得挺好，也挺特别，如果我们回头审视下它，也许能找到设置weights和biase更好的方式，帮助我们的神经网络学得更快。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cugtyt.github.io/blog/ml-data/2018/R/weight-initialization1.png">
-<meta property="og:image" content="http://latex.codecogs.com/gif.latex?%5Cinline%20z%20%3D%20%5Csum_j%20w_j%20x_j+b">
+<meta property="og:image" content="http://latex.codecogs.com/gif.latex?%5Cinline%20z%20%3D%20%5Csum_j%20w_j%20x_j&plus;b">
 <meta property="og:image" content="http://latex.codecogs.com/gif.latex?%5Cinline%20x_j">
 <meta property="og:image" content="http://latex.codecogs.com/gif.latex?%5Cinline%20%5Csqrt%7B501%7D%20%5Capprox%2022.4">
 <meta property="og:image" content="https://cugtyt.github.io/blog/ml-data/2018/R/weight-initialization2.png">
 <meta property="og:image" content="http://latex.codecogs.com/gif.latex?%5Cinline%20n_i_n">
 <meta property="og:image" content="http://latex.codecogs.com/gif.latex?%5Cinline%201/%5Csqrt%7Bn_%7B%5Crm%20in%7D%7D">
-<meta property="og:image" content="http://latex.codecogs.com/gif.latex?%5Cinline%20z%20%3D%20%5Csum_j%20w_j%20x_j+b">
+<meta property="og:image" content="http://latex.codecogs.com/gif.latex?%5Cinline%20z%20%3D%20%5Csum_j%20w_j%20x_j&plus;b">
 <meta property="og:image" content="http://latex.codecogs.com/gif.latex?%5Cinline%20%5Csqrt%7B3/2%7D%20%3D%201.22%5Cldots">
 <meta property="og:image" content="https://cugtyt.github.io/blog/ml-data/2018/R/weight-initialization3.png">
 <meta property="og:image" content="https://cugtyt.github.io/blog/ml-data/2018/R/weight-initialization4.png">
 <meta property="og:image" content="https://cugtyt.github.io/blog/ml-data/2018/R/weight-initialization4.png">
 <meta property="og:image" content="http://latex.codecogs.com/gif.latex?%5Cinline%201/%5Csqrt%7Bn_%7B%5Crm%20in%7D%7D">
 <meta property="og:image" content="http://latex.codecogs.com/gif.latex?%5Cinline%201/%5Csqrt%7Bn_%7B%5Crm%20in%7D%7D">
-<meta property="og:updated_time" content="2020-06-14T08:09:27.000Z">
+<meta property="article:published_time" content="2019-11-21T02:50:08.000Z">
+<meta property="article:modified_time" content="2020-06-14T08:09:27.000Z">
+<meta property="article:author" content="Yann｜理科生写给世界的情书">
+<meta property="article:tag" content="Machine Learning &amp; Data">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Michael Nielsen对weight初始化的解释">
-<meta name="twitter:description" content="当我们创建一个神经网络时，我们必须选择weights和biases的初始化方式。我们目前的方式是让weights和biases都使用独立的高斯随机初始化，标准化为均值0，标准差1。这种方式工作得挺好，也挺特别，如果我们回头审视下它，也许能找到设置weights和biase更好的方式，帮助我们的神经网络学得更快。">
 <meta name="twitter:image" content="https://cugtyt.github.io/blog/ml-data/2018/R/weight-initialization1.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
@@ -79,8 +79,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
 <body>
   <div id="loader-wrapper">
     <div id="loader"></div>
@@ -99,10 +99,8 @@
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="http://yuanquanquan.top">Yann｜理科生写给世界的情书</a></h1>
+		  <h1 class="header-author"><a href="http://yuanquanquan.top"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">我愿做你光华中淡淡的一笔</p>
 		
 
 		<nav class="header-menu">
@@ -118,7 +116,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 103 篇
+📚总文章数 105 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -166,10 +164,8 @@
 				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yann｜理科生写给世界的情书</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我愿做你光华中淡淡的一笔<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -646,15 +642,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -674,6 +662,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
@@ -690,10 +682,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
@@ -706,6 +694,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -714,7 +706,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,11 +722,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -758,10 +762,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
@@ -786,6 +786,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
               </li>
              
@@ -806,15 +810,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -822,11 +822,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
             
             <div class="clearfix"></div>

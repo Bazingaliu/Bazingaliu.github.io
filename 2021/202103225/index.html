@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 <script src="https://use.fontawesome.com/853f20a9f9.js"></script>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>写给憨憨姐姐的远程炼丹指南 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="之前写过jupyter notebook如何远程炼丹，今天给憨憨姐姐写一个远程炼丹指南，介绍一下PyCharm的SFTP功能 SFTP有两点要注意：  配置远程连接信息。 设置本地和远程路径的映射。  除了SFTP的映射外，PyCharm还支持直接使用远程的解释器，这样就多了一步：  设置远程解释器。">
-<meta name="keywords" content="远程炼丹">
 <meta property="og:type" content="article">
 <meta property="og:title" content="写给憨憨姐姐的远程炼丹指南">
 <meta property="og:url" content="http://yuanquanquan.top/2021/202103225/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="之前写过jupyter notebook如何远程炼丹，今天给憨憨姐姐写一个远程炼丹指南，介绍一下PyCharm的SFTP功能 SFTP有两点要注意：  配置远程连接信息。 设置本地和远程路径的映射。  除了SFTP的映射外，PyCharm还支持直接使用远程的解释器，这样就多了一步：  设置远程解释器。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210327211520368.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210327212342752.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210327212450603.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210327214902257.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210327215815546.png">
-<meta property="og:updated_time" content="2021-03-27T14:10:44.433Z">
+<meta property="article:published_time" content="2021-03-26T14:14:49.000Z">
+<meta property="article:modified_time" content="2021-03-27T14:10:44.433Z">
+<meta property="article:author" content="Yann｜理科生写给世界的情书">
+<meta property="article:tag" content="远程炼丹">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="写给憨憨姐姐的远程炼丹指南">
-<meta name="twitter:description" content="之前写过jupyter notebook如何远程炼丹，今天给憨憨姐姐写一个远程炼丹指南，介绍一下PyCharm的SFTP功能 SFTP有两点要注意：  配置远程连接信息。 设置本地和远程路径的映射。  除了SFTP的映射外，PyCharm还支持直接使用远程的解释器，这样就多了一步：  设置远程解释器。">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210327211520368.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
@@ -70,8 +70,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
 <body>
   <div id="loader-wrapper">
     <div id="loader"></div>
@@ -90,10 +90,8 @@
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="http://yuanquanquan.top">Yann｜理科生写给世界的情书</a></h1>
+		  <h1 class="header-author"><a href="http://yuanquanquan.top"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">我愿做你光华中淡淡的一笔</p>
 		
 
 		<nav class="header-menu">
@@ -109,7 +107,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 103 篇
+📚总文章数 105 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -157,10 +155,8 @@
 				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yann｜理科生写给世界的情书</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我愿做你光华中淡淡的一笔<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -440,7 +436,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-SFTP配置"><span class="toc-number">1.</span> <span class="toc-text">1. SFTP配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-打开配置界面"><span class="toc-number">1.1.</span> <span class="toc-text">1).打开配置界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-设置连接信息"><span class="toc-number">1.2.</span> <span class="toc-text">2).设置连接信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设置文件夹映射"><span class="toc-number">1.3.</span> <span class="toc-text">3).设置文件夹映射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、远程解释器配置"><span class="toc-number">2.</span> <span class="toc-text">二、远程解释器配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、将项目代码上传到远端服务器"><span class="toc-number">3.</span> <span class="toc-text">三、将项目代码上传到远端服务器</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-SFTP%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">1. SFTP配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%89%93%E5%BC%80%E9%85%8D%E7%BD%AE%E7%95%8C%E9%9D%A2"><span class="toc-number">1.1.</span> <span class="toc-text">1).打开配置界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E8%BF%9E%E6%8E%A5%E4%BF%A1%E6%81%AF"><span class="toc-number">1.2.</span> <span class="toc-text">2).设置连接信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%A0%E5%B0%84"><span class="toc-number">1.3.</span> <span class="toc-text">3).设置文件夹映射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%BF%9C%E7%A8%8B%E8%A7%A3%E9%87%8A%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">二、远程解释器配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%B0%86%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81%E4%B8%8A%E4%BC%A0%E5%88%B0%E8%BF%9C%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">三、将项目代码上传到远端服务器</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -632,15 +628,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,6 +648,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
@@ -676,10 +668,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
@@ -692,6 +680,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -700,7 +692,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -712,11 +708,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -744,10 +748,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
@@ -772,6 +772,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
               </li>
              
@@ -792,15 +796,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -808,11 +808,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
             
             <div class="clearfix"></div>

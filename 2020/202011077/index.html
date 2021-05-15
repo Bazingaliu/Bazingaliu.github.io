@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 <script src="https://use.fontawesome.com/853f20a9f9.js"></script>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>关于脉冲特征提取的想法 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="选的毕设题目是《脉冲信号的智能提取软件设计》，虽然之前基本没处理过脉冲数据，但是数据处理的套路都差不多，无非先进行数据清洗，然后去直流、降噪，再对信号进行加窗（滤波、分析信号得到想要频段内的信号），再通过一些方法，如FFT、小波或者一些其他变换，通过这些变换得出频率成分，异常特征值。">
-<meta name="keywords" content="毕设">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于脉冲特征提取的想法">
 <meta property="og:url" content="http://yuanquanquan.top/2020/202011077/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="选的毕设题目是《脉冲信号的智能提取软件设计》，虽然之前基本没处理过脉冲数据，但是数据处理的套路都差不多，无非先进行数据清洗，然后去直流、降噪，再对信号进行加窗（滤波、分析信号得到想要频段内的信号），再通过一些方法，如FFT、小波或者一些其他变换，通过这些变换得出频率成分，异常特征值。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2020/11/07/LX1V6mlEw7WhiHZ.png">
 <meta property="og:image" content="https://i.loli.net/2020/11/07/kQVEKAPt8RsLW3j.png">
-<meta property="og:updated_time" content="2020-11-07T06:58:46.000Z">
+<meta property="article:published_time" content="2020-11-07T05:33:18.000Z">
+<meta property="article:modified_time" content="2020-11-07T06:58:46.000Z">
+<meta property="article:author" content="Yann｜理科生写给世界的情书">
+<meta property="article:tag" content="毕设">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于脉冲特征提取的想法">
-<meta name="twitter:description" content="选的毕设题目是《脉冲信号的智能提取软件设计》，虽然之前基本没处理过脉冲数据，但是数据处理的套路都差不多，无非先进行数据清洗，然后去直流、降噪，再对信号进行加窗（滤波、分析信号得到想要频段内的信号），再通过一些方法，如FFT、小波或者一些其他变换，通过这些变换得出频率成分，异常特征值。">
 <meta name="twitter:image" content="https://i.loli.net/2020/11/07/LX1V6mlEw7WhiHZ.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
@@ -67,8 +67,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
 <body>
   <div id="loader-wrapper">
     <div id="loader"></div>
@@ -87,10 +87,8 @@
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="http://yuanquanquan.top">Yann｜理科生写给世界的情书</a></h1>
+		  <h1 class="header-author"><a href="http://yuanquanquan.top"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">我愿做你光华中淡淡的一笔</p>
 		
 
 		<nav class="header-menu">
@@ -106,7 +104,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 103 篇
+📚总文章数 105 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -154,10 +152,8 @@
 				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yann｜理科生写给世界的情书</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我愿做你光华中淡淡的一笔<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -428,7 +424,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、使用传统算法对脉冲信号进行提取："><span class="toc-number">1.</span> <span class="toc-text">一、使用传统算法对脉冲信号进行提取：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征提取有哪些方法："><span class="toc-number">2.</span> <span class="toc-text">特征提取有哪些方法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、基于特征编码和一维CNN卷积神经网络"><span class="toc-number">3.</span> <span class="toc-text">二、基于特征编码和一维CNN卷积神经网络</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8%E4%BC%A0%E7%BB%9F%E7%AE%97%E6%B3%95%E5%AF%B9%E8%84%89%E5%86%B2%E4%BF%A1%E5%8F%B7%E8%BF%9B%E8%A1%8C%E6%8F%90%E5%8F%96%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">一、使用传统算法对脉冲信号进行提取：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">特征提取有哪些方法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E4%BA%8E%E7%89%B9%E5%BE%81%E7%BC%96%E7%A0%81%E5%92%8C%E4%B8%80%E7%BB%B4CNN%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">3.</span> <span class="toc-text">二、基于特征编码和一维CNN卷积神经网络</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -620,15 +616,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -648,6 +636,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
@@ -664,10 +656,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
@@ -680,6 +668,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -688,7 +680,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -700,11 +696,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -732,10 +736,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
@@ -760,6 +760,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
               </li>
              
@@ -780,15 +784,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -796,11 +796,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
             
             <div class="clearfix"></div>

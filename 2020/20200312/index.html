@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 <script src="https://use.fontawesome.com/853f20a9f9.js"></script>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>【Object Detection】-YOLOV1 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="YOLO算法简介 YOLO十分简单，一个网络同时对多个物体进行分类和定位，没有proposal的概念，是one-stage实时检测网络的里程碑，标准版在TitanX达到45 fps，快速版达到150fps，但精度不及当时的SOTA网络 YOLO算法使用深度神经网络进行对象的位置检测以及分类，主要的特点是速度够快，而且准确率也很高，采用直接预测目标对象的边界框的方法，将候选区和对象识别这两个阶段合">
-<meta name="keywords" content="Object Detection">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Object Detection】-YOLOV1">
 <meta property="og:url" content="http://yuanquanquan.top/2020/20200312/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="YOLO算法简介 YOLO十分简单，一个网络同时对多个物体进行分类和定位，没有proposal的概念，是one-stage实时检测网络的里程碑，标准版在TitanX达到45 fps，快速版达到150fps，但精度不及当时的SOTA网络 YOLO算法使用深度神经网络进行对象的位置检测以及分类，主要的特点是速度够快，而且准确率也很高，采用直接预测目标对象的边界框的方法，将候选区和对象识别这两个阶段合">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2020/05/03/2RriysU9MONjk3x.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/03/dof2WHi4aJyIDBt.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/03/Bf5LEXw6rZ4xakY.png">
-<meta property="og:updated_time" content="2020-06-09T21:09:03.000Z">
+<meta property="article:published_time" content="2020-03-12T02:36:03.000Z">
+<meta property="article:modified_time" content="2020-06-09T21:09:03.000Z">
+<meta property="article:author" content="Yann｜理科生写给世界的情书">
+<meta property="article:tag" content="Object Detection">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【Object Detection】-YOLOV1">
-<meta name="twitter:description" content="YOLO算法简介 YOLO十分简单，一个网络同时对多个物体进行分类和定位，没有proposal的概念，是one-stage实时检测网络的里程碑，标准版在TitanX达到45 fps，快速版达到150fps，但精度不及当时的SOTA网络 YOLO算法使用深度神经网络进行对象的位置检测以及分类，主要的特点是速度够快，而且准确率也很高，采用直接预测目标对象的边界框的方法，将候选区和对象识别这两个阶段合">
 <meta name="twitter:image" content="https://i.loli.net/2020/05/03/2RriysU9MONjk3x.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
@@ -68,8 +68,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
 <body>
   <div id="loader-wrapper">
     <div id="loader"></div>
@@ -88,10 +88,8 @@
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="http://yuanquanquan.top">Yann｜理科生写给世界的情书</a></h1>
+		  <h1 class="header-author"><a href="http://yuanquanquan.top"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">我愿做你光华中淡淡的一笔</p>
 		
 
 		<nav class="header-menu">
@@ -107,7 +105,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 103 篇
+📚总文章数 105 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -155,10 +153,8 @@
 				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yann｜理科生写给世界的情书</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我愿做你光华中淡淡的一笔<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -468,7 +464,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -660,15 +656,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,6 +676,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
@@ -704,10 +696,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
@@ -720,6 +708,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -728,7 +720,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -740,11 +736,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -772,10 +776,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
@@ -800,6 +800,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
               </li>
              
@@ -820,15 +824,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -836,11 +836,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
             
             <div class="clearfix"></div>

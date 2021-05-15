@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 <script src="https://use.fontawesome.com/853f20a9f9.js"></script>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>DeepLearning.ai笔记:(5-1)-- 循环神经网络（Recurrent Neural Networks） | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="第五门课讲的是序列模型，主要是对RNN算法的应用，如GRU，LSTM算法，应用在词嵌入模型，情感分类，语音识别等领域。 第一周讲的是RNN的基本算法。">
-<meta name="keywords" content="dl.ai">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DeepLearning.ai笔记:(5-1)-- 循环神经网络（Recurrent Neural Networks）">
 <meta property="og:url" content="http://yuanquanquan.top/2018/dl-ai-5-1/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="第五门课讲的是序列模型，主要是对RNN算法的应用，如GRU，LSTM算法，应用在词嵌入模型，情感分类，语音识别等领域。 第一周讲的是RNN的基本算法。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29ly1fwcgokszq4j20og0dkq54.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29ly1fwcgokftypj20o507kwes.jpg">
@@ -38,10 +37,11 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29ly1fwcgokp4z4j20mn0boaas.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29ly1fwcgolueabj20n20cwq4i.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29ly1fwcgokxta0j20mu0cuab9.jpg">
-<meta property="og:updated_time" content="2018-10-23T12:16:33.000Z">
+<meta property="article:published_time" content="2018-10-18T02:26:52.000Z">
+<meta property="article:modified_time" content="2018-10-23T12:16:33.000Z">
+<meta property="article:author" content="Yann｜理科生写给世界的情书">
+<meta property="article:tag" content="dl.ai">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DeepLearning.ai笔记:(5-1)-- 循环神经网络（Recurrent Neural Networks）">
-<meta name="twitter:description" content="第五门课讲的是序列模型，主要是对RNN算法的应用，如GRU，LSTM算法，应用在词嵌入模型，情感分类，语音识别等领域。 第一周讲的是RNN的基本算法。">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
@@ -86,8 +86,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
 <body>
   <div id="loader-wrapper">
     <div id="loader"></div>
@@ -106,10 +106,8 @@
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="http://yuanquanquan.top">Yann｜理科生写给世界的情书</a></h1>
+		  <h1 class="header-author"><a href="http://yuanquanquan.top"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">我愿做你光华中淡淡的一笔</p>
 		
 
 		<nav class="header-menu">
@@ -125,7 +123,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 103 篇
+📚总文章数 105 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -173,10 +171,8 @@
 				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yann｜理科生写给世界的情书</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我愿做你光华中淡淡的一笔<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -527,7 +523,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#序列模型的应用"><span class="toc-number">1.</span> <span class="toc-text">序列模型的应用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数学符号"><span class="toc-number">2.</span> <span class="toc-text">数学符号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#循环神经网络"><span class="toc-number">3.</span> <span class="toc-text">循环神经网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#不同类型的RNN"><span class="toc-number">4.</span> <span class="toc-text">不同类型的RNN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#语言模型和序列生成"><span class="toc-number">5.</span> <span class="toc-text">语言模型和序列生成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#对新序列采样"><span class="toc-number">6.</span> <span class="toc-text">对新序列采样</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RNN的梯度消失"><span class="toc-number">7.</span> <span class="toc-text">RNN的梯度消失</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GRU-Gated-Recurrent-Unit"><span class="toc-number">8.</span> <span class="toc-text">GRU(Gated Recurrent Unit)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LSTM-Long-short-term-memory"><span class="toc-number">9.</span> <span class="toc-text">LSTM(Long short-term memory)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#双向RNN"><span class="toc-number">10.</span> <span class="toc-text">双向RNN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Deep-RNN"><span class="toc-number">11.</span> <span class="toc-text">Deep RNN</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">序列模型的应用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E7%AC%A6%E5%8F%B7"><span class="toc-number">2.</span> <span class="toc-text">数学符号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">3.</span> <span class="toc-text">循环神经网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84RNN"><span class="toc-number">4.</span> <span class="toc-text">不同类型的RNN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%94%9F%E6%88%90"><span class="toc-number">5.</span> <span class="toc-text">语言模型和序列生成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E6%96%B0%E5%BA%8F%E5%88%97%E9%87%87%E6%A0%B7"><span class="toc-number">6.</span> <span class="toc-text">对新序列采样</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RNN%E7%9A%84%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1"><span class="toc-number">7.</span> <span class="toc-text">RNN的梯度消失</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GRU-Gated-Recurrent-Unit"><span class="toc-number">8.</span> <span class="toc-text">GRU(Gated Recurrent Unit)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LSTM-Long-short-term-memory"><span class="toc-number">9.</span> <span class="toc-text">LSTM(Long short-term memory)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8C%E5%90%91RNN"><span class="toc-number">10.</span> <span class="toc-text">双向RNN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Deep-RNN"><span class="toc-number">11.</span> <span class="toc-text">Deep RNN</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -719,15 +715,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -747,6 +735,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
@@ -763,10 +755,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
@@ -779,6 +767,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -787,7 +779,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -799,11 +795,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -831,10 +835,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
@@ -859,6 +859,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
               </li>
              
@@ -879,15 +883,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -895,11 +895,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
             
             <div class="clearfix"></div>

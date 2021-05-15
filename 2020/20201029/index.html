@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 <script src="https://use.fontawesome.com/853f20a9f9.js"></script>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(3) | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="本系列的最后一篇，NCS这个东西感觉上跑demo是可用的，但是用在产品上开发工作量怕是不小，需要转换成IR文件。调用方式比较复杂，支持的东西不太全。Intel的文档已经算可以了，但是还是少。算力的话标准的边缘端算力，被别人的i7完爆，和我的i7一样，哭。">
-<meta name="keywords" content="Intel-Neural-Compute-stick">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(3)">
 <meta property="og:url" content="http://yuanquanquan.top/2020/20201029/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="本系列的最后一篇，NCS这个东西感觉上跑demo是可用的，但是用在产品上开发工作量怕是不小，需要转换成IR文件。调用方式比较复杂，支持的东西不太全。Intel的文档已经算可以了，但是还是少。算力的话标准的边缘端算力，被别人的i7完爆，和我的i7一样，哭。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic1.zhimg.com/80/v2-4d0c114cf7184e8a97488e52b54d71cc_720w.png">
-<meta property="og:updated_time" content="2020-10-29T02:06:36.000Z">
+<meta property="article:published_time" content="2020-10-28T16:18:02.000Z">
+<meta property="article:modified_time" content="2020-10-29T02:06:36.000Z">
+<meta property="article:author" content="Yann｜理科生写给世界的情书">
+<meta property="article:tag" content="Intel-Neural-Compute-stick">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="树莓派4B+英特尔神经计算棒(Intel Movidius Neural Computing Stick)-YOLOV3目标检测(3)">
-<meta name="twitter:description" content="本系列的最后一篇，NCS这个东西感觉上跑demo是可用的，但是用在产品上开发工作量怕是不小，需要转换成IR文件。调用方式比较复杂，支持的东西不太全。Intel的文档已经算可以了，但是还是少。算力的话标准的边缘端算力，被别人的i7完爆，和我的i7一样，哭。">
 <meta name="twitter:image" content="https://pic1.zhimg.com/80/v2-4d0c114cf7184e8a97488e52b54d71cc_720w.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
@@ -66,8 +66,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
 <body>
   <div id="loader-wrapper">
     <div id="loader"></div>
@@ -86,10 +86,8 @@
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="http://yuanquanquan.top">Yann｜理科生写给世界的情书</a></h1>
+		  <h1 class="header-author"><a href="http://yuanquanquan.top"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">我愿做你光华中淡淡的一笔</p>
 		
 
 		<nav class="header-menu">
@@ -105,7 +103,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 103 篇
+📚总文章数 105 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -153,10 +151,8 @@
 				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yann｜理科生写给世界的情书</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我愿做你光华中淡淡的一笔<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -460,7 +456,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模型在树莓派上的部署过程"><span class="toc-number">1.</span> <span class="toc-text">模型在树莓派上的部署过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#五、如何训练自己的模型"><span class="toc-number">1.1.</span> <span class="toc-text">五、如何训练自己的模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#准备和优化训练好的模型"><span class="toc-number">1.1.1.</span> <span class="toc-text">准备和优化训练好的模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模型优化器如何工作"><span class="toc-number">1.1.2.</span> <span class="toc-text">模型优化器如何工作</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有关模型，需要了解哪些内容"><span class="toc-number">2.</span> <span class="toc-text">有关模型，需要了解哪些内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型优化器目录结构"><span class="toc-number">3.</span> <span class="toc-text">模型优化器目录结构</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%9C%A8%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2%E8%BF%87%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">模型在树莓派上的部署过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">五、如何训练自己的模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%92%8C%E4%BC%98%E5%8C%96%E8%AE%AD%E7%BB%83%E5%A5%BD%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">准备和优化训练好的模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%BC%98%E5%8C%96%E5%99%A8%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.1.2.</span> <span class="toc-text">模型优化器如何工作</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E6%A8%A1%E5%9E%8B%EF%BC%8C%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9"><span class="toc-number">2.</span> <span class="toc-text">有关模型，需要了解哪些内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%BC%98%E5%8C%96%E5%99%A8%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">模型优化器目录结构</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -652,15 +648,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -680,6 +668,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
@@ -696,10 +688,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
@@ -712,6 +700,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -720,7 +712,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -732,11 +728,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -764,10 +768,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
@@ -792,6 +792,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
               </li>
              
@@ -812,15 +816,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -828,11 +828,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
             
             <div class="clearfix"></div>

@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 <script src="https://use.fontawesome.com/853f20a9f9.js"></script>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>Lyft Motion Prediction for Autonomous Vehicles | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="几个月前，lyft在kaggle平台上组织了一个比赛[1]：Lyft Motion Prediction for Autonomous Vehicles，用算法预测自动驾驶汽车周围的交通参与者的运动轨迹。和几个同学参加了这个比赛排名8%，拿了个铜牌，这篇博客是对比赛的总结。">
-<meta name="keywords" content="自动驾驶,kaggle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lyft Motion Prediction for Autonomous Vehicles">
 <meta property="og:url" content="http://yuanquanquan.top/2020/20201216/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="几个月前，lyft在kaggle平台上组织了一个比赛[1]：Lyft Motion Prediction for Autonomous Vehicles，用算法预测自动驾驶汽车周围的交通参与者的运动轨迹。和几个同学参加了这个比赛排名8%，拿了个铜牌，这篇博客是对比赛的总结。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-12-16T16:23:50.000Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-16T08:04:46.000Z">
+<meta property="article:modified_time" content="2020-12-16T16:23:50.000Z">
+<meta property="article:author" content="Yann｜理科生写给世界的情书">
+<meta property="article:tag" content="自动驾驶">
+<meta property="article:tag" content="kaggle">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lyft Motion Prediction for Autonomous Vehicles">
-<meta name="twitter:description" content="几个月前，lyft在kaggle平台上组织了一个比赛[1]：Lyft Motion Prediction for Autonomous Vehicles，用算法预测自动驾驶汽车周围的交通参与者的运动轨迹。和几个同学参加了这个比赛排名8%，拿了个铜牌，这篇博客是对比赛的总结。">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -64,8 +65,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
 <body>
   <div id="loader-wrapper">
     <div id="loader"></div>
@@ -84,10 +85,8 @@
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="http://yuanquanquan.top">Yann｜理科生写给世界的情书</a></h1>
+		  <h1 class="header-author"><a href="http://yuanquanquan.top"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">我愿做你光华中淡淡的一笔</p>
 		
 
 		<nav class="header-menu">
@@ -103,7 +102,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 103 篇
+📚总文章数 105 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -151,10 +150,8 @@
 				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yann｜理科生写给世界的情书</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我愿做你光华中淡淡的一笔<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -461,7 +458,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题定义和数据集"><span class="toc-number">1.</span> <span class="toc-text">问题定义和数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tips："><span class="toc-number">2.</span> <span class="toc-text">Tips：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#对样本的筛选："><span class="toc-number">2.1.</span> <span class="toc-text">对样本的筛选：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对数据的编码："><span class="toc-number">2.2.</span> <span class="toc-text">对数据的编码：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据增强："><span class="toc-number">2.3.</span> <span class="toc-text">数据增强：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对训练过程的加速："><span class="toc-number">2.4.</span> <span class="toc-text">对训练过程的加速：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#单模型的选择和训练："><span class="toc-number">2.5.</span> <span class="toc-text">单模型的选择和训练：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多模型的融合："><span class="toc-number">2.6.</span> <span class="toc-text">多模型的融合：</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89%E5%92%8C%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">问题定义和数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tips%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">Tips：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E6%A0%B7%E6%9C%AC%E7%9A%84%E7%AD%9B%E9%80%89%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">对样本的筛选：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BC%96%E7%A0%81%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">对数据的编码：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%EF%BC%9A"><span class="toc-number">2.3.</span> <span class="toc-text">数据增强：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B%E7%9A%84%E5%8A%A0%E9%80%9F%EF%BC%9A"><span class="toc-number">2.4.</span> <span class="toc-text">对训练过程的加速：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%80%89%E6%8B%A9%E5%92%8C%E8%AE%AD%E7%BB%83%EF%BC%9A"><span class="toc-number">2.5.</span> <span class="toc-text">单模型的选择和训练：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%9E%8D%E5%90%88%EF%BC%9A"><span class="toc-number">2.6.</span> <span class="toc-text">多模型的融合：</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -653,15 +650,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -681,6 +670,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
@@ -697,10 +690,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
@@ -713,6 +702,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -721,7 +714,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -733,11 +730,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -765,10 +770,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
@@ -793,6 +794,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
               </li>
              
@@ -813,15 +818,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -829,11 +830,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
             
             <div class="clearfix"></div>

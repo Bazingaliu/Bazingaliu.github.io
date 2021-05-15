@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 <script src="https://use.fontawesome.com/853f20a9f9.js"></script>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>DeepLearning.ai笔记:(2-1)-- 深度学习的实践层面（Practical aspects of Deep Learning） | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="第二门课主要讲的是如何改善神经网络，通过超参数的调试、正则化以及优化。 第一周主要是说了一些之前机器学习里面涉及到的数据集的划分，以及初始化，正则化的方法，还有梯度的验证。">
-<meta name="keywords" content="dl.ai">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DeepLearning.ai笔记:(2-1)-- 深度学习的实践层面（Practical aspects of Deep Learning）">
 <meta property="og:url" content="http://yuanquanquan.top/2018/20180901513/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="第二门课主要讲的是如何改善神经网络，通过超参数的调试、正则化以及优化。 第一周主要是说了一些之前机器学习里面涉及到的数据集的划分，以及初始化，正则化的方法，还有梯度的验证。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlk9c7wej21440b6q46.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlk9dz6uj20n306y761.jpg">
@@ -29,10 +28,11 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlk9itq1j20u50fct9t.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlk9ildoj20tu0gpacs.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlk9f9tnj20t70gqwfq.jpg">
-<meta property="og:updated_time" content="2018-10-23T12:16:33.000Z">
+<meta property="article:published_time" content="2018-09-15T05:37:15.000Z">
+<meta property="article:modified_time" content="2018-10-23T12:16:33.000Z">
+<meta property="article:author" content="Yann｜理科生写给世界的情书">
+<meta property="article:tag" content="dl.ai">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DeepLearning.ai笔记:(2-1)-- 深度学习的实践层面（Practical aspects of Deep Learning）">
-<meta name="twitter:description" content="第二门课主要讲的是如何改善神经网络，通过超参数的调试、正则化以及优化。 第一周主要是说了一些之前机器学习里面涉及到的数据集的划分，以及初始化，正则化的方法，还有梯度的验证。">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
@@ -77,8 +77,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
 <body>
   <div id="loader-wrapper">
     <div id="loader"></div>
@@ -97,10 +97,8 @@
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="http://yuanquanquan.top">Yann｜理科生写给世界的情书</a></h1>
+		  <h1 class="header-author"><a href="http://yuanquanquan.top"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">我愿做你光华中淡淡的一笔</p>
 		
 
 		<nav class="header-menu">
@@ -116,7 +114,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 103 篇
+📚总文章数 105 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -164,10 +162,8 @@
 				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yann｜理科生写给世界的情书</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我愿做你光华中淡淡的一笔<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -522,7 +518,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#训练、验证、测试集的划分"><span class="toc-number">1.</span> <span class="toc-text">训练、验证、测试集的划分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bias-and-variance（偏差和方差）"><span class="toc-number">2.</span> <span class="toc-text">bias and variance（偏差和方差）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#regularization（正则化）"><span class="toc-number">3.</span> <span class="toc-text">regularization（正则化）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#正则化如何防止过拟合？"><span class="toc-number">3.1.</span> <span class="toc-text">正则化如何防止过拟合？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dropout-正则化"><span class="toc-number">3.2.</span> <span class="toc-text">dropout 正则化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理解dropout"><span class="toc-number">3.3.</span> <span class="toc-text">理解dropout</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#归一化"><span class="toc-number">4.</span> <span class="toc-text">归一化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参数初始化"><span class="toc-number">5.</span> <span class="toc-text">参数初始化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#梯度的数值逼近"><span class="toc-number">6.</span> <span class="toc-text">梯度的数值逼近</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#梯度检验"><span class="toc-number">7.</span> <span class="toc-text">梯度检验</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E3%80%81%E9%AA%8C%E8%AF%81%E3%80%81%E6%B5%8B%E8%AF%95%E9%9B%86%E7%9A%84%E5%88%92%E5%88%86"><span class="toc-number">1.</span> <span class="toc-text">训练、验证、测试集的划分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bias-and-variance%EF%BC%88%E5%81%8F%E5%B7%AE%E5%92%8C%E6%96%B9%E5%B7%AE%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">bias and variance（偏差和方差）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#regularization%EF%BC%88%E6%AD%A3%E5%88%99%E5%8C%96%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">regularization（正则化）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E8%BF%87%E6%8B%9F%E5%90%88%EF%BC%9F"><span class="toc-number">3.1.</span> <span class="toc-text">正则化如何防止过拟合？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dropout-%E6%AD%A3%E5%88%99%E5%8C%96"><span class="toc-number">3.2.</span> <span class="toc-text">dropout 正则化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%A7%A3dropout"><span class="toc-number">3.3.</span> <span class="toc-text">理解dropout</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BD%92%E4%B8%80%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">归一化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">5.</span> <span class="toc-text">参数初始化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E7%9A%84%E6%95%B0%E5%80%BC%E9%80%BC%E8%BF%91"><span class="toc-number">6.</span> <span class="toc-text">梯度的数值逼近</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E6%A3%80%E9%AA%8C"><span class="toc-number">7.</span> <span class="toc-text">梯度检验</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -714,15 +710,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,6 +730,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
@@ -758,10 +750,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
@@ -774,6 +762,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -782,7 +774,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -794,11 +790,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -826,10 +830,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
@@ -854,6 +854,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
               </li>
              
@@ -874,15 +878,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -890,11 +890,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
             
             <div class="clearfix"></div>

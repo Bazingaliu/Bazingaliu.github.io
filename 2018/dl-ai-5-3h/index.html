@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 <script src="https://use.fontawesome.com/853f20a9f9.js"></script>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>DeepLearning.ai作业:(5-3) -- 序列模型和注意力机制 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="这周作业分为了两部分：  机器翻译 触发关键字  Part1：机器翻译你将建立一个将人类可读日期（“2009年6月25日”）转换为机器可读日期（“2009-06-25”）的神经机器翻译（NMT）模型。 你将使用注意力机制来执行此操作，这是模型序列中最尖端的一个序列。 你将创建的模型可用于从一种语言翻译为另一种语言，如从英语翻译为印地安语。 但是，语言翻译需要大量的数据集，并且通常需要几天的GPU">
-<meta name="keywords" content="homework,dl.ai">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DeepLearning.ai作业:(5-3) -- 序列模型和注意力机制">
 <meta property="og:url" content="http://yuanquanquan.top/2018/dl-ai-5-3h/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="这周作业分为了两部分：  机器翻译 触发关键字  Part1：机器翻译你将建立一个将人类可读日期（“2009年6月25日”）转换为机器可读日期（“2009-06-25”）的神经机器翻译（NMT）模型。 你将使用注意力机制来执行此操作，这是模型序列中最尖端的一个序列。 你将创建的模型可用于从一种语言翻译为另一种语言，如从英语翻译为印地安语。 但是，语言翻译需要大量的数据集，并且通常需要几天的GPU">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29ly1fwcm6agwq9j20yk0vwaeg.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29ly1fwcm6apu4fj21d417g0zz.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29ly1fwcm69v62hj20jo08sac1.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29ly1fwcm6amjp4j21hc1jkn36.jpg">
-<meta property="og:updated_time" content="2018-10-23T12:16:33.000Z">
+<meta property="article:published_time" content="2018-10-18T10:39:15.000Z">
+<meta property="article:modified_time" content="2018-10-23T12:16:33.000Z">
+<meta property="article:author" content="Yann｜理科生写给世界的情书">
+<meta property="article:tag" content="homework">
+<meta property="article:tag" content="dl.ai">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DeepLearning.ai作业:(5-3) -- 序列模型和注意力机制">
-<meta name="twitter:description" content="这周作业分为了两部分：  机器翻译 触发关键字  Part1：机器翻译你将建立一个将人类可读日期（“2009年6月25日”）转换为机器可读日期（“2009-06-25”）的神经机器翻译（NMT）模型。 你将使用注意力机制来执行此操作，这是模型序列中最尖端的一个序列。 你将创建的模型可用于从一种语言翻译为另一种语言，如从英语翻译为印地安语。 但是，语言翻译需要大量的数据集，并且通常需要几天的GPU">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
@@ -70,8 +71,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
 <body>
   <div id="loader-wrapper">
     <div id="loader"></div>
@@ -90,10 +91,8 @@
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="http://yuanquanquan.top">Yann｜理科生写给世界的情书</a></h1>
+		  <h1 class="header-author"><a href="http://yuanquanquan.top"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">我愿做你光华中淡淡的一笔</p>
 		
 
 		<nav class="header-menu">
@@ -109,7 +108,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 103 篇
+📚总文章数 105 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -157,10 +156,8 @@
 				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yann｜理科生写给世界的情书</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我愿做你光华中淡淡的一笔<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -476,7 +473,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part1：机器翻译"><span class="toc-number">1.</span> <span class="toc-text">Part1：机器翻译</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#采用注意力机制的机器翻译"><span class="toc-number">1.1.</span> <span class="toc-text">采用注意力机制的机器翻译</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part2-Trigger-Word-Detection"><span class="toc-number">2.</span> <span class="toc-text">Part2:Trigger Word Detection</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#生成一个训练示例"><span class="toc-number">2.1.</span> <span class="toc-text">生成一个训练示例</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part1%EF%BC%9A%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91"><span class="toc-number">1.</span> <span class="toc-text">Part1：机器翻译</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%87%E7%94%A8%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91"><span class="toc-number">1.1.</span> <span class="toc-text">采用注意力机制的机器翻译</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part2-Trigger-Word-Detection"><span class="toc-number">2.</span> <span class="toc-text">Part2:Trigger Word Detection</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AA%E8%AE%AD%E7%BB%83%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.1.</span> <span class="toc-text">生成一个训练示例</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -668,15 +665,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,6 +685,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
@@ -712,10 +705,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
@@ -728,6 +717,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -736,7 +729,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -748,11 +745,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -780,10 +785,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
@@ -808,6 +809,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
               </li>
              
@@ -828,15 +833,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -844,11 +845,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
             
             <div class="clearfix"></div>

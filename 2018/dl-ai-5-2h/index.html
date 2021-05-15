@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 <script src="https://use.fontawesome.com/853f20a9f9.js"></script>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>DeepLearning.ai作业:(5-2) -- 自然语言处理与词嵌入(NLP and Word Embeddings) | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="本周作业分为两部分：  词向量运算 emoji表情包">
-<meta name="keywords" content="homework,dl.ai">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DeepLearning.ai作业:(5-2) -- 自然语言处理与词嵌入(NLP and Word Embeddings)">
 <meta property="og:url" content="http://yuanquanquan.top/2018/dl-ai-5-2h/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="本周作业分为两部分：  词向量运算 emoji表情包">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
-<meta property="og:updated_time" content="2018-10-23T12:16:33.000Z">
+<meta property="article:published_time" content="2018-10-18T09:00:21.000Z">
+<meta property="article:modified_time" content="2018-10-23T12:16:33.000Z">
+<meta property="article:author" content="Yann｜理科生写给世界的情书">
+<meta property="article:tag" content="homework">
+<meta property="article:tag" content="dl.ai">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DeepLearning.ai作业:(5-2) -- 自然语言处理与词嵌入(NLP and Word Embeddings)">
-<meta name="twitter:description" content="本周作业分为两部分：  词向量运算 emoji表情包">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
@@ -66,8 +67,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
 <body>
   <div id="loader-wrapper">
     <div id="loader"></div>
@@ -86,10 +87,8 @@
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="http://yuanquanquan.top">Yann｜理科生写给世界的情书</a></h1>
+		  <h1 class="header-author"><a href="http://yuanquanquan.top"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">我愿做你光华中淡淡的一笔</p>
 		
 
 		<nav class="header-menu">
@@ -105,7 +104,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 103 篇
+📚总文章数 105 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -153,10 +152,8 @@
 				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yann｜理科生写给世界的情书</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我愿做你光华中淡淡的一笔<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -454,7 +451,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part1-词向量运算"><span class="toc-number">1.</span> <span class="toc-text">Part1:词向量运算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#单词类比推理"><span class="toc-number">1.1.</span> <span class="toc-text">单词类比推理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消除词向量偏见-可选"><span class="toc-number">1.2.</span> <span class="toc-text">消除词向量偏见 (可选)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part2-Emojify"><span class="toc-number">2.</span> <span class="toc-text">Part2:Emojify!</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#先用average试试"><span class="toc-number">2.1.</span> <span class="toc-text">先用average试试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#再用RNN"><span class="toc-number">2.2.</span> <span class="toc-text">再用RNN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Emojifier-V2-Using-LSTMs-in-Keras"><span class="toc-number">2.3.</span> <span class="toc-text">Emojifier-V2: Using LSTMs in Keras:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Building-the-Emojifier-V2"><span class="toc-number">3.</span> <span class="toc-text">Building the Emojifier-V2</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part1-%E8%AF%8D%E5%90%91%E9%87%8F%E8%BF%90%E7%AE%97"><span class="toc-number">1.</span> <span class="toc-text">Part1:词向量运算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%AF%8D%E7%B1%BB%E6%AF%94%E6%8E%A8%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">单词类比推理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E8%AF%8D%E5%90%91%E9%87%8F%E5%81%8F%E8%A7%81-%E5%8F%AF%E9%80%89"><span class="toc-number">1.2.</span> <span class="toc-text">消除词向量偏见 (可选)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part2-Emojify"><span class="toc-number">2.</span> <span class="toc-text">Part2:Emojify!</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%88%E7%94%A8average%E8%AF%95%E8%AF%95"><span class="toc-number">2.1.</span> <span class="toc-text">先用average试试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%8D%E7%94%A8RNN"><span class="toc-number">2.2.</span> <span class="toc-text">再用RNN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Emojifier-V2-Using-LSTMs-in-Keras"><span class="toc-number">2.3.</span> <span class="toc-text">Emojifier-V2: Using LSTMs in Keras:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Building-the-Emojifier-V2"><span class="toc-number">3.</span> <span class="toc-text">Building the Emojifier-V2</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -646,15 +643,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -674,6 +663,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
@@ -690,10 +683,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
@@ -706,6 +695,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -714,7 +707,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,11 +723,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -758,10 +763,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
@@ -786,6 +787,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
               </li>
              
@@ -806,15 +811,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -822,11 +823,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
             
             <div class="clearfix"></div>

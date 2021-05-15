@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 <script src="https://use.fontawesome.com/853f20a9f9.js"></script>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>DeepLearning.ai笔记:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies） | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="本周主要讲了深度卷积网络的一些模型：LeNet,AlexNet,VGGNet,ResNet,Inception,1×1卷积，迁移学习等。">
-<meta name="keywords" content="dl.ai">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DeepLearning.ai笔记:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）">
 <meta property="og:url" content="http://yuanquanquan.top/2018/dl-ai-4-2/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="本周主要讲了深度卷积网络的一些模型：LeNet,AlexNet,VGGNet,ResNet,Inception,1×1卷积，迁移学习等。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fw26kgc3e4j20ox0c5t9k.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fw26kgltf9j20p20d9q3w.jpg">
@@ -33,10 +32,11 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fw26kh9sd1j21eh0quk1o.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fw26kgqbpqj20no062aca.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fw26kgiq0xj20nm04wabg.jpg">
-<meta property="og:updated_time" content="2018-10-23T12:16:33.000Z">
+<meta property="article:published_time" content="2018-10-09T09:17:04.000Z">
+<meta property="article:modified_time" content="2018-10-23T12:16:33.000Z">
+<meta property="article:author" content="Yann｜理科生写给世界的情书">
+<meta property="article:tag" content="dl.ai">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DeepLearning.ai笔记:(4-2)-- 深度卷积网络实例探究（Deep convolutional models:case studies）">
-<meta name="twitter:description" content="本周主要讲了深度卷积网络的一些模型：LeNet,AlexNet,VGGNet,ResNet,Inception,1×1卷积，迁移学习等。">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
@@ -81,8 +81,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
 <body>
   <div id="loader-wrapper">
     <div id="loader"></div>
@@ -101,10 +101,8 @@
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="http://yuanquanquan.top">Yann｜理科生写给世界的情书</a></h1>
+		  <h1 class="header-author"><a href="http://yuanquanquan.top"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">我愿做你光华中淡淡的一笔</p>
 		
 
 		<nav class="header-menu">
@@ -120,7 +118,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 103 篇
+📚总文章数 105 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -168,10 +166,8 @@
 				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yann｜理科生写给世界的情书</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我愿做你光华中淡淡的一笔<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -503,7 +499,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#经典的卷积网络"><span class="toc-number">1.</span> <span class="toc-text">经典的卷积网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Residual-Network-残差网络"><span class="toc-number">2.</span> <span class="toc-text">Residual Network(残差网络)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ResNet为何有用？"><span class="toc-number">3.</span> <span class="toc-text">ResNet为何有用？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1×1卷积"><span class="toc-number">4.</span> <span class="toc-text">1×1卷积</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Inception-Network"><span class="toc-number">5.</span> <span class="toc-text">Inception Network</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Inception-网络"><span class="toc-number">6.</span> <span class="toc-text">Inception 网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用开源的实现方案"><span class="toc-number">7.</span> <span class="toc-text">使用开源的实现方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#迁移学习"><span class="toc-number">8.</span> <span class="toc-text">迁移学习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据扩充"><span class="toc-number">9.</span> <span class="toc-text">数据扩充</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E7%9A%84%E5%8D%B7%E7%A7%AF%E7%BD%91%E7%BB%9C"><span class="toc-number">1.</span> <span class="toc-text">经典的卷积网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Residual-Network-%E6%AE%8B%E5%B7%AE%E7%BD%91%E7%BB%9C"><span class="toc-number">2.</span> <span class="toc-text">Residual Network(残差网络)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ResNet%E4%B8%BA%E4%BD%95%E6%9C%89%E7%94%A8%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">ResNet为何有用？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1%C3%971%E5%8D%B7%E7%A7%AF"><span class="toc-number">4.</span> <span class="toc-text">1×1卷积</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Inception-Network"><span class="toc-number">5.</span> <span class="toc-text">Inception Network</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Inception-%E7%BD%91%E7%BB%9C"><span class="toc-number">6.</span> <span class="toc-text">Inception 网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%BC%80%E6%BA%90%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88"><span class="toc-number">7.</span> <span class="toc-text">使用开源的实现方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0"><span class="toc-number">8.</span> <span class="toc-text">迁移学习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%89%A9%E5%85%85"><span class="toc-number">9.</span> <span class="toc-text">数据扩充</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -695,15 +691,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -723,6 +711,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
@@ -739,10 +731,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
@@ -755,6 +743,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -763,7 +755,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -775,11 +771,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -807,10 +811,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
@@ -835,6 +835,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
               </li>
              
@@ -855,15 +859,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -871,11 +871,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
             
             <div class="clearfix"></div>

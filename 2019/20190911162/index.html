@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 <script src="https://use.fontawesome.com/853f20a9f9.js"></script>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>Evaluation of a Tree-based Pipeline Optimization Tool for Automating Data Science | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="ABSTRACT 让机器学习去专家化有很大的需求。我们提出了基于树的管道优化（tree-based pipeline optimization）方法，可以自动化最枯燥的管道设计工作。我们实现了开源的Tree-basedPipeline Optimization Tool (TPOT)，并在真实的数据集上证明了它的效果。尤其是，我们展示了TPOT设计的机器学习管道可以获得巨大的提升，同时又不需要用">
-<meta name="keywords" content="AutoML">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Evaluation of a Tree-based Pipeline Optimization Tool for Automating Data Science">
 <meta property="og:url" content="http://yuanquanquan.top/2019/20190911162/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
 <meta property="og:description" content="ABSTRACT 让机器学习去专家化有很大的需求。我们提出了基于树的管道优化（tree-based pipeline optimization）方法，可以自动化最枯燥的管道设计工作。我们实现了开源的Tree-basedPipeline Optimization Tool (TPOT)，并在真实的数据集上证明了它的效果。尤其是，我们展示了TPOT设计的机器学习管道可以获得巨大的提升，同时又不需要用">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/TPOT-fig1.png?raw=true">
 <meta property="og:image" content="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/TPOT-fig2.png?raw=true">
 <meta property="og:image" content="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/TPOT-tab1.png?raw=true">
 <meta property="og:image" content="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/TPOT-fig3.png?raw=true">
 <meta property="og:image" content="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/TPOT-fig4.png?raw=true">
 <meta property="og:image" content="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/TPOT-fig5.png?raw=true">
-<meta property="og:updated_time" content="2021-03-29T10:14:16.296Z">
+<meta property="article:published_time" content="2019-11-16T06:03:45.000Z">
+<meta property="article:modified_time" content="2021-03-29T10:14:16.296Z">
+<meta property="article:author" content="Yann｜理科生写给世界的情书">
+<meta property="article:tag" content="AutoML">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Evaluation of a Tree-based Pipeline Optimization Tool for Automating Data Science">
-<meta name="twitter:description" content="ABSTRACT 让机器学习去专家化有很大的需求。我们提出了基于树的管道优化（tree-based pipeline optimization）方法，可以自动化最枯燥的管道设计工作。我们实现了开源的Tree-basedPipeline Optimization Tool (TPOT)，并在真实的数据集上证明了它的效果。尤其是，我们展示了TPOT设计的机器学习管道可以获得巨大的提升，同时又不需要用">
 <meta name="twitter:image" content="https://github.com/Bazingaliu/Bazingaliu.github.ios/blob/master/blog/papers/2019/R/TPOT-fig1.png?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
@@ -71,8 +71,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
 <body>
   <div id="loader-wrapper">
     <div id="loader"></div>
@@ -91,10 +91,8 @@
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="http://yuanquanquan.top">Yann｜理科生写给世界的情书</a></h1>
+		  <h1 class="header-author"><a href="http://yuanquanquan.top"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">我愿做你光华中淡淡的一笔</p>
 		
 
 		<nav class="header-menu">
@@ -110,7 +108,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 103 篇
+📚总文章数 105 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -158,10 +156,8 @@
 				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yann｜理科生写给世界的情书</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我愿做你光华中淡淡的一笔<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -648,15 +644,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,6 +664,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
@@ -692,10 +684,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
@@ -708,6 +696,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -716,7 +708,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -728,11 +724,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -760,10 +764,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
@@ -788,6 +788,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
               </li>
              
@@ -808,15 +812,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -824,11 +824,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
             
             <div class="clearfix"></div>

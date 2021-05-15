@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
 <script src="https://use.fontawesome.com/853f20a9f9.js"></script>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。">
-<meta name="keywords" content="人工智能、计算机、机器学习、linux、程序员">
+  <meta name="description" content="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1&#x2F;8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes">
 <meta property="og:url" content="http://yuanquanquan.top/2019/2019121899/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1&#x2F;8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2020/06/14/enwoR46SIMsZv8l.png">
 <meta property="og:image" content="https://i.loli.net/2020/06/14/pKdG1rO62jefQv8.png">
 <meta property="og:image" content="https://i.loli.net/2020/06/14/mgDRkCdfPTN1WOJ.png">
@@ -50,10 +49,11 @@
 <meta property="og:image" content="https://i.loli.net/2020/06/14/P8GFQJHRwcnq3s1.png">
 <meta property="og:image" content="https://i.loli.net/2020/06/14/uUj6KkXVzb1Moli.png">
 <meta property="og:image" content="https://i.loli.net/2020/06/14/xvocP3frquXzMKZ.png">
-<meta property="og:updated_time" content="2021-03-28T07:04:49.916Z">
+<meta property="article:published_time" content="2019-12-18T11:49:36.000Z">
+<meta property="article:modified_time" content="2021-03-28T07:04:49.916Z">
+<meta property="article:author" content="Yann｜理科生写给世界的情书">
+<meta property="article:tag" content="人工智能、计算机、机器学习、linux、程序员">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSRNet：Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes">
-<meta name="twitter:description" content="主要观点：CSRnet网络模型主要分为前端和后端网络，采用剔除了全连接层的VGG-16作为CSRnet的前端网络，输出图像的大小为原始输入图像的1/8。卷积层的数量增加会导致输出的图像变小，从而增加生成密度图的难度。所以本文采用空洞卷积神经网络作为后端网络，在保持分辨率的同时扩大感知域， 生成高质量的人群分布密度图。">
 <meta name="twitter:image" content="https://i.loli.net/2020/06/14/enwoR46SIMsZv8l.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
@@ -98,8 +98,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
 <body>
   <div id="loader-wrapper">
     <div id="loader"></div>
@@ -118,10 +118,8 @@
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="http://yuanquanquan.top">Yann｜理科生写给世界的情书</a></h1>
+		  <h1 class="header-author"><a href="http://yuanquanquan.top"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">我愿做你光华中淡淡的一笔</p>
 		
 
 		<nav class="header-menu">
@@ -137,7 +135,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 103 篇
+📚总文章数 105 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -185,10 +183,8 @@
 				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Yann｜理科生写给世界的情书</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>我愿做你光华中淡淡的一笔<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -546,7 +542,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1、MCNN的多列设计没有显著作用："><span class="toc-number">1.</span> <span class="toc-text">1、MCNN的多列设计没有显著作用：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2、膨胀卷积优于反卷积"><span class="toc-number">2.</span> <span class="toc-text">2、膨胀卷积优于反卷积</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#贡献："><span class="toc-number"></span> <span class="toc-text">贡献：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主要实现："><span class="toc-number"></span> <span class="toc-text">主要实现：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#网络结构："><span class="toc-number">1.</span> <span class="toc-text">网络结构：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#数据增强："><span class="toc-number">2.</span> <span class="toc-text">数据增强：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#损失函数："><span class="toc-number">3.</span> <span class="toc-text">损失函数：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#代码：https-github-com-leeyeehoo-CSRNet-pytorch"><span class="toc-number">4.</span> <span class="toc-text">代码：https://github.com/leeyeehoo/CSRNet-pytorch</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step1-install"><span class="toc-number"></span> <span class="toc-text">step1. install</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step2-make-dataset-py"><span class="toc-number"></span> <span class="toc-text">step2.  make_dataset.py</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step3-Training"><span class="toc-number"></span> <span class="toc-text">step3.  Training</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step4-Testing"><span class="toc-number"></span> <span class="toc-text">step4. Testing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reading-paper-https-arxiv-org-pdf-1802-10062-pdf"><span class="toc-number"></span> <span class="toc-text">Reading paper   https://arxiv.org/pdf/1802.10062.pdf</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81MCNN%E7%9A%84%E5%A4%9A%E5%88%97%E8%AE%BE%E8%AE%A1%E6%B2%A1%E6%9C%89%E6%98%BE%E8%91%97%E4%BD%9C%E7%94%A8%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">1、MCNN的多列设计没有显著作用：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E8%86%A8%E8%83%80%E5%8D%B7%E7%A7%AF%E4%BC%98%E4%BA%8E%E5%8F%8D%E5%8D%B7%E7%A7%AF"><span class="toc-number">2.</span> <span class="toc-text">2、膨胀卷积优于反卷积</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A1%E7%8C%AE%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">贡献：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">主要实现：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">网络结构：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">数据增强：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">损失函数：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9Ahttps-github-com-leeyeehoo-CSRNet-pytorch"><span class="toc-number">4.</span> <span class="toc-text">代码：https:&#x2F;&#x2F;github.com&#x2F;leeyeehoo&#x2F;CSRNet-pytorch</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step1-install"><span class="toc-number"></span> <span class="toc-text">step1. install</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step2-make-dataset-py"><span class="toc-number"></span> <span class="toc-text">step2.  make_dataset.py</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step3-Training"><span class="toc-number"></span> <span class="toc-text">step3.  Training</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step4-Testing"><span class="toc-number"></span> <span class="toc-text">step4. Testing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reading-paper-https-arxiv-org-pdf-1802-10062-pdf"><span class="toc-number"></span> <span class="toc-text">Reading paper   https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;1802.10062.pdf</span></a>
                     </div>
                 </span>
             </div>
@@ -738,15 +734,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -766,6 +754,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Altium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Machine Learning & Data</a>
               </li>
              
@@ -782,10 +774,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">codeforces</a>
               </li>
              
@@ -798,6 +786,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cs231n</a>
               </li>
              
@@ -806,7 +798,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+                <a href="javascript:void(0)" class="js-tag color3">AR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VTON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -818,11 +814,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CUDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Object Detection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -850,10 +854,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">单片机</a>
               </li>
              
@@ -878,6 +878,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优化理论</a>
               </li>
              
@@ -898,15 +902,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hyperspectral</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">AutoML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -914,11 +914,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
+                <a href="javascript:void(0)" class="js-tag color4">SNN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">招聘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
             
             <div class="clearfix"></div>
