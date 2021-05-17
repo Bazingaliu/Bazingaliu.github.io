@@ -4,14 +4,14 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2021/20210515/</loc>
-    <lastmod>2021-05-15T06:43:29.165Z</lastmod>
+    <loc>http://yuanquanquan.top/2021/20210415/</loc>
+    <lastmod>2021-05-17T08:15:17.592Z</lastmod>
     <data>
         <display>
-        <title>flask实现图像处理API</title>
-        <pubTime>2021-05-15T06:30:36.000Z</pubTime>
+        <title>Tensorflow分布式实现-Kubernetes</title>
+        <pubTime>2021-04-15T00:23:00.000Z</pubTime>
         
-        <tag>flask</tag>
+        <tag>分布式</tag>
          
          
            
@@ -21,14 +21,37 @@
 
     
   <url>
-    <loc>http://yuanquanquan.top/2021/20210415/</loc>
-    <lastmod>2021-04-15T02:11:43.010Z</lastmod>
+    <loc>http://yuanquanquan.top/2019/20190911174/</loc>
+    <lastmod>2021-05-17T08:13:09.526Z</lastmod>
     <data>
         <display>
-        <title>Tensorflow分布式实现-Kubernetes</title>
-        <pubTime>2021-04-15T00:23:00.000Z</pubTime>
+        <title>Kick Start 2019-Practice Round</title>
+        <pubTime>2019-11-17T14:18:32.000Z</pubTime>
         
-        <tag>分布式</tag>
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="kick start" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/kick-start/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2021/20210515/</loc>
+    <lastmod>2021-05-15T06:43:29.165Z</lastmod>
+    <data>
+        <display>
+        <title>flask实现图像处理API</title>
+        <pubTime>2021-05-15T06:30:36.000Z</pubTime>
+        
+        <tag>flask</tag>
          
          
            
@@ -1284,29 +1307,6 @@
           
              
               <breadCrumb title="论文笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2019/20190911174/</loc>
-    <lastmod>2020-06-09T18:18:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>Kick Start 2019-Practice Round</title>
-        <pubTime>2019-11-17T14:18:32.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/"/>
-          
-             
-              <breadCrumb title="kick start" url="http://yuanquanquan.top/categories/%E7%AE%97%E6%B3%95/kick-start/"/>
           
         </display>
     </data>
