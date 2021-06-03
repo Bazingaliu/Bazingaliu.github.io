@@ -4,6 +4,52 @@
 
     
   <url>
+    <loc>http://yuanquanquan.top/2021/20210602/</loc>
+    <lastmod>2021-06-03T20:06:37.805Z</lastmod>
+    <data>
+        <display>
+        <title>SEGMM的CUDA Core实现</title>
+        <pubTime>2021-06-02T15:20:08.000Z</pubTime>
+        
+        <tag>CUDA</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="学习笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yuanquanquan.top/2021/20210407/</loc>
+    <lastmod>2021-06-02T15:29:56.110Z</lastmod>
+    <data>
+        <display>
+        <title>《CUDA权威编程指南》笔记-1</title>
+        <pubTime>2021-04-07T02:05:01.000Z</pubTime>
+        
+        <tag>CUDA</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="学习笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yuanquanquan.top/2021/20210415/</loc>
     <lastmod>2021-05-17T08:15:17.592Z</lastmod>
     <data>
@@ -55,29 +101,6 @@
          
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yuanquanquan.top/2021/20210407/</loc>
-    <lastmod>2021-04-10T07:05:42.119Z</lastmod>
-    <data>
-        <display>
-        <title>《CUDA权威编程指南》笔记-1</title>
-        <pubTime>2021-04-07T02:05:01.000Z</pubTime>
-        
-        <tag>CUDA</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="学习笔记" url="http://yuanquanquan.top/categories/%E7%AC%94%E8%AE%B0/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
         </display>
     </data>
     </url>
