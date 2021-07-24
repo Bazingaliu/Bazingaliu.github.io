@@ -122,7 +122,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 108 篇
+📚总文章数 109 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -278,36 +278,36 @@
 <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>最近因为疫情<a href="https://developer.aliyun.com/adc/student/?pid=mm_25282911_3455987_122436732" target="_blank" rel="noopener">阿里云可以白嫖半年的服务器</a>,刚好搭一个博客</p>
+<p>最近因为疫情<a target="_blank" rel="noopener" href="https://developer.aliyun.com/adc/student/?pid=mm_25282911_3455987_122436732">阿里云可以白嫖半年的服务器</a>,刚好搭一个博客</p>
 </blockquote>
-<a id="more"></a>  
+<span id="more"></span>  
 <p><strong>一、安装宝塔面板</strong></p>
 <ol>
 <li><p>打开控制命令行:win+r，输入cmd</p>
 </li>
-<li><p>输入命令：ssh root@服务器IP地址，输入密码就能进入服务器.登陆成功的话如图所示!<img src="https://i.loli.net/2020/06/10/T9G27VM5Kl8e6EN.png" alt></p>
+<li><p>输入命令：ssh root@服务器IP地址，输入密码就能进入服务器.登陆成功的话如图所示!<img src="https://i.loli.net/2020/06/10/T9G27VM5Kl8e6EN.png" alt=""></p>
 </li>
 <li><p>在shell环境下输入安装宝塔的命令，安装命令宝塔官方上有，直接按照自己的系统版本选择，我这里选择ubuntn的安装命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <ol start="4">
-<li>最后得到一个宝塔面板的链接网址和账户和登录密码。<img src="https://i.loli.net/2020/05/25/rh4Ucl7QoJmA1gs.png" alt></li>
+<li>最后得到一个宝塔面板的链接网址和账户和登录密码。<img src="https://i.loli.net/2020/05/25/rh4Ucl7QoJmA1gs.png" alt=""></li>
 </ol>
 <p><strong>二、在面板上搭建typecho博客</strong></p>
-<p>用刚才的账号和密码登录到宝塔面板，新建一个站点，然后输入域名（没有的话可以从阿里云买一个），勾选mysql数据库，注意记住创建之后的数据库名和密码，后面用的到。<img src="https://i.loli.net/2020/05/25/9fWHMQyv3AixCEd.png" alt></p>
-<p>注意这里的端口号，默认是80，如果80端口号被占用，可以改成81或者82等。记住这里的端口号，之后将需要这个端口号设置typecho博客。<strong>注意阿里云要开放80端口<img src="https://i.loli.net/2020/05/25/uWCEPyclmRx2pFo.png" alt></strong></p>
+<p>用刚才的账号和密码登录到宝塔面板，新建一个站点，然后输入域名（没有的话可以从阿里云买一个），勾选mysql数据库，注意记住创建之后的数据库名和密码，后面用的到。<img src="https://i.loli.net/2020/05/25/9fWHMQyv3AixCEd.png" alt=""></p>
+<p>注意这里的端口号，默认是80，如果80端口号被占用，可以改成81或者82等。记住这里的端口号，之后将需要这个端口号设置typecho博客。<strong>注意阿里云要开放80端口<img src="https://i.loli.net/2020/05/25/uWCEPyclmRx2pFo.png" alt=""></strong></p>
 <ul>
-<li>从typecho官方网站下载1.1正式版：[typecho官方下载<img src="https://i.loli.net/2020/05/25/69BTLoYXgMeku5Z.png" alt></li>
+<li>从typecho官方网站下载1.1正式版：[typecho官方下载<img src="https://i.loli.net/2020/05/25/69BTLoYXgMeku5Z.png" alt=""></li>
 </ul>
 <ul>
-<li><p>将下载之后的文件解压放到创建的网站文件夹下<br><img src="https://i.loli.net/2020/05/25/g9YlzInd3Q65LXF.png" alt></p>
+<li><p>将下载之后的文件解压放到创建的网站文件夹下<br><img src="https://i.loli.net/2020/05/25/g9YlzInd3Q65LXF.png" alt=""></p>
 </li>
-<li><p>访问刚刚设置的网站域名端口号，一般80是被占用的，需要自己改一个端口号，我这里改成了81，但是此时直接访问81的端口号会404 NOT Found,这个时候需要去宝塔面板里放行端口号<img src="C:%5CUsers%5CLenovo%5CDesktop%5Cyolov1%5Ctypecho-7.png" alt></p>
+<li><p>访问刚刚设置的网站域名端口号，一般80是被占用的，需要自己改一个端口号，我这里改成了81，但是此时直接访问81的端口号会404 NOT Found,这个时候需要去宝塔面板里放行端口号<img src="C:%5CUsers%5CLenovo%5CDesktop%5Cyolov1%5Ctypecho-7.png" alt=""></p>
 </li>
 </ul>
 <ul>
-<li><p>接下来就循规蹈矩的进行安装了,输入刚刚的数据库名、用户名和密码，密码忘记了可以去宝塔面板里自己改一个简单点的。<img src="https://i.loli.net/2020/05/25/YP2in6kyGRJhvXf.png" alt></p>
+<li><p>接下来就循规蹈矩的进行安装了,输入刚刚的数据库名、用户名和密码，密码忘记了可以去宝塔面板里自己改一个简单点的。<img src="https://i.loli.net/2020/05/25/YP2in6kyGRJhvXf.png" alt=""></p>
 </li>
 <li><p>这里会提示没有config.inc.php配置文件，这个时候需要自己去创建一个文件，将其中的代码复制进去，放到blog文件夹下</p>
 </li>
@@ -317,10 +317,10 @@
 <p>登录到自己的博客地址，然后进行博客的相关设置。主题修改</p>
 <p><strong>设置外观</strong></p>
 <p>控制台 -&gt; 外观，“设置外观” 选项。里面是和主题相对应的定制选项，比如 网站 logo、功能开关、站点描述、缩略图设置等，主要是针对该主题的一些个性化、功能性设置。</p>
-<p><img src="https://i.loli.net/2020/05/25/ZwTid3hyXcoY2b7.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/05/25/ZwTid3hyXcoY2b7.jpg" alt=""></p>
 <p><strong>自定义修改</strong></p>
 <p>“编辑当前外观” 自定义修改主题样式。这里列出的模板文件和主题有关，如果没有需要修改的那个文件，可以去主题文件夹里查找直接修改。</p>
-<p><img src="https://i.loli.net/2020/05/25/vnzSfArp7Msgty1.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/05/25/vnzSfArp7Msgty1.jpg" alt=""></p>
 <p><strong>Tips</strong></p>
 <ul>
 <li>有的主题需要更改主题文件夹为指定名称才有效，注意查看主题说明；</li>
@@ -331,58 +331,58 @@
 <p><strong>Pinghsu</strong></p>
 <p>简介：卡片式设计，简洁美观。</p>
 <ul>
-<li><a href="https://link.zhihu.com/?target=https%3A//www.linpx.com/" target="_blank" rel="noopener">Demo</a></li>
-<li>地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/chakhsu/pinghsu" target="_blank" rel="noopener">https://github.com/chakhsu/pinghsu</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//www.linpx.com/">Demo</a></li>
+<li>地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/chakhsu/pinghsu">https://github.com/chakhsu/pinghsu</a></li>
 </ul>
-<p><img src="https://i.loli.net/2020/05/25/jFxhHZwvpJztmGC.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/05/25/jFxhHZwvpJztmGC.jpg" alt=""></p>
 <p><strong>Material</strong></p>
 <p>简介：Material Design theme for typecho. 扁平化设计主题。</p>
 <ul>
-<li><a href="https://link.zhihu.com/?target=https%3A//blog.lim-light.com/" target="_blank" rel="noopener">Demo</a></li>
-<li>地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/idawnlight/typecho-theme-material" target="_blank" rel="noopener">https://github.com/idawnlight/typecho-theme-material</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//blog.lim-light.com/">Demo</a></li>
+<li>地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/idawnlight/typecho-theme-material">https://github.com/idawnlight/typecho-theme-material</a></li>
 </ul>
-<p><img src="https://i.loli.net/2020/05/25/Lak4Az31VHusSUt.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/05/25/Lak4Az31VHusSUt.jpg" alt=""></p>
 <p><strong>NexT.Pisces</strong></p>
 <p>简介：Hexo 主题 NexT.Pisces 的 Typecho 移植版，基于 zgq354 的 NexT.Mist 修改制作。</p>
 <ul>
-<li><a href="https://link.zhihu.com/?target=http%3A//notes.iissnan.com/" target="_blank" rel="noopener">Demo</a>（这个是 Hexo 的，效果差不多）</li>
-<li>地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/newraina/typecho-theme-NexTPisces" target="_blank" rel="noopener">https://github.com/newraina/typecho-theme-NexTPisces</a></li>
+<li><a href="https://link.zhihu.com/?target=http%3A//notes.iissnan.com/">Demo</a>（这个是 Hexo 的，效果差不多）</li>
+<li>地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/newraina/typecho-theme-NexTPisces">https://github.com/newraina/typecho-theme-NexTPisces</a></li>
 </ul>
-<p><img src="https://i.loli.net/2020/05/25/qNb1SeIEDVps8Td.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/05/25/qNb1SeIEDVps8Td.jpg" alt=""></p>
 <p><strong>Maupassant</strong></p>
 <p>简介：极简响应式主题。</p>
 <ul>
-<li>地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/pagecho/maupassant" target="_blank" rel="noopener">https://github.com/pagecho/maupassant</a></li>
+<li>地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/pagecho/maupassant">https://github.com/pagecho/maupassant</a></li>
 </ul>
-<p><img src="https://i.loli.net/2020/05/25/aXY7gzDoeGEvPBl.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/05/25/aXY7gzDoeGEvPBl.jpg" alt=""></p>
 <p><strong>Optica</strong></p>
 <p>简介：单栏小清新主题 Optica。</p>
 <ul>
-<li><a href="https://link.zhihu.com/?target=https%3A//1000yun.cn/" target="_blank" rel="noopener">Demo</a></li>
-<li>地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/iduzui/optica" target="_blank" rel="noopener">https://github.com/iduzui/optica</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//1000yun.cn/">Demo</a></li>
+<li>地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/iduzui/optica">https://github.com/iduzui/optica</a></li>
 </ul>
-<p><img src="https://pic1.zhimg.com/80/v2-1deecd43d3f4c790780feb33462c88a4_720w.jpg" alt></p>
+<p><img src="https://pic1.zhimg.com/80/v2-1deecd43d3f4c790780feb33462c88a4_720w.jpg" alt=""></p>
 <p><strong>ArmX</strong></p>
 <p>简介：响应式纯净前端结构，不依赖第三方前端框架；自带音乐播放器，全站pjax；支持第三方登录；支持cdn加速、生成缩略图等，功能完善。</p>
 <ul>
-<li><a href="https://link.zhihu.com/?target=https%3A//codeup.me/" target="_blank" rel="noopener">Demo</a></li>
-<li>地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/natcube/ArmX" target="_blank" rel="noopener">https://github.com/natcube/ArmX</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//codeup.me/">Demo</a></li>
+<li>地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/natcube/ArmX">https://github.com/natcube/ArmX</a></li>
 </ul>
-<p><img src="https://i.loli.net/2020/05/25/kbZ2VihLnOjB8SI.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/05/25/kbZ2VihLnOjB8SI.jpg" alt=""></p>
 <p><strong>Affinity</strong></p>
-<p>简介：三列卡片式布局。移植自 ghost，原作地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/Showfom/Affinity" target="_blank" rel="noopener">https://github.com/Showfom/Affinity</a>。</p>
+<p>简介：三列卡片式布局。移植自 ghost，原作地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/Showfom/Affinity">https://github.com/Showfom/Affinity</a>。</p>
 <ul>
-<li><a href="https://link.zhihu.com/?target=https%3A//affinity.419.at/" target="_blank" rel="noopener">Demo</a></li>
-<li>地址： <a href="https://link.zhihu.com/?target=https%3A//affinity.419.at/2017/07/28/affinity.html" target="_blank" rel="noopener">https://affinity.419.at/2017/07/28/affinity.html</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//affinity.419.at/">Demo</a></li>
+<li>地址： <a href="https://link.zhihu.com/?target=https%3A//affinity.419.at/2017/07/28/affinity.html">https://affinity.419.at/2017/07/28/affinity.html</a></li>
 </ul>
-<p><img src="https://i.loli.net/2020/05/25/7UpfkVOj3raQ1K8.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/05/25/7UpfkVOj3raQ1K8.jpg" alt=""></p>
 <p><strong>Junichi</strong></p>
 <p>简介：轻量级，无前端框架；响应式设计。</p>
 <ul>
-<li><a href="https://link.zhihu.com/?target=https%3A//uefeng.com/" target="_blank" rel="noopener">Demo</a></li>
-<li>地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/siseboy/junichi" target="_blank" rel="noopener">https://github.com/siseboy/junichi</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//uefeng.com/">Demo</a></li>
+<li>地址：<a href="https://link.zhihu.com/?target=https%3A//github.com/siseboy/junichi">https://github.com/siseboy/junichi</a></li>
 </ul>
-<p><img src="https://i.loli.net/2020/05/25/jBua1S2DPHIpyiW.jpg" alt></p>
+<p><img src="https://i.loli.net/2020/05/25/jBua1S2DPHIpyiW.jpg" alt=""></p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>Typecho 主题还是很丰富的，而且很多是博主们写着自己用，然后分享给网友的。如果喜欢可以选择购买付费主题或者赞助支持主题作者。</p>
 
       
@@ -931,6 +931,10 @@ MathJax.Hub.Queue(function() {
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ICLR</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">组合优化</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -979,14 +983,6 @@ MathJax.Hub.Queue(function() {
     	<section class="tools-section tools-section-friends" q-show="friends">
   		
         <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://ae0kt1.coding-pages.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>咸鱼学弟</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="https://phimos.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>pims</a>
-            </li>
           
             <li class="search-li">
               <a href="https://blog-0g9jkngub0842f0a-1305700166.tcloudbaseapp.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Yann的课程笔记</a>
