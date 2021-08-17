@@ -9,12 +9,12 @@
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>网络单纯形法 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="网络单纯形法在实际应用中。迄今为止求解线性规划问题著名的仍是单纯形法。通过专业的实现，它具有卓越的性能：≈1000变量和≈1000约束的问题可以在0.1到0.5秒内得到解决。那么，是否可以尝试将该算法应用于图论中的问题呢？ ​    事实上，最重要的网络优化问题都可以用线性规划来表示，比如确定最短路、最大流、最小费用流等。然而，直接应用通常的单纯形算法是没有意义的，因为所产生的程序将是笨拙(unw">
+  <meta name="description" content="在实际应用中。迄今为止求解线性规划问题著名的仍是单纯形法。通过专业的实现，它具有卓越的性能：≈1000变量和≈1000约束的问题可以在0.1到0.5秒内得到解决。那么，是否可以尝试将该算法应用于图论中的问题呢？ ​    事实上，最重要的网络优化问题都可以用线性规划来表示，比如确定最短路、最大流、最小费用流等。然而，直接应用通常的单纯形算法是没有意义的，因为所产生的程序将是笨拙(unwiedy)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络单纯形法">
 <meta property="og:url" content="http://yuanquanquan.top/2021/20210716/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="网络单纯形法在实际应用中。迄今为止求解线性规划问题著名的仍是单纯形法。通过专业的实现，它具有卓越的性能：≈1000变量和≈1000约束的问题可以在0.1到0.5秒内得到解决。那么，是否可以尝试将该算法应用于图论中的问题呢？ ​    事实上，最重要的网络优化问题都可以用线性规划来表示，比如确定最短路、最大流、最小费用流等。然而，直接应用通常的单纯形算法是没有意义的，因为所产生的程序将是笨拙(unw">
+<meta property="og:description" content="在实际应用中。迄今为止求解线性规划问题著名的仍是单纯形法。通过专业的实现，它具有卓越的性能：≈1000变量和≈1000约束的问题可以在0.1到0.5秒内得到解决。那么，是否可以尝试将该算法应用于图论中的问题呢？ ​    事实上，最重要的网络优化问题都可以用线性规划来表示，比如确定最短路、最大流、最小费用流等。然而，直接应用通常的单纯形算法是没有意义的，因为所产生的程序将是笨拙(unwiedy)">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210725040907249.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210725040923491.png">
@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210725041729373.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210725040336007.png">
 <meta property="article:published_time" content="2021-07-16T11:55:41.000Z">
-<meta property="article:modified_time" content="2021-07-24T20:20:02.870Z">
+<meta property="article:modified_time" content="2021-08-17T15:31:13.185Z">
 <meta property="article:author" content="Yann">
 <meta property="article:tag" content="组合优化">
 <meta name="twitter:card" content="summary">
@@ -122,7 +122,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 110 篇
+📚总文章数 111 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -277,8 +277,10 @@
 
 <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="网络单纯形法"><a href="#网络单纯形法" class="headerlink" title="网络单纯形法"></a>网络单纯形法</h2><p>在实际应用中。迄今为止求解线性规划问题著名的仍是<strong>单纯形法</strong>。通过专业的实现，它具有卓越的性能：≈1000变量和≈1000约束的问题可以在0.1到0.5秒内得到解决。那么，是否可以尝试将该算法应用于图论中的问题呢？</p>
+        <blockquote>
+<p>在实际应用中。迄今为止求解线性规划问题著名的仍是<strong>单纯形法</strong>。通过专业的实现，它具有卓越的性能：≈1000变量和≈1000约束的问题可以在0.1到0.5秒内得到解决。那么，是否可以尝试将该算法应用于图论中的问题呢？</p>
 <p>​    事实上，最重要的网络优化问题都可以用线性规划来表示，比如确定最短路、最大流、最小费用流等。然而，直接应用通常的单纯形算法是没有意义的，因为所产生的程序将是<strong>笨拙(unwiedy)</strong>和<strong>高度退化的(highly degenerate)</strong>。这两个问题通过使用单纯形法的适当图论特殊化来避免：<strong>网络单纯形法</strong>。</p>
+</blockquote>
 <span id="more"></span>
 <p>在此之前，我们先从<strong>最短路</strong>的故事说起。</p>
 <p>   我们知道所有解决最短路问题的方法的基础是下面这样一个简单的想法：假设已知对每个v存在一条费用为π(v)的从r到v的有向路，并且我们找到一条满足π(v) + C(vw) &lt; π(w)的弧vw。由于把vw附加到从r到v的有向路可以得到一条到w的有向路，因此存在一条到w的费用为π(v) + C(vw)的更便宜的有向路。基于此，定义<strong>可行势（feasible potential）</strong>的概念是自然的：</p>
@@ -541,7 +543,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">网络单纯形法</span></a></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
