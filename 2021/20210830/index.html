@@ -7,18 +7,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
-  <title>Tag: AutoML | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+  <title>Moving Deep Learning into Web Browser:How Far Can We Go | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="人工智能、计算机、机器学习、linux、程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:url" content="http://yuanquanquan.top/tags/AutoML/index.html">
+  <meta name="description" content="本文是对发表于WWW 2019的论文《Moving Deep Learning into Web Browser: How Far Can We Go? 》的回顾。论文第一作者为中心的马郓助理教授，通信作者为中心的刘譞哲副教授，其余作者为中心本科毕业生向东伟、硕士生郑舒宇以及博士生田得雨。本文针对在浏览器中运行深度学习任务的新趋势，调研和测试了最热门的7个基于JavaScript的深度学习框架，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Moving Deep Learning into Web Browser:How Far Can We Go">
+<meta property="og:url" content="http://yuanquanquan.top/2021/20210830/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta property="og:description" content="本文是对发表于WWW 2019的论文《Moving Deep Learning into Web Browser: How Far Can We Go? 》的回顾。论文第一作者为中心的马郓助理教授，通信作者为中心的刘譞哲副教授，其余作者为中心本科毕业生向东伟、硕士生郑舒宇以及博士生田得雨。本文针对在浏览器中运行深度学习任务的新趋势，调研和测试了最热门的7个基于JavaScript的深度学习框架，">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210830184828621.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210830184912849.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210830184950411.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210830185032610.png">
+<meta property="article:published_time" content="2021-08-30T10:06:38.000Z">
+<meta property="article:modified_time" content="2021-08-30T11:11:32.061Z">
 <meta property="article:author" content="Yann">
 <meta property="article:tag" content="人工智能、计算机、机器学习、linux、程序员">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210830184828621.png">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -199,48 +206,126 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-论文笔记-15" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/20200529/" class="archive-article-date">
-  	<time datetime="2020-05-29T14:34:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/20200529/">PC-DARTS:Partial Channel Connections for Memory-Efficient DifferentiableArchitecture Search</a>
+    <h1 class="article-title" itemprop="name">
+      Moving Deep Learning into Web Browser:How Far Can We Go
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">AutoML</a>
-        		</li>
-      		
-		</ul>
+        <!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2021/20210830/" class="archive-article-date">
+  	<time datetime="2021-08-30T10:06:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-30</time>
+</a>
+        
+        <!-- 开始添加字数统计-->
+
+  <div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+      <span class="post-meta-item-text">  字数统计: </span>
+      <span class="post-count">1.9k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="fa fa-clock-o" aria-hidden="true"></i>
+      <span class="post-meta-item-text">  阅读时长: </span>
+      <span class="post-count">6分</span>
+    </span>
+  </span>
+</div>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  
+<!-- 添加完成 -->
+      </header>
+    
+
+<div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本文是对发表于WWW 2019的论文《Moving Deep Learning into Web Browser: How Far Can We Go? 》的回顾。论文第一作者为中心的马郓助理教授，通信作者为中心的刘譞哲副教授，其余作者为中心本科毕业生向东伟、硕士生郑舒宇以及博士生田得雨。本文针对在浏览器中运行深度学习任务的新趋势，调研和测试了最热门的7个基于JavaScript的深度学习框架，以评估这些框架的功能和性能，并与传统的深度学习框架进行了性能比较。本文的发现能够帮助应用开发者、深度学习框架开发者、浏览器厂商对浏览器上的深度学习效率进行优化。</p>
+</blockquote>
+<span id="more"></span>
+
+
+	<div class="row">
+    <embed src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding/1901.09388.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
-          
+
+
+<p>​    深度学习技术在过去十年极大地拓展了人工智能的边界，在图像处理、语音识别、自然语言处理等领域得到了广泛的应用。学术和产业界也提出和研发了多个深度学习框架如TensorFlow、Caffe等。然而，人工智能应用需要运行于Windows、iOS、Android等多种类型的平台上，将人工智能应用向多种平台移植极具挑战。Web应用具有较强的可移植性，因此基于Web的人工智能应用开发成为了研究热点。从2015年起，ConvNetJS 、TensorFlow.js 等一系列基于JavaScript的深度学习库和框架被提出。然而这些框架在功能和性能上能否很好地支持深度学习应用仍然存疑，本文所进行的实证研究回答了以下三个问题：现有框架提供了哪些功能和特性支持多种类型的深度学习任务？现有框架在不同的深度学习任务下性能表现如何？在浏览器中进行深度学习与在原生平台上运行相比有多大的性能差距？本文选择了7个基于JavaScript的深度学习框架进行研究，并将Tensorflow.js与基于Python的原生Tensorflow的性能进行了比较，得出了一系列结论并给出了建议。</p>
+<h2 id="1、现有框架的功能与特性"><a href="#1、现有框架的功能与特性" class="headerlink" title="1、现有框架的功能与特性"></a>1、现有框架的功能与特性</h2><p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210830184828621.png" alt="表1：基于JavaScript的深度学习框架的特性"></p>
+<p>​        为了选择最新的浏览器支持的 DL 框架，作者在 GitHub 上搜索关键字“deep learning framework”，并用 JavaScript 语言过滤结果。然后<strong>选择了 GitHub 上星数超过 1000 的前 7 个框架[1]</strong>。对每个框架的具体介绍如下：</p>
+<p><strong>TensorFlow.js[2]</strong> ：2018 年 3 月由 Google 发布，是一个 inbrowser 机器学习库，支持使用 JavaScript 在浏览器中定义、训练和运行模型。TensorFlow.js 由 WebGL 提供支持，并提供用于定义模型的高级 API。TensorFlow.js 支持所有 Keras 层（包括 Dense、CNN、LSTM 等）。因此，很容易将原生 TensorFlow 和 Keras 预先训练的模型导入到浏览器中并使用 Tensorflow.js。</p>
+<p><strong>ConvNetJS[3]</strong> ：是一个 Javascript 库，最初由斯坦福大学的 Andrej Karpathy 编写。ConvNetJS 目前支持用于分类和回归的常用神经网络模型和代价函数。此外，它还支持卷积网络和强化学习。然而遗憾的是，尽管 ConvNetJS 可能是在 TensorFlow.js 之前最著名的框架，但其在 2016 年 11 月后已经不再维护了。</p>
+<p><strong>Keras.js[4]</strong>：抽象出许多框架作为后端支撑，包括 TensorFlow、CNTK 等。它支持导入 Keras 预先训练的模型进行推理。在 GPU 模式下，Keras.js 的计算由 WebGL 执行。然而，这个项目也已经不再活跃。</p>
+<p><strong>WebDNN[5]</strong>：由东京大学发布的 WebDNN 号称是浏览器中最快的 DNN 执行框架。它只支持推理（训练）任务。该框架支持 4 个执行后端：WebGPU、WebGL、WebAssembly 和 Fallback pure JavaScript 实现。WebDNN 通过压缩模型数据来优化 DNN 模型，以加快执行速度。</p>
+<p><strong>brain.js[6]</strong>：是一个用于神经网络的 JavaScript 库，它取代了不推荐使用的 “brain” 库。它为训练任务提供 DNN、RNN、LSTM 和 GRU。该库支持将训练好的 DL 模型的状态用 JSON 序列化和加载。</p>
+<p><strong>synaptic[7]</strong>：这是一个不依赖于 JavaScript 架构的神经网络库，基本上支持任何类型的一阶甚至二阶 RNN。该库还包括一些内置的 DL 架构，包括多层感知器、LSTM、液态机（Liquid state machines）和 Hopfield 网络。</p>
+<p><strong>Mind[8]</strong>：这是一个灵活的神经网络库。核心框架只有 247 行代码，它使用矩阵实现来处理训练数据。它支持自定义网络拓扑和插件，以导入 mind 社区创建的预训练模型。然而，这个项目也已经不再活跃。</p>
+<p>从提供的功能性来看，多数框架支持训练和推断两类任务；不同的框架支持的神经网络类型及操作有较大差异，仅有TensorFlow.js等3个框架支持了DNN、CNN、RNN三类神经网络；多数框架都支持以层为单位构建神经网络，TensorFlow.js相比其他框架支持了更多的层类别；TensorFlow.js也支持了更多种类的激活函数和优化器；7个框架中仅有TensorFlow.js支持使用GPU加速训练，TensorFlow.js等3个框架支持使用GPU加速推断。</p>
+<p>从开发者支持来看，TensorFlow.js在开发文档、演示等多个方面优于其他框架，但因其支持较丰富的功能，其软件包也是较大的。</p>
+<h2 id="2、现有框架的性能"><a href="#2、现有框架的性能" class="headerlink" title="2、现有框架的性能"></a>2、现有框架的性能</h2><p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210830184912849.png" alt="图1：平均训练时间"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210830184950411.png" alt="图2：平均推断时间"></p>
+<p>测试结果显示，ConvNetJS在训练和推断上性能均为最佳；Tensorflow.js是唯一支持GPU加速的框架，且性能与ConvNetJS可比。ConvNetJS性能更佳的原因可能是其在实现上与其他框架存在较大区别。</p>
+<h2 id="3、浏览器框架与原生框架性能对比"><a href="#3、浏览器框架与原生框架性能对比" class="headerlink" title="3、浏览器框架与原生框架性能对比"></a>3、浏览器框架与原生框架性能对比</h2><p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210830185032610.png" alt="图3：Keras预训练模型的推断时间"></p>
+<p>在推断任务的实验中，Tensorflow.js在nGPU上的表现弱于原生Tensorflow，但也仅慢1-2倍。Tensorflow.js在iGPU上的表现则优于原生Tensorflow在CPU上的表现。</p>
+<p>在决策树的实验中，尽管在任何配置下Tensorflow.js几乎都慢于原生Tensorflow。但两个重要发现是，第一，较多使用CPU还是GPU对性能差异有极大的影响；第二，任务类型对性能差异有极大影响，在训练任务中Tensorflow.js平均慢33.9倍，而在推断任务中则只慢5.8倍。</p>
+<h2 id="4、主要研究发现"><a href="#4、主要研究发现" class="headerlink" title="4、主要研究发现"></a>4、主要研究发现</h2><p>第一，浏览器端的深度学习框架仍在早期阶段，仅有Tensorflow.js提供了较全面的功能和支持了较多种类的深度学习任务。</p>
+<p>第二，浏览器端对深度学习的支持主要仍然集中于推断任务，训练任务仍然受到较大局限。</p>
+<p>第三，模型加载是推断任务中最耗时的部分，因此对于较小的模型，使用CPU的表现优于GPU。</p>
+<p>第四，在没有独立显卡时，集成显卡对浏览器端深度学习框架性能有较大帮助。相比原生Tensorflow仅在CPU上运行，Tensorflow.js利用集成显卡表现出了更好的性能。</p>
+<p>第五，系统资源的利用有待进一步优化。对于Tensorflow.js，CPU没有得到充分的利用；对于WebGL，分配的内存受限于浏览器，导致部分深度学习任务崩溃。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -257,80 +342,153 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yuanquanquan.top/2021/20210830/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/20210817/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SETI Breakthrough Listen - E.T. Signal Search</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/20190911162/" class="archive-article-date">
-  	<time datetime="2019-11-16T06:03:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-16</time>
-</a>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E7%8E%B0%E6%9C%89%E6%A1%86%E6%9E%B6%E7%9A%84%E5%8A%9F%E8%83%BD%E4%B8%8E%E7%89%B9%E6%80%A7"><span class="toc-number">1.</span> <span class="toc-text">1、现有框架的功能与特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E7%8E%B0%E6%9C%89%E6%A1%86%E6%9E%B6%E7%9A%84%E6%80%A7%E8%83%BD"><span class="toc-number">2.</span> <span class="toc-text">2、现有框架的性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A1%86%E6%9E%B6%E4%B8%8E%E5%8E%9F%E7%94%9F%E6%A1%86%E6%9E%B6%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94"><span class="toc-number">3.</span> <span class="toc-text">3、浏览器框架与原生框架性能对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E4%B8%BB%E8%A6%81%E7%A0%94%E7%A9%B6%E5%8F%91%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">4、主要研究发现</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/20190911162/">Evaluation of a Tree-based Pipeline Optimization Tool for Automating Data Science</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">AutoML</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记/论文笔记//" class="article-tag-list-link color5">论文笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="论文笔记-15" data-title="Moving Deep Learning into Web Browser:How Far Can We Go" data-url="http://yuanquanquan.top/2021/20210830/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yuanquanquan.top/2021/20210830/",
+  owner: 'Bazingaliu',
+  repo: 'Bazingaliu.github.io',
+  oauth: {
+    client_id: '86465678bf992f29a879',
+    client_secret: 'e465ff4beea46850d31dc2ebf022410154c0ddac',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -370,9 +528,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
