@@ -9,12 +9,12 @@
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
   <title>Effective AER Object Classification Using Segmented Probability-Maximization Learning in Spiking Neural Networks | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="之前因为一些emmmm俗事，很久没看论文了，现在因为要做毕设，又久违看起了论文，这次是浙大普适与智能实验室AAAI 2020的论文《基于脉冲神经网络的事件表示的物体分类方法》">
+  <meta name="description" content="之前因为一些emmmm俗事，很久没看论文了，现在因为要做项目，又久违看起了论文，这次是浙大普适与智能实验室AAAI 2020的论文《基于脉冲神经网络的事件表示的物体分类方法》">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Effective AER Object Classification Using Segmented Probability-Maximization Learning in Spiking Neural Networks">
 <meta property="og:url" content="http://yuanquanquan.top/2020/20201103/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="之前因为一些emmmm俗事，很久没看论文了，现在因为要做毕设，又久违看起了论文，这次是浙大普适与智能实验室AAAI 2020的论文《基于脉冲神经网络的事件表示的物体分类方法》">
+<meta property="og:description" content="之前因为一些emmmm俗事，很久没看论文了，现在因为要做项目，又久违看起了论文，这次是浙大普适与智能实验室AAAI 2020的论文《基于脉冲神经网络的事件表示的物体分类方法》">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2020/11/07/e3xkVDZrl2w718d.png">
 <meta property="og:image" content="https://i.loli.net/2020/11/07/SgR67PrvBj3GLeW.png">
@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/11/07/u16zsqjmZkWHCa9.png">
 <meta property="og:image" content="https://i.loli.net/2020/11/07/RKD8G4jzPtwyuJa.png">
 <meta property="article:published_time" content="2020-11-02T17:30:48.000Z">
-<meta property="article:modified_time" content="2021-03-29T10:42:24.655Z">
+<meta property="article:modified_time" content="2021-08-30T11:18:15.250Z">
 <meta property="article:author" content="Yann">
 <meta property="article:tag" content="SNN">
 <meta name="twitter:card" content="summary">
@@ -263,9 +263,9 @@
 <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>之前因为一些emmmm俗事，很久没看论文了，现在因为要做毕设，又久违看起了论文，这次是浙大普适与智能实验室AAAI 2020的论文《基于脉冲神经网络的事件表示的物体分类方法》</p>
+<p>之前因为一些emmmm俗事，很久没看论文了，现在因为要做项目，又久违看起了论文，这次是浙大普适与智能实验室AAAI 2020的论文《基于脉冲神经网络的事件表示的物体分类方法》</p>
 </blockquote>
-<a id="more"></a>
+<span id="more"></span>
 
 
 	<div class="row">
@@ -277,7 +277,7 @@
 <p>事件相机是一种神经拟态视觉传感器，通过模拟人类的视网膜机制来记录场景。与传统相机不同，事件相机没有 “帧” 的概念。当它捕捉到视野中任意位置发生了一定程度的光线变化时，就会产生一些像素级的输出（即事件）。一个事件中包括三个信息：事件在2D空间的像素坐标，事件的时间戳，以及事件的极性（1和-1，表示是由光线变亮或变暗触发的）。由于事件相机关注的是场景中的光线变化，因此它只会记录场景中的动态信息，忽略不变的静态冗余信息，从而能显著减少内存使用和能源消耗。</p>
 <p>这种基于事件的数据形式与脉冲神经网络（Spiking Neural Network，SNN）不谋而合。脉冲神经网络通过脉冲传递信息，而脉冲也具有事件的属性。相比传统人工神经网络，脉冲神经网络更具有生物解释性，在处理时空数据的能力上也有更大的潜力。</p>
 <p>然而，将这种新的事件表示与SNN相结合来进行物体分类，还存在着若干挑战。首先，与传统相机的视频流数据形式相比，事件相机产生的事件流是不稳定的。由于事件相机对视觉感受域内的动态信息非常敏感，在场景记录过程中，除了与目标的相关的事件被记录下来，相机抖动和环境光的变化等因素也会产生大量的噪声事件，影响SNN网络中神经元响应的可靠性和网络学习性能。其次，事件相机输出的事件流记录了一段时间内的信息，我们希望SNN的响应能够足够快，以便在提供的测试信息还不完整的情况下，仍达到具有竞争力的准确性水平。</p>
-<p><img src="https://i.loli.net/2020/11/07/e3xkVDZrl2w718d.png" alt></p>
+<p><img src="https://i.loli.net/2020/11/07/e3xkVDZrl2w718d.png" alt=""></p>
 <p>最近，我们发表在AAAI2020的论文《Effective AER Object Classification Using Segmented Probability-Maximization Learning in Spiking Neural Networks》就针对事件表示的物体提出了一个分类模型，在这个模型中，我们提出了一个新的脉冲神经网络学习算法——分段概率最大化算法（Segmented Probability-MAximization，SPA）。SPA基于脉冲神经元之间的相对响应定义了一个响应概率，利用梯度更新来迭代增加响应正确的概率，从而提高神经元响应的可靠性。同时我们根据神经元的电压将事件流的处理过程动态分段，以便能充分利用一段时长内的大量事件，增加信息的利用率，提高网络的学习的性能。</p>
 <p> <img src="https://i.loli.net/2020/11/07/SgR67PrvBj3GLeW.png" alt="图1 峰值检测示意图"></p>
 <p><strong>分段概率最大化算法</strong></p>
@@ -292,7 +292,7 @@
 <p><img src="https://i.loli.net/2020/11/07/RKD8G4jzPtwyuJa.png" alt="图2 在MNIST-DVS数据集上不完全信息推理的性能"></p>
 <p><strong>结论和讨论</strong></p>
 <p>综上，我们提出了一种有效的事件表示的物体分类模型，该模型提出了一种新的脉冲神经网络学习算法——SPA算法。SPA学习算法通过迭代增加神经元响应正确的概率这一方式提高神经元响应的可靠性。同时，通过SPA算法中的峰值检测机制提高事件流时长内信息的学习利用率。实验结果验证了本模型的性能，以及模型所具有信息利用效率高、泛化能力强等优点。</p>
-<p>论文链接：<a href="https://arxiv.org/abs/2002.06199" target="_blank" rel="noopener">https://arxiv.org/abs/2002.06199</a></p>
+<p>论文链接：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2002.06199">https://arxiv.org/abs/2002.06199</a></p>
 
       
 
