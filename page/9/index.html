@@ -99,7 +99,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 112 篇
+📚总文章数 113 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -200,6 +200,150 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-dl-ai-4-3h" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/dl-ai-4-3h/">DeepLearning.ai作业:(4-3)-- 目标检测（Object detection）</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2018/dl-ai-4-3h/" class="archive-article-date">
+  	<time datetime="2018-10-11T12:15:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-11</time>
+</a>
+        
+        <!-- 开始添加字数统计-->
+
+  <div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+      <span class="post-meta-item-text">  字数统计: </span>
+      <span class="post-count">1.4k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="fa fa-clock-o" aria-hidden="true"></i>
+      <span class="post-meta-item-text">  阅读时长: </span>
+      <span class="post-count">8分</span>
+    </span>
+  </span>
+</div>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  
+<!-- 添加完成 -->
+      </header>
+    
+
+<div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrl8dyhm4j218w0nstdc.jpg" alt></p>
+<p>本周的作业实现了YOLO算法，并用于自动驾驶的目标检测中。</p>
+<h1 id="Model-details"><a href="#Model-details" class="headerlink" title="Model details"></a>Model details</h1><p>输入： (m, 608, 608, 3)</p>
+<p>输出： (m, 19, 19, 5, 85)</p>
+<p>IMAGE (m, 608, 608, 3) -&gt; DEEP CNN -&gt; ENCODING (m, 19, 19, 5, 85)</p>
+<p>也就是有5个Anchor boxes，一共有80个分类。</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4kterjsbj219s0p44d0.jpg" alt></p>
+<p>所以，每个box的scores也就是等于每个类预测的可能性：</p>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktdx30qj219u0k4tcm.jpg" alt></p>
+<h1 id="Filtering-with-a-threshold-on-class-scores"><a href="#Filtering-with-a-threshold-on-class-scores" class="headerlink" title="Filtering with a threshold on class scores"></a>Filtering with a threshold on class scores</h1><p>这个时候开始创建一个函数，得到每一个box中scores最大的那个类，分数，以及位置，去掉其他没用的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: yolo_filter_boxes</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">yolo_filter_boxes</span><span class="params">(box_confidence, boxes, box_class_probs, threshold = <span class="number">.6</span>)</span>:</span></span><br><span class="line">    <span class="string">"""Filters YOLO boxes by thresholding on object and class confidence.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    box_confidence -- tensor of shape (19, 19, 5, 1)</span></span><br><span class="line"><span class="string">    boxes -- tensor of shape (19, 19, 5, 4)</span></span><br><span class="line"><span class="string">    box_class_probs -- tensor of shape (19, 19, 5, 80)</span></span><br><span class="line"><span class="string">    threshold -- real value, if [ highest class probability score &lt; threshold], then get rid of the corresponding box</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    scores -- tensor of shape (None,), containing the class probability score for selected boxes</span></span><br><span class="line"><span class="string">    boxes -- tensor of shape (None, 4), containing (b_x, b_y, b_h, b_w) coordinates of selected boxes</span></span><br><span class="line"><span class="string">    classes -- tensor of shape (None,), containing the index of the class detected by the selected boxes</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Note: "None" is here because you don't know the exact number of selected boxes, as it depends on the threshold. </span></span><br><span class="line"><span class="string">    For example, the actual output size of scores would be (10,) if there are 10 boxes.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Step 1: Compute box scores</span></span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 1 line)</span></span><br><span class="line">    box_scores = box_confidence * box_class_probs</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Step 2: Find the box_classes thanks to the max box_scores, keep track of the corresponding score</span></span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 2 lines)</span></span><br><span class="line">    box_classes = K.argmax(box_scores, axis=<span class="number">-1</span>)    <span class="comment">#得到box的类别 (19,19,5)</span></span><br><span class="line">    box_class_scores = K.max(box_scores, axis=<span class="number">-1</span>, keepdims=<span class="keyword">False</span>)  <span class="comment">#得到box这个类别的分数(19,19,5)</span></span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Step 3: Create a filtering mask based on "box_class_scores" by using "threshold". The mask should have the</span></span><br><span class="line">    <span class="comment"># same dimension as box_class_scores, and be True for the boxes you want to keep (with probability &gt;= threshold)</span></span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 1 line)</span></span><br><span class="line">    filtering_mask = box_class_scores &gt;= threshold</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Step 4: Apply the mask to scores, boxes and classes</span></span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 3 lines)</span></span><br><span class="line">    scores = tf.boolean_mask(box_class_scores, filtering_mask)</span><br><span class="line">    boxes = tf.boolean_mask(boxes, filtering_mask)</span><br><span class="line">    classes = tf.boolean_mask(box_classes, filtering_mask)</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> scores, boxes, classes</span><br></pre></td></tr></table></figure>
+<h1 id="Non-max-suppression"><a href="#Non-max-suppression" class="headerlink" title="Non-max suppression"></a>Non-max suppression</h1><p>找到了这些boxes后，还需要进行筛选过滤掉。先完成一个IOU算法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: iou</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iou</span><span class="params">(box1, box2)</span>:</span></span><br><span class="line">    <span class="string">"""Implement the intersection over union (IoU) between box1 and box2</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    box1 -- first box, list object with coordinates (x1, y1, x2, y2)</span></span><br><span class="line"><span class="string">    box2 -- second box, list object with coordinates (x1, y1, x2, y2)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Calculate the (y1, x1, y2, x2) coordinates of the intersection of box1 and box2. Calculate its Area.</span></span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 5 lines)</span></span><br><span class="line">    xi1 = np.maximum(box1[<span class="number">0</span>], box2[<span class="number">0</span>])</span><br><span class="line">    yi1 = np.maximum(box1[<span class="number">1</span>], box2[<span class="number">1</span>])</span><br><span class="line">    xi2 = np.minimum(box1[<span class="number">2</span>], box2[<span class="number">2</span>])</span><br><span class="line">    yi2 = np.minimum(box1[<span class="number">3</span>], box2[<span class="number">3</span>])</span><br><span class="line">    inter_area = max(xi2 - xi1,<span class="number">0</span>) * max(yi2 - yi1,<span class="number">0</span>)</span><br><span class="line">    <span class="comment">### END CODE HERE ###    </span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Calculate the Union area by using Formula: Union(A,B) = A + B - Inter(A,B)</span></span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 3 lines)</span></span><br><span class="line">    box1_area = (box1[<span class="number">2</span>] - box1[<span class="number">0</span>]) * (box1[<span class="number">3</span>] - box1[<span class="number">1</span>])</span><br><span class="line">    box2_area = (box2[<span class="number">2</span>] - box2[<span class="number">0</span>]) * (box2[<span class="number">3</span>] - box2[<span class="number">1</span>])</span><br><span class="line">    union_area = box1_area + box2_area - inter_area</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># compute the IoU</span></span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 1 line)</span></span><br><span class="line">    iou = inter_area / union_area</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> iou</span><br></pre></td></tr></table></figure>
+<p>tensorflow已经帮你实现了iou算法了，不用用自己刚才写的了：</p>
+<ul>
+<li><a href="https://www.tensorflow.org/api_docs/python/tf/image/non_max_suppression" target="_blank" rel="noopener">tf.image.non_max_suppression()</a></li>
+<li><a href="https://www.tensorflow.org/api_docs/python/tf/gather" target="_blank" rel="noopener">K.gather()</a></li>
+</ul>
+<p>思想就是拿掉IOU比较大的那些box</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: yolo_non_max_suppression</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">yolo_non_max_suppression</span><span class="params">(scores, boxes, classes, max_boxes = <span class="number">10</span>, iou_threshold = <span class="number">0.5</span>)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Applies Non-max suppression (NMS) to set of boxes</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    scores -- tensor of shape (None,), output of yolo_filter_boxes()</span></span><br><span class="line"><span class="string">    boxes -- tensor of shape (None, 4), output of yolo_filter_boxes() that have been scaled to the image size (see later)</span></span><br><span class="line"><span class="string">    classes -- tensor of shape (None,), output of yolo_filter_boxes()</span></span><br><span class="line"><span class="string">    max_boxes -- integer, maximum number of predicted boxes you'd like</span></span><br><span class="line"><span class="string">    iou_threshold -- real value, "intersection over union" threshold used for NMS filtering</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    scores -- tensor of shape (, None), predicted score for each box</span></span><br><span class="line"><span class="string">    boxes -- tensor of shape (4, None), predicted box coordinates</span></span><br><span class="line"><span class="string">    classes -- tensor of shape (, None), predicted class for each box</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Note: The "None" dimension of the output tensors has obviously to be less than max_boxes. Note also that this</span></span><br><span class="line"><span class="string">    function will transpose the shapes of scores, boxes, classes. This is made for convenience.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    max_boxes_tensor = K.variable(max_boxes, dtype=<span class="string">'int32'</span>)     <span class="comment"># tensor to be used in tf.image.non_max_suppression()</span></span><br><span class="line">    K.get_session().run(tf.variables_initializer([max_boxes_tensor])) <span class="comment"># initialize variable max_boxes_tensor</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Use tf.image.non_max_suppression() to get the list of indices corresponding to boxes you keep</span></span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 1 line)</span></span><br><span class="line">    nms_indices = tf.image.non_max_suppression(boxes,scores,max_boxes,iou_threshold)</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Use K.gather() to select only nms_indices from scores, boxes and classes</span></span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 3 lines)</span></span><br><span class="line">    scores = K.gather(scores,nms_indices)</span><br><span class="line">    boxes = K.gather(boxes,nms_indices)</span><br><span class="line">    classes = K.gather(classes,nms_indices)</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> scores, boxes, classes</span><br></pre></td></tr></table></figure>
+<p>而后结合刚才的函数，先去掉scores低的，然后运算NMS算法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: yolo_eval</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">yolo_eval</span><span class="params">(yolo_outputs, image_shape = <span class="params">(<span class="number">720.</span>, <span class="number">1280.</span>)</span>, max_boxes=<span class="number">10</span>, score_threshold=<span class="number">.6</span>, iou_threshold=<span class="number">.5</span>)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Converts the output of YOLO encoding (a lot of boxes) to your predicted boxes along with their scores, box coordinates and classes.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    yolo_outputs -- output of the encoding model (for image_shape of (608, 608, 3)), contains 4 tensors:</span></span><br><span class="line"><span class="string">                    box_confidence: tensor of shape (None, 19, 19, 5, 1)</span></span><br><span class="line"><span class="string">                    box_xy: tensor of shape (None, 19, 19, 5, 2)</span></span><br><span class="line"><span class="string">                    box_wh: tensor of shape (None, 19, 19, 5, 2)</span></span><br><span class="line"><span class="string">                    box_class_probs: tensor of shape (None, 19, 19, 5, 80)</span></span><br><span class="line"><span class="string">    image_shape -- tensor of shape (2,) containing the input shape, in this notebook we use (608., 608.) (has to be float32 dtype)</span></span><br><span class="line"><span class="string">    max_boxes -- integer, maximum number of predicted boxes you'd like</span></span><br><span class="line"><span class="string">    score_threshold -- real value, if [ highest class probability score &lt; threshold], then get rid of the corresponding box</span></span><br><span class="line"><span class="string">    iou_threshold -- real value, "intersection over union" threshold used for NMS filtering</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    scores -- tensor of shape (None, ), predicted score for each box</span></span><br><span class="line"><span class="string">    boxes -- tensor of shape (None, 4), predicted box coordinates</span></span><br><span class="line"><span class="string">    classes -- tensor of shape (None,), predicted class for each box</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">### START CODE HERE ### </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Retrieve outputs of the YOLO model (≈1 line)</span></span><br><span class="line">    box_confidence, box_xy, box_wh, box_class_probs = yolo_outputs</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Convert boxes to be ready for filtering functions </span></span><br><span class="line">    boxes = yolo_boxes_to_corners(box_xy, box_wh)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Use one of the functions you've implemented to perform Score-filtering with a threshold of score_threshold (≈1 line)</span></span><br><span class="line">    scores, boxes, classes = yolo_filter_boxes(box_confidence, boxes, box_class_probs, score_threshold)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Scale boxes back to original image shape.</span></span><br><span class="line">    boxes = scale_boxes(boxes, image_shape)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Use one of the functions you've implemented to perform Non-max suppression with a threshold of iou_threshold (≈1 line)</span></span><br><span class="line">    scores, boxes, classes = yolo_non_max_suppression(scores, boxes, classes, max_boxes, iou_threshold )</span><br><span class="line">    </span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> scores, boxes, classes</span><br></pre></td></tr></table></figure>
+<p>进行预测:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(sess, image_file)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Runs the graph stored in "sess" to predict boxes for "image_file". Prints and plots the preditions.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    sess -- your tensorflow/Keras session containing the YOLO graph</span></span><br><span class="line"><span class="string">    image_file -- name of an image stored in the "images" folder.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    out_scores -- tensor of shape (None, ), scores of the predicted boxes</span></span><br><span class="line"><span class="string">    out_boxes -- tensor of shape (None, 4), coordinates of the predicted boxes</span></span><br><span class="line"><span class="string">    out_classes -- tensor of shape (None, ), class index of the predicted boxes</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Note: "None" actually represents the number of predicted boxes, it varies between 0 and max_boxes. </span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Preprocess your image</span></span><br><span class="line">    image, image_data = preprocess_image(<span class="string">"images/"</span> + image_file, model_image_size = (<span class="number">608</span>, <span class="number">608</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Run the session with the correct tensors and choose the correct placeholders in the feed_dict.</span></span><br><span class="line">    <span class="comment"># You'll need to use feed_dict=&#123;yolo_model.input: ... , K.learning_phase(): 0&#125;)</span></span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 1 line)</span></span><br><span class="line">    out_scores, out_boxes, out_classes = sess.run([scores, boxes, classes], feed_dict = &#123;yolo_model.input:image_data, K.learning_phase(): <span class="number">0</span>&#125;)</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Print predictions info</span></span><br><span class="line">    print(<span class="string">'Found &#123;&#125; boxes for &#123;&#125;'</span>.format(len(out_boxes), image_file))</span><br><span class="line">    <span class="comment"># Generate colors for drawing bounding boxes.</span></span><br><span class="line">    colors = generate_colors(class_names)</span><br><span class="line">    <span class="comment"># Draw bounding boxes on the image file</span></span><br><span class="line">    draw_boxes(image, out_scores, out_boxes, out_classes, class_names, colors)</span><br><span class="line">    <span class="comment"># Save the predicted bounding box on the image</span></span><br><span class="line">    image.save(os.path.join(<span class="string">"out"</span>, image_file), quality=<span class="number">90</span>)</span><br><span class="line">    <span class="comment"># Display the results in the notebook</span></span><br><span class="line">    output_image = scipy.misc.imread(os.path.join(<span class="string">"out"</span>, image_file))</span><br><span class="line">    imshow(output_image)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> out_scores, out_boxes, out_classes</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/d40b6c29ly1fw4ktc3ohoj20ai06777k.jpg" alt></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dl.ai</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/dl-ai-4-3h/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-dl-ai-4-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1278,130 +1422,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/cs231n-1h-3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-cs231n-1h-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/cs231n-1h-2/">cs231n作业：assignment1 - svm</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2018/cs231n-1h-2/" class="archive-article-date">
-  	<time datetime="2018-09-27T06:17:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-27</time>
-</a>
-        
-        <!-- 开始添加字数统计-->
-
-  <div style="margin-top:10px;">
-  <span class="post-time">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-keyboard-o" aria-hidden="true"></i>
-      <span class="post-meta-item-text">  字数统计: </span>
-      <span class="post-count">2.5k字</span>
-    </span>
-  </span>
-
-  <span class="post-time">
-    &nbsp; | &nbsp;
-    <span class="post-meta-item-icon">
-      <i class="fa fa-clock-o" aria-hidden="true"></i>
-      <span class="post-meta-item-text">  阅读时长: </span>
-      <span class="post-count">13分</span>
-    </span>
-  </span>
-</div>
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  
-<!-- 添加完成 -->
-      </header>
-    
-
-<div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ww1.sinaimg.cn/large/d40b6c29gy1fvrlvz19onj20yh0k1dms.jpg" alt></p>
-<p>GitHub地址：<a href="https://github.com/ZJUFangzh/cs231n" target="_blank" rel="noopener">https://github.com/ZJUFangzh/cs231n</a></p>
-<p>完成了一个基于SVM的损失函数。</p>
-        
-          <a class="article-more-a" href="/2018/cs231n-1h-2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">cs231n</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">homework</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI//" class="article-tag-list-link color3">AI</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/AI/Deep-Learning//" class="article-tag-list-link color4">Deep Learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/cs231n-1h-2/">展开全文 >></a>
         </p>
       
 
