@@ -7,18 +7,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanquanquan.top">
-  <title>Archives: 2021/8 | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
+  <title>Low-latency Speculative Inference On Distributed Multi-modal Data Streams | yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="人工智能、计算机、机器学习、linux、程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:url" content="http://yuanquanquan.top/archives/2021/08/index.html">
+  <meta name="description" content="本文介绍MobiSys 2021年的文章《Low-latency Speculative Inference On Distributed Multi-modal Data Streams》。多模态数据流（multi-modal data streams）在在分布式传感任务中很常见，常用的场景有人物跟踪、行为识别以及音频和视频分析等。考虑到不同模态数据之间高度的异构性，不同模态的数据传输速度是不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Low-latency Speculative Inference On Distributed Multi-modal Data Streams">
+<meta property="og:url" content="http://yuanquanquan.top/2022/20220113/index.html">
 <meta property="og:site_name" content="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔">
-<meta property="og:description" content="人工智能、计算机、机器学习、linux、程序员">
+<meta property="og:description" content="本文介绍MobiSys 2021年的文章《Low-latency Speculative Inference On Distributed Multi-modal Data Streams》。多模态数据流（multi-modal data streams）在在分布式传感任务中很常见，常用的场景有人物跟踪、行为识别以及音频和视频分析等。考虑到不同模态数据之间高度的异构性，不同模态的数据传输速度是不">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220113160818753">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220113160841622">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220113160907237">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220113160935523">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220113162245436">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220113161043432">
+<meta property="article:published_time" content="2022-01-13T08:06:23.000Z">
+<meta property="article:modified_time" content="2022-01-13T08:22:51.858Z">
 <meta property="article:author" content="Yann">
 <meta property="article:tag" content="人工智能、计算机、机器学习、linux、程序员">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220113160818753">
   
     <link rel="alternative" href="/atom.xml" title="yuanquanquan的个人博客 | 我愿做你光华中淡淡的一笔" type="application/atom+xml">
   
@@ -199,37 +208,118 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-论文笔记-16" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/20210830/" class="archive-article-date">
-  	<time datetime="2021-08-30T10:06:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-30</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/20210830/">Moving Deep Learning into Web Browser:How Far Can We Go</a>
+    <h1 class="article-title" itemprop="name">
+      Low-latency Speculative Inference On Distributed Multi-modal Data Streams
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        <!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2022/20220113/" class="archive-article-date">
+  	<time datetime="2022-01-13T08:06:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-13</time>
+</a>
+        
+        <!-- 开始添加字数统计-->
+
+  <div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+      <span class="post-meta-item-text">  字数统计: </span>
+      <span class="post-count">1.6k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="fa fa-clock-o" aria-hidden="true"></i>
+      <span class="post-meta-item-text">  阅读时长: </span>
+      <span class="post-count">5分</span>
+    </span>
+  </span>
+</div>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  
+<!-- 添加完成 -->
+      </header>
+    
+
+<div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本文介绍MobiSys 2021年的文章《Low-latency Speculative Inference On Distributed Multi-modal Data Streams》。多模态数据流（multi-modal data streams）在在分布式传感任务中很常见，常用的场景有人物跟踪、行为识别以及音频和视频分析等。考虑到不同模态数据之间高度的异构性，不同模态的数据传输速度是不一致的，因而较慢的数据流会显著地降低整个系统的推理性能和准确率。为此，该篇文章提出推测式推理来自动调节和适应多模态数据流中传输速度不一致的问题。与已有工作阻塞式推理的有所不同，该文章会根据残缺不完整的数据，推测生成一个完整的数据，并根据此生成的数据进行推断。同时，该文章提供一个回滚机制，用以确定是否可以接受利用不完整数据得到的推理结果。当在不接受结果时，回滚机制会等到足够多的数据到达时在做推理，以保证结果的正确性。实验显示该篇文章提出的方法，与最新的六个基准工作相比，能够在保证准确率不变的情况下，7-128倍的降低推断延迟</p>
+</blockquote>
+<span id="more"></span>  
+
+
+	<div class="row">
+    <embed src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding/Hyperspectral/3458864.3467884.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+<p>​        目前物联网设备上配有大量低功耗但数据丰富的传感器（如相机、麦克风、激光雷达、高光谱成像仪和射频成像仪）。这些传感器可以提供多种大量连续的数据用以进行复杂环境下的推理。这类多模态数据流的推理可以显著地提升语音识别、健康检测、增强现实和自动驾驶等任务的准确率。尽管有这么多的好处，多模态推理面临着多个数据流之间不同步，甚至是数据缺失的问题，具体带来三个挑战：(1) 多模态数据往往是不同维度的，差别较大（比如：音频和视频），因而很难通过某个模态的数据流去恢复或创建其他缺失的数据流。(2) 需要设计一个简单高效的回滚机制，既要保证尽可能地少进行回滚，又要保证回滚本身的开销较小。(3) 多个模态数据流之间存在时间漂移问题，即很多传感器设备由于缺少时钟同步，进而造成时间戳不准的现象。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220113160818753" alt="系统workflow"></p>
+<p>​        为了解决上述问题，该文作者提出了推测式推理的方法予以解决。如图1所示，具体包含三个部分：数据对齐模块、数据填补模块和回滚模块。多模态数据首先经过数据对齐模块，将不同模态间的数据时间戳对齐，然后数据填补模块会根据某个模态的数据流生成缺失模态的数据，并将生成的数据和原始的数据一并输入到多模态学习模型中。如果得到的结果是可以相信的，那么直接输出，否则回滚模块进行处理，得到最终的正确数据。接下来本文将详细展开这三部分的详细实现。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220113160841622" alt="多模态推理过程"></p>
+<p><strong>数据填补模块</strong></p>
+<p>该文发现，直接用某个模态的数据流去生成另外一个模态的数据是十分困难的，同时也需要大量的训练开销。为此该文调研了多模态数据进行推断的方法，如图2所示。不同模态的数据首先经过各自的特征向量提取层，得到各自的feature map，然后将这些feature map拼接在一起经过后续的处理层，得到最终的输出。基于调研结果，该文提出基于某个模态的数据流去生成另一个模态的feature map的方法，既能保证生成的feature map准确，又能保证训练和生成过程的开销比较小，具体如图3所示。该文使用生成对抗网络（GAN）进行训练，训练时设置生成器和辨别器两个部分，生成器用于生成缺失数据流的feature map，辨别器用于区分生成的feature map和真实数据生成的feature map。生成器和辨别器相互对抗最后得到一个能够生成缺失数据流feature map的模型。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220113160907237" alt="数据填补模型训练图"></p>
+<p><strong>回滚模块</strong></p>
+<p>该文发现不同类别的数据对某个模态数据的缺失的反应是不同的，比如“under”这个词仅通过唇语就能识别，而“allegations”却很难。针对这一现象，该文对所有待识别的数据做了分类，获得了每一个类别的数据要想准确预测出正确结果所需要的最少模态数据信息。基于这个信息设置回滚模块，当推测时已有的数据大于最少模态数据信息时，就不回滚；否则反之。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220113160935523" alt="数据对齐示例"></p>
+<p><strong>数据对齐模块</strong></p>
+<p>该文发现，当两个模态的不同时刻的数据得到的推理结果具有最小的“距离”，那么这两个来自不同模态的时刻，实际上是一致的。图4给出了4个例子，画红圈的地方表示最小距离的时刻，也就是两个模态数据流时间偏移的距离。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220113162245436" alt="在模拟Trace上的准确率和延迟上的分析"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220113161043432" alt="在真实Trace上的准确率和延迟上的分析"></p>
+<p>本文所提出的工作在一个带有Xeon E5-2620 v3 2.40 GHz CPU和两个GTX-1080Ti GPU的32 GB RAM边缘服务器上实现的。并与阻塞算法（Blocking mechanism）、自适应码率算法（ABS）、周期分析法（Periodic profiling）、一次分析方法（One-time profiling）和帧采样算法（frame sampling）在语音识别数据集（LRW）、事件检测数据集（AVE）和活动识别数据集（STISEN）进行了比较，对比结果如图5和6所示。在模拟Trace上显示，该文提出的方法能够降低2-128倍的延迟，并提高1%-25%的准确率。在真实Trace上显示，该文提出的方法能够在延迟上与自动码率和帧采样算法类似，但却能得到和分析与阻塞算法一样的准确率，达到了同时降低延迟，并提升准确率的目的。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -246,93 +336,153 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yuanquanquan.top/2022/20220113/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/20210817/" class="archive-article-date">
-  	<time datetime="2021-08-17T13:43:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-17</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/2022112/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Altium Designer 21版本初体验</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/20210817/">SETI Breakthrough Listen - E.T. Signal Search</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kaggle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/2202210803/" class="archive-article-date">
-  	<time datetime="2021-08-03T12:16:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-03</time>
-</a>
-        </div>
-    	 
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="论文笔记-16" data-title="Low-latency Speculative Inference On Distributed Multi-modal Data Streams" data-url="http://yuanquanquan.top/2022/20220113/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/2202210803/">MLB Player Digital Engagement Forecasting</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kaggle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yuanquanquan.top/2022/20220113/",
+  owner: 'Bazingaliu',
+  repo: 'Bazingaliu.github.io',
+  oauth: {
+    client_id: '86465678bf992f29a879',
+    client_secret: 'e465ff4beea46850d31dc2ebf022410154c0ddac',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -372,8 +522,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

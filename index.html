@@ -99,7 +99,7 @@
 		</nav>
 		<!-- style="font-size: 12px; color: #696969;" -->
 <nav class="custom">
-📚总文章数 117 篇
+📚总文章数 118 篇
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -200,6 +200,115 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-论文笔记-16" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/20220113/">Low-latency Speculative Inference On Distributed Multi-modal Data Streams</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2022/20220113/" class="archive-article-date">
+  	<time datetime="2022-01-13T08:06:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-13</time>
+</a>
+        
+        <!-- 开始添加字数统计-->
+
+  <div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+      <span class="post-meta-item-text">  字数统计: </span>
+      <span class="post-count">1.6k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="fa fa-clock-o" aria-hidden="true"></i>
+      <span class="post-meta-item-text">  阅读时长: </span>
+      <span class="post-count">5分</span>
+    </span>
+  </span>
+</div>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  
+<!-- 添加完成 -->
+      </header>
+    
+
+<div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本文介绍MobiSys 2021年的文章《Low-latency Speculative Inference On Distributed Multi-modal Data Streams》。多模态数据流（multi-modal data streams）在在分布式传感任务中很常见，常用的场景有人物跟踪、行为识别以及音频和视频分析等。考虑到不同模态数据之间高度的异构性，不同模态的数据传输速度是不一致的，因而较慢的数据流会显著地降低整个系统的推理性能和准确率。为此，该篇文章提出推测式推理来自动调节和适应多模态数据流中传输速度不一致的问题。与已有工作阻塞式推理的有所不同，该文章会根据残缺不完整的数据，推测生成一个完整的数据，并根据此生成的数据进行推断。同时，该文章提供一个回滚机制，用以确定是否可以接受利用不完整数据得到的推理结果。当在不接受结果时，回滚机制会等到足够多的数据到达时在做推理，以保证结果的正确性。实验显示该篇文章提出的方法，与最新的六个基准工作相比，能够在保证准确率不变的情况下，7-128倍的降低推断延迟</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2022/20220113/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/笔记/论文笔记//" class="article-tag-list-link color5">论文笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/20220113/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-ad21" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1149,127 +1258,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/20210716/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-cuda-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/20210605/">FFT的CUDA实现</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2021/20210605/" class="archive-article-date">
-  	<time datetime="2021-06-05T03:10:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-05</time>
-</a>
-        
-        <!-- 开始添加字数统计-->
-
-  <div style="margin-top:10px;">
-  <span class="post-time">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-keyboard-o" aria-hidden="true"></i>
-      <span class="post-meta-item-text">  字数统计: </span>
-      <span class="post-count">10.7k字</span>
-    </span>
-  </span>
-
-  <span class="post-time">
-    &nbsp; | &nbsp;
-    <span class="post-meta-item-icon">
-      <i class="fa fa-clock-o" aria-hidden="true"></i>
-      <span class="post-meta-item-text">  阅读时长: </span>
-      <span class="post-count">47分</span>
-    </span>
-  </span>
-</div>
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  
-<!-- 添加完成 -->
-      </header>
-    
-
-<div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>一维FFT算法在Maxwell架构上，归为访存密集算法。<br>即，在足够优化的情况下，可在一次memory copy的耗时内完成计算。</p>
-<p>本文实现的FFT算法达到与官方库cuFFT一致的速度，通过整合kernel，可实现比调用CUFFT更快的算法整体执行速度。在处理65536*4以上大点数一维FFT+IFFT计算时（一个大核心共享内存放不下完整的一维FFT数据），组合算法可以实现比CUFFT少2个kernel调用的时间（减少两次显存数据交换），主要说明4096点FFT算法设计的思路及实现。大点数仅说明方法和测试结果。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2021/20210605/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">CUDA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔记/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/20210605/">展开全文 >></a>
         </p>
       
 
