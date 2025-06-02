@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="MIT 6.824 分布式系统课程- 实现Raft Lab2A" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/20250602032635.jpg">
+    <title>Yann | 我愿做你光华中淡淡的一笔</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    <style>
+        :root {
+            --waline-theme-color: #323e74; 
+            --waline-color: #323e74; 
+            --waline-border-color: #323e74; 
+            --waline-white: #323e74; 
+            --waline-bgcolor-light: #f2fafc;  
+        }
+        body {
+            color: #323e74;
+            background: #eaeae8;
+        }
+        .post-md code {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #323e74;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #323e74;
+        }
+        .year-font-color {
+            color: #323e74 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #323e74; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #323e74;
+            color: #323e74; 
+        }
+        .wl-btn {
+            border: 1px solid #323e74; 
+            color:  #323e74;  
+        }
+        .wl-btn.primary {
+            color: #f2fafc; 
+        }
+        .wl-header label {
+            color: #323e74;
+        }
+        a {
+            color: #7f688d;
+        }
+
+        .post-md a {
+            color: #7f688d;
+        }
+
+        .nav li a {
+            color: #7f688d;
+        }
+
+        .archive-main a:link {
+            color: #7f688d;
+        }
+        .archive-main a:visited {
+            color: #767c7c; 
+        }
+
+        .archive li span {
+            color: #323e74;
+        }
+
+        .post-main-title {
+            color: #323e74;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #323e74;
+        }
+
+        [data-waline] p {
+            color: #323e74;
+        }
+        [data-waline] a {
+            color: #323e74;
+        } 
+        .wl-sort li.active {
+            color: #323e74;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #f2fafc;
+        }
+
+        .paper {
+            background: #eaeae8;
+        }
+
+        .index-main {
+            background: #f2fafc;
+        }
+
+        .paper-main {
+            background: #f2fafc;
+        }
+
+        .wl-panel {
+            background: #f2fafc;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #f2fafc;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #f2fafc;
+        }
+
+    
+        .progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #323e74; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: #7f688d;
+            border-left-color: #7f688d;
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #323e74;
+        }
+    </style>
+
+    
+    <style>
+        body {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }
+        .paper {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }  
+    </style>
+
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #eaeae8  ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/20250602032635.jpg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">Yann</a> 
+            <span class="description">人工智能、计算机、机器学习、linux、程序员</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    MIT 6.824 分布式系统课程- 实现Raft Lab2A
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2021-07-28</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：2.9k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：10分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="post-toc-text">课程介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="post-toc-text">开始</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="post-toc-text">代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E9%AA%8C2A%EF%BC%9Aleader-%E9%80%89%E4%B8%BE"><span class="post-toc-text">实验2A：leader 选举</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E6%9D%90%E6%96%99"><span class="post-toc-text">参考材料</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><span id="more"></span>
+<h2 id="课程介绍"><a href="#课程介绍" class="headerlink" title="课程介绍"></a><strong>课程介绍</strong></h2><p>Distributed Systems课程一共包含Lab1-4共4个大作业，Lab1是实现Mapreduce原型，Lab2-4是实现Raft以及基于Raft实现分布式KV存储。</p>
+<p>本次实现Raft，该实验（2020 年版本）分为三个部分，目标是开发一个容错的KV系统，分别是 Part 2A：leader 选举、Part 2B：日志同步、lab2C：状态备份。</p>
+<p>Raft是一个面向理解的分布式共识(consensus)协议。分布式共识算法是分布式领域非常非常经典的问题，同时也是分布式系统中非常难的一块，直观的说，就如同流沙上打下分布式系统的地基。不可靠的网络的网络，易故障的主机，造成的状态变化之复杂，实在不是一般人能在脑中模拟得了的。</p>
+<p>Raft把客户端的请求组织成一个序列，叫做日志，并且确保所有副本服务器看到的日志都是相同的。每个副本服务器都按顺序执行这些客户端请求，并且把这些请求应用到自己的服务状态机的本地副本上。因为所有的活着的服务器都有相同的日志内容，并且他们以相同的顺序运行相同的日志，所以他们的状态也就是相同。如果一个节点故障了，然后又恢复了，Raft负责把它的日志重新带到最新的状态。只要集群里面多数（超过半数）节点正常工作，并且相互之间能够正常通信，那么Raft就可以正常工作。一旦多数节点都不能正常工作了，那么Raft也就停止工作了，只要集群多数节点又恢复正常了，Raft就能立即从上次它停止的状态中恢复过来。</p>
+<p>在这个实验中，要求你把Raft实现成一个go的Object类型，并且带有关联的方法，也就是说，这个raft可以作为一个模块用在另外一个更大的服务中。一个Raft实例用RPC相互通信来共同维护日志。你的raft接口应该支持未确定的待编号命令序列，也就是所说的日志条目。这些条目都用index number进行编号。带有特定index的条目最终都会被提交。在这个时刻，你实现的raft服务应该把这个日志条目发送给更大的服务去执行。</p>
+<p>你应该按照<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/papers/raft-extended.pdf">raft论文</a>里面描述的设计去实现，特别是要注意论文中的图2，包括：持久化保存状态、节点故障重启之后读入这些状态。你不需要实现集群成员变更（Section6里面内容）。</p>
+<p>这个<a target="_blank" rel="noopener" href="https://thesquareplanet.com/blog/students-guide-to-raft/">指导书</a>里面的内容可能对你有用，也包括这些关于<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/raft-locking.txt">锁</a>和<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/raft-structure.txt">并发结构</a>的建议。从拓宽知识面的角度说，浏览一下Paxos，Chubby，PaxosMade Live，Spanner，Zookeeper，Harp，Viewstamped Replication，以及<a target="_blank" rel="noopener" href="http://static.usenix.org/event/nsdi11/tech/full_papers/Bolosky.pdf">Bolosky et al</a>都是有好处的。（注意：这个学生指导书是很多年之前写的了，其中2D部分现在已经有些变化了，你自己要思考为这些特殊的实现策略的意义是什么，不要盲从）。</p>
+<p>一个raft模块和其他部分的<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/notes/raft_diagram.pdf">交互图</a>，可以帮助你理解raft模块与其他部分是如何交互的。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a><strong>开始</strong></h2><p>如果你完成了实验1，那么你应该有一份实验的源码了。如果你没完成，那么你可以用这里面的<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/lab-mr.html">命令</a>去下载这些代码。</p>
+<p>我们给你提供了一些代码框架（src/raft/raft.go）。我们也提供一个测试集，你应该用它驱动你自己实现raft。我们也会用这个测试集给你的实验作业打分。测试代码在/src/raft/test_test.go里面。</p>
+<p>用下面命令开始运行。不要忘了用get pull下载最新的软件。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><p>你实现的raft代码添加到raft/raft.go里面。在这个文件里面，有一些框架代码，以及一些给你展示如何发送和接收RPC的例子代码。</p>
+<p>你的实现必须支持下面这些接口，测试代码和以后你要实现的kev/value服务都会用到这些接口。在raft.go里面还有很多有用的注释，就像下面这样。</p>
+<p>服务调用Make(peers, me, …)来产生一个Raft peer。这个参数peers就是一些Raft peers的网络标识符，RPC用这些标识符。这个参数me是本peer在这个peers数组中的index。Start(command)请求Raft开始一个把命令追加到replicated log中的处理流程。Start()应该立刻返回，不能等到日志追加完毕才返回。服务希望你代码在日志条目提交的时候，给applyCh发送ApplyMsg，每个新提交的日志条目都要发，applyCh是在调用Make()函数时传入的一个参数。</p>
+<p>Raft.go有发送RPC的例子代码（sendRequestVote()），以及处理收到的RPC的例子代码（RequestVote()）。你的Raft peers应该用Go语言包labrpc来收发RPC消息。测试代码会控制librpc来对RPC消息人为地制造时延、乱序、丢包等问题来模拟网络故障。你也可以临时修改labrpc，但是你要保证你的代码能够跟原始的labrpc一起正常工作，因为我们要用这个给你的作业打分。你的raft实例之间只能用RPC进行交互，比如，不允许他们之间用共享变量或者文件来交互。</p>
+<p>这个课程后面的这些实验都是在这个实验基础上开展的，所以，多花点时间，把代码写的健壮一点，是很重要的。</p>
+<h2 id="实验2A：leader-选举"><a href="#实验2A：leader-选举" class="headerlink" title="实验2A：leader 选举"></a>实验2A：leader 选举</h2><p>（不太难，<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/guidance.html）">https://pdos.csail.mit.edu/6.824/labs/guidance.html）</a></p>
+<ul>
+<li><strong>提示</strong>：没办法很容易地直接运行Raft实现，你应该用测试框架去运行：go test -run 2A -race。</li>
+<li><strong>提示</strong>：仔细读Raft论文上的图2。现在这个时间点，你需要关心发送和接收RequestVote RPC消息，跟选举相关的一些服务器规则，以及跟选举相关的领导者规则。</li>
+<li><strong>提示</strong>：把图2中的一些领导者选举状态添加到raft.go文件的Raft结构中。另外，还需要定义一个结构去保存每个日志条目的信息。</li>
+<li><strong>提示</strong>：填充RequestVoteArgs和RequestVoteReply这两个结构。修改Make()这个函数，创建一个后台goroutine，如果长时间没有收到其他peer的消息，这个goroutine就会发送RequestVote RPCs消息，周期性的启动leader选举。如果已经存在一个领导者，或者它自己成了领导者，通过这种方法(周期性发送消息)，让peer知道谁是领导者。实现RequestVote()这个RPC处理函数，这样服务器节点之间就会相互投票。</li>
+<li><strong>提示</strong>：实现心跳，定义AppendEntries的RPC结构（尽管现在可能还不需要所有参数），并且让Leader周期性的发送这个AppendEntries RPC消息。写AppendEntries RPC消息的处理函数，在这个函数中，对选举超时变量进行清零，这样一旦选出一个领导者之后，其他节点就不会再继续尝试成为领导者了。</li>
+<li><strong>提示</strong>：确保不同的peers的超时时间不一样，要不然所有peer都会投票给他们自己，这样就选不出来领导者了。</li>
+<li><strong>提示</strong>：测试框架要求领导者发送心跳RPC消息的频率不超过10次/秒。</li>
+<li><strong>提示</strong>：测试框架要求你的Raft实现应该在老领导者故障后的5秒钟之内选出新领导者（假设多数peers之间可以相互通信）。注意，选举可能会有多轮，因为可能会有多个候选人平分选票的情况（可能是报文丢失导致的，也可能是两个候选人使用了相同的回退时间）。你必须定一个足够短的选举的超时时间（以及heartbeat的间隔），尽量在5秒钟之内能够完成选举，即便经历多轮选举也应该能完成。</li>
+<li><strong>提示</strong>：在Raft论文的5.2节提到，选举超时时间在150ms到300ms之间，这个超时值只在领导者发送心跳的间隔远远小于150ms的情况下才有意义。因为测试框架把心跳频率现在小于10次/1秒，这样你就必须把选举间隔设置为大于论文中给出的150到300ms，但是也不能太长，否则5秒钟之内无法完成选举。</li>
+<li><strong>提示</strong>：你需要用go语言的<a target="_blank" rel="noopener" href="https://golang.org/pkg/math/rand/">rand函数</a>。</li>
+<li><strong>提示</strong>：当你要写一个周期性的处理函数，或者需要延时一段时间再处理，那么最方便的实现方法就是创建一个goroutine，里面一个大循环，循环里面调用time.Sleep()。（参见Make()里面创建的ticker() goroutine就是这个目的）。不要用Go的time.Timer或者time.Ticker，想把这俩货用对很难。</li>
+<li><strong>提示</strong>：<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/guidance.html">指导书</a>里面有一些怎么开发，怎么调试代码的建议。</li>
+<li><strong>提示</strong>：如果你的代码无法通过测试，那么建议你再回头仔细看论文里面的图2。整个领导者选举的逻辑散落在这个图里面的各个角落。（需要仔细看）</li>
+<li><strong>提示</strong>：别忘了实现GetState()这个函数。</li>
+<li><strong>提示</strong>：测试框架要永久终止某个raft实例的时候，会调用rf.Kill()这个函数。你调用rf.killed()来检查Kill（）是否已经被调用了。你应该在所有的循环中都调用rf.killed()来检查，避免那些已经死掉的raft实例还继续输出迷惑性的打印信息。</li>
+<li><strong>提示</strong>：Go的RPC只能发送struct中名字是大写字母的字段，嵌套结构的字段名字也必须是大写的（主要数组中的logrecord）。Labgob包会提示你这一点，不要忽略这些警告信息。</li>
+</ul>
+<p>交实验2A的作业之前，确保通过了2A的测试用例，就像下面这样：</p>
+<p>每个”Passed”行都有五个数字，它们是：这个测试用了多少秒，有多少个Raft peers（一般是3个或者5个），这次测试发送了多少个RPC消息，这些RPC消息的总字节数是多少，Raft报告了多少个日志条目被提交了。你的代码实际运行时的数字可能跟上图不一样。你也可以不管这些数字，尽管这些数字可能对排错有用。尽量把每个单独的测试都控制在120秒之内，因为所有实验2、3、4加起来时间不能超过120秒，超时不给分。</p>
+<h2 id="参考材料"><a href="#参考材料" class="headerlink" title="参考材料"></a>参考材料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/papers/raft-extended.pdf">Raft 论文</a>:<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/papers/raft-extended.pdf">https://pdos.csail.mit.edu/6.824/papers/raft-extended.pdf</a></li>
+<li><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/lab-raft.html">Lab2 Raft 课程材料页</a>：<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/lab-raft.html">https://pdos.csail.mit.edu/6.824/labs/lab-raft.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://thesquareplanet.com/blog/students-guide-to-raft/">助教总结往年经验</a>：<a target="_blank" rel="noopener" href="https://thesquareplanet.com/blog/students-guide-to-raft/">https://thesquareplanet.com/blog/students-guide-to-raft/</a></li>
+<li><a target="_blank" rel="noopener" href="https://thesquareplanet.com/blog/raft-qa/">助教 Q&amp;A</a>：<a target="_blank" rel="noopener" href="https://thesquareplanet.com/blog/raft-qa/">https://thesquareplanet.com/blog/raft-qa/</a></li>
+<li><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/raft-locking.txt">Raft 用锁建议</a>：<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/raft-locking.txt">https://pdos.csail.mit.edu/6.824/labs/raft-locking.txt</a></li>
+<li><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/raft-structure.txt">Raft 实现结构组织建议</a>：<a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/raft-structure.txt">https://pdos.csail.mit.edu/6.824/labs/raft-structure.txt</a></li>
+<li><a target="_blank" rel="noopener" href="https://raft.github.io/">Raft 主页</a>，上面有个可视化动图，能帮你直观的感受下 raft，并且具有一定的交互性。此外还有更多 raft 相关的材料，也可以参考：<a target="_blank" rel="noopener" href="https://raft.github.io/">https://raft.github.io/</a></li>
+<li><a target="_blank" rel="noopener" href="https://wiesen.github.io/post/mit-6.824-lab2-raft-consensus-algorithm-implementation/">某个网上同学实现</a>：<a target="_blank" rel="noopener" href="https://wiesen.github.io/post/mit-6.824-lab2-raft-consensus-algorithm-implementation/">https://wiesen.github.io/post/mit-6.824-lab2-raft-consensus-algorithm-implementation/</a></li>
+</ol>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2021-07-22</span>
+            
+                <span>该篇文章被 Yann</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Distributed-Systems/'>
+                            Distributed Systems
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Courses/'>
+                            Courses
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2021/cmbf0eyfg0017pwce16vk6lbk/'>Convex Optimization-3</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2021/20210716/">网络单纯形法</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2025 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

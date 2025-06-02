@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="MIT 6.824 分布式系统课程- 实现Mapreduce Lab1" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/20250602032635.jpg">
+    <title>Yann | 我愿做你光华中淡淡的一笔</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    <style>
+        :root {
+            --waline-theme-color: #323e74; 
+            --waline-color: #323e74; 
+            --waline-border-color: #323e74; 
+            --waline-white: #323e74; 
+            --waline-bgcolor-light: #f2fafc;  
+        }
+        body {
+            color: #323e74;
+            background: #eaeae8;
+        }
+        .post-md code {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #323e74;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #323e74;
+        }
+        .year-font-color {
+            color: #323e74 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #323e74; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #323e74;
+            color: #323e74; 
+        }
+        .wl-btn {
+            border: 1px solid #323e74; 
+            color:  #323e74;  
+        }
+        .wl-btn.primary {
+            color: #f2fafc; 
+        }
+        .wl-header label {
+            color: #323e74;
+        }
+        a {
+            color: #7f688d;
+        }
+
+        .post-md a {
+            color: #7f688d;
+        }
+
+        .nav li a {
+            color: #7f688d;
+        }
+
+        .archive-main a:link {
+            color: #7f688d;
+        }
+        .archive-main a:visited {
+            color: #767c7c; 
+        }
+
+        .archive li span {
+            color: #323e74;
+        }
+
+        .post-main-title {
+            color: #323e74;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #323e74;
+        }
+
+        [data-waline] p {
+            color: #323e74;
+        }
+        [data-waline] a {
+            color: #323e74;
+        } 
+        .wl-sort li.active {
+            color: #323e74;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #f2fafc;
+        }
+
+        .paper {
+            background: #eaeae8;
+        }
+
+        .index-main {
+            background: #f2fafc;
+        }
+
+        .paper-main {
+            background: #f2fafc;
+        }
+
+        .wl-panel {
+            background: #f2fafc;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #f2fafc;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #f2fafc;
+        }
+
+    
+        .progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #323e74; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: #7f688d;
+            border-left-color: #7f688d;
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #323e74;
+        }
+    </style>
+
+    
+    <style>
+        body {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }
+        .paper {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }  
+    </style>
+
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #eaeae8  ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/20250602032635.jpg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">Yann</a> 
+            <span class="description">人工智能、计算机、机器学习、linux、程序员</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    MIT 6.824 分布式系统课程- 实现Mapreduce Lab1
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2021-05-17</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.7k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：8分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="post-toc-text">课程介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-MapReduce%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="post-toc-text">1 MapReduce基础概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><span class="post-toc-text">2 实验要求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-%E6%B5%81%E7%A8%8B"><span class="post-toc-text">3 流程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">4 代码实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Part-1%EF%BC%8C-Part-2"><span class="post-toc-text">Part 1， Part 2</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Part-3"><span class="post-toc-text">Part 3</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Part-4"><span class="post-toc-text">Part 4</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Part-5"><span class="post-toc-text">Part 5</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="post-toc-text">实现细节</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="post-toc-text">测试</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><span id="more"></span>
+<h2 id="课程介绍"><a href="#课程介绍" class="headerlink" title="课程介绍"></a><strong>课程介绍</strong></h2><p>Distributed Systems课程一共包含Lab1-4共4个大作业，Lab1是实现Mapreduce原型，Lab2-4是实现Raft以及基于Raft实现分布式KV存储。</p>
+<p>本次实现MapReduce，框架代码来自 git://g.csail.mit.edu/6.824-golabs-2020 6.824</p>
+<p><a target="_blank" rel="noopener" href="https://stonecharioteer.com/assets/documents/pages/mit-6.824/mapreduce-osdi04.pdf">MapReduce: Simplified Data Processing on Large Clusters</a> is the publication that talks about MapReduce and what it means for computing in general. It is in the required reading. I will read it after video one.</p>
+<h2 id="1-MapReduce基础概念"><a href="#1-MapReduce基础概念" class="headerlink" title="1 MapReduce基础概念"></a>1 MapReduce基础概念</h2><p>map 负责分发。每个map任务通常处理一个文件，有多少个输入文件就有多少个map任务。而输出则根据reduce的数目确定有多少个输出。注意，相同的key肯定是输出到同一个reduce文件中，通过哈希算法来确认一个key应该分发到哪个中间文件。targetReduct = ihash(key) % nReduce。<br>总的中间文件数为 nMap * nReduce</p>
+<p>reduce负责对map输出的文件进行处理，每个reduce处理自己负责的那些中间文件。负责处理的中间文件名可以由map个数和reduce number来确认。</p>
+<p> MapReduce is essentially splitting a problem into smaller sets based on some criteria, and then assembling the solution from partial solutions. Map a function onto a list of inputs, and then <em>reduce</em> the results into solutions.</p>
+<p>The example he shows is a word count functionality. Given a set of files, how would you give a word count across them?</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># this isn<span class="string">&#x27;t executable code btw. Just me thinking out loud.</span></span><br><span class="line"><span class="string">def map(key, value):</span></span><br><span class="line"><span class="string">    files = value</span></span><br><span class="line"><span class="string">    for file in files:</span></span><br><span class="line"><span class="string">        for word in file:</span></span><br><span class="line"><span class="string">            yield word, 1</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">def reduce(key, value):</span></span><br><span class="line"><span class="string">    yield len(value)</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+<p>The way this would work is:</p>
+<ol>
+<li>The map function would return something like a dictionary in python terms, and it would have perhaps the file name, and then a data structure that has the word and its count in this file.</li>
+<li>The reduce file would use all these outputs, and then <em>mush</em> them together by returning another final result that has the <em>overall</em> solution.</li>
+</ol>
+<p>So this could be scaled by splitting the problem <em>across</em> CPUs or <em>machines</em> themselves.</p>
+<p>Makes sense. I guess that is why it is used with Hadoop. Hadoop is a joint filesystem that enables such a mechanism, especially when you’d need to process actual <em>files</em>.</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=cQP8WApzIQQ?t=4000s">@1h9m</a> <em>Aha!</em> So Hadoop came out of a necessity to <em>facilitate</em> MapReduce. Google File System, huh? That makes sense. Having a network file system that enables splitting a huge file and saving it across servers makes so much sense if you operate like this. And this also comes with data safety guarantees. Hadoop naturally has data backup guarantees and replications (3 is default, I think)</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=cQP8WApzIQQ?t=4260s">@1h12m</a> GFS would schedule the map task <em>where</em> the data chunks were for network efficiency? That makes sense because the map job packet size must be <em>much lower</em> than the data that it operates on. This is good. Helps me understand what the heck is going on with Hadoop.</p>
+<p>Map stores its output on the disk of the machine that it executes on. But to group together all the values associated to a key and then to <strong>reduce</strong> them on a separate machine, they need to be moved later. So the row-wise data of say, words in a word count dictionary, would have to be converted to a columnar dataset of words and their counts as opposed to a collection of different words and their individual counts across different files.</p>
+<p>Say:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># again, don<span class="string">&#x27;t try to run this.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">map_output_1 = &#123;</span></span><br><span class="line"><span class="string">    &quot;cat&quot;: 10,</span></span><br><span class="line"><span class="string">    &quot;dog&quot;: 20</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">map_output_2 = &#123;</span></span><br><span class="line"><span class="string">    &quot;elephant&quot;: 2,</span></span><br><span class="line"><span class="string">    &quot;dog&quot;: 29</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>This would then need to be turned into <em>3 reduce jobs</em>. One for the key “cat”, one for “dog” and one for “elephant” across these two outputs.</p>
+<p>Huh. How would you do sorting in MapReduce? Wouldn’t you need to know where something would appear? Perhaps split large arrays and sort sections and then sort those again? There was an algorithm for that, I think. I had watched some animation that showed this.</p>
+<p>Chaining together MapReduce seems to be a normal procedure. I suppose sorting could operate like that.</p>
+<h2 id="2-实验要求"><a href="#2-实验要求" class="headerlink" title="2 实验要求"></a>2 实验要求</h2><ul>
+<li>worker 单方面的向 Master 发送消息；</li>
+<li>如果一个 worker 没有在合理时间内（10s）完成任务就算故障；</li>
+</ul>
+<h2 id="3-流程"><a href="#3-流程" class="headerlink" title="3 流程"></a>3 流程</h2><p><a target="_blank" rel="noopener" href="https://github.com/guomo233/Distributed-Systems/raw/master/images/mapreduce.jpg" title="mapreduce" class="gallery-item" style="box-shadow: none;"> <img src="https://github.com/guomo233/Distributed-Systems/raw/master/images/mapreduce.jpg" alt="mapreduce"></a></p>
+<h2 id="4-代码实现"><a href="#4-代码实现" class="headerlink" title="4 代码实现"></a>4 代码实现</h2><p>原始代码有两个目录：main和mapreduce。其中main目录下只需要关注<code>wc.go，ii.go以及一系列的txt文件</code>。 mapreduce目录则需要修改<code>schedule.go</code>，<code>common_map.go</code>和<code>common_reduce.go</code>文件。</p>
+<h3 id="Part-1，-Part-2"><a href="#Part-1，-Part-2" class="headerlink" title="Part 1， Part 2"></a>Part 1， Part 2</h3><p>这两个实验都比较简单，单机的。Part 1实现common_map.go和common_reduce.go中的通用函数，而Part 2也只是统计单词数目。Part 2这里要注意的是，要使用实验文档中说的分割方法<code>unicode.IsLetter()</code>去分割单词，不然测试会无法通过。</p>
+<h3 id="Part-3"><a href="#Part-3" class="headerlink" title="Part 3"></a>Part 3</h3><p>采用的分布式执行任务。先是master启动rpc服务，并调用schedule函数执行Task。注意的是，Worker启动后需要调用master的RPC方法Register注册到master，而master发现有了新的worker，会通知等待channel的协程进行任务操作，同一个worker需要处理多个任务，但是不能同时给一个worker分配多个任务。</p>
+<p>注意在run中，先做map任务，做完map再做reduce。所以在多个worker做map任务的时候，需要等所有的map任务完成再继续reduce任务。这里用了 <code>WaitGroup</code>。</p>
+<p>另外，分配worker的算法要注意，是每次有新的可能会分配到，而老的worker如果执行完了一次任务，则也要放回channel中以重复使用。</p>
+<h3 id="Part-4"><a href="#Part-4" class="headerlink" title="Part 4"></a>Part 4</h3><p>worker失败的情况下的实验，也比较简单，在每个任务执行时加个for循环，如果成功则退出，否则重新取worker执行任务。</p>
+<h3 id="Part-5"><a href="#Part-5" class="headerlink" title="Part 5"></a>Part 5</h3><p>Part 5需要完成一个倒排索引，完成ii.go即可，跟wc.go类似，主要是要去掉重复以及对倒排列表排序就可以通过测试了。</p>
+<h2 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h2><p>Master 实现于 mr/master.go，由 main/mrmaster.go 驱动，通过命令行参数传入输入文件：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 分发给 woker 的任务</span></span><br><span class="line"><span class="keyword">type</span> Task <span class="keyword">struct</span> &#123;</span><br><span class="line">	Phase   <span class="comment">// 标注是 Map 还是 Reduce</span></span><br><span class="line">	Misson</span><br><span class="line">	R <span class="keyword">int</span>   <span class="comment">// Reduce 数量</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Master <span class="keyword">struct</span> &#123;</span><br><span class="line">	mMisson []Misson   <span class="comment">// 待分配到任务队列</span></span><br><span class="line">	rMisson []Misson</span><br><span class="line">	mTasks []taskState <span class="comment">// 维护 woker 的状态</span></span><br><span class="line">	rTasks []taskState</span><br><span class="line">	mCompleted <span class="keyword">int</span>     <span class="comment">// woker 的完成数量</span></span><br><span class="line">	rCompleted <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *Master)</span> <span class="title">Assign</span><span class="params">(_ *Task, t *Task)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(m.mMisson) &gt; <span class="number">0</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">		<span class="comment">// t.Id == t.Mission.Id</span></span><br><span class="line">    <span class="comment">// 保证同一个任务所对应的 task 在数组中的下标是一样的</span></span><br><span class="line">		m.mTasks[t.Id] = taskState&#123;<span class="literal">false</span>, timer&#125;</span><br><span class="line">		<span class="keyword">go</span> m.mapCrush(t)</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> m.mapDone() &amp;&amp; <span class="built_in">len</span>(m.rMisson) &gt; <span class="number">0</span> &#123;</span><br><span class="line">		<span class="comment">// ...</span></span><br><span class="line">    <span class="comment">// t.Id == t.Mission.Id</span></span><br><span class="line">    <span class="comment">// 保证同一个任务所对应的 task 在数组中的下标是一样的</span></span><br><span class="line">		m.rTasks[t.Id] = taskState&#123;<span class="literal">false</span>, timer&#125;</span><br><span class="line">		<span class="keyword">go</span> m.reduceCrush(t)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 通知 worker sleep 一会</span></span><br><span class="line">		t.Phase = Idle</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">MakeMaster</span><span class="params">(files []<span class="keyword">string</span>, nReduce <span class="keyword">int</span>)</span> *<span class="title">Master</span></span> &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	m.mTasks = <span class="built_in">make</span>([]taskState, <span class="built_in">len</span>(files)) <span class="comment">// 空间开足，之后 index 访问</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="keyword">range</span> files &#123;</span><br><span class="line">    <span class="comment">// 初始化 Mission.Id，和 task 数组下标对应上</span></span><br><span class="line">		m.mMisson = <span class="built_in">append</span>(m.mMisson, Misson&#123;i, files[i:i+<span class="number">1</span>]&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">	m.rTasks = <span class="built_in">make</span>([]taskState, nReduce)   <span class="comment">// 空间开足，之后 index 访问</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; nReduce; i++ &#123;</span><br><span class="line">    <span class="comment">// 初始化 Mission.Id，和 task 数组下标对应上</span></span><br><span class="line">		m.rMisson = <span class="built_in">append</span>(m.rMisson, Misson&#123;i, <span class="literal">nil</span>&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>因为<code>Mission.Id</code>和<code>taskState</code>数组是完全对应的，所以可以保证 worker 超时后将任务分配给别的 worker 是安全的，如果同时接到来自不同 worker 对同一个任务的反馈，只会被确认一次</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/lab-mr.html">Ugh, the CSS in the Labs pages is so horrible for accessibility.</a> I cannot read the code snippets either. I love the course, but whoever made the webpages did not care a bit about accessibility or design of an interface.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git://g.csail.mit.edu/6.824-golabs-2020 6.824 </span><br><span class="line">cd 6.824 </span><br></pre></td></tr></table></figure>
+<p>I’ve cloned this repo. Apparently this one lecture is enough to get started. The course does recommend golang, but I am going to try some rudimentary stuff with Python, and I will get around to golang later, once I learn it.</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2021-05-22</span>
+            
+                <span>该篇文章被 Yann</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Distributed-Systems/'>
+                            Distributed Systems
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Courses/'>
+                            Courses
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2021/cmbezz4q8000o44ce3kfe1dtx/'>Convex Optimization-1</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2021/20210515/">flask实现图像处理API</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2025 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

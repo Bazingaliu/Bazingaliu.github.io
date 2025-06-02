@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Slam14讲-Chapter3-李群与李代数" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/20250602032635.jpg">
+    <title>Yann | 我愿做你光华中淡淡的一笔</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    <style>
+        :root {
+            --waline-theme-color: #323e74; 
+            --waline-color: #323e74; 
+            --waline-border-color: #323e74; 
+            --waline-white: #323e74; 
+            --waline-bgcolor-light: #f2fafc;  
+        }
+        body {
+            color: #323e74;
+            background: #eaeae8;
+        }
+        .post-md code {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #323e74;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #323e74;
+        }
+        .year-font-color {
+            color: #323e74 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #323e74; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #323e74;
+            color: #323e74; 
+        }
+        .wl-btn {
+            border: 1px solid #323e74; 
+            color:  #323e74;  
+        }
+        .wl-btn.primary {
+            color: #f2fafc; 
+        }
+        .wl-header label {
+            color: #323e74;
+        }
+        a {
+            color: #7f688d;
+        }
+
+        .post-md a {
+            color: #7f688d;
+        }
+
+        .nav li a {
+            color: #7f688d;
+        }
+
+        .archive-main a:link {
+            color: #7f688d;
+        }
+        .archive-main a:visited {
+            color: #767c7c; 
+        }
+
+        .archive li span {
+            color: #323e74;
+        }
+
+        .post-main-title {
+            color: #323e74;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #323e74;
+        }
+
+        [data-waline] p {
+            color: #323e74;
+        }
+        [data-waline] a {
+            color: #323e74;
+        } 
+        .wl-sort li.active {
+            color: #323e74;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #f2fafc;
+        }
+
+        .paper {
+            background: #eaeae8;
+        }
+
+        .index-main {
+            background: #f2fafc;
+        }
+
+        .paper-main {
+            background: #f2fafc;
+        }
+
+        .wl-panel {
+            background: #f2fafc;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #f2fafc;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #f2fafc;
+        }
+
+    
+        .progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #323e74; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: #7f688d;
+            border-left-color: #7f688d;
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #323e74;
+        }
+    </style>
+
+    
+    <style>
+        body {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }
+        .paper {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }  
+    </style>
+
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #eaeae8  ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/20250602032635.jpg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">Yann</a> 
+            <span class="description">人工智能、计算机、机器学习、linux、程序员</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Slam14讲-Chapter3-李群与李代数
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-06-02</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：3.9k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：19分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="post-toc-text">基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BE%A4"><span class="post-toc-text">群</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="post-toc-text">小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9D%8E%E4%BB%A3%E6%95%B0%E6%B1%82%E5%AF%BC%E4%B8%8E%E6%89%B0%E5%8A%A8%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">李代数求导与扰动模型</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><span id="more"></span>
+<blockquote>
+<p>目标：</p>
+<ul>
+<li>李群、李代数概念</li>
+<li>SO(3)，SE(3)与对应李代数表示方式</li>
+<li>BCH近似的意义</li>
+<li>李代数上的扰动模型</li>
+<li>运用Spphus对李代数运算</li>
+</ul>
+</blockquote>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>引入</p>
+<blockquote>
+<p>旋转矩阵作为优化变量所引入的额外约束带来求解困难</p>
+<p>通过李群-李代数转换关系，把位姿估计变成无约束的优化问题，简化求解</p>
+</blockquote>
+<p>定义<br>$$<br>\begin{gathered}<br>S O(3)=\left{\boldsymbol{R} \in \mathbb{R}^{3 \times 3} \mid \boldsymbol{R} \boldsymbol{R}^{T}=\boldsymbol{I}, \operatorname{det}(\boldsymbol{R})=1\right} \<br>S E(3)=\left{\boldsymbol{T}=\left[\begin{array}{cc}<br>\boldsymbol{R} &amp; \boldsymbol{t} \<br>\mathbf{0}^{T} &amp; 1<br>\end{array}\right] \in \mathbb{R}^{4 \times 4} \mid \boldsymbol{R} \in S O(3), \boldsymbol{t} \in \mathbb{R}^{3}\right}<br>\end{gathered}<br>$$<br>三维旋转矩阵 $\rightarrow$ 特殊正交群 $S O(3)$<br>变换矩阵 $\rightarrow$ 特殊欧式群 $S E(3)$<br>特点<br>$$<br>\begin{gathered}<br>\boldsymbol{R}<em>{1}+\boldsymbol{R}</em>{2} \notin S O(3) \<br>\boldsymbol{R}<em>{1} \boldsymbol{R}</em>{2} \in S O(3), \quad \boldsymbol{T}<em>{1} \boldsymbol{T}</em>{2} \in S E(3)<br>\end{gathered}<br>$$<br>对加法不封闭<br>对乘法封闭 $\rightarrow$ 旋转/变换的复合</p>
+<h3 id="群"><a href="#群" class="headerlink" title="群"></a>群</h3><p>定义</p>
+<blockquote>
+<p>群是一种集合加上一种运算的代数结构, $G=(A, \cdot)$</p>
+</blockquote>
+<p>条件<br>封闭性: $\forall a_{1}, a_{2} \in A, \quad a_{1} \cdot a_{2} \in A$.<br>结合律: $\forall a_{1}, a_{2}, a_{3} \in A, \quad\left(a_{1} \cdot a_{2}\right) \cdot a_{3}=a_{1} \cdot\left(a_{2} \cdot a_{3}\right)$.<br>么元: $\exists a_{0} \in A, \quad$ s.t. $\quad \forall a \in A, \quad a_{0} \cdot a=a \cdot a_{0}=a$.<br>逆: $\quad \forall a \in A, \quad \exists a^{-1} \in A, \quad$ s.t. $\quad a \cdot a^{-1}=a_{0} .$</p>
+<blockquote>
+<ul>
+<li>封闭性→变换的复合</li>
+<li>结合律→变换复合的顺序固定下, 计算先后无关</li>
+<li>么元→单位元(Identity Element)</li>
+<li>逆→群中的矩阵元素为可逆</li>
+</ul>
+</blockquote>
+<p>矩阵中常见群</p>
+<ul>
+<li>一般线性群 $G L(n)$ 指 $n \times n$ 的可逆矩阵, 它们对矩阵乘法成群</li>
+<li>特殊正交群 $S O(n)$ 也就是所谓的秩转矩阵群, 其中 $S O(2)$ 和 $S O(3)$ 最为常见</li>
+<li>特殊欧氏群 $S E(n) \quad$ 也就是前面提到的 $n$ 维欧氏变换, 如 $S E(2)$ 和 $S E(3)$<br>李群<br>定义：具有连续(光滑)性质的群<br>反例：整数群(离散)矩阵中常见群</li>
+</ul>
+<p>李群<br>定义：具有连续(光滑)性质的群<br>反例：整数群(离散)<br>李代数的引出<br>反对称矩阵的推导<br>任意旋转矩阵 $\boldsymbol{R}$ 满足:<br>$$<br>\boldsymbol{R} \boldsymbol{R}^{T}=\boldsymbol{I}<br>$$<br>$\boldsymbol{R}$ 作为某个相机的旋转为时间的函数: $\boldsymbol{R}(t)$ :<br>$$<br>\boldsymbol{R}(t) \boldsymbol{R}(t)^{T}=\boldsymbol{I}<br>$$<br>对时间求导, 得到:<br>$$<br>\dot{\boldsymbol{R}}(t) \boldsymbol{R}(t)^{T}+\boldsymbol{R}(t) \dot{\boldsymbol{R}}(t)^{T}=0<br>$$<br>整理得:<br>$$<br>\dot{\boldsymbol{R}}(t) \boldsymbol{R}(t)^{T}=-\left(\dot{\boldsymbol{R}}(t) \boldsymbol{R}(t)^{T}\right)^{T}<br>$$<br>楔形符号的运用<br>前述^^符号: 向量 $a \stackrel{\bigwedge}{\longleftrightarrow}$ 反对称矩阵 $\boldsymbol{A}$<br>$$<br>\boldsymbol{a}^{\wedge}=\boldsymbol{A}=\left[\begin{array}{ccc}<br>0 &amp; -a_{3} &amp; a_{2} \<br>a_{3} &amp; 0 &amp; -a_{1} \<br>-a_{2} &amp; a_{1} &amp; 0<br>\end{array}\right], \quad \boldsymbol{A}^{\vee}=\boldsymbol{a}<br>$$<br>二者结合<br>$$<br>\dot{\boldsymbol{R}}(t) \boldsymbol{R}(t)^{T}=\boldsymbol{\phi}(t)^{\wedge}<br>$$<br>旋转矩阵求导的性质<br>$$<br>\dot{\boldsymbol{R}}(t)=\phi(t)^{\wedge} \boldsymbol{R}(t)=\left[\begin{array}{ccc}<br>0 &amp; -\phi_{3} &amp; \phi_{2} \<br>\phi_{3} &amp; 0 &amp; -\phi_{1} \<br>-\phi_{2} &amp; \phi_{1} &amp; 0<br>\end{array}\right] \boldsymbol{R}(t)<br>$$<br>即: 对旋转矩阵求一次导数, 只需左乘一个 $\phi^{\wedge}(t)$ 矩阵即可<br>把 $\boldsymbol{R}(t)$ 在O附近一阶泰勒展开<br>$$<br>\begin{aligned}<br>\boldsymbol{R}(t) &amp; \approx \boldsymbol{R}\left(t_{0}\right)+\dot{\boldsymbol{R}}\left(t_{0}\right)\left(t-t_{0}\right) \<br>&amp;=\boldsymbol{I}+\boldsymbol{\phi}\left(t_{0}\right)^{\wedge}(t) .<br>\end{aligned}<br>$$<br>反映了 $\boldsymbol{R}$ 的导数性质, 故称它在 $S O(3)$ 原点附近的正切空间上, 同时在 $t_{0}$ 附近, 设 $\phi$ 保持为常数 $\phi\left(t_{0}\right)=\phi_{0}$<br>$$<br>\dot{\boldsymbol{R}}(t)=\boldsymbol{\phi}\left(t_{0}\right)^{\wedge} \boldsymbol{R}(t)=\boldsymbol{\phi}<em>{0}^{\wedge} \boldsymbol{R}(t)<br>$$<br>关于 $\boldsymbol{R}$ 的微分方程, 初始值 $\boldsymbol{R}(0)=\boldsymbol{I}$, 解之<br>$$<br>\boldsymbol{R}(t)=\exp \left(\phi</em>{0}^{\wedge} t\right) .<br>$$<br>主要结论<br>旋转矩阵为反对称矩阵<br>$$<br>\dot{\boldsymbol{R}}(t) \boldsymbol{R}(t)^{T}=\phi(t)^{\wedge}<br>$$<br>$f\left(\boldsymbol{R}, \phi_{0}\right)$ 即旋转矩阵与另一个反对称矩阵的指数关系<br>$$<br>\boldsymbol{R}(t)=\exp \left(\boldsymbol{\phi}<em>{0} t\right) .<br>$$<br>李代数的定义<br>概述<br>李代数描述了李群的局部性质<br>定义<br>李代数由一个集合 $\mathbb{V}$, 一个数域 $\mathbb{F}$ 和一个二元运算 $[,$, , 组成。如果它们满足以下几条性 质，称 $\left(\mathbb{V}, \mathbb{F},[,\right.$, , 为一个李代数，记作 $\mathfrak{g}</em>{\text {。 }}$</p>
+<ol>
+<li>封闭性 $\forall \boldsymbol{X}, \boldsymbol{Y} \in \mathbb{V},[\boldsymbol{X}, \boldsymbol{Y}] \in \mathbb{V}$.</li>
+<li>双线性 $\forall \boldsymbol{X}, \boldsymbol{Y}, \boldsymbol{Z} \in \mathbb{V}, a, b \in \mathbb{F}$ ，有:<br>$[a \boldsymbol{X}+b \boldsymbol{Y}, \boldsymbol{Z}]=a[\boldsymbol{X}, \boldsymbol{Z}]+b[\boldsymbol{Y}, \boldsymbol{Z}], \quad[\boldsymbol{Z}, a \boldsymbol{X}+b \boldsymbol{Y}]=a[\boldsymbol{Z}, \boldsymbol{X}]+b[\boldsymbol{Z}, \boldsymbol{Y}]$</li>
+<li>自反性 $\forall \boldsymbol{X} \in \mathbb{V},[\boldsymbol{X}, \boldsymbol{X}]=\mathbf{0}$.</li>
+<li>雅可比等价 $\quad \forall \boldsymbol{X}, \boldsymbol{Y}, \boldsymbol{Z} \in \mathbb{V},[\boldsymbol{X},[\boldsymbol{Y}, \boldsymbol{Z}]]+[\boldsymbol{Z},[\boldsymbol{Y}, \boldsymbol{X}]]+[\boldsymbol{Y},[\boldsymbol{Z}, \boldsymbol{X}]]=\mathbf{0}$.</li>
+</ol>
+<p>其中二元运算被称为李括号。<br>相比于群中的较为简单的二元运算, 李括号表达了两个元素的差异。它不要求结合律, 而要 求元素和自己做李括号之后为零的性质。<br>eg三维向量 $\mathbb{R}^{3}$ 上定义的叉积 $\times$ 是一种李括号, 因此 $\mathfrak{g}=\left(\mathbb{R}^{3}, \mathbb{R}, \times\right)$ 构成了一个李代数。</p>
+<p>李代数 $\mathfrak{s o}(3)$<br>引入<br>$S O(3)$ 对应的李代数是定义在 $\mathbb{R}^{3}$ 上的向量 $\phi$, 每个 $\phi$ 都可以生成一个反对称矩阵:<br>$$<br>\boldsymbol{\Phi}=\boldsymbol{\phi}^{\wedge}=\left[\begin{array}{ccc}<br>0 &amp; -\phi_{3} &amp; \phi_{2} \<br>\phi_{3} &amp; 0 &amp; -\phi_{1} \<br>-\phi_{2} &amp; \phi_{1} &amp; 0<br>\end{array}\right] \in \mathbb{R}^{3 \times 3}<br>$$<br>在此定义下, 两个向量 $\phi_{1}, \phi_{2}$ 的李括号为:<br>$$<br>\left[\boldsymbol{\phi}<em>{1}, \boldsymbol{\phi}</em>{2}\right]=\left(\boldsymbol{\Phi}<em>{1} \boldsymbol{\Phi}</em>{2}-\boldsymbol{\Phi}<em>{2} \boldsymbol{\Phi}</em>{1}\right)^{\vee}<br>$$<br>定义: 三维向量的集合<br>$$<br>\mathfrak{s o}(3)=\left{\phi \in \mathbb{R}^{3}, \Phi=\phi^{\wedge} \in \mathbb{R}^{3 \times 3}\right} .<br>$$<br>$\mathfrak{s o}(3)$ 是一个由三维向量组成的集合, 每个向量对应到一个反对称矩阵, 可以表达旋转矩阵的导数。 它与 $S O(3)$ 的关系由指数映射给定.</p>
+<p>李代数 $\mathfrak{s e}(3)$<br>定义: 六维向量的集合(平移+旋转)<br>$$<br>\mathfrak{s e}(3)=\left{\boldsymbol{\xi}=\left[\begin{array}{l}<br>\rho \<br>\phi<br>\end{array}\right] \in \mathbb{R}^{6}, \boldsymbol{\rho} \in \mathbb{R}^{3}, \phi \in \mathfrak{s o}(3), \boldsymbol{\xi}^{\wedge}=\left[\begin{array}{cc}<br>\boldsymbol{\phi}^{\wedge} &amp; \rho \<br>\mathbf{0}^{T} &amp; 0<br>\end{array}\right] \in \mathbb{R}^{4 \times 4}\right}<br>$$<br>每个 $\mathfrak{s e}(3)$ 元素记作 $\boldsymbol{\xi}$, 六维向量。前三维为平移, 记作 $\rho$; 后三维为 旋转, 记作 $\phi$, 实质上是 $\mathfrak{s o}(3)$ 元素<br>楔形符号的含义扩展<br>同时拓展了 $\wedge$ 符号的含义。在 $\mathfrak{s e}(3)$ 中, 同 样使用 $\wedge$ 符号, 将一个六维向量转换成四维矩阵, 但 这里不再表示反对称：<br>$$<br>\boldsymbol{\xi}^{\wedge}=\left[\begin{array}{ll}<br>\boldsymbol{\phi}^{\wedge} &amp; \boldsymbol{\rho} \<br>\mathbf{0}^{T} &amp; 0<br>\end{array}\right] \in \mathbb{R}^{4 \times 4}<br>$$<br>我们仍使用 $\wedge$ 和 $\vee$ 符号来指代“从向量到矩阵”和“从矩阵到向量”的关系, 以保持 和 $\mathfrak{s o}(3)$ 上的一致 性。<br>读者可以简单地把 $\mathfrak{s e}(3)$ 理解成 “由一个平移加上一个 $\mathfrak{s o}(3)$ 元素 构成的向量” (尽管这里的 $\rho$ 还不 直接是平移)。同样, 李代数 $\mathfrak{s e}(3)$ 亦有类似于 $\mathfrak{s o}(3)$ 的 李括号:<br>$$<br>\left[\boldsymbol{\xi}<em>{1}, \boldsymbol{\xi}</em>{2}\right]=\left(\boldsymbol{\xi}<em>{1}^{\wedge} \boldsymbol{\xi}</em>{2}^{\wedge}-\boldsymbol{\xi}<em>{2}^{\wedge} \boldsymbol{\xi}</em>{1}^{\wedge}\right)^{\vee}<br>$$<br>指数与对数映射<br>指数映射解决的问题<br>$\exp \left(\phi^{\wedge}\right)$ 是如何计算的<br>$S O(3)$ 上的指数映射<br>主要结论<br>$\mathfrak{s o}(3)$ 中向量 $\phi \rightarrow S O(3)$ 中旋转矩阵 $\boldsymbol{R}$<br>$$<br>\exp \left(\theta \boldsymbol{a}^{\wedge}\right)=\cos \theta \boldsymbol{I}+(1-\cos \theta) \mathbf{a} \boldsymbol{a}^{T}+\sin \theta \boldsymbol{a}^{\wedge} .<br>$$<br>解读:</p>
+<ul>
+<li>$\mathfrak{s o}(3)$ 实际上就是由旋转向量组成的空间</li>
+<li>指数映射即罗德里格斯公式</li>
+<li>$\theta$ 和 $\backslash$ bold $a$ 分别为 $\phi$ 的模长和方向<br>$\mathfrak{s o}(3)$ 中向量 $\phi \leftarrow S O(3)$ 中旋转矩阵 $\boldsymbol{R}$<br>$$<br>\phi=\ln (\boldsymbol{R})^{\vee}=\left(\sum_{n=0}^{\infty} \frac{(-1)^{n}}{n+1}(\boldsymbol{R}-\boldsymbol{I})^{n+1}\right)^{\vee}<br>$$<br>性质</li>
+<li>满射：每个 $S O(3)$ 中的元素都可以找到一个 $\mathfrak{s o}(3)$ 元素与之对应; 但是可能存在多个 $\mathfrak{s o}(3)$ 元素 对应到同一个 $S O(3)$</li>
+<li>旋转角度固定在 $\pm \pi$ 之间, 李群和李代数元素一一对应</li>
+</ul>
+<p>$S E(3)$ 上的指数映射<br>指数映射形式<br>$$<br>\begin{aligned}<br>\exp \left(\boldsymbol{\xi}^{\wedge}\right) &amp;=\left[\begin{array}{lll}<br>\sum_{n=0}^{\infty} \frac{1}{n !}\left(\boldsymbol{\phi}^{\wedge}\right)^{n} &amp; \sum_{n=0}^{\infty} \frac{1}{(n+1) !}\left(\boldsymbol{\phi}^{\wedge}\right)^{n} \boldsymbol{\rho} &amp; \<br>\mathbf{0}^{T} &amp; 1<br>\end{array}\right] \<br>&amp; \triangleq\left[\begin{array}{cc}<br>\boldsymbol{R} &amp; \boldsymbol{J} \boldsymbol{\rho} \<br>\mathbf{0}^{T} &amp; 1<br>\end{array}\right]=\boldsymbol{T}<br>\end{aligned}<br>$$<br>$\boldsymbol{R}$ 为 $S O(3)$ 中的元素, 与 $\mathfrak{s e}(3)$ 中的旋转部分 $\phi$ 对应<br>右上角 $J$ :<br>$$<br>\boldsymbol{J}=\frac{\sin \theta}{\theta} \boldsymbol{I}+\left(1-\frac{\sin \theta}{\theta}\right) \boldsymbol{a} \boldsymbol{a}^{T}+\frac{1-\cos \theta}{\theta} \boldsymbol{a}^{\wedge}<br>$$</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220527010935431.jpeg" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220527010935431.jpeg" alt=""></a></p>
+<h2 id="李代数求导与扰动模型"><a href="#李代数求导与扰动模型" class="headerlink" title="李代数求导与扰动模型"></a>李代数求导与扰动模型</h2><p>BCH公式与近似形式<br>关键问题<br>$S O(3)$ 中完成两个矩阵乘法 $\longleftrightarrow \mathfrak{s o}(3)$ 中完成两个加法是否成立?<br>即研究<br>$$<br>\ln (\exp (\boldsymbol{A}) \exp (\boldsymbol{B}))=\boldsymbol{A}+\boldsymbol{B}<br>$$<br>是否成立<br>结果: 不成立<br>BCH公式(Baker-Campbell-Gausdorff)<br>$$<br>\ln (\exp (\boldsymbol{A}) \exp (\boldsymbol{B}))=\boldsymbol{A}+\boldsymbol{B}+\frac{1}{2}[\boldsymbol{A}, \boldsymbol{B}]+\frac{1}{12}[\boldsymbol{A},[\boldsymbol{A}, \boldsymbol{B}]]-\frac{1}{12}[\boldsymbol{B},[\boldsymbol{A}, \boldsymbol{B}]]+\cdots<br>$$<br>其中 ロ为李括号。 $\mathrm{BCH}$ 公式告诉我们, 当处理两个矩阵指数之积时, 它们会产生一些由李括号组成 的余项<br>BCH公式近似形式<br>特别地, 考虑 $S O(3)$ 上的李代数 $\ln \left(\exp \left(\phi_{1}^{\wedge}\right) \exp \left(\phi_{2}^{\wedge}\right)\right)^{\vee}$, 当 $\phi_{1}$ 或 $\phi_{2}$ 为小量时, 小量二次以上的 项都可以被忽略掉。此时, BCH 拥有线性近似表达:<br>$$<br>\ln \left(\exp \left(\phi_{1}^{\wedge}\right) \exp \left(\phi_{2}^{\wedge}\right)\right)^{\vee} \approx \begin{cases}\boldsymbol{J}<em>{l}\left(\boldsymbol{\phi}</em>{2}\right)^{-1} \boldsymbol{\phi}<em>{1}+\boldsymbol{\phi}</em>{2} &amp; \text { if } \boldsymbol{\phi}<em>{1} \text { is small } \ \boldsymbol{J}</em>{r}\left(\boldsymbol{\phi}<em>{1}\right)^{-1} \boldsymbol{\phi}</em>{2}+\boldsymbol{\phi}<em>{1} &amp; \text { if } \boldsymbol{\phi}</em>{2} \text { is small. }\end{cases}<br>$$<br>第一种情况(左乘近似):<br>当对一个旋转矩阵 $\boldsymbol{R}<em>{2}$ (李代数为 $\phi</em>{2}$ ) 左乘一个微小旋转矩阵 $\boldsymbol{R}<em>{1}$ ( 李代数为 $\phi</em>{1}$ ) 时, 可以近 似地看作, 在原有的李代数 $\phi_{2}$ 上, 加上了一项 $\boldsymbol{J}<em>{l}\left(\phi</em>{2}\right)^{-1} \phi_{1}$ 。<br>第二种情况(右乘近似):<br>右乘一个微小位移的情况<br>以左乘为例。左乘 $\mathrm{BCH}$ 近似雅可比 $\boldsymbol{J}<em>{l}$ :<br>$$<br>\boldsymbol{J}</em>{l}=\boldsymbol{J}=\frac{\sin \theta}{\theta} \boldsymbol{I}+\left(1-\frac{\sin \theta}{\theta}\right) \boldsymbol{a} \boldsymbol{a}^{T}+\frac{1-\cos \theta}{\theta} \boldsymbol{a}^{\wedge} .<br>$$<br>它的逆为:<br>$$<br>\boldsymbol{J}<em>{l}^{-1}=\frac{\theta}{2} \cot \frac{\theta}{2} \boldsymbol{I}+\left(1-\frac{\theta}{2} \cot \frac{\theta}{2}\right) \boldsymbol{a} \boldsymbol{a}^{T}-\frac{\theta}{2} \boldsymbol{a}^{\wedge}<br>$$<br>而右乘雅可比仅需要对自变量取负号即可:<br>$$<br>\boldsymbol{J}</em>{r}(\phi)=\boldsymbol{J}<em>{l}(-\boldsymbol{\phi})<br>$$<br>这样, 我们就可以谈论李群乘法与李代数加法的关系了<br>$\mathrm{BCH}$ 近似意义重述<br>$S O(3)$ 上的微小旋转<br>$$<br>\exp \left(\Delta \phi^{\wedge}\right) \exp \left(\phi^{\wedge}\right)=\exp \left(\left(\phi+J</em>{l}^{-1}(\phi) \Delta \phi\right)^{\wedge}\right)<br>$$<br>$\mathfrak{s o}(3)$ 上加法<br>$$<br>\exp \left((\phi+\Delta \phi)^{\wedge}\right)=\exp \left(\left(J_{l} \Delta \phi\right)^{\wedge}\right) \exp \left(\phi^{\wedge}\right)=\exp \left(\phi^{\wedge}\right) \exp \left(\left(J_{r} \Delta \phi\right)^{\wedge}\right)<br>$$<br>$S E(3)$ 近似公式<br>$$<br>\exp \left(\Delta \boldsymbol{\xi}^{\wedge}\right) \exp \left(\boldsymbol{\xi}^{\wedge}\right) \approx \exp \left(\left(\mathcal{J}_{l}^{-1} \Delta \boldsymbol{\xi}+\boldsymbol{\xi}\right)^{\wedge}\right)<br>$$<br>$\mathrm{SO}(3)$ 李代数上的求导<br>如何关于带有李代数的函数的求导<br>SLAM中估计一个相机的位置和姿态, 位姿由 $S O(3)$ 上旋转矩阵或 $S E(3)$ 上变换矩阵描述。设某时 刻位姿为 $T$, 观察到一个世界坐标位于 $p$ 的点, 产生了一个观测数据 $z$, 则:<br>$$<br>z=T p+w<br>$$<br>然而观测噪声 $w$ 的存在, $z$ 往往不可能精确地满足 $z=T p$ 的关系。计算理想的观测与实际数据 的误差:<br>$$<br>e=z-T p<br>$$<br>假设一共有 $N$ 个这样的路标点和观测, 于是就有 $N$ 个上式。那么, 对小夢卜的位姿估计, 相当于 是寻找一个最优的 $T$, 使得整体误差最小化:<br>$$<br>\min <em>{T} J(\boldsymbol{T})=\sum</em>{i=1}^{N}\left|\boldsymbol{z}<em>{i}-\boldsymbol{T} \boldsymbol{p}</em>{i}\right|_{2}^{2}<br>$$<br>求解此问题, 需要计算目标函数 $J$ 关于变换矩阵 $\boldsymbol{T}$ 的导数<br>使用李代数解决求导问题的两种思路</p>
+<ul>
+<li>李代数的求导模型</li>
+<li>用李代数表示姿态，根据李代数加法来求导</li>
+<li>扰动模型</li>
+<li>对李群左乘或右乘微小扰动，对扰动求导(左扰动、右扰动模型)</li>
+</ul>
+<p>李代数求导<br>结论<br>$$<br>\frac{\partial(\boldsymbol{R} \boldsymbol{p})}{\partial \boldsymbol{\phi}}=(-\boldsymbol{R} \boldsymbol{p})^{\wedge} \boldsymbol{J}_{l}<br>$$<br>推导 计算旋转之后点的坐标相对于旋转的导数，我们不严谨地记为:<br>$$<br>\frac{\partial(\boldsymbol{R} \boldsymbol{p})}{\partial \boldsymbol{R}} .<br>$$<br>由于 $S O(3)$ 没有加法, 所以该导数无法按照导数的定义进行计算。设 $\boldsymbol{R}$ 对应的李代数为 $\phi$ 我们转而计算:<br>$$<br>\frac{\partial\left(\exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}\right)}{\partial \boldsymbol{\phi}}<br>$$<br>按照导数的定义, 有:<br>$$<br>\begin{aligned}<br>\frac{\partial\left(\exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}\right)}{\partial \boldsymbol{\phi}} &amp;=\lim _{\delta \phi \rightarrow 0} \frac{\exp \left((\boldsymbol{\phi}+\delta \boldsymbol{\phi})^{\wedge}\right) \boldsymbol{p}-\exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}}{\delta \boldsymbol{\phi}} \<br>&amp;=\lim <em>{\delta \phi \rightarrow 0} \frac{\exp \left(\left(\boldsymbol{J}</em>{l} \delta \boldsymbol{\phi}\right)^{\wedge}\right) \exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}-\exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}}{\delta \boldsymbol{\phi}} \<br>&amp; \approx \lim <em>{\delta \phi \rightarrow 0} \frac{\left(\boldsymbol{I}+\left(\boldsymbol{J}</em>{l} \delta \boldsymbol{\phi}\right)^{\wedge}\right) \exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}-\exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}}{\delta \boldsymbol{\phi}} \<br>&amp;=\lim <em>{\delta \phi \rightarrow 0} \frac{\left(\boldsymbol{J}</em>{l} \delta \boldsymbol{\phi}\right)^{\wedge} \exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}}{\delta \boldsymbol{\phi}} \<br>&amp;=\lim <em>{\delta \phi \rightarrow 0} \frac{-\left(\exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}\right)^{\wedge} \boldsymbol{J}</em>{l} \delta \boldsymbol{\phi}}{\delta \phi}=-(\boldsymbol{R} \boldsymbol{p})^{\wedge} \boldsymbol{J}<em>{l}<br>\end{aligned}李代数求导<br>结论<br>\$$<br>\frac{\partial(\boldsymbol{R} \boldsymbol{p})}{\partial \boldsymbol{\phi}}=(-\boldsymbol{R} \boldsymbol{p})^{\wedge} \boldsymbol{J}</em>{l}<br>$$<br>推导 计算旋转之后点的坐标相对于旋转的导数，我们不严谨地记为:<br>$$<br>\frac{\partial(\boldsymbol{R} \boldsymbol{p})}{\partial \boldsymbol{R}} .<br>$$<br>由于 $S O(3)$ 没有加法, 所以该导数无法按照导数的定义进行计算。设 $\boldsymbol{R}$ 对应的李代数为 $\phi$ 我们转而计算:<br>$$<br>\frac{\partial\left(\exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}\right)}{\partial \boldsymbol{\phi}}<br>$$<br>按照导数的定义, 有:<br>$$<br>\begin{aligned}<br>\frac{\partial\left(\exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}\right)}{\partial \boldsymbol{\phi}} &amp;=\lim _{\delta \phi \rightarrow 0} \frac{\exp \left((\boldsymbol{\phi}+\delta \boldsymbol{\phi})^{\wedge}\right) \boldsymbol{p}-\exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}}{\delta \boldsymbol{\phi}} \<br>&amp;=\lim <em>{\delta \phi \rightarrow 0} \frac{\exp \left(\left(\boldsymbol{J}</em>{l} \delta \boldsymbol{\phi}\right)^{\wedge}\right) \exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}-\exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}}{\delta \boldsymbol{\phi}} \<br>&amp; \approx \lim <em>{\delta \phi \rightarrow 0} \frac{\left(\boldsymbol{I}+\left(\boldsymbol{J}</em>{l} \delta \boldsymbol{\phi}\right)^{\wedge}\right) \exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}-\exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}}{\delta \boldsymbol{\phi}} \<br>&amp;=\lim <em>{\delta \phi \rightarrow 0} \frac{\left(\boldsymbol{J}</em>{l} \delta \boldsymbol{\phi}\right)^{\wedge} \exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}}{\delta \boldsymbol{\phi}} \<br>&amp;=\lim <em>{\delta \phi \rightarrow 0} \frac{-\left(\exp \left(\boldsymbol{\phi}^{\wedge}\right) \boldsymbol{p}\right)^{\wedge} \boldsymbol{J}</em>{l} \delta \boldsymbol{\phi}}{\delta \phi}=-(\boldsymbol{R} \boldsymbol{p})^{\wedge} \boldsymbol{J}_{l}<br>\end{aligned}<br>$$<br>$$<br>扰动模型(左乘)<br>结论<br>$$</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2020-04-21</span>
+            
+                <span>该篇文章被 Yann</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/slam/'>
+                            slam
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Courses/'>
+                            Courses
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2020/cmbezz4r0003u44ce3457ep5d/'>Slam14讲-Chapter2-三维空间刚体运动</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2020/cmbezz4r2004144ce6qie8m06/">Slam14讲-Chapter5-非线性优化</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2025 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

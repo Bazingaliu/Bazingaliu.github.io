@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="GAMES202-实时光线追踪" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/20250602032635.jpg">
+    <title>Yann | 我愿做你光华中淡淡的一笔</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    <style>
+        :root {
+            --waline-theme-color: #323e74; 
+            --waline-color: #323e74; 
+            --waline-border-color: #323e74; 
+            --waline-white: #323e74; 
+            --waline-bgcolor-light: #f2fafc;  
+        }
+        body {
+            color: #323e74;
+            background: #eaeae8;
+        }
+        .post-md code {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #323e74;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #323e74;
+        }
+        .year-font-color {
+            color: #323e74 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #323e74; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #323e74;
+            color: #323e74; 
+        }
+        .wl-btn {
+            border: 1px solid #323e74; 
+            color:  #323e74;  
+        }
+        .wl-btn.primary {
+            color: #f2fafc; 
+        }
+        .wl-header label {
+            color: #323e74;
+        }
+        a {
+            color: #7f688d;
+        }
+
+        .post-md a {
+            color: #7f688d;
+        }
+
+        .nav li a {
+            color: #7f688d;
+        }
+
+        .archive-main a:link {
+            color: #7f688d;
+        }
+        .archive-main a:visited {
+            color: #767c7c; 
+        }
+
+        .archive li span {
+            color: #323e74;
+        }
+
+        .post-main-title {
+            color: #323e74;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #323e74;
+        }
+
+        [data-waline] p {
+            color: #323e74;
+        }
+        [data-waline] a {
+            color: #323e74;
+        } 
+        .wl-sort li.active {
+            color: #323e74;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #f2fafc;
+        }
+
+        .paper {
+            background: #eaeae8;
+        }
+
+        .index-main {
+            background: #f2fafc;
+        }
+
+        .paper-main {
+            background: #f2fafc;
+        }
+
+        .wl-panel {
+            background: #f2fafc;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #f2fafc;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #f2fafc;
+        }
+
+    
+        .progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #323e74; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: #7f688d;
+            border-left-color: #7f688d;
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #323e74;
+        }
+    </style>
+
+    
+    <style>
+        body {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }
+        .paper {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }  
+    </style>
+
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #eaeae8  ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/20250602032635.jpg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">Yann</a> 
+            <span class="description">人工智能、计算机、机器学习、linux、程序员</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    GAMES202-实时光线追踪
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-06-02</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.7k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：5分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%97%B6%E9%97%B4%E6%80%A7%E5%8E%BB%E5%99%AA"><span class="post-toc-text">时间性去噪</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%96%B9%E6%B3%95"><span class="post-toc-text">思路及方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98"><span class="post-toc-text">问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%94%B1%E5%87%A0%E4%BD%95%E4%BF%A1%E6%81%AF%E5%8F%98%E5%8C%96%E5%BC%95%E8%B5%B7"><span class="post-toc-text">由几何信息变化引起</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%94%B1%E7%9D%80%E8%89%B2%E4%BF%A1%E6%81%AF%E5%8F%98%E5%8C%96%E5%BC%95%E8%B5%B7"><span class="post-toc-text">由着色信息变化引起</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%92%88%E5%AF%B9%E9%97%AE%E9%A2%98%E7%9A%84%E8%B0%83%E6%95%B4"><span class="post-toc-text">针对问题的调整</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%A9%BA%E9%97%B4%E6%80%A7%E5%8E%BB%E5%99%AA"><span class="post-toc-text">空间性去噪</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AB%98%E6%96%AF%E6%BB%A4%E6%B3%A2"><span class="post-toc-text">高斯滤波</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2%EF%BC%88Bilateral-filtering%EF%BC%89"><span class="post-toc-text">双边滤波（Bilateral filtering）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%81%94%E5%90%88%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2%EF%BC%88Joint-Bilateral-Filtering%EF%BC%89"><span class="post-toc-text">联合双边滤波（Joint Bilateral Filtering）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%A7%E5%B0%BA%E5%AF%B8%E6%BB%A4%E6%B3%A2%E6%A0%B8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">大尺寸滤波核的实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%86%E8%B6%9F%E5%AE%9E%E7%8E%B0%EF%BC%88Separate-Passes%EF%BC%89"><span class="post-toc-text">分趟实现（Separate Passes）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B0%BA%E5%AF%B8%E9%80%92%E5%A2%9E%EF%BC%88Progressively-Growing-Sizes%EF%BC%89"><span class="post-toc-text">尺寸递增（Progressively Growing Sizes）</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Outlier-Removal%EF%BC%88%E4%BA%AE%E7%82%B9%E5%8E%BB%E9%99%A4%EF%BC%89"><span class="post-toc-text">Outlier Removal（亮点去除）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Spatiotemporal-Variance-Guided-Filtering-SVGF"><span class="post-toc-text">Spatiotemporal Variance-Guided Filtering (SVGF)</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><span id="more"></span>
+<h2 id="时间性去噪"><a href="#时间性去噪" class="headerlink" title="时间性去噪"></a>时间性去噪</h2><h3 id="思路及方法"><a href="#思路及方法" class="headerlink" title="思路及方法"></a>思路及方法</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710154521202.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710154521202.png" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710154454411.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710154454411.png" alt=""></a></p>
+<p>RTX目前可能仅支持1SPP，每像素一采样，即像素到场景一条光线（可用光栅化替代），该交点再生成一条采样光线</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710154822223.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710154822223.png" alt=""></a></p>
+<p>仅有1SPP意味着噪声成为了实时光追的关键问题</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710154915807.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710154915807.png" alt=""></a></p>
+<p>由于实时渲染效率要求极高，一系列滤波方法都不能胜任，包括Sheared filtering（切变滤波）、离线渲染中的滤波方法、深度学习方法</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710155124650.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710155124650.png" alt=""></a></p>
+<p>因此工业界采用motion vector的方法，即利用上一帧的信息进行时间上的复用（假设上一帧已去噪），相当于增加采样数（SPP）</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710155346824.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710155346824.png" alt=""></a></p>
+<p>利用Back Projection的方法求当前帧中某一像素在上一帧中的位置</p>
+<p>具体步骤如上图，思路是先求当前帧该像素的世界坐标方法是在Gbuffer中直接保存或者矩阵变换计算（仍然需要深度值z，矩阵变换针对xy），然后易得世界坐标下该点的运动，求出上一帧中该点的世界坐标，最后矩阵变换求出上一帧中该点的屏幕坐标</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710160041235.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710160041235.png" alt=""></a></p>
+<p>取得上一帧对应点的像素颜色，与当前帧进行混合，当前帧的比例可能仅占一到二成</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><h4 id="由几何信息变化引起"><a href="#由几何信息变化引起" class="headerlink" title="由几何信息变化引起"></a>由几何信息变化引起</h4><p>场景、镜头快速切换</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710160530384.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710160530384.png" alt=""></a></p>
+<p>屏幕空间信息局限</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710160615556.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710160615556.png" alt=""></a></p>
+<p>遮挡关系的变化，造成拖影</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710160650637.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710160650637.png" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710160916194.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710160916194.png" alt=""></a></p>
+<h4 id="由着色信息变化引起"><a href="#由着色信息变化引起" class="headerlink" title="由着色信息变化引起"></a>由着色信息变化引起</h4><p>地面上阴影的变化</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710161613417.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710161613417.png" alt=""></a></p>
+<p>反射景象中的变化</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710161714948.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710161714948.png" alt=""></a></p>
+<h3 id="针对问题的调整"><a href="#针对问题的调整" class="headerlink" title="针对问题的调整"></a>针对问题的调整</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710161050182.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210710161050182.png" alt=""></a></p>
+<p>clamping方法：将上一帧的颜色截取到当前帧颜色附近的范围</p>
+<p>detection方法：物体编号，若上一帧与当前帧的对应像素属于不同物体，则可能丢弃上一帧结果</p>
+<p>由于不同程度的舍弃上一帧信息而导致引入更多噪声</p>
+<h2 id="空间性去噪"><a href="#空间性去噪" class="headerlink" title="空间性去噪"></a>空间性去噪</h2><h3 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711134304297.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711134304297.png" alt=""></a></p>
+<p>高斯滤波的算法实现，针对每像素周围的一部分像素（包括自身），以高斯函数的值为权重进行滤波（函数参数为周围像素到中心像素的距离），累加带权重颜色值，同时累加权重，最后除以总权重值进行归一化</p>
+<h3 id="双边滤波（Bilateral-filtering）"><a href="#双边滤波（Bilateral-filtering）" class="headerlink" title="双边滤波（Bilateral filtering）"></a>双边滤波（Bilateral filtering）</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711134843750.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711134843750.png" alt=""></a></p>
+<p>普通的高斯滤波使边缘模糊</p>
+<p>双边滤波目的是保留清晰的边缘</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711134933201.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711134933201.png" alt=""></a></p>
+<p>边缘意味着颜色的剧烈变化</p>
+<p>因此在滤波过程中，当考虑周围像素对中央像素的贡献时，若周围像素的颜色与中央像素的颜色相差巨大，则减少其贡献</p>
+<p>上图公式中ij，kl分别为两像素坐标，右侧指数部分前半部分为距离因素的考量（同高斯滤波），后半为颜色因素的考量（颜色差距大则减少权重）</p>
+<p>结果如下</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711135516382.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711135516382.png" alt=""></a></p>
+<p>保留了清晰的边缘但仍会丢失细节信息</p>
+<h3 id="联合双边滤波（Joint-Bilateral-Filtering）"><a href="#联合双边滤波（Joint-Bilateral-Filtering）" class="headerlink" title="联合双边滤波（Joint Bilateral Filtering）"></a>联合双边滤波（Joint Bilateral Filtering）</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711135733757.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711135733757.png" alt=""></a></p>
+<p>高斯滤波考虑距离因素进行权重的衰减</p>
+<p>双边滤波考虑距离和颜色因素进行权重的衰减</p>
+<p>由此启发得到联合双边滤波，其考虑更多样的因素进行权重的衰减</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711140013342.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711140013342.png" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711140254907.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711140254907.png" alt=""></a></p>
+<p>由于渲染过程中利用Gbuffer可以方便的获取多种屏幕空间信息，例如世界坐标、法线、漫反射颜色（albedo）等，这些都是通过光栅化得到的无噪声图像信息</p>
+<p>具体例子如图中康奈尔盒子所示</p>
+<p>A点对B点的权重贡献因为深度相差大而进行较多的衰减（保留物体与背景物体之间的边缘）</p>
+<p>B点对C点的权重贡献因为法线相差大而进行较多的衰减（保留同物体不同面的折痕边缘）</p>
+<p>D点对E点的权重贡献因为颜色值相差大而进行较多的衰减（保留阴影边缘）</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711140720460.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711140720460.png" alt=""></a></p>
+<p>不一定利用高斯函数，任何随距离衰减的函数都是可能的选择</p>
+<h3 id="大尺寸滤波核的实现"><a href="#大尺寸滤波核的实现" class="headerlink" title="大尺寸滤波核的实现"></a>大尺寸滤波核的实现</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711140839717.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711140839717.png" alt=""></a></p>
+<p>进行滤波操作时，若核的大小达到64$\times$64则直接的遍历开销难以承担</p>
+<h4 id="分趟实现（Separate-Passes）"><a href="#分趟实现（Separate-Passes）" class="headerlink" title="分趟实现（Separate Passes）"></a>分趟实现（Separate Passes）</h4><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711141108216.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711141108216.png" alt=""></a></p>
+<p>第一个pass先只在竖直方向进行滤波，第二个pass对结果进行水平方向的滤波（单一方向的滤波也只使用一维的函数），将总共$N\times N$次操作减少到$N+N$ </p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711141251881.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711141251881.png" alt=""></a></p>
+<p>该方法的原理如上图所示</p>
+<p>考虑高斯滤波，二维高斯函数半身可以拆分为两个一维高斯函数，在滤波对应的卷积操作中（图中$F(x_0,y_0)$疑为$F(x,y)$），可在进行二次积分时将高斯函数拆分开，再分别进行一维的卷积，即对应于竖直和水平方向的两次单独的一维滤波</p>
+<p>然而高斯滤波以外的方法理论上不能保证函数可拆分，故在使用其他滤波方法的情况不完全准确</p>
+<h4 id="尺寸递增（Progressively-Growing-Sizes）"><a href="#尺寸递增（Progressively-Growing-Sizes）" class="headerlink" title="尺寸递增（Progressively Growing Sizes）"></a>尺寸递增（Progressively Growing Sizes）</h4><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711142236441.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711142236441.png" alt=""></a></p>
+<p>同样分pass实现，每个pass只进行$5\times 5$的滤波</p>
+<p>下一次pass将以更大的距离跳跃选择采样点进行$5\times 5$的滤波，跳跃距离为$2^i$，$i$为当前已进行的pass数（如图中所示从0递增）</p>
+<p>利用跳跃采样的方法实际上也扩大了滤波覆盖的面积</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711142642729.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711142642729.png" alt=""></a></p>
+<p>该方法原理的理解需要信号相关的进一步的知识</p>
+<p>大致意思为，在频谱图上扩大滤波尺寸相当于消除更低频率的信息，而采样操作相当于频谱移动。理想状况下前一个pass中消除了高频信息留下空白部分，当前pass进行跳跃采样使保留的低频信息转移到原来高频信息所在的空白部分，未发生频谱重叠则没有走样现象（aliasing）</p>
+<h3 id="Outlier-Removal（亮点去除）"><a href="#Outlier-Removal（亮点去除）" class="headerlink" title="Outlier Removal（亮点去除）"></a>Outlier Removal（亮点去除）</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711144000904.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711144000904.png" alt=""></a></p>
+<p>图中有时会出现特别亮的噪点，若直接进行滤波，其亮度值会分摊到周围像素，使滤波效果更差，需要考虑在滤波前处理这些特别亮的噪点</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711144142063.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210711144142063.png" alt=""></a></p>
+<p>判定亮点的方法是对每个像素，计算其周围较小范围内的均值和方差，利用均值和方差确定亮度的合理范围（比如$\mu\pm{k\sigma}$），超出此范围判定成亮点，并进行clamp操作</p>
+<h2 id="Spatiotemporal-Variance-Guided-Filtering-SVGF"><a href="#Spatiotemporal-Variance-Guided-Filtering-SVGF" class="headerlink" title="Spatiotemporal Variance-Guided Filtering (SVGF)"></a>Spatiotemporal Variance-Guided Filtering (SVGF)</h2><p>综合了时间空间的去噪策略，加入方差因素和一些其他技巧</p>
+<p>以下为SVGF与联合双边滤波相比，具有的特点</p>
+<p>其中对Luminance（颜色灰度值）的考量体现了SVGF中的Variance（用来减少阴影中较亮的噪点在滤波中的权重）</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210712140749971.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210712140749971.png" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210712140809397.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210712140809397.png" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210712140825919.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210712140825919.png" alt=""></a></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2021-12-29</span>
+            
+                <span>该篇文章被 Yann</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/computer-graphics/'>
+                            computer graphics
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Courses/'>
+                            Courses
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2022/2022112/'>Altium Designer 21版本初体验</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2021/cmbf0eyfm0027pwce3tkw451n/">GAMES202-Non-Photorealistic Rendeirng (NPR)</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2025 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

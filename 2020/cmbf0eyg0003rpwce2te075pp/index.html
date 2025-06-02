@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Slam14讲-Chapter1-初识SLAM" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/20250602032635.jpg">
+    <title>Yann | 我愿做你光华中淡淡的一笔</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    <style>
+        :root {
+            --waline-theme-color: #323e74; 
+            --waline-color: #323e74; 
+            --waline-border-color: #323e74; 
+            --waline-white: #323e74; 
+            --waline-bgcolor-light: #f2fafc;  
+        }
+        body {
+            color: #323e74;
+            background: #eaeae8;
+        }
+        .post-md code {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #323e74;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #323e74;
+        }
+        .year-font-color {
+            color: #323e74 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #323e74; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #323e74;
+            color: #323e74; 
+        }
+        .wl-btn {
+            border: 1px solid #323e74; 
+            color:  #323e74;  
+        }
+        .wl-btn.primary {
+            color: #f2fafc; 
+        }
+        .wl-header label {
+            color: #323e74;
+        }
+        a {
+            color: #7f688d;
+        }
+
+        .post-md a {
+            color: #7f688d;
+        }
+
+        .nav li a {
+            color: #7f688d;
+        }
+
+        .archive-main a:link {
+            color: #7f688d;
+        }
+        .archive-main a:visited {
+            color: #767c7c; 
+        }
+
+        .archive li span {
+            color: #323e74;
+        }
+
+        .post-main-title {
+            color: #323e74;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #323e74;
+        }
+
+        [data-waline] p {
+            color: #323e74;
+        }
+        [data-waline] a {
+            color: #323e74;
+        } 
+        .wl-sort li.active {
+            color: #323e74;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #f2fafc;
+        }
+
+        .paper {
+            background: #eaeae8;
+        }
+
+        .index-main {
+            background: #f2fafc;
+        }
+
+        .paper-main {
+            background: #f2fafc;
+        }
+
+        .wl-panel {
+            background: #f2fafc;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #f2fafc;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #f2fafc;
+        }
+
+    
+        .progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #323e74; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: #7f688d;
+            border-left-color: #7f688d;
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #323e74;
+        }
+    </style>
+
+    
+    <style>
+        body {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }
+        .paper {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }  
+    </style>
+
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #eaeae8  ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/20250602032635.jpg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">Yann</a> 
+            <span class="description">人工智能、计算机、机器学习、linux、程序员</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Slam14讲-Chapter1-初识SLAM
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-06-02</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.6k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：6分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BC%95%E5%AD%90"><span class="post-toc-text">引子</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BB%8F%E5%85%B8%E8%A7%86%E8%A7%89SLAM%E6%A1%86%E6%9E%B6"><span class="post-toc-text">经典视觉SLAM框架</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%86%E8%A7%89%E9%87%8C%E7%A8%8B%E8%AE%A1"><span class="post-toc-text">视觉里程计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%90%8E%E7%AB%AF%E4%BC%98%E5%8C%96"><span class="post-toc-text">后端优化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%9E%E7%8E%AF%E6%A3%80%E6%B5%8B"><span class="post-toc-text">回环检测</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BB%BA%E5%9B%BE"><span class="post-toc-text">建图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%90%8E%E7%AB%AF%E4%BC%98%E5%8C%96-1"><span class="post-toc-text">后端优化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%9E%E7%8E%AF%E6%A3%80%E6%B5%8B-1"><span class="post-toc-text">回环检测</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BB%BA%E5%9B%BE-1"><span class="post-toc-text">建图</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#SLAM%E9%97%AE%E9%A2%98%E7%9A%84%E6%95%B0%E5%AD%A6%E8%A1%A8%E8%BF%B0"><span class="post-toc-text">SLAM问题的数学表述</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><span id="more"></span>
+<blockquote>
+<p>目标：</p>
+<ul>
+<li>SLAM模块及其任务</li>
+<li>搭建编程环境</li>
+<li>Linux下编译程序</li>
+<li>cmake使用</li>
+</ul>
+</blockquote>
+<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">小萝卜</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><p>自主运动能力轮子、电机</p>
+</li>
+<li><p>任务</p>
+</li>
+<li><p>定位$\rightarrow$在什么地方</p>
+<ul>
+<li>建图$\rightarrow$周围环境如何</li>
+</ul>
+</li>
+<li><p>传感器</p>
+</li>
+<li><p>本体$\rightarrow$轮式编码器、相机、激光</p>
+<ul>
+<li>环境$\rightarrow$导轨、二维码标志</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">相机</span><br></pre></td></tr></table></figure>
+<p>单目相机：只使用一个摄像头进行SLAM(Monocular SLAM)</p>
+<blockquote>
+<p><strong>三维空间的二维投影</strong>，故欲恢复三维结构，必须移动相机视角以形成<strong>视差</strong>从而计算<strong>深度</strong>。</p>
+</blockquote>
+<p>双目相机(Stereo)</p>
+<p>通过某种手段测量物体离我们的距离，克服单目无法知道距离的缺点</p>
+<blockquote>
+<p>由两个单目相机组成，但两个相机之间的距离(Baseline)已知</p>
+<p>缺点：计算量大，需要GPU和FPGA加速</p>
+</blockquote>
+<p>深度相机（RGB－D）</p>
+<blockquote>
+<p>通过红外结构光或ToF原理，通过主动向物体发射光并接受返回的光，测出物体离相机的距离</p>
+<p>优点：不通过软件计算，而是通过物理的测量手段，节省大量计算量</p>
+<p>缺点：测量范围窄、噪声大、视野小、易受日光干扰、无法测量透射材质</p>
+</blockquote>
+<h2 id="经典视觉SLAM框架"><a href="#经典视觉SLAM框架" class="headerlink" title="经典视觉SLAM框架"></a>经典视觉SLAM框架</h2><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220525174157198.jpeg" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220525174157198.jpeg" alt=""></a></p>
+<ul>
+<li><p>传感器信息读取</p>
+</li>
+<li><ul>
+<li>相机图像信息读取和预处理</li>
+<li>码盘、惯性传感器信息读取和同步</li>
+</ul>
+</li>
+<li><p>视觉里程计（Visual Odometry,VO）</p>
+</li>
+<li><ul>
+<li>估算相邻图像间相机的运动，以及局部地图的样子</li>
+</ul>
+</li>
+<li><p>后端优化（Optimization）</p>
+</li>
+<li><ul>
+<li>接受不同时刻VO测量的相机位姿及回环检测信息，优化后得到全局一致的轨迹和地图</li>
+</ul>
+</li>
+<li><p>回环检测（Loop　Closing）</p>
+</li>
+<li><ul>
+<li>判断机器人是否曾经到达过先前位置</li>
+</ul>
+</li>
+<li><p>建图（Mapping）</p>
+</li>
+<li><ul>
+<li>根据估计的轨迹，建立与任务要求对应的地图</li>
+</ul>
+</li>
+</ul>
+<h3 id="视觉里程计"><a href="#视觉里程计" class="headerlink" title="视觉里程计"></a>视觉里程计</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">计算机如何通过图像确定相机运动？</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>VO能够通过相邻帧间图像估计相机运动，并恢复场景空间结构，只计算相邻时刻运动，和再往前过去的信息没有关联。</p>
+<p>缺点：累计漂移</p>
+</blockquote>
+<h3 id="后端优化"><a href="#后端优化" class="headerlink" title="后端优化"></a>后端优化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">处理SLAM过程中噪声的问题</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如何从带有噪声的数据中，估计整个系统的状态，以及这个状态估计的不确定性有多大最大后验概率估计(Maximum-a-Posteriori,MAP)</p>
+</blockquote>
+<p><strong>在视觉 SLAM 中，前端和计算机视觉研究领域更为相关，比如图像的特征提取与匹配等，后端则主要是滤波与非线性优化算法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SLAM问题的本质</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对运动主体自身和周围环境空间不确定性的估计</p>
+</blockquote>
+<h3 id="回环检测"><a href="#回环检测" class="headerlink" title="回环检测"></a>回环检测</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">解决位置估计随时间漂移的问题</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>要求机器人具有识别曾经到达过场景的能力</p>
+<p>判断图像间的相似性</p>
+</blockquote>
+<h3 id="建图"><a href="#建图" class="headerlink" title="建图"></a>建图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">构建地图的过程</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一个相机有6个自由度的运动</p>
+<ul>
+<li>xyz移动自由度</li>
+<li>xyz转动自由度</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">度量地图Metric Map</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>强调精确表示地图中物体的位置关系</p>
+<ul>
+<li>稀疏地图：由路标组成的地图→定位</li>
+<li>稠密地图：按照某种分辨率，由许多个小块组成→导航</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">拓扑地图Topological Map</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>强调地图元素之间的关系</p>
+<p>Graph</p>
+<p>节点和边视觉里程计</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">计算机如何通过图像确定相机运动？</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>VO能够通过相邻帧间图像估计相机运动，并恢复场景空间结构，只计算相邻时刻运动，和再往前过去的信息没有关联。</p>
+<p>缺点：累计漂移</p>
+</blockquote>
+<h3 id="后端优化-1"><a href="#后端优化-1" class="headerlink" title="后端优化"></a>后端优化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">处理SLAM过程中噪声的问题</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如何从带有噪声的数据中，估计整个系统的状态，以及这个状态估计的不确定性有多大最大后验概率估计(Maximum-a-Posteriori,MAP)</p>
+</blockquote>
+<p><strong>在视觉 SLAM 中，前端和计算机视觉研究领域更为相关，比如图像的特征提取与匹配等，后端则主要是滤波与非线性优化算法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SLAM问题的本质</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对运动主体自身和周围环境空间不确定性的估计</p>
+</blockquote>
+<h3 id="回环检测-1"><a href="#回环检测-1" class="headerlink" title="回环检测"></a>回环检测</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">解决位置估计随时间漂移的问题</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>要求机器人具有识别曾经到达过场景的能力</p>
+<p>判断图像间的相似性</p>
+</blockquote>
+<h3 id="建图-1"><a href="#建图-1" class="headerlink" title="建图"></a>建图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">构建地图的过程</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一个相机有6个自由度的运动</p>
+<ul>
+<li>xyz移动自由度</li>
+<li>xyz转动自由度</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">度量地图Metric Map</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>强调精确表示地图中物体的位置关系</p>
+<ul>
+<li>稀疏地图：由路标组成的地图→定位</li>
+<li>稠密地图：按照某种分辨率，由许多个小块组成→导航</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">拓扑地图Topological Map</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>强调地图元素之间的关系</p>
+<p>Graph</p>
+<p>节点和边</p>
+</blockquote>
+</blockquote>
+<h2 id="SLAM问题的数学表述"><a href="#SLAM问题的数学表述" class="headerlink" title="SLAM问题的数学表述"></a>SLAM问题的数学表述</h2><p>什么是运动</p>
+<p>从 $k-1$ 时刻到 $k$ 时刻, 位置 $x$ 如何变化<br>什么是观测<br>在 $k$ 时刻, 于 $x_{k}$ 处探测到了某一个路标 $y_{j}$, 如何描述<br>运动方程和观测方程<br>$$<br>\boldsymbol{x}<em>{k}=f\left(\boldsymbol{x}</em>{k-1}, \boldsymbol{u}<em>{k}, \boldsymbol{w}</em>{k}\right) \boldsymbol{z}<em>{k, j}=h\left(\boldsymbol{y}</em>{j}, \boldsymbol{x}<em>{k}, \boldsymbol{v}</em>{k, j}\right)<br>$$<br>$x_{k}$ : $\mathrm{k}$ 时刻的位置, $x_{k-1}$ : $\mathrm{k}-1$ 时刻的位置, $u_{k}$ : 运动传感器的读数, $w_{k}$ : 噪声<br>$z_{k, j}$ : 在 $x_{k}$ 位置上看到某个路标点 $y_{j}$ 所产生的观测数据, $v_{k, j}$ 为观测噪声</p>
+<blockquote>
+<p>举例:<br>参数化方式下的运动方程:<br>$$<br>\left[\begin{array}{l}<br>x \<br>y \<br>\theta<br>\end{array}\right]<em>{k}=\left[\begin{array}{l}<br>x \<br>y \<br>\theta<br>\end{array}\right]</em>{k-1}+\left[\begin{array}{c}<br>\Delta x \<br>\Delta y \<br>\Delta \theta<br>\end{array}\right]<em>{k}+\boldsymbol{w}</em>{k}<br>$$<br>$\boldsymbol{x}<em>{k}=[x, y, \theta]</em>{k}^{T}$ 位姿, 两个位置 $+$ 个个转角<br>观测方程:<br>$$<br>\left[\begin{array}{c}<br>r \<br>\phi<br>\end{array}\right]=\left[\begin{array}{c}<br>\sqrt{\left(p_{x}-x\right)^{2}+\left(p_{y}-y\right)^{2}} \<br>\arctan \left(\frac{p_{y}-y}{p_{x}-x}\right)<br>\end{array}\right]+\boldsymbol{v}<br>$$<br>$\boldsymbol{y}=\left[p_{x}, p_{y}\right]^{T}$ 路标点, $\boldsymbol{z}=[r, \phi]^{T}$ 观测数据</p>
+</blockquote>
+<p>状态估计问题</p>
+<blockquote>
+<p>定义：如何通过带有噪声的测量数据，估计内部的、隐藏着的状态变量</p>
+<p>分类</p>
+<ul>
+<li><p>方程是否线性</p>
+</li>
+<li><ul>
+<li>线性系统</li>
+<li>非线性系统</li>
+</ul>
+</li>
+<li><p>噪声是否服从高斯分布</p>
+</li>
+<li><ul>
+<li>高斯系统</li>
+<li>非高斯系统</li>
+</ul>
+</li>
+</ul>
+<p>求解</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">Linear</th>
+<th style="text-align:left">Non-Linear</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Gaussian</td>
+<td style="text-align:left">Kalman Filter(KF)</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Non-Gaussian</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Extended Kalman Filter(EKF)</strong> 非线性优化</td>
+</tr>
+</tbody>
+</table>
+<p>其他方法</p>
+<p>粒子滤波器、非线性优化方法、图优化</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2020-04-21</span>
+            
+                <span>该篇文章被 Yann</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/slam/'>
+                            slam
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Courses/'>
+                            Courses
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2020/20200425/'>Neural Architecture Search</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2020/cmbf0eyg1003upwce7o1h9zdz/">Slam14讲-Chapter2-三维空间刚体运动</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2025 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

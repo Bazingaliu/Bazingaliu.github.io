@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Slam14讲-Chapter2-三维空间刚体运动" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/20250602032635.jpg">
+    <title>Yann | 我愿做你光华中淡淡的一笔</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    <style>
+        :root {
+            --waline-theme-color: #323e74; 
+            --waline-color: #323e74; 
+            --waline-border-color: #323e74; 
+            --waline-white: #323e74; 
+            --waline-bgcolor-light: #f2fafc;  
+        }
+        body {
+            color: #323e74;
+            background: #eaeae8;
+        }
+        .post-md code {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #323e74;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #323e74;
+        }
+        .year-font-color {
+            color: #323e74 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #323e74; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #323e74;
+            color: #323e74; 
+        }
+        .wl-btn {
+            border: 1px solid #323e74; 
+            color:  #323e74;  
+        }
+        .wl-btn.primary {
+            color: #f2fafc; 
+        }
+        .wl-header label {
+            color: #323e74;
+        }
+        a {
+            color: #7f688d;
+        }
+
+        .post-md a {
+            color: #7f688d;
+        }
+
+        .nav li a {
+            color: #7f688d;
+        }
+
+        .archive-main a:link {
+            color: #7f688d;
+        }
+        .archive-main a:visited {
+            color: #767c7c; 
+        }
+
+        .archive li span {
+            color: #323e74;
+        }
+
+        .post-main-title {
+            color: #323e74;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #323e74;
+        }
+
+        [data-waline] p {
+            color: #323e74;
+        }
+        [data-waline] a {
+            color: #323e74;
+        } 
+        .wl-sort li.active {
+            color: #323e74;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #f2fafc;
+        }
+
+        .paper {
+            background: #eaeae8;
+        }
+
+        .index-main {
+            background: #f2fafc;
+        }
+
+        .paper-main {
+            background: #f2fafc;
+        }
+
+        .wl-panel {
+            background: #f2fafc;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #f2fafc;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #f2fafc;
+        }
+
+    
+        .progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #323e74; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: #7f688d;
+            border-left-color: #7f688d;
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #323e74;
+        }
+    </style>
+
+    
+    <style>
+        body {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }
+        .paper {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }  
+    </style>
+
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #eaeae8  ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/20250602032635.jpg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">Yann</a> 
+            <span class="description">人工智能、计算机、机器学习、linux、程序员</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Slam14讲-Chapter2-三维空间刚体运动
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-06-02</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：2.2k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：10分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5"><span class="post-toc-text">旋转矩阵</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%82%B9%E5%92%8C%E5%90%91%E9%87%8F%E3%80%81%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="post-toc-text">点和向量、坐标系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9D%90%E6%A0%87%E7%B3%BB%E9%97%B4%E6%AC%A7%E5%BC%8F%E5%8F%98%E6%8D%A2"><span class="post-toc-text">坐标系间欧式变换</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%97%8B%E8%BD%AC%E5%90%91%E9%87%8F%E5%92%8C%E6%AC%A7%E6%8B%89%E8%A7%92"><span class="post-toc-text">旋转向量和欧拉角</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%97%8B%E8%BD%AC%E5%90%91%E9%87%8F"><span class="post-toc-text">旋转向量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AC%A7%E6%8B%89%E8%A7%92"><span class="post-toc-text">欧拉角</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E5%85%83%E6%95%B0"><span class="post-toc-text">四元数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="post-toc-text">定义</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><span id="more"></span>
+<ul>
+<li><p>旋转矩阵</p>
+</li>
+<li><p>点和向量、坐标系</p>
+<ul>
+<li>坐标系间欧式变换</li>
+<li>变换矩阵与齐次坐标</li>
+</ul>
+</li>
+<li><p>旋转向量和欧拉角</p>
+</li>
+<li><p>旋转向量</p>
+<ul>
+<li>欧拉角</li>
+</ul>
+</li>
+<li><p>四元数</p>
+</li>
+<li><p>定义</p>
+<ul>
+<li>运算</li>
+<li>表示旋转</li>
+<li>四元数和旋转矩阵</li>
+</ul>
+</li>
+<li><p>相似、 仿射、射影变换</p>
+</li>
+</ul>
+<p>目标：</p>
+<blockquote>
+<ul>
+<li><p>三维空间刚体运动描述方式</p>
+</li>
+<li><p>旋转矩阵</p>
+<ul>
+<li>变换矩阵</li>
+<li>四元数</li>
+<li>欧拉角</li>
+</ul>
+</li>
+<li><p>Eigen库、几何模块</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="旋转矩阵"><a href="#旋转矩阵" class="headerlink" title="旋转矩阵"></a>旋转矩阵</h2><h3 id="点和向量、坐标系"><a href="#点和向量、坐标系" class="headerlink" title="点和向量、坐标系"></a>点和向量、坐标系</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220525174046524.jpeg" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220525174046524.jpeg" alt=""></a></p>
+<p>内积<br>$$<br>\boldsymbol{a} \cdot \boldsymbol{b}=\boldsymbol{a}^{T} \boldsymbol{b}=\sum_{i=1}^{3} a_{i} b_{i}=|\boldsymbol{a}||\boldsymbol{b}| \cos \langle\boldsymbol{a}, \boldsymbol{b}\rangle<br>$$<br>外积<br>$$<br>\boldsymbol{a} \times \boldsymbol{b}=\left[\begin{array}{ccc}<br>\boldsymbol{i} &amp; \boldsymbol{j} &amp; \boldsymbol{k} \<br>a_{1} &amp; a_{2} &amp; a_{3} \<br>b_{1} &amp; b_{2} &amp; b_{3}<br>\end{array}\right]=\left[\begin{array}{c}<br>a_{2} b_{3}-a_{3} b_{2} \<br>a_{3} b_{1}-a_{1} b_{3} \<br>a_{1} b_{2}-a_{2} b_{1}<br>\end{array}\right]=\left[\begin{array}{ccc}<br>0 &amp; -a_{3} &amp; a_{2} \<br>a_{3} &amp; 0 &amp; -a_{1} \<br>-a_{2} &amp; a_{1} &amp; 0<br>\end{array}\right] \boldsymbol{b} \triangleq \boldsymbol{a}^{\wedge} \boldsymbol{b}<br>$$</p>
+<h3 id="坐标系间欧式变换"><a href="#坐标系间欧式变换" class="headerlink" title="坐标系间欧式变换"></a>坐标系间欧式变换</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531030633391.jpeg" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531030633391.jpeg" alt=""></a></p>
+<p>世界坐标系、移动坐标系<br>$$<br>\begin{aligned}<br>{\left[\begin{array}{l}<br>a_{1} \<br>a_{2} \<br>a_{3}<br>\end{array}\right]=} &amp; {\left[\begin{array}{lll}<br>\boldsymbol{e}<em>{1}^{T} \boldsymbol{e}</em>{1}^{\prime} &amp; \boldsymbol{e}<em>{1}^{T} \boldsymbol{e}</em>{2}^{\prime} &amp; \boldsymbol{e}<em>{1}^{T} \boldsymbol{e}</em>{3}^{\prime} \<br>\boldsymbol{e}<em>{2}^{T} \boldsymbol{e}</em>{1}^{\prime} &amp; \boldsymbol{e}<em>{2}^{T} \boldsymbol{e}</em>{2}^{\prime} &amp; \boldsymbol{e}<em>{2}^{T} \boldsymbol{e}</em>{3}^{\prime} \<br>\boldsymbol{e}<em>{3}^{T} \boldsymbol{e}</em>{1}^{\prime} &amp; \boldsymbol{e}<em>{3}^{T} \boldsymbol{e}</em>{2}^{\prime} &amp; \boldsymbol{e}<em>{3}^{T} \boldsymbol{e}</em>{3}^{\prime}<br>\end{array}\right]\left[\begin{array}{l}<br>a_{1}^{\prime} \<br>a_{2}^{\prime} \<br>a_{3}^{\prime}<br>\end{array}\right] \triangleq \boldsymbol{R} \boldsymbol{a}^{\prime} } \<br>S O(n)=&amp;\left{\boldsymbol{R} \in \mathbb{R}^{n \times n} \mid \boldsymbol{R} \boldsymbol{R}^{T}=\boldsymbol{I}, \operatorname{det}(\boldsymbol{R})=1\right} \<br>\boldsymbol{a}^{\prime}=\boldsymbol{R}^{-1} \boldsymbol{a}=\boldsymbol{R}^{T} \boldsymbol{a}<br>\end{aligned}<br>$$<br>bold $R$ : 旋转矩阵<br>$S O(n)$ : 特殊正交群, 旋转矩阵的集合<br>旋转矩阵性质：旋转矩阵的逆(转置)描述了一个相反的旋转<br>$$<br>\boldsymbol{a}^{\prime}=\boldsymbol{R}^{-1} \boldsymbol{a}=\boldsymbol{R}^{T} \boldsymbol{a}<br>$$<br>非齐次坐标缺点<br>$$<br>\boldsymbol{b}=\boldsymbol{R}<em>{1} \boldsymbol{a}+\boldsymbol{t}</em>{1}, \quad \boldsymbol{c}=\boldsymbol{R}<em>{2} \boldsymbol{b}+\boldsymbol{t}</em>{2} \boldsymbol{c}=\boldsymbol{R}<em>{2}\left(\boldsymbol{R}</em>{1} \boldsymbol{a}+\boldsymbol{t}<em>{1}\right)+\boldsymbol{t}</em>{2}<br>$$<br>如此形式变换多次后过于复杂</p>
+<p>齐次坐标和变换矩阵<br>$$<br>\begin{gathered}<br>{\left[\begin{array}{l}<br>a^{\prime} \<br>1<br>\end{array}\right]=\left[\begin{array}{ll}<br>R &amp; t \<br>0^{T} &amp; 1<br>\end{array}\right]\left[\begin{array}{l}<br>a \<br>1<br>\end{array}\right] \triangleq T\left[\begin{array}{l}<br>a \<br>1<br>\end{array}\right]} \<br>S E(3)=\left{\boldsymbol{T}=\left[\begin{array}{cc}<br>\boldsymbol{R} &amp; \boldsymbol{t} \<br>\mathbf{0}^{T} &amp; 1<br>\end{array}\right] \in \mathbb{R}^{4 \times 4} \mid \boldsymbol{R} \in S O(3), \boldsymbol{t} \in \mathbb{R}^{3}\right}<br>\end{gathered}<br>$$<br>通过增加自由度来允许把变换写成线性形式<br>带来的方便：<br>$$<br>\tilde{\boldsymbol{b}}=\boldsymbol{T}<em>{1} \tilde{\boldsymbol{a}}, \tilde{\boldsymbol{c}}=\boldsymbol{T}</em>{2} \tilde{\boldsymbol{b}} \Rightarrow \tilde{\boldsymbol{c}}=\boldsymbol{T}<em>{2} \boldsymbol{T}</em>{1} \tilde{\boldsymbol{a}}<br>$$<br>$S E(3)$ ：特殊欧式群(Special Euclidean Group)<br>变换矩阵的逆:<br>$$<br>\boldsymbol{T}^{-1}=\left[\begin{array}{cc}<br>\boldsymbol{R}^{T} &amp; -\boldsymbol{R}^{T} \boldsymbol{t} \<br>\mathbf{0}^{T} &amp; 1<br>\end{array}\right]<br>$$<br>默认规则</p>
+<ul>
+<li>$T a$ 齐次坐标</li>
+<li>$R a$ 非齐次丛标</li>
+</ul>
+<h2 id="旋转向量和欧拉角"><a href="#旋转向量和欧拉角" class="headerlink" title="旋转向量和欧拉角"></a>旋转向量和欧拉角</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">矩阵表示缺点</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>SO(3)旋转矩阵9个量→1次旋转只有3个自由度；变化矩阵16个量→6自由度变换   <strong>冗余</strong></li>
+<li>旋转矩阵带有约束：正交矩阵且行列式为1 →约束使得求解困难</li>
+</ol>
+</blockquote>
+<h3 id="旋转向量"><a href="#旋转向量" class="headerlink" title="旋转向量"></a>旋转向量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">旋转向量</span><br></pre></td></tr></table></figure>
+<p>旋转轴+旋转角<br>旋转向量 $\rightarrow$ 旋转矩阵<br>$$<br>\boldsymbol{R}=\cos \theta \boldsymbol{I}+(1-\cos \theta) \boldsymbol{n} \boldsymbol{n}^{T}+\sin \theta \boldsymbol{n}^{\wedge} .<br>$$<br>旋转矩阵 $\rightarrow$ 旋转向量<br>$$<br>\theta=\arccos \left(\frac{\operatorname{tr}(\boldsymbol{R})-1}{2}\right)<br>$$<br>来源<br>$$<br>\begin{aligned}<br>\operatorname{tr}(\boldsymbol{R}) &amp;=\cos \theta \operatorname{tr}(\boldsymbol{I})+(1-\cos \theta) \operatorname{tr}\left(\boldsymbol{n} \boldsymbol{n}^{T}\right)+\sin \theta \operatorname{tr}\left(\boldsymbol{n}^{\wedge}\right) \<br>&amp;=3 \cos \theta+(1-\cos \theta) \<br>&amp;=1+2 \cos \theta<br>\end{aligned}<br>$$<br>性质：<br>-算术角度：转轴 $n$ 为矩阵 $R$ 特征值1对应的特征向量</p>
+<ul>
+<li>几何角度：旋转轴经过旋转后不变</li>
+</ul>
+<p>$$<br>\boldsymbol{R} \boldsymbol{n}=\boldsymbol{n}<br>$$</p>
+<h3 id="欧拉角"><a href="#欧拉角" class="headerlink" title="欧拉角"></a>欧拉角</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">引入</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>欧拉角优点</p>
+<p>用直观的方式描述旋转：三个分离的转角</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">欧拉角</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531030955878.jpeg" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531030955878.jpeg" alt=""></a></p>
+<p>ZYX(rpy)</p>
+<ul>
+<li>偏航角yaw：绕物体的Z轴旋转</li>
+<li>俯仰角pitch：绕旋转之后的Y轴旋转</li>
+<li>滚转角roll：绕旋转之后的X轴旋转</li>
+</ul>
+<p>万向锁问题（奇异性问题）：</p>
+<p>在pitch=90时，第一次旋转与第三次旋转将使用同一个轴，使得系统丢失了一个自由度</p>
+<ul>
+<li>不适应应用场景：插值、迭代、滤波、优化</li>
+<li>适宜场景：人机交互</li>
+</ul>
+<h2 id="四元数"><a href="#四元数" class="headerlink" title="四元数"></a>四元数</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">引入</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>复数平面C上乘上复数相当于逆时针把一个复向量旋转90</p>
+<p>特点：紧凑、无歧义性、不够直观、运算稍复杂</p>
+</blockquote>
+<p>定义<br>$$<br>\boldsymbol{q}=q_{0}+q_{1} i+q_{2} j+q_{3} k<br>$$<br>$\mathrm{ijk}$ 为四元数的三个虚部, 这三个虚部满足关系式:<br>$$<br>\left{\begin{array}{l}<br>i^{2}=j^{2}=k^{2}=-1 \<br>i j=k, j i=-k \<br>j k=i, k j=-i \<br>k i=j, i k=-j<br>\end{array}\right.<br>$$<br>有时人们也用一个标量和一个向量来表达:<br>$$<br>\boldsymbol{q}=[s, \boldsymbol{v}], \quad s=q_{0} \in \mathbb{R}, \boldsymbol{v}=\left[q_{1}, q_{2}, q_{3}\right]^{T} \in \mathbb{R}^{3},<br>$$<br>其中 $s$ 称为四元数的实部，而 $v$ 称为它的虚部<br>表示旋转的说明<br>在四元数中, 任意的旋转都可以由两个互为相反数的四元数表示<br>旋转 $\rightarrow$ 四元数(绕单位向量 $\boldsymbol{n}=\left[n_{x}, n_{y}, n_{z}\right]^{T}$ 的角度为 $\theta$ 的旋转)<br>$$<br>\boldsymbol{q}=\left[\cos \frac{\theta}{2}, n_{x} \sin \frac{\theta}{2}, n_{y} \sin \frac{\theta}{2}, n_{z} \sin \frac{\theta}{2}\right]^{T}<br>$$<br>四元数 $\rightarrow$ 旋转轴、旋转角<br>$$<br>\left{\begin{array}{l}<br>\theta=2 \arccos q_{0} \<br>{\left[n_{x}, n_{y}, n_{z}\right]^{T}=\left[q_{1}, q_{2}, q_{3}\right]^{T} / \sin \frac{\theta}{2}}<br>\end{array}\right.<br>$$<br>运算<br>加法<br>$$<br>\boldsymbol{q}<em>{a} \pm \boldsymbol{q}</em>{b}=\left[s_{a} \pm s_{b}, \boldsymbol{v}<em>{a} \pm \boldsymbol{v}</em>{b}\right]<br>$$<br>乘法<br>$$<br>\begin{aligned}<br>\boldsymbol{q}<em>{a} \boldsymbol{q}</em>{b}=&amp; s_{a} s_{b}-x_{a} x_{b}-y_{a} y_{b}-z_{a} z_{b} \<br>&amp;+\left(s_{a} x_{b}+x_{a} s_{b}+y_{a} z_{b}-z_{a} y_{b}\right) i \<br>&amp;+\left(s_{a} y_{b}-x_{a} z_{b}+y_{a} s_{b}+z_{a} x_{b}\right) j \<br>&amp;+\left(s_{a} z_{b}+x_{a} y_{b}-y_{b} x_{a}+z_{a} s_{b}\right) k \<br>\boldsymbol{q}<em>{a} \boldsymbol{q}</em>{b}=[&amp;\left.s_{a} s_{b}-\boldsymbol{v}<em>{a}^{T} \boldsymbol{v}</em>{b}, s_{a} \boldsymbol{v}<em>{b}+s</em>{b} \boldsymbol{v}<em>{a}+\boldsymbol{v}</em>{a} \times \boldsymbol{v}<em>{b}\right]<br>\end{aligned}<br>$$<br>共轭<br>$$<br>\boldsymbol{q}</em>{a}^{<em>}=s_{a}-x_{a} i-y_{a} j-z_{a} k=\left[s_{a},-\boldsymbol{v}_{a}\right] \boldsymbol{q}^{</em>} \boldsymbol{q}=\boldsymbol{q} \boldsymbol{q}^{<em>}=\left[s_{a}^{2}+\boldsymbol{v}^{T} \boldsymbol{v}, \mathbf{0}\right]<br>$$<br>模长<br>$$<br>\left|\boldsymbol{q}<em>{a}\right|=\sqrt{s</em>{a}^{2}+x_{a}^{2}+y_{a}^{2}+z_{a}^{2}}\left|\boldsymbol{q}<em>{a} \boldsymbol{q}</em>{b}\right|=\left|\boldsymbol{q}<em>{a}\right|\left|\boldsymbol{q}</em>{b}\right|<br>$$<br>逆<br>$$<br>\boldsymbol{q}^{-1}=\boldsymbol{q}^{</em>} /|\boldsymbol{q}|^{2} q q^{-1}=q^{-1} q=1\left(\boldsymbol{q}<em>{a} \boldsymbol{q}</em>{b}\right)^{-1}=\boldsymbol{q}<em>{b}^{-1} \boldsymbol{q}</em>{a}^{-1}<br>$$<br>数乘与点乘<br>$$<br>k \boldsymbol{q}=[k s, k \boldsymbol{v}] \boldsymbol{q}<em>{a} \cdot \boldsymbol{q}</em>{b}=s_{a} s_{b}+x_{a} x_{b} i+y_{a} y_{b} j+z_{a} z_{b} k<br>$$<br>表示旋转<br>三维空间点用虚四元数描述<br>$$<br>\boldsymbol{p}=[0, x, y, z]=[0, \boldsymbol{v}]<br>$$<br>用四元数表示旋转<br>$$<br>\boldsymbol{q}=\left[\cos \frac{\theta}{2}, \boldsymbol{n} \sin \frac{\theta}{2}\right]<br>$$<br>旋转后的点<br>$$<br>p^{\prime}=q p q^{-1}<br>$$<br>四元数 4 旋转矩阵<br>四元数 $\rightarrow$ 旋转矩阵<br>$$<br>\boldsymbol{R}=\left[\begin{array}{lll}<br>1-2 q_{2}^{2}-2 q_{3}^{2} &amp; 2 q_{1} q_{2}+2 q_{0} q_{3} &amp; 2 q_{1} q_{3}-2 q_{0} q_{2} \<br>2 q_{1} q_{2}-2 q_{0} q_{3} &amp; 1-2 q_{1}^{2}-2 q_{3}^{2} &amp; 2 q_{2} q_{3}+2 q_{0} q_{1} \<br>2 q_{1} q_{3}+2 q_{0} q_{2} &amp; 2 q_{2} q_{3}-2 q_{0} q_{1} &amp; 1-2 q_{1}^{2}-2 q_{2}^{2}<br>\end{array}\right]<br>$$<br>旋转矩阵 $\rightarrow$ 四元数<br>$$<br>q_{0}=\frac{\sqrt{\operatorname{tr}(R)+1}}{2}, q_{1}=\frac{m_{23}-m_{32}}{4 q_{0}}, q_{2}=\frac{m_{31}-m_{13}}{4 q_{0}}, q_{3}=\frac{m_{12}-m_{21}}{4 q_{0}}<br>$$<br>相似、仿射、射影变换<br>欧式变换<br>保证了同一个向量在各个坐标系下的长度和夹角都不会发生变化<br>相似变换<br>$$<br>\boldsymbol{T}<em>{S}=\left[\begin{array}{ll}<br>s \boldsymbol{R} &amp; \boldsymbol{t} \<br>\mathbf{0}^{T} &amp; 1<br>\end{array}\right]<br>$$<br>允许物体进行均匀的缩放<br>仿射变换<br>$$<br>\boldsymbol{T}</em>{\boldsymbol{A}}=\left[\begin{array}{ll}<br>\boldsymbol{A} &amp; \boldsymbol{t} \<br>\boldsymbol{0}^{T} &amp; 1<br>\end{array}\right]<br>$$<br>仿射变换不必要求 $A$ 为正交矩阵，只需可逆即可<br>射影变换<br>$$<br>\boldsymbol{T}_{P}=\left[\begin{array}{ll}<br>\boldsymbol{A} &amp; \boldsymbol{t} \<br>\mathbf{a}^{T} &amp; v<br>\end{array}\right]<br>$$<br>变换中形式最一般的<br>$\boldsymbol{A}$ 为可逆矩阵, $\mathrm{a}^{T}$ 为缩放, $\boldsymbol{t}$ 为平移</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2020-04-21</span>
+            
+                <span>该篇文章被 Yann</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/slam/'>
+                            slam
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Courses/'>
+                            Courses
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2020/cmbf0eyg0003rpwce2te075pp/'>Slam14讲-Chapter1-初识SLAM</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2020/cmbf0eyg2003ypwce9tx3e4dh/">Slam14讲-Chapter3-李群与李代数</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2025 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="初学加性组合（二）：划分法与Szemeredi-Trotter 定理的证明" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/20250602032635.jpg">
+    <title>Yann | 我愿做你光华中淡淡的一笔</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    <style>
+        :root {
+            --waline-theme-color: #323e74; 
+            --waline-color: #323e74; 
+            --waline-border-color: #323e74; 
+            --waline-white: #323e74; 
+            --waline-bgcolor-light: #f2fafc;  
+        }
+        body {
+            color: #323e74;
+            background: #eaeae8;
+        }
+        .post-md code {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #323e74;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #323e74;
+        }
+        .year-font-color {
+            color: #323e74 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #323e74; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #323e74;
+            color: #323e74; 
+        }
+        .wl-btn {
+            border: 1px solid #323e74; 
+            color:  #323e74;  
+        }
+        .wl-btn.primary {
+            color: #f2fafc; 
+        }
+        .wl-header label {
+            color: #323e74;
+        }
+        a {
+            color: #7f688d;
+        }
+
+        .post-md a {
+            color: #7f688d;
+        }
+
+        .nav li a {
+            color: #7f688d;
+        }
+
+        .archive-main a:link {
+            color: #7f688d;
+        }
+        .archive-main a:visited {
+            color: #767c7c; 
+        }
+
+        .archive li span {
+            color: #323e74;
+        }
+
+        .post-main-title {
+            color: #323e74;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #323e74;
+        }
+
+        [data-waline] p {
+            color: #323e74;
+        }
+        [data-waline] a {
+            color: #323e74;
+        } 
+        .wl-sort li.active {
+            color: #323e74;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #f2fafc;
+        }
+
+        .paper {
+            background: #eaeae8;
+        }
+
+        .index-main {
+            background: #f2fafc;
+        }
+
+        .paper-main {
+            background: #f2fafc;
+        }
+
+        .wl-panel {
+            background: #f2fafc;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #f2fafc;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #f2fafc;
+        }
+
+    
+        .progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #323e74; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: #7f688d;
+            border-left-color: #7f688d;
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #323e74;
+        }
+    </style>
+
+    
+    <style>
+        body {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }
+        .paper {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }  
+    </style>
+
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #eaeae8  ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/20250602032635.jpg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">Yann</a> 
+            <span class="description">人工智能、计算机、机器学习、linux、程序员</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    初学加性组合（二）：划分法与Szemeredi-Trotter 定理的证明
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2021-04-24</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.4k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：5分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E7%9B%B8%E4%BA%A4%E6%95%B0%E4%B8%8A%E7%95%8C%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%BC%95%E7%90%86"><span class="post-toc-text">一、相交数上界相关的两个引理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%88%92%E5%88%86%E7%9A%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E2%80%94Cell-decomposition"><span class="post-toc-text">二、多项式划分的理论基础—Cell decomposition</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81Szemeredi-Trotter-%E5%AE%9A%E7%90%86%E7%9A%84%E8%AF%81%E6%98%8E"><span class="post-toc-text">三、Szemeredi-Trotter 定理的证明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%EF%BC%9A"><span class="post-toc-text">参考文献：</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><span id="more"></span>
+<p>​    选取一个划分，将一个区域或集合划分为若干块，以此来对每一个块进行分析，从而得到一些结果。这种方法被称作划分法。荆老师在加性组合课上[1]，讲述的Szemeredi-Trotter 定理的证明以及此定理的两个引理，都用到了划分法。</p>
+<p>​    本文将通过这两个引理与Szemeredi-Trotter 定理的证明，来展示划分法的魅力。</p>
+<p>​    先介绍一下相交数与Szemeredi-Trotter 定理：</p>
+<p>​    如果在二维实数空间中有一个<em>n</em>个点构成的集合<em>P</em>，与一个<em>m</em>条直线构成的集合<em>L</em>。点与直线的所有交（一个点落在一条直线上称这个点与这条线形成一个交）组成的集合记为<em>l(P,L)</em>，总数记为相交数<em>|I(P,L)|</em>。关于相交数有一个著名的结果，Szemeredi-Trotter 定理给出了它的一个紧的[2]上界：</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013423020.jpeg" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013423020.jpeg" alt=""></a></p>
+<p>   设<em>N</em>是一个正整数，对以下的点集和直线集，可以得到<em>|I(P,L)|=N^4</em>，说明界是紧的。</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013440550.jpeg" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013440550.jpeg" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013443946.jpeg" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013443946.jpeg" alt=""></a></p>
+<p>​    接下来我们先用划分法证明有关相交数<em>|I(P,L)|</em>的两个引理，再介绍多项式划分法的理论依据cell decomposition，最后用多项式划分法和第一个引理给出Szemeredi-Trotter 定理的证明。</p>
+<h3 id="一、相交数上界相关的两个引理"><a href="#一、相交数上界相关的两个引理" class="headerlink" title="一、相交数上界相关的两个引理"></a><strong>一、相交数上界相关的两个引理</strong></h3><p>​    引理1按某种给定的规则，<strong>把直线集*L*划分为两个部分*L1*与*L2*</strong>，分别计算<em>|I(P,L1)|</em>与<em>|I(P,L2)|</em>的上界来得到相交数<em>|I(P,L)|</em>的一个上界：</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013452369.jpeg" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013452369.jpeg" alt=""></a></p>
+<p>​    我们用<em>f(n)~g(n)</em>表示<em>f(n)&lt;&lt;g(n)</em>与<em>g(n)**&lt;&lt;f(n)</em>同时成立。</p>
+<p>   引理2将<strong>点集*P*划分为*k*个尽可能相同大小(*|Pi|~ n/k*)**</strong>的份*P1,…,Pk**<em>，从而将</em>I(P,L)<em>分为</em>k<em>份</em>I(Pi,L)<em>，</em>i=1,…,k<em>。在每一份中使用上一引理，即可得到相交数</em>|I(P,L)|*的另一个相对更好的上界：</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013515053.jpeg" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013515053.jpeg" alt=""></a></p>
+<p>   引理2给了我们启发：如果使用<strong>更精巧的划分</strong>，可能会得到更好的估计。所以，我们引用多项式划分，使用多项式划分就可以证明出更好的界—-Szemeredi-Trotter 定理。</p>
+<h3 id="二、多项式划分的理论基础—Cell-decomposition"><a href="#二、多项式划分的理论基础—Cell-decomposition" class="headerlink" title="二、多项式划分的理论基础—Cell decomposition"></a><strong>二、多项式划分的理论基础—Cell decomposition</strong></h3><p>​    用<em>Z(Q)</em>表示一个多项式<em>Q</em>的零点集。</p>
+<p>​    Cell decomposition 定理给出了一个多项式<em>Q</em>的存在性，这个多项式<strong>把*R^d\Z(Q)*划分为了一些开集（称作cells）的并</strong>，每个cell里所含的点都差不太多：</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013816459.jpeg" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013816459.jpeg" alt=""></a></p>
+<p>​    用Cell decomposition 定理即可得到一个多项式划分。这里列举两个特殊情况来加深理解：取<em>d=1</em>，<em>R</em>上的<em>N</em>个点。把<em>R</em>画为<em>x</em>轴。</p>
+<p>​    如果取<em>D=1</em>，那么就有一条直线把<em>x</em>轴分为两部分，每部分中包含的点数不超过<em>N</em>；如果<em>D=N</em>，由拉格朗日插值可知有一个<em>N</em>次多项式以这<em>N</em>个点为零点，这个多项式把<em>x</em>轴分为<em>N+1</em>个cells，每个cell包含<em>0</em>个点。</p>
+<p>​    Cell decomposition 定理的证明需要几个与点集划分相关的定理，由于本文的主题是展示划分法的魅力，故不详细证明此定理。详细的证明可以看荆老师的课（第二节课的第92分钟–第三节课的第13分钟）。     </p>
+<p>​    我们在这里只简述一下下：</p>
+<p>​    先利用超球面<em>S^m</em>到<em>R^m</em>上连续映射<em>F</em>的一个定理，通过构造一个映射来证明Polynomial Ham Sandwich 定理：给定一些开集，存在一个多项式均匀穿过每一个开集，把每个开集分成一边正一边负（<em>Q</em>的取值）。</p>
+<p>​    接下来再用Polynomial Ham Sandwich 定理，通过取邻域，再利用球面的紧性（无限列有收敛子列），来得到一个推论：任给<em>N</em>个点集<em>S1,…,SN</em>，存在一个多项式将每一个点集<em>Si</em>中的点的数量大致地对半分。</p>
+<p>​    最后，用数学归纳法，将数学归纳法得到的多项式与推论得到的多项式相乘，就可以得到Cell decomposition 定理：任给<em>N</em>个点，存在一个多项式把这些点大致地平均分。</p>
+<h3 id="三、Szemeredi-Trotter-定理的证明"><a href="#三、Szemeredi-Trotter-定理的证明" class="headerlink" title="三、Szemeredi-Trotter 定理的证明"></a>三、Szemeredi-Trotter 定理的证明</h3><p>   为了用多项式划分法证明Szemeredi-Trotter 定理，我们需要对<em>R^2</em>中的点集P用Cell decomposition 定理，得到一个多项式划分。</p>
+<p>​    根据<em>Z(Q)，</em>把<em>|I(P,L)|</em>像前两个引理那样分为三部分。对其中的两个部分，通过计算每一个cell中这个部分的样子、引理1、多项式的零点的性质，就可以得到这两部分各有的上界；由于划分可以使直线集L变小，通过数学归纳法可以得到另一部分的上界。把这三个部分的上界相加就可得出Szemeredi-Trotter 定理中的界：</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013528232.jpeg" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013528232.jpeg" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013655250.jpeg" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013655250.jpeg" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013609090.jpeg" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20210424013609090.jpeg" alt=""></a></p>
+<p>​    可以看出，相比于引理2的划分，我们所采用的多项式划分法可以充分利用多项式的性质，从而得到了更好的界。</p>
+<p>​    多项式划分法利用了多项式的性质，对多项式划分法的深入了解可以看参考文献[3]。除了多项式划分法，或许会有更精巧的划分，感兴趣的同学可以自己翻阅资料。</p>
+<h3 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h3><p>[1] 荆一凡：”Additive Combinatorics” in SDU <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1154y1s7Mm">https://www.bilibili.com/video/BV1154y1s7Mm</a></p>
+<p>[2] Wikipedia: Szemerédi–Trotter theorem <a target="_blank" rel="noopener" href="https://en.m.wikipedia.org/wiki/Szemer%C3%A9di%E2%80%93Trotter_theorem">https://en.m.wikipedia.org/wiki/Szemer%C3%A9di%E2%80%93Trotter_theorem</a></p>
+<p>[3]Eric Naslund: Yufei Zhao’s Polynomial Methods in Combinatorics</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2021-04-16</span>
+            
+                <span>该篇文章被 Yann</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Additive-Combinatorics/'>
+                            Additive Combinatorics
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Courses/'>
+                            Courses
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2021/cmbf0eyfm0023pwce6o2hb9kn/'>GAMES202-实时PBR</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2021/cmbf0eyex0003pwced5n53abt/">初学加性组合（一）：基本概率方法与加性组合中几个简单的问题</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2025 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

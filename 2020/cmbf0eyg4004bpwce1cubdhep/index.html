@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Slam14讲-Chapterr6-视觉里程计1" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/20250602032635.jpg">
+    <title>Yann | 我愿做你光华中淡淡的一笔</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    <style>
+        :root {
+            --waline-theme-color: #323e74; 
+            --waline-color: #323e74; 
+            --waline-border-color: #323e74; 
+            --waline-white: #323e74; 
+            --waline-bgcolor-light: #f2fafc;  
+        }
+        body {
+            color: #323e74;
+            background: #eaeae8;
+        }
+        .post-md code {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #323e74;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #323e74;
+        }
+        .year-font-color {
+            color: #323e74 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #323e74; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #323e74;
+            color: #323e74; 
+        }
+        .wl-btn {
+            border: 1px solid #323e74; 
+            color:  #323e74;  
+        }
+        .wl-btn.primary {
+            color: #f2fafc; 
+        }
+        .wl-header label {
+            color: #323e74;
+        }
+        a {
+            color: #7f688d;
+        }
+
+        .post-md a {
+            color: #7f688d;
+        }
+
+        .nav li a {
+            color: #7f688d;
+        }
+
+        .archive-main a:link {
+            color: #7f688d;
+        }
+        .archive-main a:visited {
+            color: #767c7c; 
+        }
+
+        .archive li span {
+            color: #323e74;
+        }
+
+        .post-main-title {
+            color: #323e74;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #323e74;
+        }
+
+        [data-waline] p {
+            color: #323e74;
+        }
+        [data-waline] a {
+            color: #323e74;
+        } 
+        .wl-sort li.active {
+            color: #323e74;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #f2fafc;
+        }
+
+        .paper {
+            background: #eaeae8;
+        }
+
+        .index-main {
+            background: #f2fafc;
+        }
+
+        .paper-main {
+            background: #f2fafc;
+        }
+
+        .wl-panel {
+            background: #f2fafc;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #f2fafc;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #f2fafc;
+        }
+
+    
+        .progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #323e74; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: #7f688d;
+            border-left-color: #7f688d;
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #323e74;
+        }
+    </style>
+
+    
+    <style>
+        body {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }
+        .paper {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }  
+    </style>
+
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #eaeae8  ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/20250602032635.jpg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">Yann</a> 
+            <span class="description">人工智能、计算机、机器学习、linux、程序员</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Slam14讲-Chapterr6-视觉里程计1
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-06-02</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：9.8k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：44分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%89%B9%E5%BE%81%E7%82%B9%E6%B3%95"><span class="post-toc-text">特征点法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%89%B9%E5%BE%81%E7%82%B9"><span class="post-toc-text">特征点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ORB%E7%89%B9%E5%BE%81"><span class="post-toc-text">ORB特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%89%B9%E5%BE%81%E7%82%B9-1"><span class="post-toc-text">特征点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ORB%E7%89%B9%E5%BE%81-1"><span class="post-toc-text">ORB特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%89%B9%E5%BE%81%E7%82%B9-2"><span class="post-toc-text">特征点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ORB%E7%89%B9%E5%BE%81-2"><span class="post-toc-text">ORB特征</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2D-2D%EF%BC%9A%E5%AF%B9%E6%9E%81%E5%87%A0%E4%BD%95"><span class="post-toc-text">2D-2D：对极几何</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AF%B9%E6%9E%81%E7%BA%A6%E6%9D%9F"><span class="post-toc-text">对极约束</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%AC%E8%B4%A8%E7%9F%A9%E9%98%B5"><span class="post-toc-text">本质矩阵</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E8%A7%92%E6%B5%8B%E9%87%8F"><span class="post-toc-text">三角测量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3D-2D%EF%BC%9APnP"><span class="post-toc-text">3D-2D：PnP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9B%B4%E6%8E%A5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2"><span class="post-toc-text">直接线性变换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#P3P"><span class="post-toc-text">P3P</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Bundle-Adjustment"><span class="post-toc-text">Bundle Adjustment</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><span id="more"></span>
+<p>目标：</p>
+<blockquote>
+<ul>
+<li><p>图像特征点</p>
+</li>
+<li><p>意义</p>
+<ul>
+<li>单幅图像提取特征点</li>
+<li>多幅图像匹配特征点</li>
+</ul>
+</li>
+<li><p>对极几何</p>
+</li>
+<li><p>原理</p>
+<ul>
+<li>对极几何约束→恢复图像间摄像机三维运动</li>
+</ul>
+</li>
+<li><p>PNP</p>
+</li>
+<li><p>问题描述</p>
+<ul>
+<li>三维结构，图像摄像机三维运动</li>
+</ul>
+</li>
+<li><p>ICP</p>
+</li>
+<li><p>问题描述</p>
+<ul>
+<li>点云匹配关系→摄像机三维运动</li>
+</ul>
+</li>
+<li><p>三角化→二维图像上对应点的三维结构</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="特征点法"><a href="#特征点法" class="headerlink" title="特征点法"></a>特征点法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">视觉SLAM划分</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>视觉前端(视觉里程计VO)</p>
+</li>
+<li><p>特征点法的前端(主流)</p>
+<ul>
+<li>不提特征的直接法前端</li>
+<li>目的：相邻图像信息→粗略相机运动</li>
+<li>实现方法(按照是否需要提取特征)</li>
+</ul>
+</li>
+<li><p>优化后端</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">特征点法特点</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行稳定，对光照、动态物体不敏感</li>
+<li>主流方法</li>
+</ul>
+<h3 id="特征点"><a href="#特征点" class="headerlink" title="特征点"></a>特征点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">特征点提出</span><br></pre></td></tr></table></figure>
+<p>VO根据图像估计相机运动，图像为矩阵(估计变得困难)，故从图像中选取比较有代表性的点，相机视角发生少量变化后保持不变；在这些点基础上，讨论相机位姿估计问题，以及这些点的定位问题</p>
+<ul>
+<li>经典SLAM→路标</li>
+<li>视觉SLAM→图像特征(Features)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">特征及特征点要求</span><br></pre></td></tr></table></figure>
+<p>特征：图像信息的另一种数字表达形式</p>
+<p>特征点要求</p>
+<ul>
+<li>相机运动之后保持稳定→灰度值变化范围大，故不选择</li>
+<li>特别的地方→角点、边缘、区块</li>
+</ul>
+<p>特征点组成</p>
+<ul>
+<li><p>关键点(Key-Point)</p>
+</li>
+<li><p>该特征点在图像里的位置</p>
+</li>
+<li><p>描述子(Descriptor)</p>
+</li>
+<li><p>通常为向量，描述关键点周围像素信息</p>
+<ul>
+<li>设计原则：外观相似的特征应有相似描述子</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">更稳定的局部图像特征</span><br></pre></td></tr></table></figure>
+<p>举例</p>
+<ul>
+<li><p>SIFT(尺度不变特征变换，Scale-Invariant Feature Transform)</p>
+</li>
+<li><p>充分考虑光照、尺度、旋转→计算量大</p>
+</li>
+<li><p>SURF</p>
+</li>
+<li><p>ORB(Oriented FAST and Rotated BRIEF)</p>
+</li>
+<li><p>改进FAST检测子不具有方向性的问题</p>
+<ul>
+<li>采用速度极快的二进制描述子BRIEF→特征提取加速</li>
+</ul>
+</li>
+<li><p>FAST关键点</p>
+</li>
+<li><p>计算特别快的一种特征点</p>
+<ul>
+<li>没有描述子</li>
+</ul>
+</li>
+</ul>
+<p>性质</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531030200290.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531030200290.png" alt=""></a></p>
+<h3 id="ORB特征"><a href="#ORB特征" class="headerlink" title="ORB特征"></a>ORB特征</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">组成</span><br></pre></td></tr></table></figure>
+<p>关键点+描述子(Oriented FAST+BRIEF)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">提取步骤</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>FAST角点提取</p>
+</li>
+<li><ul>
+<li>找出图像中的角点</li>
+<li>相较原版FAST，计算特征点主方向→为BRIEF描述子增加旋转不变特性</li>
+</ul>
+</li>
+<li><p>BRIEF描述子</p>
+</li>
+<li><ul>
+<li>对前一步提出特征点的周围图像区域描述</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FAST关键点</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531030147158.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531030147158.png" alt=""></a></p>
+<p>思想：如果一个像素与它邻域像素差别较大，则更可能是角点(只比较像素亮度大小)特征点法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">视觉SLAM划分</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>视觉前端(视觉里程计VO)</p>
+</li>
+<li><p>特征点法的前端(主流)</p>
+<ul>
+<li>不提特征的直接法前端</li>
+<li>目的：相邻图像信息→粗略相机运动</li>
+<li>实现方法(按照是否需要提取特征)</li>
+</ul>
+</li>
+<li><p>优化后端</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">特征点法特点</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行稳定，对光照、动态物体不敏感</li>
+<li>主流方法</li>
+</ul>
+<h3 id="特征点-1"><a href="#特征点-1" class="headerlink" title="特征点"></a>特征点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">特征点提出</span><br></pre></td></tr></table></figure>
+<p>VO根据图像估计相机运动，图像为矩阵(估计变得困难)，故从图像中选取比较有代表性的点，相机视角发生少量变化后保持不变；在这些点基础上，讨论相机位姿估计问题，以及这些点的定位问题</p>
+<ul>
+<li>经典SLAM→路标</li>
+<li>视觉SLAM→图像特征(Features)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">特征及特征点要求</span><br></pre></td></tr></table></figure>
+<p>特征：图像信息的另一种数字表达形式</p>
+<p>特征点要求</p>
+<ul>
+<li>相机运动之后保持稳定→灰度值变化范围大，故不选择</li>
+<li>特别的地方→角点、边缘、区块</li>
+</ul>
+<p>特征点组成</p>
+<ul>
+<li><p>关键点(Key-Point)</p>
+</li>
+<li><p>该特征点在图像里的位置</p>
+</li>
+<li><p>描述子(Descriptor)</p>
+</li>
+<li><p>通常为向量，描述关键点周围像素信息</p>
+<ul>
+<li>设计原则：外观相似的特征应有相似描述子</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">更稳定的局部图像特征</span><br></pre></td></tr></table></figure>
+<p>举例</p>
+<ul>
+<li><p>SIFT(尺度不变特征变换，Scale-Invariant Feature Transform)</p>
+</li>
+<li><p>充分考虑光照、尺度、旋转→计算量大</p>
+</li>
+<li><p>SURF</p>
+</li>
+<li><p>ORB(Oriented FAST and Rotated BRIEF)</p>
+</li>
+<li><p>改进FAST检测子不具有方向性的问题</p>
+<ul>
+<li>采用速度极快的二进制描述子BRIEF→特征提取加速</li>
+</ul>
+</li>
+<li><p>FAST关键点</p>
+</li>
+<li><p>计算特别快的一种特征点</p>
+<ul>
+<li>没有描述子</li>
+</ul>
+</li>
+</ul>
+<p>性质</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531030213142.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531030213142.png" alt=""></a></p>
+<h3 id="ORB特征-1"><a href="#ORB特征-1" class="headerlink" title="ORB特征"></a>ORB特征</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">组成</span><br></pre></td></tr></table></figure>
+<p>关键点+描述子(Oriented FAST+BRIEF)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">提取步骤</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>FAST角点提取</p>
+</li>
+<li><p>找出图像中的角点</p>
+<ul>
+<li>相较原版FAST，计算特征点主方向→为BRIEF描述子增加旋转不变特性</li>
+</ul>
+</li>
+<li><p>BRIEF描述子</p>
+</li>
+<li><p>对前一步提出特征点的周围图像区域描述</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FAST关键点</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531025811187.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531025811187.png" alt=""></a></p>
+<p>思想：如果一个像素与它邻域像素差别较大，则更可能是角点(只比较像素亮度大小)特征点法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">视觉SLAM划分</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>视觉前端(视觉里程计VO)</p>
+</li>
+<li><p>特征点法的前端(主流)</p>
+<ul>
+<li>不提特征的直接法前端</li>
+<li>目的：相邻图像信息→粗略相机运动</li>
+<li>实现方法(按照是否需要提取特征)</li>
+</ul>
+</li>
+<li><p>优化后端</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">特征点法特点</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行稳定，对光照、动态物体不敏感</li>
+<li>主流方法</li>
+</ul>
+<h3 id="特征点-2"><a href="#特征点-2" class="headerlink" title="特征点"></a>特征点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">特征点提出</span><br></pre></td></tr></table></figure>
+<p>VO根据图像估计相机运动，图像为矩阵(估计变得困难)，故从图像中选取比较有代表性的点，相机视角发生少量变化后保持不变；在这些点基础上，讨论相机位姿估计问题，以及这些点的定位问题</p>
+<ul>
+<li>经典SLAM→路标</li>
+<li>视觉SLAM→图像特征(Features)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">特征及特征点要求</span><br></pre></td></tr></table></figure>
+<p>特征：图像信息的另一种数字表达形式</p>
+<p>特征点要求</p>
+<ul>
+<li>相机运动之后保持稳定→灰度值变化范围大，故不选择</li>
+<li>特别的地方→角点、边缘、区块</li>
+</ul>
+<p>特征点组成</p>
+<ul>
+<li><p>关键点(Key-Point)</p>
+</li>
+<li><p>该特征点在图像里的位置</p>
+</li>
+<li><p>描述子(Descriptor)</p>
+</li>
+<li><p>通常为向量，描述关键点周围像素信息</p>
+<ul>
+<li>设计原则：外观相似的特征应有相似描述子</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">更稳定的局部图像特征</span><br></pre></td></tr></table></figure>
+<p>举例</p>
+<ul>
+<li><p>SIFT(尺度不变特征变换，Scale-Invariant Feature Transform)</p>
+</li>
+<li><p>充分考虑光照、尺度、旋转→计算量大</p>
+</li>
+<li><p>SURF</p>
+</li>
+<li><p>ORB(Oriented FAST and Rotated BRIEF)</p>
+</li>
+<li><p>改进FAST检测子不具有方向性的问题</p>
+<ul>
+<li>采用速度极快的二进制描述子BRIEF→特征提取加速</li>
+</ul>
+</li>
+<li><p>FAST关键点</p>
+</li>
+<li><p>计算特别快的一种特征点</p>
+<ul>
+<li>没有描述子</li>
+</ul>
+</li>
+</ul>
+<p>性质</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531025419400.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531025419400.png" alt=""></a></p>
+<h3 id="ORB特征-2"><a href="#ORB特征-2" class="headerlink" title="ORB特征"></a>ORB特征</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">组成</span><br></pre></td></tr></table></figure>
+<p>关键点+描述子(Oriented FAST+BRIEF)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">提取步骤</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>FAST角点提取</p>
+</li>
+<li><p>找出图像中的角点</p>
+<ul>
+<li>相较原版FAST，计算特征点主方向→为BRIEF描述子增加旋转不变特性</li>
+</ul>
+</li>
+<li><p>BRIEF描述子</p>
+</li>
+<li><p>对前一步提出特征点的周围图像区域描述</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FAST关键点</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531025433747.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531025433747.png" alt=""></a></p>
+<p>思想：如果一个像素与它邻域像素差别较大，则更可能是角点(只比较像素亮度大小)</p>
+<p>检测过程：</p>
+<ol>
+<li>图像中选取像素 $p$, 亮度为 $I_{p}$</li>
+<li>设置阈值 $T$ (如 $I_{p}$ 的 $20 \%$ )</li>
+<li>以 $p$ 为中心, 选取半径为 3 的圆上16个像素点</li>
+<li>FAST-N, 即选取圆上, 有连续的 $\mathrm{N}$ 个点亮度 $&gt;I_{p}+T$ or $&lt;I_{p}-T$</li>
+<li>循环执行以上四步<br>快速排查</li>
+</ol>
+<ul>
+<li>对每个像素, 直接检测邻域圆上第1、5、9、13个像素的亮度, 只有当这四个像素中有三 个同时 $&gt;I_{p}+T$ or $&lt;I_{p}-T$ 时, 当前像素才有可能是一个角点<br>非极大值抑制(Non-Maximal Suppression)</li>
+<li>一定区域内仅保留响应极大值的角点, 避免角点集中</li>
+</ul>
+<p>问题</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">FAST角点问题</th>
+<th style="text-align:left">ORB改进方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">特征点数量大且不确定</td>
+<td style="text-align:left">原始FAST角点计算Harris响应值，选取前N个</td>
+</tr>
+<tr>
+<td style="text-align:left">角点不具有方向信息</td>
+<td style="text-align:left">增加尺度描述，构建<strong>图像金字塔</strong>，且在每一层检测角点</td>
+</tr>
+<tr>
+<td style="text-align:left">固定取半径为3的圆，存在尺度问题</td>
+<td style="text-align:left">增加旋转描述，<strong>灰度质心法(Intensity Centroid)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>质心(以图像块灰度值作为权重的中心)</p>
+<ol>
+<li>在一个小的图像块 $B$ 中, 定义图像块的矩为:<br>$$<br>m_{p q}=\sum_{x, y \in B} x^{p} y^{q} I(x, y), \quad p, q={0,1}<br>$$</li>
+<li>通过矩可以找到图像块的质心:<br>$$<br>C=\left(\frac{m_{10}}{m_{00}}, \frac{m_{01}}{m_{00}}\right)<br>$$</li>
+<li>连接图像块的几何中心 $O$ 与质心 $C$, 得到一个方向向量 $\overrightarrow{O C}$, 于是特征点的方向可 以定义为:</li>
+</ol>
+<p>$$<br>\theta=\arctan \left(m_{01} / m_{10}\right)<br>$$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BRIEF描述子</span><br></pre></td></tr></table></figure>
+<p>本质</p>
+<ul>
+<li>二进制描述子，描述向量由许多个0和1组成，0和1编码了关键点附近两个像素(比如说p和q)的大小关系</li>
+</ul>
+<p>的选择</p>
+<ul>
+<li>按照某种概率分布，随机挑选</li>
+</ul>
+<p>优点</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th style="text-align:left">优点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">随机选点</td>
+<td style="text-align:left">速度快</td>
+</tr>
+<tr>
+<td style="text-align:left">二进制表达</td>
+<td style="text-align:left">存储方便</td>
+</tr>
+<tr>
+<td style="text-align:left">关键点方向提取</td>
+<td style="text-align:left">旋转不变性实现</td>
+</tr>
+</tbody>
+</table>
+<p>特仼匹䀨<br>解决问题</p>
+<ul>
+<li>SLAM中数据关联问题(Data Association), 即确定当前看到的路标与之前看到的路标之间的对应关系<br>存在问题</li>
+<li>图像特征局部特性 $\rightarrow$ 误匹配</li>
+<li>大量重复纹理 $\rightarrow$ 特征描述相似<br>暴力匹配(Brute-Force Matcher)<br>问题提出</li>
+<li>图像 $I_{t}$ 中提取到特征点 $x_{t}^{m}, m=1,2, \ldots, M$, 图像 $I_{t+1}$ 中提取到特征点 $x_{t+1}^{n}, n=1,2, \ldots, N$, 如何寻找两个集合元素对应关系?<br>解决方法</li>
+<li>对每一个特征点 $x_{t}^{m}$ 与所有的 $x_{t+1}^{n}$ 测量描述子的距离, 而后排序, 取最近为匹配点</li>
+<li>改进：取不同的距离度量范数</li>
+<li>浮点型描述子 $\rightarrow$ 欧氏距离</li>
+<li>二进制描述子 $\rightarrow$ 汉明距离 (不同位数的个数)特仼匹䀨<br>解决问题<ul>
+<li>SLAM中数据关联问题(Data Association), 即确定当前看到的路标与之前看到的路标之间的对应关系<br>存在问题</li>
+<li>图像特征局部特性 $\rightarrow$ 误匹配</li>
+<li>大量重复纹理 $\rightarrow$ 特征描述相似<br>暴力匹配(Brute-Force Matcher)<br>问题提出</li>
+<li>图像 $I_{t}$ 中提取到特征点 $x_{t}^{m}, m=1,2, \ldots, M$, 图像 $I_{t+1}$ 中提取到特征点 $x_{t+1}^{n}, n=1,2, \ldots, N$, 如何寻找两个集合元素对应关系?<br>解决方法</li>
+<li>对每一个特征点 $x_{t}^{m}$ 与所有的 $x_{t+1}^{n}$ 测量描述子的距离, 而后排序, 取最近为匹配点</li>
+<li>改进：取不同的距离度量范数</li>
+<li>浮点型描述子 $\rightarrow$ 欧氏距离</li>
+<li>二进制描述子 $\rightarrow$ 汉明距离 (不同位数的个数)</li>
+</ul>
+</li>
+</ul>
+<p>快速近似最近邻(Q])</p>
+<ul>
+<li>集成于OpenCV</li>
+</ul>
+<h2 id="2D-2D：对极几何"><a href="#2D-2D：对极几何" class="headerlink" title="2D-2D：对极几何"></a>2D-2D：对极几何</h2><h3 id="对极约束"><a href="#对极约束" class="headerlink" title="对极约束"></a>对极约束</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531041504092.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531041504092.png" alt=""></a></p>
+<p>问题</p>
+<ul>
+<li>根据若干对配对好的匹配点的对应关系 $\rightarrow$ 两帧之间摄像机运动<br>匹配点几何关系直观<br>基本输入</li>
+<li>$R, t \rightarrow$ 第一帧到第二帧的运动</li>
+<li>$O_{1}, O_{2} \rightarrow$ 相机中心</li>
+<li>$I_{1}, I_{2} \rightarrow$ 两帧图像</li>
+<li>$p_{1}, p_{2} \rightarrow$ 两帧图像中的特征点<br>基本概念</li>
+<li>极平面(Epipolar Plane) $\rightarrow \mathrm{\Sigma O} \mathrm{O}<em>{1} \mathrm{O}</em>{2} \mathrm{P}$</li>
+<li>极点(Epipoles) $\rightarrow e_{1}, e_{2}$</li>
+<li>基线(Baseline) $\rightarrow O_{1} O_{2}$</li>
+<li>极线(Epipolar Line) $\rightarrow l_{1}, l_{2}$</li>
+</ul>
+<p>直观解释</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531041609628.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531041609628.png" alt=""></a></p>
+<p>匹配点代数角度<br>结论:</p>
+<ul>
+<li>$\boldsymbol{x}<em>{2}^{T} \boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}</em>{1}=0$</li>
+<li>$\boldsymbol{p}<em>{2}^{T} \boldsymbol{K}^{-T} \boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}=0$<br>$$<br>\boldsymbol{E}=\boldsymbol{t}^{\wedge} \boldsymbol{R}, \quad \boldsymbol{F}=\boldsymbol{K}^{-T} \boldsymbol{E} \boldsymbol{K}^{-1}, \quad \boldsymbol{x}<em>{2}^{T} \boldsymbol{E} \boldsymbol{x}</em>{1}=\boldsymbol{p}<em>{2}^{T} \boldsymbol{F} \boldsymbol{p}</em>{1}=0<br>$$<br>对极约束简洁给出两个匹配点空间位置关系，则相机位姿估计问题如下步骤</li>
+</ul>
+<ol>
+<li>根据配对点像素位置, 求出 $\boldsymbol{E}$ 或 $\boldsymbol{F}$</li>
+<li>根据 $E$ 或 $F$, 求出 $R, t$<br> 注意： $E$ 与 $F$ 之间相差了相机内参, 而内参又通常已知</li>
+</ol>
+<blockquote>
+<p>注意：E与F之间相差了相机内参，而内参又通常已知</p>
+</blockquote>
+<p>推导：</p>
+<p>第一帧坐标系下，P空间位置为<br>$$<br>\boldsymbol{P}=[X, Y, Z]^{\mathrm{T}}<br>$$<br>两个像素点 $p_{1}, p_{2}$ 的像素位置:<br>$$<br>s_{1} p_{1}=\boldsymbol{K} \boldsymbol{P}, \quad s_{2} \boldsymbol{p}<em>{2}=\boldsymbol{K}(\boldsymbol{R} \boldsymbol{P}+\boldsymbol{t})<br>$$<br>$K$ 为相机内参矩阵, $R, t$ 为两个坐标系的相机运动, 可写为斉次坐标形式:<br>$$<br>p</em>{1}=\boldsymbol{K} \boldsymbol{P}, \quad \boldsymbol{p}<em>{2}=\boldsymbol{K}(\boldsymbol{R} \boldsymbol{P}+\boldsymbol{t})<br>$$<br>取:<br>$$<br>\boldsymbol{x}</em>{1}=\boldsymbol{K}^{-1} \boldsymbol{p}<em>{1}, \quad \boldsymbol{x}</em>{2}=\boldsymbol{K}^{-1} \boldsymbol{p}<em>{2}<br>$$<br>$x</em>{1}, x_{2}$ 是两个像素点的归一化平面上的坐标。代入上式得:<br>$$<br>x_{2}=R x_{1}+t .<br>$$<br>两边同时左乘 $t^{\wedge}$ (两侧同时与 $t$ 做外积)<br>$$<br>\boldsymbol{t}^{\wedge} \boldsymbol{x}<em>{2}=\boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}</em>{1}<br>$$<br>然后, 两侧同时左乘 $\boldsymbol{x}<em>{2}^{T}$ :<br>$$<br>\boldsymbol{x}</em>{2}^{T} \boldsymbol{t}^{\wedge} \boldsymbol{x}<em>{2}=\boldsymbol{x}</em>{2}^{T} \boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}<em>{1} .<br>$$<br>观察等式左侧, $t^{\wedge} x</em>{2}$ 是一个与 $t$ 和 $x_{2}$ 都垂直的向量。把它再和 $x_{2}$ 做内积时，将得 到 0 。因此, 我们就得 到了一个简洁的式子:<br>$$<br>\boldsymbol{x}<em>{2}^{T} \boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{x}</em>{1}=0 .<br>$$<br>重新代入 $\boldsymbol{p}<em>{1}, \boldsymbol{p}</em>{2}$ ，有:<br>$$<br>\boldsymbol{p}<em>{2}^{T} \boldsymbol{K}^{-T} \boldsymbol{t}^{\wedge} \boldsymbol{R} \boldsymbol{K}^{-1} \boldsymbol{p}</em>{1}=0 .<br>$$<br>这两个式子都称为对极约束, 它以形式简洁著名。它的几何意义是 $O_{1}, P, O_{2}$ 三者共 面。对极约束中同时包 含了平移和旋转。我们把中间部分记作两个矩阵: 基础矩阵 (Fundamental Matrix) $\boldsymbol{F}$ 和本质矩阵 (Essential Matrix） $E$ ，可以进一步简化对极约束:<br>$$<br>\boldsymbol{E}=\boldsymbol{t}^{\wedge} \boldsymbol{R}, \quad \boldsymbol{F}=\boldsymbol{K}^{-T} \boldsymbol{E} \boldsymbol{K}^{-1}, \quad \boldsymbol{x}<em>{2}^{T} \boldsymbol{E} \boldsymbol{x}</em>{1}=\boldsymbol{p}<em>{2}^{T} \boldsymbol{F} \boldsymbol{p}</em>{1}=0<br>$$</p>
+<h3 id="本质矩阵"><a href="#本质矩阵" class="headerlink" title="本质矩阵"></a>本质矩阵</h3><p>基本信息<br>$\boldsymbol{E}=\boldsymbol{t}^{\wedge} \boldsymbol{R}$, 为 $3 \times 3$ 矩阵, 9个末知数<br>注意</p>
+<ul>
+<li>$\boldsymbol{E}$ 在不同尺度下等价</li>
+<li>由对极约束(等式为零的约束) $\rightarrow E$ 乘以任意非零常数后，对极约束仍然满足</li>
+<li>本质矩阵的内在性质</li>
+<li>$\boldsymbol{E}=\boldsymbol{t}^{\wedge} \boldsymbol{R} \rightarrow \boldsymbol{E}$ 的奇异值必定是 $[\sigma, \sigma, 0]^{T}$ 的形式</li>
+<li>自由度</li>
+<li>平移+旋转 $\stackrel{\text { 尺度等价性 }}{\longrightarrow} 5$ 个自由度</li>
+</ul>
+<p>八点法估计本质矩阵<br>结论:<br>推导:<br>一对匹配点的归一化坐标为: $x_{1}=\left[u_{1}, v_{1}, 1\right]^{T}, x_{2}=\left[u_{2}, v_{2}, 1\right]^{T}$<br>根据对极约束, 有:<br>$$<br>\left(u_{1}, v_{1}, 1\right)\left(\begin{array}{lll}<br>e_{1} &amp; e_{2} &amp; e_{3} \<br>e_{4} &amp; e_{5} &amp; e_{6} \<br>e_{7} &amp; e_{8} &amp; e_{9}<br>\end{array}\right)\left(\begin{array}{c}<br>u_{2} \<br>v_{2} \<br>1<br>\end{array}\right)=0<br>$$<br>矩阵 $E$ 展开, 写成向量的形式:<br>$$<br>e=\left[e_{1}, e_{2}, e_{3}, e_{4}, e_{5}, e_{6}, e_{7}, e_{8}, e_{9}\right]^{T}<br>$$<br>则对极约束可以写成与 $e$ 有关的线性形式:<br>$$<br>\left[u_{1} u_{2}, u_{1} v_{2}, u_{1}, v_{1} u_{2}, v_{1} v_{2}, v_{1}, u_{2}, v_{2}, 1\right] \cdot e=0<br>$$<br>同理, 对于其它点对也有相同的表示。我们把所有点都放到一个方程中, 变成线性方 程组 $\left(u^{i}, v^{i}\right.$ 表示 第 $i$ 个特征点, 以此类推)：<br>$$<br>\left(\begin{array}{ccccccccc}<br>u_{1}^{1} u_{2}^{1} &amp; u_{1}^{1} v_{2}^{1} &amp; u_{1}^{1} &amp; v_{1}^{1} u_{2}^{1} &amp; v_{1}^{1} v_{2}^{1} &amp; v_{1}^{1} &amp; u_{2}^{1} &amp; v_{2}^{1} &amp; 1 \<br>u_{1}^{2} u_{2}^{2} &amp; u_{1}^{2} v_{2}^{2} &amp; u_{1}^{2} &amp; v_{1}^{2} u_{2}^{2} &amp; v_{1}^{2} v_{2}^{2} &amp; v_{1}^{2} &amp; u_{2}^{2} &amp; v_{2}^{2} &amp; 1 \<br>\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \<br>u_{1}^{8} u_{2}^{8} &amp; u_{1}^{8} v_{2}^{8} &amp; u_{1}^{8} &amp; v_{1}^{8} u_{2}^{8} &amp; v_{1}^{8} v_{2}^{8} &amp; v_{1}^{8} &amp; u_{2}^{8} &amp; v_{2}^{8} &amp; 1<br>\end{array}\right)\left(\begin{array}{l}<br>e_{1} \<br>e_{2} \<br>e_{3} \<br>e_{4} \<br>e_{5} \<br>e_{6} \<br>e_{7} \<br>e_{8} \<br>e_{9}<br>\end{array}\right)=0<br>$$<br>这八个方程构成了一个线性方程组</p>
+<ul>
+<li>系数矩阵 $\rightarrow$ 特征点位置构成, 大小为 $8 \times 9$</li>
+<li>$e$ 位于该矩阵的零空间中</li>
+<li>系数矩阵满秩 $(8) \rightarrow$ 零空间维数为 1 , 也就是 $e$ 构成一条线<br>SVD方法: 由估计的本质矩阵恢复相机运动<br>SVD方法：根据已经估得的本质矩阵 $E$, 恢复出相机的运动 $R, t$<br>设 $E$ 的 SVD 分解为:<br>$$<br>\boldsymbol{E}=\boldsymbol{U} \boldsymbol{\Sigma} \boldsymbol{V}^{T}<br>$$<br>$\boldsymbol{U}, \boldsymbol{V}$ 为正交阵, $\boldsymbol{\Sigma}$ 为奇异值矩阵。由 $\boldsymbol{E}$ 内在性质知 $\boldsymbol{\Sigma}=\operatorname{diag}(\sigma, \sigma, 0)$. 在 SVD 分解中, 对于任意一 个 $E$, 存在两个可能的 $t, R$ 与它对应:<br>$$<br>\begin{aligned}<br>\boldsymbol{t}<em>{1}^{\wedge} &amp;=\boldsymbol{U} \boldsymbol{R}</em>{Z}\left(\frac{\pi}{2}\right) \boldsymbol{\Sigma} \boldsymbol{U}^{T}, \quad \boldsymbol{R}<em>{1}=\boldsymbol{U} \boldsymbol{R}</em>{Z}^{T}\left(\frac{\pi}{2}\right) \boldsymbol{V}^{T} \<br>\boldsymbol{t}<em>{2}^{\wedge}=\boldsymbol{U} \boldsymbol{R}</em>{Z}\left(-\frac{\pi}{2}\right) \boldsymbol{\Sigma} \boldsymbol{U}^{T}, &amp; \boldsymbol{R}<em>{2}=\boldsymbol{U} \boldsymbol{R}</em>{Z}^{T}\left(-\frac{\pi}{2}\right) \boldsymbol{V}^{T}<br>\end{aligned}<br>$$</li>
+<li>$R_{Z}\left(\frac{\pi}{2}\right) \rightarrow$ 沿 $Z$ 轴旋转 90 度得到的旋转矩阵</li>
+<li>$-\boldsymbol{E}$ 和 $E$ 等价, 所以对任意一个 $t$ 取负号, 也会得到同样的结果</li>
+<li>从 $\boldsymbol{E}$ 分解到 $t, \boldsymbol{R}$, 一共存在四个可能的解<br>SVD方法下的四个可能的解</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531042254909.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531042254909.png" alt=""></a></p>
+<ul>
+<li>只有第一种解, $P$ 在两个相机中都具有正的深度 $\rightarrow$ 只要把任意一点带入四种解中，检测该点在两个相 机下的深度便可确定解的正确性</li>
+<li>$\boldsymbol{E} \stackrel{S V D}{\longrightarrow} \boldsymbol{\Sigma}=\operatorname{diag}\left(\sigma_{1}, \sigma_{2}, \sigma_{3}\right) \stackrel{\text { 取 }}{\longrightarrow} \boldsymbol{E}=\boldsymbol{U} \operatorname{diag}\left(\frac{\sigma_{1}+\sigma_{2}}{2}, \frac{\sigma_{1}+\sigma_{2}}{2}, 0\right) \boldsymbol{V}^{T}$</li>
+<li>将求出的矩阵投影到 $E$ 所在流形上</li>
+</ul>
+<p>单应矩阵<br>描述信息<br>单应矩阵 (Homography) $\boldsymbol{H}$ : 描述两个平面之间的映射关系<br>应用场景<br>若场景中的特征点都落在同一平面上 (比如墙, 地面等), 则可以通过单应性来进行运动估计</p>
+<ul>
+<li>无人机携带的俯视相机</li>
+<li>扫地机携带的顶视相机<br>数学模型建立<br>图像 $I_{1}$ 和 $I_{2}$ 有一对匹配好的特征点 $p_{1}$ 和 $p_{2}$ 。这些特征点落在某平面上。平面满足方程:<br>$$<br>\boldsymbol{n}^{T} \boldsymbol{P}+d=0 .<br>$$<br>稍加整理，得:<br>$$<br>-\frac{\boldsymbol{n}^{T} \boldsymbol{P}}{d}=1<br>$$<br>然后, 回顾本开头的式得:<br>$$<br>\begin{aligned}<br>p_{2} &amp;=K(R P+t) \<br>&amp;=K\left(R P+t \cdot\left(-\frac{n^{T} P}{d}\right)\right) \<br>&amp;=K\left(R-\frac{t n^{T}}{d}\right) P \<br>&amp;=K\left(R-\frac{t n^{T}}{d}\right) K^{-1} p_{1}<br>\end{aligned}<br>$$<br>得到了一个直接描述图像坐标 $p_{1}$ 和 $p_{2}$ 之间的变换, 把中间这部分记为 $\boldsymbol{H}$, 于是<br>$$<br>\boldsymbol{p}<em>{2}=\boldsymbol{H} \boldsymbol{p}</em>{1}<br>$$<br>其定义与旋转、平移以及平面的参数有关<br>求解思路–直接线性变换法(Direct Linear Transform)<br>整体思路：</li>
+<li>将 $H$ 矩阵看成向量, 通过解该向量的线性方程来恢复 $H$<br>数学推导:<br>与基础矩阵 $F$ 类似, 单应矩阵 $H$ 也是一个 $3 \times 3$ 的矩阵, 求解时的思路也和 $F$ 类似, 同样地可以先根据匹 配点计算 $H$, 然后 将它分解以计算旋转和平移。把上式展开，得:<br>$$<br>\left(\begin{array}{c}<br>u_{2} \<br>v_{2} \<br>1<br>\end{array}\right)=\left(\begin{array}{lll}<br>h_{1} &amp; h_{2} &amp; h_{3} \<br>h_{4} &amp; h_{5} &amp; h_{6} \<br>h_{7} &amp; h_{8} &amp; h_{9}<br>\end{array}\right)\left(\begin{array}{c}<br>u_{1} \<br>v_{1} \<br>1<br>\end{array}\right)<br>$$<br>请注意这里的等号是在非零因子下成立的。我们在实际处理中，通常乘以一个非零因子使得 $h_{9}=1$ (在它取 非零值时)。然后根据第三行, 去掉这个非零因子, 于是有:<br>$$<br>\begin{aligned}<br>&amp;u_{2}=\frac{h_{1} u_{1}+h_{2} v_{1}+h_{3}}{h_{7} u_{1}+h_{8} v_{1}+h_{9}} \<br>&amp;v_{2}=\frac{h_{4} u_{1}+h_{5} v_{1}+h_{6}}{h_{7} u_{1}+h_{8} v_{1}+h_{9}} .<br>\end{aligned}<br>$$<br>整理得:<br>$$<br>\begin{aligned}<br>&amp;h_{1} u_{1}+h_{2} v_{1}+h_{3}-h_{7} u_{1} u_{2}-h_{8} v_{1} u_{2}=u_{2} \<br>&amp;h_{4} u_{1}+h_{5} v_{1}+h_{6}-h_{7} u_{1} v_{2}-h_{8} v_{1} v_{2}=v_{2}<br>\end{aligned}<br>$$<br>这样一组匹配点对就可以构造出两项约束 (事实上有三个约束，但是因为线性相关，只取前两个), 于是自由度 为 8 的单应矩阵可以通过 4 对匹配特征点算出（注意: 这些特征点不能有三点共线的情况), 即求解以下的线 性方程组 (当 $h_{9}=0$ 时, 右侧为零)<br>$$<br>\left(\begin{array}{cccccccc}<br>u_{1}^{1} &amp; v_{1}^{1} &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; -u_{1}^{1} u_{2}^{1} &amp; -v_{1}^{1} u_{2}^{1} \<br>0 &amp; 0 &amp; 0 &amp; u_{1}^{1} &amp; v_{1}^{1} &amp; 1 &amp; -u_{1}^{1} v_{2}^{1} &amp; -v_{1}^{1} v_{2}^{1} \<br>u_{1}^{2} &amp; v_{1}^{2} &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; -u_{1}^{2} u_{2}^{2} &amp; -v_{1}^{2} u_{2}^{2} \<br>0 &amp; 0 &amp; 0 &amp; u_{1}^{2} &amp; v_{1}^{2} &amp; 1 &amp; -u_{1}^{2} v_{2}^{2} &amp; -v_{1}^{2} v_{2}^{2} \<br>u_{1}^{3} &amp; v_{1}^{3} &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; -u_{1}^{3} u_{2}^{3} &amp; -v_{1}^{3} u_{2}^{3} \<br>0 &amp; 0 &amp; 0 &amp; u_{1}^{3} &amp; v_{1}^{3} &amp; 1 &amp; -u_{1}^{3} v_{2}^{3} &amp; -v_{1}^{3} v_{2}^{3} \<br>u_{1}^{4} &amp; v_{1}^{4} &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; -u_{1}^{4} u_{2}^{4} &amp; -v_{1}^{4} u_{2}^{4} \<br>0 &amp; 0 &amp; 0 &amp; u_{1}^{4} &amp; v_{1}^{4} &amp; 1 &amp; -u_{1}^{4} v_{2}^{4} &amp; -v_{1}^{4} v_{2}^{4}<br>\end{array}\right)\left(\begin{array}{c}<br>h_{1} \<br>h_{2} \<br>h_{3} \<br>h_{4} \<br>h_{5} \<br>h_{6} \<br>h_{7} \<br>h_{8}<br>\end{array}\right)=\left(\begin{array}{c}<br>u_{2}^{1} \<br>v_{2}^{1} \<br>u_{2}^{2} \<br>v_{2}^{2} \<br>u_{2}^{3} \<br>v_{2}^{3} \<br>u_{2}^{4} \<br>v_{2}^{4}<br>\end{array}\right)<br>$$<br>单应矩阵到相机运动<br>单应矩阵 $\stackrel{\text { 分解 }}{\longrightarrow} \boldsymbol{R}, \boldsymbol{t}$ :</li>
+<li>数值法</li>
+<li>解析法<br>单应性意义</li>
+<li>为了避免退化现象造成的影响，同时估计基础矩阵 $\boldsymbol{F}$ 和单应矩阵 $\boldsymbol{H}$, 选择重投影误差比较小的那个 作为最终的运动估计矩阵</li>
+</ul>
+<h2 id="三角测量"><a href="#三角测量" class="headerlink" title="三角测量"></a>三角测量</h2><p>三角测量定义</p>
+<ul>
+<li>通过在两处观察同一个点的夹角，确定该点的距离</li>
+</ul>
+<p>三角测量数学描述</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531042549656.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531042549656.png" alt=""></a></p>
+<p>输入元素:</p>
+<ul>
+<li>图像 $I_{1}$ 和 $I_{2}$</li>
+<li>相机光心 $O_{1}$ 和 $O_{2}$</li>
+<li>特征点 $p_{1}, p_{2}$<br>对极几何 $\boldsymbol{R}, \boldsymbol{t} \rightarrow s_{1}, s_{2}$ 设 $x_{1}, x_{2}$ 为两个特征点的归一化坐标, 那么它们满足:<br>$$<br>s_{1} \boldsymbol{x}<em>{1}=s</em>{2} \boldsymbol{R} \boldsymbol{x}_{2}+\boldsymbol{t}<br>$$</li>
+<li>$s_{2}$ 求解<br>先对上式两侧左乘一个 $\boldsymbol{x}<em>{1}^{\wedge}$ ，得:<br>$$<br>s</em>{1} \boldsymbol{x}<em>{1}^{\wedge} \boldsymbol{x}</em>{1}=0=s_{2} \boldsymbol{x}<em>{1}^{\wedge} \boldsymbol{R} \boldsymbol{x}</em>{2}+\boldsymbol{x}<em>{1}^{\wedge} \boldsymbol{t} .<br>$$<br>该式左侧为零, 右侧可看|成 $s</em>{2}$ 的一个方程, 可以根据它直接求得 $s_{2}$</li>
+</ul>
+<h2 id="3D-2D：PnP"><a href="#3D-2D：PnP" class="headerlink" title="3D-2D：PnP"></a>3D-2D：PnP</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PnP用途</span><br></pre></td></tr></table></figure>
+<ul>
+<li>求解3D到2D点对运动的方法</li>
+<li>已知n个3D空间点及其投影位置→相机所在位姿</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">应用情况</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">相机</th>
+<th style="text-align:left">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">双目/RGB-D</td>
+<td style="text-align:left">直接使用</td>
+</tr>
+<tr>
+<td style="text-align:left">单目视觉</td>
+<td style="text-align:left">先初始化，后使用</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">求解方法</span><br></pre></td></tr></table></figure>
+<p>三对点估计位姿</p>
+<ul>
+<li>P3P</li>
+<li>直接线性变换</li>
+<li>EPnP</li>
+<li>UPnP</li>
+</ul>
+<p>非线性优化</p>
+<ul>
+<li>Bundle Adjustment</li>
+</ul>
+<h3 id="直接线性变换"><a href="#直接线性变换" class="headerlink" title="直接线性变换"></a>直接线性变换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">思路</span><br></pre></td></tr></table></figure>
+<p>直接将T矩阵看成12个未知数，</p>
+<p>过程</p>
+<ul>
+<li>空间点 $P$ 齐次坐标为 $P=(X, Y, Z, 1)^{T}$</li>
+<li>在图像 $I_{1}$ 中投影到特征 $x_{1}=\left(u_{1}, v_{1}, 1\right)^{T}$ (归一化平面齐次坐标表示 )</li>
+<li>相机的位姿 $R, t$ 末知</li>
+<li>定义增广矩阵 $[R \mid t]$ 为一个 $3 \times 4$ 的矩阵(包含了旋转与平移信息)</li>
+<li>展开形式列写如下<br>$$<br>s\left(\begin{array}{l}<br>u_{1} \<br>v_{1} \<br>1<br>\end{array}\right)=\left(\begin{array}{llll}<br>t_{1} &amp; t_{2} &amp; t_{3} &amp; t_{4} \<br>t_{5} &amp; t_{6} &amp; t_{7} &amp; t_{8} \<br>t_{9} &amp; t_{10} &amp; t_{11} &amp; t_{12}<br>\end{array}\right)\left(\begin{array}{l}<br>X \<br>Y \<br>Z \<br>1<br>\end{array}\right)<br>$$</li>
+<li>用最后一行把 $s$ 消去, 得到两个约束<br>$$<br>u_{1}=\frac{t_{1} X+t_{2} Y+t_{3} Z+t_{4}}{t_{9} X+t_{10} Y+t_{11} Z+t_{12}} \quad v_{1}=\frac{t_{5} X+t_{6} Y+t_{7} Z+t_{8}}{t_{9} X+t_{10} Y+t_{11} Z+t_{12}}<br>$$</li>
+<li>为了简化表示, 定义 $T$ 的行向量<br>$$<br>t_{1}=\left(t_{1}, t_{2}, t_{3}, t_{4}\right)^{T}, t_{2}=\left(t_{5}, t_{6}, t_{7}, t_{8}\right)^{T}, t_{3}=\left(t_{9}, t_{10}, t_{11}, t_{12}\right)^{T}<br>$$</li>
+<li>于是有<br>$$<br>\boldsymbol{t}<em>{1}^{T} \boldsymbol{P}-\boldsymbol{t}</em>{3}^{T} \boldsymbol{P} u_{1}=0 \boldsymbol{t}<em>{2}^{T} \boldsymbol{P}-\boldsymbol{t}</em>{3}^{T} \boldsymbol{P} v_{1}=0<br>$$<br>请注意 $t$ 是待求的变量, 可以看到每个特征点提供了两个关于 $t$ 的线性约束。假设一共有 $N$ 个特征 点, 可以列出线性方程组.<br>$$<br>\left(\begin{array}{ccc}<br>P_{1}^{T} &amp; 0 &amp; -u_{1} P_{1}^{T} \<br>0 &amp; P_{1}^{T} &amp; -v_{1} P_{1}^{T} \<br>\vdots &amp; \vdots &amp; \vdots \<br>P_{N}^{T} &amp; 0 &amp; -u_{N} P_{N}^{T} \<br>0 &amp; P_{N}^{T} &amp; -v_{N} P_{N}^{T}<br>\end{array}\right)\left(\begin{array}{c}<br>t_{1} \<br>t_{2} \<br>t_{3}<br>\end{array}\right)=0<br>$$<br>由于 $t$ 一共有 12 维, 因此最少通过六对匹配点，即可实现矩阵 $T$ 的线性求解</li>
+</ul>
+<h3 id="P3P"><a href="#P3P" class="headerlink" title="P3P"></a>P3P</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531042736542.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531042736542.png" alt=""></a></p>
+<p>优点</p>
+<ul>
+<li>仅使用三对匹配点, 对数据要求较少<br>输入数据</li>
+<li>三对3D-2D匹配点</li>
+<li>3D: $A, B, C$ (世界坐标系中坐标)</li>
+<li>2D: $a, b, c$</li>
+<li>一对验证点</li>
+<li>$D-d$<br>思想<br>利用了三角形相似性质，求解投影点 $a, b, c$ 在相机坐标系下的 $3 \mathrm{D}$ 坐标, 最后把问题转换成一个 3D 到 3D 的位姿估计问题(带有匹配信息的 3D-3D 位姿求解非常容易)<br>思路</li>
+<li>三角形对应关系<br>$$<br>\Delta O a b-\Delta O A B, \quad \Delta O b c-\Delta O B C, \quad \Delta O a c-\Delta O A C .<br>$$</li>
+<li>余弦定理<br>$$<br>O A^{2}+O B^{2}-2 O A \cdot O B \cdot \cos \langle a, b\rangle=A B^{2} O B^{2}+O C^{2}-2 O B \cdot O C \cdot \cos \langle b, c\rangle=B C^{2} O A^{2}+<br>$$</li>
+<li>同除 $O C^{2}$, 且记 $x=O A / O C, y=O B / O C$<br>$$<br>x^{2}+y^{2}-2 x y \cos \langle a, b\rangle=A B^{2} / O C^{2} y^{2}+1^{2}-2 y \cos \langle b, c\rangle=B C^{2} / O C^{2} x^{2}+1^{2}-2 x \cos \langle a, c\rangle<br>$$</li>
+<li>记 $v=A B^{2} / O C^{2}, u v=B C^{2} / O C^{2}, w v=A C^{2} / O C^{2}$<br>$$<br>x^{2}+y^{2}-2 x y \cos \langle a, b\rangle-v=0 y^{2}+1^{2}-2 y \cos \langle b, c\rangle-u v=0 x^{2}+1^{2}-2 x \cos \langle a, c\rangle-w v=<br>$$</li>
+<li><p>将(1)中 $v$ 代入 (2)、(3)优点</p>
+<ul>
+<li>仅使用三对匹配点, 对数据要求较少<br>输入数据</li>
+<li>三对3D-2D匹配点</li>
+<li>3D: $A, B, C$ (世界坐标系中坐标)</li>
+<li>2D: $a, b, c$</li>
+<li>一对验证点</li>
+<li>$D-d$<br>思想<br>利用了三角形相似性质，求解投影点 $a, b, c$ 在相机坐标系下的 $3 \mathrm{D}$ 坐标, 最后把问题转换成一个 3D 到 3D 的位姿估计问题(带有匹配信息的 3D-3D 位姿求解非常容易)<br>思路</li>
+<li>三角形对应关系<br>$$<br>\Delta O a b-\Delta O A B, \quad \Delta O b c-\Delta O B C, \quad \Delta O a c-\Delta O A C .<br>$$</li>
+<li>余弦定理<br>$$<br>O A^{2}+O B^{2}-2 O A \cdot O B \cdot \cos \langle a, b\rangle=A B^{2} O B^{2}+O C^{2}-2 O B \cdot O C \cdot \cos \langle b, c\rangle=B C^{2} O A^{2}+<br>$$</li>
+<li>同除 $O C^{2}$, 且记 $x=O A / O C, y=O B / O C$<br>$$<br>x^{2}+y^{2}-2 x y \cos \langle a, b\rangle=A B^{2} / O C^{2} y^{2}+1^{2}-2 y \cos \langle b, c\rangle=B C^{2} / O C^{2} x^{2}+1^{2}-2 x \cos \langle a, c\rangle<br>$$</li>
+<li>记 $v=A B^{2} / O C^{2}, u v=B C^{2} / O C^{2}, w v=A C^{2} / O C^{2}$<br>$$<br>x^{2}+y^{2}-2 x y \cos \langle a, b\rangle-v=0 y^{2}+1^{2}-2 y \cos \langle b, c\rangle-u v=0 x^{2}+1^{2}-2 x \cos \langle a, c\rangle-w v=<br>$$</li>
+<li>将(1)中 $v$ 代入 (2)、(3)</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>(1-u) y^{2}-u x^{2}-\cos \langle b, c\rangle y+2 u x y \cos \langle a, b\rangle+1=0(1-w) x^{2}-w y^{2}-\cos \langle a, c\rangle x+2 w x y c<br>$$<br>:warning:关于 $x, y$ 的二元二次方程</p>
+<ul>
+<li>已知量</li>
+<li>$\cos \langle a, b\rangle, \cos \langle b, c\rangle, \cos \langle a, c\rangle$</li>
+<li>$u=B C^{2} / A B^{2}, w=A C^{2} / A B^{2}$</li>
+<li>末知量</li>
+<li>$x, y$</li>
+<li>求解注意</li>
+<li>解析法: 吴消元法[45]</li>
+<li>数值法：类似于分解 $\boldsymbol{E}$, 四个解后验证<br>存在问题</li>
+</ul>
+<ol>
+<li>P3P 只利用三个点的信息。当给定的配对点多于 3 组时，难以利用更多的信息。</li>
+<li>如果 3D 点或 $2 \mathrm{D}$ 点受噪声影响, 或者存在误匹配, 则算法失效</li>
+</ol>
+<h3 id="Bundle-Adjustment"><a href="#Bundle-Adjustment" class="headerlink" title="Bundle Adjustment"></a>Bundle Adjustment</h3><p><a target="_blank" rel="noopener" href="https://mmbiz.qpic.cn/mmbiz_png/BSiaW5d68UUyKNI3oF5O9lalK0WOjazv5kurPZ4MxBHufY6yA3mb4VoZiawrMiau8iaFRzo7xMKYVzSfll0K4kPSfg/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" class="gallery-item" style="box-shadow: none;"> <img src="https://mmbiz.qpic.cn/mmbiz_png/BSiaW5d68UUyKNI3oF5O9lalK0WOjazv5kurPZ4MxBHufY6yA3mb4VoZiawrMiau8iaFRzo7xMKYVzSfll0K4kPSfg/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt=""></a></p>
+<p>思想<br>$\mathrm{PnP} \rightarrow$ 李代数上的非线性最小二乘问题</p>
+<ul>
+<li>线性方法</li>
+<li>先求相机位姿, 再求空间点位置</li>
+<li>非线性优化</li>
+<li>把它们都看成优化变量, 放在一起优化</li>
+<li>Bundle Adjustment, 最小化重投影误差 (Reprojection error)<br>思路<br>考虑 $n$ 个三维空间点 $P$ 和它们的投影 $p$, 我们希望计算相机的位姿 $\boldsymbol{R}, \boldsymbol{t}$, 它的李代数表示为 $\xi_{0}$ 假设某 空间点坐标为 $\boldsymbol{P}<em>{i}=\left[X</em>{i}, Y_{i}, Z_{i}\right]^{T}$ ，其投影的像素坐标为 $\boldsymbol{u}<em>{i}=\left[u</em>{i}, v_{i}\right]^{T}$ 。则像素位置与空间点位置的关 系如下:<br>$$<br>s_{i}\left[\begin{array}{c}<br>u_{i} \<br>v_{i} \<br>1<br>\end{array}\right]=\boldsymbol{K} \exp \left(\boldsymbol{\xi}^{\wedge}\right)\left[\begin{array}{c}<br>X_{i} \<br>Y_{i} \<br>Z_{i} \<br>1<br>\end{array}\right]<br>$$<br>写成矩阵形式就是<br>$$<br>s_{i} \boldsymbol{u}<em>{i}=\boldsymbol{K} \exp \left(\boldsymbol{\xi}^{\wedge}\right) \boldsymbol{P}</em>{i}<br>$$<br>由于相机位姿末知以及观测点的噪声, 该等式存在一个误差把误差求和, 构建最小二乘问题, 然后寻找 最好的相机位姿, 使它最小化:<br>$$<br>\boldsymbol{\xi}^{*}=\arg \min <em>{\xi} \frac{1}{2} \sum</em>{i=1}^{n}\left|\boldsymbol{u}<em>{i}-\frac{1}{s</em>{i}} \boldsymbol{K} \exp \left(\boldsymbol{\xi}^{\wedge}\right) \boldsymbol{P}<em>{i}\right|</em>{2}^{2}<br>$$<br>误差项：将像素坐标（观测到的投影位置）与 3D 点按照当前估计的位姿进行投影得到的位置相比较得 到的误差, 所以称之为重投影误差。</li>
+</ul>
+<p>使用 $\mathrm{G}-\mathrm{N}$ 和 $\mathrm{L}-\mathrm{M}$ 之前, 我们需要知道每个误差项关于优化变量的导数, 也就是线性化:<br>$$<br>e(x+\Delta x) \approx e(x)+J \Delta x<br>$$<br>这里的 $J$ 的形式是值得讨论的，甚至可以说是关键所在。我们固然可以使用数值导 数, 但如果能够推 导解析形式时, 我们会优先考虑解析导数。现在, 当 $e$ 为像素坐标误差(2维), $x$ 为相机位姿 ( 6 维) 时, $J$ 将是一个 $2 \times 6$ 的矩阵。我们来推导 $J$ 的形式。<br>J的形式推导<br>回忆李代数的内容, 我们介绍了如何使用扰动模型来求李代数的导数。首先, 记变换 到相机坐标系下的 空间点坐标为 $\boldsymbol{P}^{\prime}$, 并且把它前三维取出来:<br>$$<br>\boldsymbol{P}^{\prime}=\left(\exp \left(\boldsymbol{\xi}^{\wedge}\right) \boldsymbol{P}\right)<em>{1: 3}=\left[X^{\prime}, Y^{\prime}, Z^{\prime}\right]^{T}<br>$$<br>那么，相机投影模型相对于 $\boldsymbol{P}^{\prime}$ 则为:<br>$$<br>s \boldsymbol{u}=\boldsymbol{K} \boldsymbol{P}^{\prime}<br>$$<br>展开之:<br>$$<br>\left[\begin{array}{c}<br>s u \<br>s v \<br>s<br>\end{array}\right]=\left[\begin{array}{ccc}<br>f</em>{x} &amp; 0 &amp; c_{x} \<br>0 &amp; f_{y} &amp; c_{y} \<br>0 &amp; 0 &amp; 1<br>\end{array}\right]\left[\begin{array}{c}<br>X^{\prime} \<br>Y^{\prime} \<br>Z^{\prime}<br>\end{array}\right]<br>$$<br>利用第 3 行消去 $s$ ( 实际上就是 $P^{\prime}$ 的距离 )，得:<br>$$<br>u=f_{x} \frac{X^{\prime}}{Z^{\prime}}+c_{x}, \quad v=f_{y} \frac{Y^{\prime}}{Z^{\prime}}+c_{y}<br>$$<br>在定义了中间变量后，我们对 $\xi^{\wedge}$ 左乘扰动量 $\delta \xi$, 然后考虑 $e$ 的变化关于 扰动量的导数。利用链式法 则, 可以列写如下:<br>$$<br>\frac{\partial e}{\partial \delta \boldsymbol{\xi}}=\lim _{\delta \boldsymbol{\xi} \rightarrow 0} \frac{e(\delta \boldsymbol{\xi} \oplus \boldsymbol{\xi})}{\delta \boldsymbol{\xi}}=\frac{\partial \boldsymbol{e}}{\partial \boldsymbol{P}^{\prime}} \frac{\partial \boldsymbol{P}^{\prime}}{\partial \delta \boldsymbol{\xi}}<br>$$</p>
+<p>$$<br>\frac{\partial \boldsymbol{e}}{\partial \delta \boldsymbol{\xi}}=\lim <em>{\delta \boldsymbol{\xi} \rightarrow 0} \frac{e(\delta \boldsymbol{\xi} \oplus \boldsymbol{\xi})}{\delta \boldsymbol{\xi}}=\frac{\partial \boldsymbol{e}}{\partial \boldsymbol{P}^{\prime}} \frac{\partial \boldsymbol{P}^{\prime}}{\partial \delta \boldsymbol{\xi}}<br>$$<br>这里的 $\oplus$ 指李代数上的左乘扰动。第一项是误差关于投影点的导数, 在式 (7.40) 已 经列出了变量之 间的关系, 易得:<br>$$<br>\frac{\partial \boldsymbol{e}}{\partial \boldsymbol{P}^{\prime}}=-\left[\begin{array}{lll}<br>\frac{\partial u}{\partial X^{\prime}} &amp; \frac{\partial u}{\partial Y^{\prime}} &amp; \frac{\partial u}{\partial Z^{\prime}} \<br>\frac{\partial v}{\partial X^{\prime}} &amp; \frac{\partial v}{\partial Y^{\prime}} &amp; \frac{\partial v}{\partial Z^{\prime}}<br>\end{array}\right]=-\left[\begin{array}{ccc}<br>\frac{f</em>{x}}{Z^{\prime}} &amp; 0 &amp; -\frac{f_{x} X^{\prime}}{Z^{22}} \<br>0 &amp; \frac{f_{y}}{Z^{\prime}} &amp; -\frac{f_{y} Y^{\prime}}{Z^{\prime 2}}<br>\end{array}\right]<br>$$<br>而第二项为变换后的点关于李代数的导数, 根据在 $4.3 .5$ 中的推导, 得:<br>$$<br>\frac{\partial(\boldsymbol{T} \boldsymbol{P})}{\partial \delta \boldsymbol{\xi}}=(\boldsymbol{T} \boldsymbol{P})^{\odot}=\left[\begin{array}{cc}<br>\boldsymbol{I} &amp; -\boldsymbol{P}^{\prime \wedge} \<br>\mathbf{0}^{T} &amp; \mathbf{0}^{T}<br>\end{array}\right]<br>$$<br>而在 $\boldsymbol{P}^{\prime}$ 的定义中, 我们取出了前三维, 于是得:<br>$$<br>\frac{\partial \boldsymbol{P}^{\prime}}{\partial \delta \boldsymbol{\xi}}=\left[\boldsymbol{I},-\boldsymbol{P}^{\prime \wedge}\right] .<br>$$<br>将这两项相乘, 就得到了 $2 \times 6$ 的雅可比矩阵:<br>$$<br>\frac{\partial e}{\partial \delta \boldsymbol{\xi}}=-\left[\begin{array}{cccccc}<br>\frac{f_{x}}{Z^{\prime}} &amp; 0 &amp; -\frac{f_{x} X^{\prime}}{Z^{22}} &amp; -\frac{f_{x} X^{\prime} Y^{\prime}}{Z^{\prime 2}} &amp; f_{x}+\frac{f_{x} X^{2}}{Z^{\prime 2}} &amp; -\frac{f_{x} Y^{\prime}}{Z^{\prime}} \<br>0 &amp; \frac{f_{y}}{Z^{\prime}} &amp; -\frac{f_{y} Y^{\prime}}{Z^{\prime 2}} &amp; -f_{y}-\frac{f_{y} Y^{\prime 2}}{Z^{\prime 2}} &amp; \frac{f_{y} X^{\prime} Y^{\prime}}{Z^{\prime 2}} &amp; \frac{f_{y} X^{\prime}}{Z^{\prime}}<br>\end{array}\right]<br>$$<br>这个雅可比矩阵描述了重投影误差关于相机位姿李代数的一阶变化关系。我们保留了前面的负号, 因为 这是由于误差是由观测值减预测值定义的。它当然也可反过来, 定义成 预测减观测” 的形式。在那种情 况下, 只要去掉前面的负号即可。此外, 如果 $\mathfrak{s e}(3)$ 的定义方式是旋转在前, 平移在后时, 只要把这个 矩阵的前三列与后三列对调即可。另一方面, 除了优化位姿, 我们还希望优化特征点的空间位置。因 此, 需要讨论 $e$ 关于空间点 $P$ 的导数。所幸这个导数矩阵相对来说容易一些。仍利用链式法则, 有:<br>$$<br>\frac{\partial \boldsymbol{e}}{\partial \boldsymbol{P}}=\frac{\partial \boldsymbol{e}}{\partial \boldsymbol{P}^{\prime}} \frac{\partial \boldsymbol{P}^{\prime}}{\partial \boldsymbol{P}}<br>$$<br>第一项已在前面推导了, 第二项，按照定义<br>$$<br>\boldsymbol{P}^{\prime}=\exp \left(\boldsymbol{\xi}^{\wedge}\right) \boldsymbol{P}=\boldsymbol{R} \boldsymbol{P}+\boldsymbol{t}<br>$$<br>我们发现 $\boldsymbol{P}^{\prime}$ 对 $\boldsymbol{P}$ 求导后只剩下 $\boldsymbol{R}$ 。于是<br>$$<br>\frac{\partial \boldsymbol{e}}{\partial \boldsymbol{P}}=-\left[\begin{array}{ccc}<br>\frac{f_{x}}{Z^{\prime}} &amp; 0 &amp; -\frac{f_{x} X^{\prime}}{Z^{2}} \<br>0 &amp; \frac{f_{y}}{Z^{\prime}} &amp; -\frac{f_{y} Y^{\prime}}{Z^{2}}<br>\end{array}\right] \boldsymbol{R}<br>$$<br>3D-3D: ICP<br>问题描述<br>一组配对好的 3D 点:<br>$$<br>\boldsymbol{P}=\left{\boldsymbol{p}<em>{1}, \ldots, \boldsymbol{p}</em>{n}\right}, \quad \boldsymbol{P}^{\prime}=\left{\boldsymbol{p}<em>{1}^{\prime}, \ldots, \boldsymbol{p}</em>{n}^{\prime}\right}<br>$$<br>要找一个欧氏变换 $R, t$, 使得:<br>$$<br>\forall i, \boldsymbol{p}<em>{i}=\boldsymbol{R} \boldsymbol{p}</em>{i}^{\prime}+\boldsymbol{t}<br>$$<br>可用迭代最近点（Iterative Closest Point, ICP ) 求解<br>求解方式</p>
+<ul>
+<li>线性代数：SVD</li>
+<li>非线性优化<br>SVD方法<br>基础定义</li>
+<li>定义第 $i$ 对点的误差项</li>
+</ul>
+<p>$$<br>\boldsymbol{e}<em>{i}=\boldsymbol{p}</em>{i}-\left(\boldsymbol{R} \boldsymbol{p}_{i}^{\prime}+\boldsymbol{t}\right)<br>$$</p>
+<ul>
+<li>构建最小二乘问题, 求使误差平方和达到极小的 $R \cdot t$<br>$$<br>\min <em>{\boldsymbol{R}, t} J=\frac{1}{2} \sum</em>{i=1}^{n}\left|\left(\boldsymbol{p}<em>{i}-\left(\boldsymbol{R} \boldsymbol{p}</em>{i}^{\prime}+\boldsymbol{t}\right)\right)\right|_{2}^{2}<br>$$<br>求解方法推导</li>
+<li>定义两组点的质心<br>$$<br>\boldsymbol{p}=\frac{1}{n} \sum_{i=1}^{n}\left(\boldsymbol{p}<em>{i}\right), \quad \boldsymbol{p}^{\prime}=\frac{1}{n} \sum</em>{i=1}^{n}\left(\boldsymbol{p}_{i}^{\prime}\right)<br>$$</li>
+<li>在误差函数中作处理<br>$$<br>\begin{array}{r}<br>\frac{1}{2} \sum_{i=1}^{n}\left|\boldsymbol{p}<em>{i}-\left(\boldsymbol{R} \boldsymbol{p}</em>{i}^{\prime}+\boldsymbol{t}\right)\right|^{2}=\frac{1}{2} \sum_{i=1}^{n}\left|\boldsymbol{p}<em>{i}-\boldsymbol{R} \boldsymbol{p}</em>{i}^{\prime}-\boldsymbol{t}-\boldsymbol{p}+\boldsymbol{R} \boldsymbol{p}^{\prime}+\boldsymbol{p}-\boldsymbol{R} \boldsymbol{p}^{\prime}\right|^{2} \<br>=\frac{1}{2} \sum_{i=1}^{n}\left|\left(\boldsymbol{p}<em>{i}-\boldsymbol{p}-\boldsymbol{R}\left(\boldsymbol{p}</em>{i}^{\prime}-\boldsymbol{p}^{\prime}\right)\right)+\left(\boldsymbol{p}-\boldsymbol{R} \boldsymbol{p}^{\prime}-\boldsymbol{t}\right)\right|^{2} \<br>=\frac{1}{2} \sum_{i=1}^{n}\left(\left|\boldsymbol{p}<em>{i}-\boldsymbol{p}-\boldsymbol{R}\left(\boldsymbol{p}</em>{i}^{\prime}-\boldsymbol{p}^{\prime}\right)\right|^{2}+\left|\boldsymbol{p}-\boldsymbol{R} \boldsymbol{p}^{\prime}-\boldsymbol{t}\right|^{2}+\right. \<br>\left.2\left(\boldsymbol{p}<em>{i}-\boldsymbol{p}-\boldsymbol{R}\left(\boldsymbol{p}</em>{i}^{\prime}-\boldsymbol{p}^{\prime}\right)\right)^{T}\left(\boldsymbol{p}-\boldsymbol{R} \boldsymbol{p}^{\prime}-\boldsymbol{t}\right)\right)<br>\end{array}<br>$$</li>
+<li>由 $\left(\boldsymbol{p}<em>{i}-\boldsymbol{p}-\boldsymbol{R}\left(\boldsymbol{p}</em>{i}^{\prime}-\boldsymbol{p}^{\prime}\right)\right)$ 在求和后为零, 优化目标函数简化为<br>$$<br>\min <em>{R, t} J=\frac{1}{2} \sum</em>{i=1}^{n}\left|\boldsymbol{p}<em>{i}-\boldsymbol{p}-\boldsymbol{R}\left(\boldsymbol{p}</em>{i}^{\prime}-\boldsymbol{p}^{\prime}\right)\right|^{2}+\left|\boldsymbol{p}-\boldsymbol{R} \boldsymbol{p}^{\prime}-\boldsymbol{t}\right|^{2}<br>$$ 令第二项为零就能得到 $t$</li>
+</ul>
+<p>求解步骤总结</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531043539147.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/640-20220531043539147.png" alt=""></a></p>
+<ul>
+<li>$\boldsymbol{R}$ 的求解，展开关于 $\boldsymbol{R}$ 的误差项，得<br>$$<br>\frac{1}{2} \sum_{i=1}^{n}\left|\boldsymbol{q}<em>{i}-\boldsymbol{R} \boldsymbol{q}</em>{i}^{\prime}\right|^{2}=\frac{1}{2} \sum_{i=1}^{n} \boldsymbol{q}<em>{i}^{T} \boldsymbol{q}</em>{i}+\boldsymbol{q}<em>{i}^{T} \boldsymbol{R}^{T} \boldsymbol{R} \boldsymbol{q}</em>{i}^{\prime}-2 \boldsymbol{q}<em>{i}^{T} \boldsymbol{R} \boldsymbol{q}</em>{i}^{\prime}<br>$$</li>
+<li>第一项和 $\boldsymbol{R}$ 无关, 第二项由于 $\boldsymbol{R}^{T} \boldsymbol{R}=\boldsymbol{I}$, 亦与 $\boldsymbol{R}$ 无关。则优化目标函数变为<br>$$<br>\sum_{i=1}^{n}-\boldsymbol{q}<em>{i}^{T} \boldsymbol{R} \boldsymbol{q}</em>{i}^{\prime}=\sum_{i=1}^{n}-\operatorname{tr}\left(\boldsymbol{R} \boldsymbol{q}<em>{i}^{\prime} \boldsymbol{q}</em>{i}^{T}\right)=-\operatorname{tr}\left(\boldsymbol{R} \sum_{i=1}^{n} \boldsymbol{q}<em>{i}^{\prime} \boldsymbol{q}</em>{i}^{T}\right)<br>$$</li>
+<li>定义矩阵<br>$$<br>\boldsymbol{W}=\sum_{i=1}^{n} \boldsymbol{q}<em>{\boldsymbol{i}} \boldsymbol{q}</em>{i}^{T}<br>$$</li>
+<li>对 $W$ 进行 SVD 分解<br>$$<br>\boldsymbol{W}=\boldsymbol{U} \boldsymbol{\Sigma} \boldsymbol{V}^{T}<br>$$<br>其中, $\Sigma$ 为奇异值组成的对角矩阵, 对角线元素从大到小排列，而 $U$ 和 $V$ 为正交矩 阵。当 $W$ 满秩 时, $\boldsymbol{R}$ 为:<br>$$<br>\boldsymbol{R}=\boldsymbol{U} \boldsymbol{V}^{T}<br>$$<br>解得 $\boldsymbol{R}$ 后求解 $\boldsymbol{t}$ 即可<br>非线性优化方法<br>以迭代的方式去找最优值。以李代数表达位姿时, 目标函数可以写成:<br>$$<br>\min <em>{\boldsymbol{\xi}}=\frac{1}{2} \sum</em>{i=1}^{n}\left|\left(\boldsymbol{p}<em>{i}-\exp \left(\boldsymbol{\xi}^{\wedge}\right) \boldsymbol{p}</em>{i}^{\prime}\right)\right|<em>{2}^{2}<br>$$<br>单个误差项关于位姿导数已经在前面推导过了, 使用李代数扰动模型即可:<br>$$<br>\frac{\partial \boldsymbol{e}}{\partial \delta \boldsymbol{\xi}}=-\left(\exp \left(\boldsymbol{\xi}^{\wedge}\right) \boldsymbol{p}</em>{i}^{\prime}\right)^{\odot}<br>$$<br>非线性优化中只需不断迭代, 我们就能找到极小值</li>
+<li>ICP问题唯一解</li>
+<li>只要我们能找到极小值解, 那么这个极小值就是全局最优值</li>
+<li>ICP问题无穷多解<br>基于特征点的视觉里程计的几个重要问题</li>
+</ul>
+<ol>
+<li>特征点是如何提取并匹配的</li>
+<li>如何通过 $2 \mathrm{D}-2 \mathrm{D}$ 的特征点估计相机运动</li>
+<li>如何从 $2 \mathrm{D}-2 \mathrm{D}$ 的匹配估计一个点的空间位置</li>
+<li>3D-2D 的 PnP 问题, 它的线性解法和 Bundle Adjustment 解法</li>
+<li>3D-3D 的 ICP 问题, 其线性解法和 Bundle Adjustment 解法</li>
+</ol>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2020-04-21</span>
+            
+                <span>该篇文章被 Yann</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/slam/'>
+                            slam
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Courses/'>
+                            Courses
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2020/cmbf0eyg30045pwce9i9s32ud/'>Slam14讲-Chapter5-非线性优化</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2020/20200417/">逆向工程：从Gerber到PCB</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2025 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

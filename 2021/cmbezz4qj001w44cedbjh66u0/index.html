@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="GAMES202-实时环境光照" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/20250602032635.jpg">
+    <title>Yann | 我愿做你光华中淡淡的一笔</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    <style>
+        :root {
+            --waline-theme-color: #323e74; 
+            --waline-color: #323e74; 
+            --waline-border-color: #323e74; 
+            --waline-white: #323e74; 
+            --waline-bgcolor-light: #f2fafc;  
+        }
+        body {
+            color: #323e74;
+            background: #eaeae8;
+        }
+        .post-md code {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #323e74;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #323e74;
+        }
+        .year-font-color {
+            color: #323e74 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #323e74; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #323e74;
+            color: #323e74; 
+        }
+        .wl-btn {
+            border: 1px solid #323e74; 
+            color:  #323e74;  
+        }
+        .wl-btn.primary {
+            color: #f2fafc; 
+        }
+        .wl-header label {
+            color: #323e74;
+        }
+        a {
+            color: #7f688d;
+        }
+
+        .post-md a {
+            color: #7f688d;
+        }
+
+        .nav li a {
+            color: #7f688d;
+        }
+
+        .archive-main a:link {
+            color: #7f688d;
+        }
+        .archive-main a:visited {
+            color: #767c7c; 
+        }
+
+        .archive li span {
+            color: #323e74;
+        }
+
+        .post-main-title {
+            color: #323e74;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #323e74;
+        }
+
+        [data-waline] p {
+            color: #323e74;
+        }
+        [data-waline] a {
+            color: #323e74;
+        } 
+        .wl-sort li.active {
+            color: #323e74;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #f2fafc;
+        }
+
+        .paper {
+            background: #eaeae8;
+        }
+
+        .index-main {
+            background: #f2fafc;
+        }
+
+        .paper-main {
+            background: #f2fafc;
+        }
+
+        .wl-panel {
+            background: #f2fafc;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #f2fafc;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #f2fafc;
+        }
+
+    
+        .progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #323e74; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: #7f688d;
+            border-left-color: #7f688d;
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #323e74;
+        }
+    </style>
+
+    
+    <style>
+        body {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }
+        .paper {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }  
+    </style>
+
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #eaeae8  ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/20250602032635.jpg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">Yann</a> 
+            <span class="description">人工智能、计算机、机器学习、linux、程序员</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    GAMES202-实时环境光照
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-06-02</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：2.1k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：8分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Approximation-in-RTR"><span class="post-toc-text">Approximation in RTR</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IBL-Image-Based-Lighting"><span class="post-toc-text">IBL(Image Based Lighting)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Shading-The-Split-Sum"><span class="post-toc-text">Shading : The Split Sum</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Shadow-from-environment-lighting"><span class="post-toc-text">Shadow from environment lighting</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spherical-Harmonics"><span class="post-toc-text">Spherical Harmonics</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PRT%EF%BC%88Precomputed-Radiance-Transfer%EF%BC%89"><span class="post-toc-text">PRT（Precomputed Radiance Transfer）</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><span id="more"></span>
+<h2 id="Approximation-in-RTR"><a href="#Approximation-in-RTR" class="headerlink" title="Approximation in RTR"></a>Approximation in RTR</h2><p>本节用到的一个数学近似。</p>
+<p>有很多不等式，在一定情况下可以看作等号成立。由于实时渲染只要求看着真实，而不必满足绝对的真实，因此这种近似可以应用在渲染方程中。<br>$$<br>\int_{\Omega}f(x)g(x)dx \approx \frac{\int_{\Omega}f(x)dx}{\int_{\Omega}dx} \cdot \int_{\Omega}g(x)dx \tag{1}<br>$$<br>(数学含义或者证明待补充)</p>
+<p>当满足以下其中一个条件时，两边可近似相等</p>
+<ol>
+<li><p>Small support </p>
+<p>指的是公式中的积分域 $\Omega$ 尽可能小的时候。因此如果只考虑直接光照，在点光源和方向光源的情况下， $\Omega$ 就只表示光源方向的立体角，就会很小，如果考虑一个点的镜面反射，则渲染方程中的 $\Omega$ 就只是镜面反射方向上的很小的立体角。</p>
+</li>
+<li><p>Smooth integrand</p>
+<p>指的是被积函数 $g(x)$ 在 $\Omega$ 内的变化很小，即频率低，“光滑”的情况下。因此如果G(x)是一个漫反射的BRDF，那么它值的变化就不大。</p>
+</li>
+</ol>
+<p>当满足上面其中一个条件时，对于渲染方程来说，把 $V()$ 看作 $f(x)$ ,其他项看作 $g(x)$，渲染方程就可以写成：<br>$$<br>L_0(p,w_0) \approx \frac{\int_{\Omega^+}V(p,w_i) dw_i}{\int_{\Omega^+}dw_i} \cdot \int_{\Omega^+} L_i(p,w_i) f_r(p,w_i,w_o) cos\theta_i dw_i \tag{2}<br>$$</p>
+<h2 id="IBL-Image-Based-Lighting"><a href="#IBL-Image-Based-Lighting" class="headerlink" title="IBL(Image Based Lighting)"></a>IBL(Image Based Lighting)</h2><p>IBL，使用一张图像来，表示所有方向上的环境光。</p>
+<p>一般有两种存储方式，spherical map 和 cube map</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111211444705.png" title="image-20211121144410613" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111211444705.png" alt="image-20211121144410613"></a></p>
+<h2 id="Shading-The-Split-Sum"><a href="#Shading-The-Split-Sum" class="headerlink" title="Shading : The Split Sum"></a>Shading : The Split Sum</h2><p>split sum是一种在环境光下着色的算法。</p>
+<p>这里只考虑着色，不考虑阴影。渲染方程里也不考虑visibility项：<br>$$<br>L_0(p,w_0) = \int_{\Omega^+} L_i(p,w_i) f_r(p,w_i,w_o) cos\theta_i  dw_i \tag{3}<br>$$<br>解此方程可用蒙特卡洛积分采样，但实时渲染希望避免采样带来的耗费，于是可以使本文开头的数学近似。</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111211546405.png" title="image-20211121154654370" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111211546405.png" alt="image-20211121154654370"></a></p>
+<p>如果brdf是glossy的（左图），那么积分域就很小；如果brdf是diffuse的（右图），那么brdf的值变化就不大。因此可以使用公式（1）将公式（3）近似为：<br>$$<br>L_0(p,w_0) \approx \frac{\int_{\Omega_{fr}}L_i(p,w_i) dw_i}{\int_{\Omega_{fr}}dw_i} \cdot \int_{\Omega^+} f_r(p,w_i,w_o) cos\theta_i dw_i \tag{4}<br>$$<br>考虑左边的项$\frac{\int_{\Omega_{fr}}L_i(p,w_i) dw_i}{\int_{\Omega_{fr}}dw_i} $，对光源的积分再除以对1的积分，对离散值来说就是加权平均，也就相当于对环境光的图像做了一个高斯滤波，这些滤波图像是可以预计算的：</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111211552950.png" title="image-20211121155204872" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111211552950.png" alt="image-20211121155204872"></a></p>
+<p>而原理也可以直观地进行理解：</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111211553711.png" title="image-20211121155303669" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111211553711.png" alt="image-20211121155303669"></a></p>
+<p>对于一个glossy的材质，渲染方程中是对它的lobe的立体角内进行采样（左图），每个方向采样的概率不同，所以结果就近似于在lobe内所有方向上的值的加权平均（右图）。</p>
+<p>到这里，对于公式（4），左边的项$\frac{\int_{\Omega_{fr}}L_i(p,w_i) dw_i}{\int_{\Omega_{fr}}dw_i} $已经可以预计算出来了，接下来考虑右边的项：$\int_{\Omega^+} f_r(p,w_i,w_o) cos\theta_i dw_i$ 。</p>
+<p>这里涉及微表面反射BRDF以及其中的菲尼尔项等（我都忘光了）。总体来说就是一个将参数降至两维然后打表预计算的思想。</p>
+<p>假设BRDF采用的是Microfacet BRDF：<br>$$<br>f(i,o) = \frac{F(i,h)G(i,o,h)D(h)}{4(n,i)(n,o)} \tag{5}<br>$$<br>不考虑其中的 $G(i,o,h)$ 即shadowing-masking 项，那么还剩菲涅}尔项和法线分布函数项。</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111231341983.png" title="image-20211123134053870" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111231341983.png" alt="image-20211123134053870"></a></p>
+<p>总结下：对于一个着色点 $p$，积分$\int_{\Omega^+} f_r(p,w_i,w_o) cos\theta_i dw_i$ 中只含有三个变量：基础反射率 $R_0$（表示颜色），入射角 $\theta$，粗糙程度 $\alpha$。然而三维的表还是太大了。</p>
+<p>根据公式（5），对此积分公式进行化简，提取出 $R_0$，对于一个特定的BRDF， $R_0$是确定的，因此只需要对剩余两个参数打一个表，预计算出下面公式右边的两个积分值。整个积分的求值就只需要查两次表。<br>$$<br>\int_{\Omega^+} f_r(p,w_i,w_o) cos\theta_i dw_i \approx R_0 \int_{\Omega^+} \frac{f_r}{F}(1-(1-cos\theta_{i})^5) cos\theta_i dw_i + \int_{\Omega^+} \frac{f_r}{F}(1-cos\theta_{i})^5 cos\theta_i dw_i \tag{6}<br>$$<br>整个split sum过程就完成了，通过多处预计算，不需要进行采样，可以直接求出着色点颜色。</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111231401907.png" title="image-20211123140138808" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111231401907.png" alt="image-20211123140138808"></a></p>
+<h2 id="Shadow-from-environment-lighting"><a href="#Shadow-from-environment-lighting" class="headerlink" title="Shadow from environment lighting"></a>Shadow from environment lighting</h2><p>环境光的阴影很难做，有多种解决办法，包括</p>
+<ol>
+<li>把此问题看作多光源阴影问题（复杂度线性于光源数量）。</li>
+<li>把此问题看作采样问题（Visibility项非常复杂，且不能从环境中很好的分离出来）。</li>
+<li>工业界做法，用一个最主要的光源生成阴影。</li>
+</ol>
+<p>本节算法 Precomputed radiance trasfer。</p>
+<h3 id="Spherical-Harmonics"><a href="#Spherical-Harmonics" class="headerlink" title="Spherical Harmonics"></a>Spherical Harmonics</h3><p>球谐函数，是定义在一个球面上的一组函数，参数维度为两维（$\theta, \phi$）。</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111251257018.png" title="image-20211125125706889" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111251257018.png" alt="image-20211125125706889"></a></p>
+<p>图中每一个形状都代表一个基函数，从上到下每一阶表示函数值有不同的频率（类比傅里叶函数的基函数），第0阶（$l = 0$）频率最低。环境光其实就是一个在球面上的函数，不同立体角方向上有着不同的值。那么这个函数可以用球谐函数的基函数的线性组合来表示。</p>
+<p>对于任意一个二维的函数$f(w)$，它可以用积函数的线性组合来表示，那么对于一个基函数$B_i(w)$，它前面的系数$c_i$，可以通过一个积分求得：<br>$$<br>c_i = \int_\Omega f(w)B_i(w)dw \tag{7}<br>$$<br>类比三维空间的三个基$[1,0,0],[0,1,0],[0,0,1]$，也可以把他们看作球面上的函数，每个基只在一个立体角方向上有值。那么任意一个三维向量$[x,y,z]$，都可以用这三个基来表示。每个基前面的系数也可以用上面的公式得到，只不过公式里的 $\Omega$ 就只是一个立体角方向，因此结果就是$f(w)B_i(w) = [x,y,z] \cdot [1,0,0] = x$。这个操作可以叫做投影 。 </p>
+<p>球谐函数有着这样的性质，即都是单位正交基：<br>$$<br>\int_{\Omega}B_i(w) \cdot B_j(w)dw = 1 \quad(i = j)\<br>\int_{\Omega}B_i(w) \cdot B_j(w)dw = 0 \quad(i \neq j) \tag{8}<br>$$<br>对于BRDF函数，出射方向（射入人眼的方向）已知的情况下，也可以看作是一个球面上的函数，那么也可以投影到球谐函数上。</p>
+<p>如果将一个diffuse的BRDF函数投影到球谐函数上的话，发现前三阶基函数的系数是有很大值的，而后面阶数的系数就几乎为0，表示diffuse的BRDF是没有什么高频信息的。</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111281439343.png" title="image-20211128143837026" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111281439343.png" alt="image-20211128143837026"></a></p>
+<p>而渲染方程是lighting和BRDF的点积的积分，用到上面提到的知识，点积可以看成是投影。不管多高频的lighting，投影到低频的BRDF上，结果仍是低频的。因此对于diffuse的BRDF，如果BRDF只用前三阶基函数就可以表示，那么lighting也只需要三阶。</p>
+<h3 id="PRT（Precomputed-Radiance-Transfer）"><a href="#PRT（Precomputed-Radiance-Transfer）" class="headerlink" title="PRT（Precomputed Radiance Transfer）"></a>PRT（Precomputed Radiance Transfer）</h3><p>基于球谐函数，就可以得到环境光下的阴影，这种着色方法叫做PRT。<br>$$<br>L(o) = \int_{\Omega}L(i)V(i)\rho(i,o)max(0,n\cdot i)di \tag{9}<br>$$<br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111281447902.png" title="image-20211128144706856" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111281447902.png" alt="image-20211128144706856"></a></p>
+<p>对于上面的渲染方程，若场景中所有物体都不变，观察方向给定，则其中每一项都可以看作是球面上的一个函数，求积分就是将四项的值对应相乘。</p>
+<p>把$L(i)$之外的项看作 light transport：</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111281449769.png" title="image-20211128144949734" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111281449769.png" alt="image-20211128144949734"></a></p>
+<p>对于Diffuse情况，BRDF值是常数，提到前面，将$L(i)$用基函数的线性组合来表示（预计算），然后交换积分求和顺序，现在积分号里是基函数和light transport的乘积，那么又可以将light transport投影到基函数上（预计算），最终得到的结果只需要计算两个向量的点乘：</p>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111281503977.png" title="image-20211128150333936" class="gallery-item" style="box-shadow: none;"> <img src="https://raw.githubusercontent.com/L-Aidan/Images/main/img/202111281503977.png" alt="image-20211128150333936"></a></p>
+<p>这一方法的限制就是：</p>
+<ol>
+<li>diffuse</li>
+<li>场景中所有物体都不动</li>
+<li>观察方向不变（diffuse情况下，其实观察方向可以是任意的）</li>
+</ol>
+<p>但有一点可以变化，环境光可以旋转，因为环境光旋转后，用来表示它的球谐函数基函数的线性组合也可以很快地得到。</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2021-11-22</span>
+            
+                <span>该篇文章被 Yann</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/computer-graphics/'>
+                            computer graphics
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Courses/'>
+                            Courses
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2021/202211125/'>量化交易系统开发框架-vn.py</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2021/20211013/">关于时间</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2025 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

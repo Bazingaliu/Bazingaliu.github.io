@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="关于KKT条件与对偶理论" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/20250602032635.jpg">
+    <title>Yann | 我愿做你光华中淡淡的一笔</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    <style>
+        :root {
+            --waline-theme-color: #323e74; 
+            --waline-color: #323e74; 
+            --waline-border-color: #323e74; 
+            --waline-white: #323e74; 
+            --waline-bgcolor-light: #f2fafc;  
+        }
+        body {
+            color: #323e74;
+            background: #eaeae8;
+        }
+        .post-md code {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #323e74;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #323e74;
+        }
+        .year-font-color {
+            color: #323e74 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #323e74; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #323e74;
+            color: #323e74; 
+        }
+        .wl-btn {
+            border: 1px solid #323e74; 
+            color:  #323e74;  
+        }
+        .wl-btn.primary {
+            color: #f2fafc; 
+        }
+        .wl-header label {
+            color: #323e74;
+        }
+        a {
+            color: #7f688d;
+        }
+
+        .post-md a {
+            color: #7f688d;
+        }
+
+        .nav li a {
+            color: #7f688d;
+        }
+
+        .archive-main a:link {
+            color: #7f688d;
+        }
+        .archive-main a:visited {
+            color: #767c7c; 
+        }
+
+        .archive li span {
+            color: #323e74;
+        }
+
+        .post-main-title {
+            color: #323e74;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #323e74;
+        }
+
+        [data-waline] p {
+            color: #323e74;
+        }
+        [data-waline] a {
+            color: #323e74;
+        } 
+        .wl-sort li.active {
+            color: #323e74;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #f2fafc;
+        }
+
+        .paper {
+            background: #eaeae8;
+        }
+
+        .index-main {
+            background: #f2fafc;
+        }
+
+        .paper-main {
+            background: #f2fafc;
+        }
+
+        .wl-panel {
+            background: #f2fafc;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #f2fafc;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #f2fafc;
+        }
+
+    
+        .progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #323e74; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: #7f688d;
+            border-left-color: #7f688d;
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #323e74;
+        }
+    </style>
+
+    
+    <style>
+        body {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }
+        .paper {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }  
+    </style>
+
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #eaeae8  ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/20250602032635.jpg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">Yann</a> 
+            <span class="description">人工智能、计算机、机器学习、linux、程序员</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    关于KKT条件与对偶理论
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2021-11-16</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.6k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：6分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="post-toc-text">1.前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E7%9A%84%E6%A0%87%E5%87%86%E5%BD%A2%E5%BC%8F-%E5%8E%9F%E9%97%AE%E9%A2%98"><span class="post-toc-text">2.优化问题的标准形式(原问题)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-Lagragian-%E5%87%BD%E6%95%B0"><span class="post-toc-text">3. Lagragian 函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-Lagrage-%E5%AF%B9%E5%81%B6%E5%87%BD%E6%95%B0-%E5%AF%B9%E5%81%B6%E5%87%BD%E6%95%B0"><span class="post-toc-text">4. Lagrage 对偶函数&#x2F;对偶函数</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><span id="more"></span>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/v2-2957a72702e3d32e168a94181d27f060_1440w.jpg" title="对偶理论" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/v2-2957a72702e3d32e168a94181d27f060_1440w.jpg" alt="对偶理论"></a></p>
+<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>在读论文或者学习机器学习理论时，常常看到对偶的身影。但因为对对偶问题的理解不够透彻，在看机器学习理论相关理论时也是懵懵懂懂。所以本文整理了对偶理论的基本概念，帮助理解记忆。本文主要描述：</p>
+<ol>
+<li>优化问题的标准形式，即原问题的基本定义；</li>
+<li>介绍 Lagragian 函数，Lagrage 对偶函数/对偶函数，Lagrage 对偶问题/对偶问题等基本概念;</li>
+<li>介绍将原问题转化为对偶问题的方法；</li>
+</ol>
+<h2 id="2-优化问题的标准形式-原问题"><a href="#2-优化问题的标准形式-原问题" class="headerlink" title="2.优化问题的标准形式(原问题)"></a>2.优化问题的标准形式(原问题)</h2><p>优化问题的形式有很多，如最大化一个目标函数，或者最小化一个目标函数，约束的不等号方向不同等。每一个形式的优化问题，都可以求出相应的对偶问题，但因为优化问题形式的不同，求解细节上，会有相应的不同，很难掌握。为了方便记忆，先定义标准优化问题(原问题)，然后再介绍标准优化问题转化为对偶问题的过程。</p>
+<p>理论上所有的优化问题，都可以转化为标准形式。优化问题的标准形式如式2-1所示:<br>$$<br>\begin{aligned}<br>\min &amp; f_{0}(x) \<br>\text { s.t. } &amp; f_{i}(x) \leq 0 \quad i=1, \ldots, m \<br>&amp; h_{j}(x)=0 \quad j=1, \ldots, p<br>\end{aligned}<br>$$<br>由优化目标, 不等式约束和等式约束三部分组成。式2-1有三个需要额外注意的地方：</p>
+<ol>
+<li>$f_{0}(x)$ 是优化目标, 期望可以最小化的量。它的形式无约束, 可以是凸函数, 也可以是非凸函 数;</li>
+<li>$f_{i}(x)$ 是优化问题的不等式约束，注意符号是“\leq”且不等式右端为 0, 共m 个不等式约束, 可以 是线性不等式, 也可以是非线性不等式;</li>
+<li>$h_{j}$ 是优化问题的等式约束, 且“ $=$ ”右端为 0 , 共有 $\mathrm{p}$ 个等式约束, 可以是线性等式, 也可以是 非线性等式;</li>
+</ol>
+<p>其中 $x \in \mathbf{R}^{n}$, 问题的定义域是优化目标与所有约束的交集 $\mathcal{D}=\bigcap_{i=1}^{m} \operatorname{dom} f_{i} \cap f_{0} \cap \bigcap_{j=1}^{\infty} h_{j}(x)$ 。求 解优化问题是在定义域 $\mathcal{D}$ 中寻找到 $x^{<em>}$ 使优化目标 $f_{0}(x)$ 达到最小值 $p^{</em>}$ 。</p>
+<p>理论上我们遇到的所有的优化问题都可以化为式2-1这种标准形式。比如我们的优化目标要极大 化 $\max f_{0}(x)$,可以等效为极小化 $\min -f_{0}(x)$ 。同理所有的不等式约束和等式约束经过化简变换 后也可以转化为式2-1中形式。若某些优化问题, 没有不等式约束, 则标准形式中 $f_{i}(x)$ 的数量 为 0 ; 同理若优化问题中没有等式约束, 则对应的标准形式中 $h_{j}(x)$ 的数量为 $0 ;$ 若优化问题 中, 既没有不等式约束也没有等式约束, 则对应的标准形式是一个无约束的优化问题。另外根据 $f_{0}(x), f_{i}(x), h_{j}(x)$ 的形式不同, 优化问题可以分为不同的种类, 难易程度也会有很大的区别。 本文我们主要讨论对偶理论, 对优化问题的种类和难易不做过多的描述, 只要知道任何形式的优 化问题均可以转化为这种标准形式即可。我们通过一个简单案例看看如何将一般优化问题转化为 标准形式：</p>
+<p>例 1. 将式2-2转为优化问题的标准形式：<br>$$<br>\begin{array}{ll}<br>\max &amp; -x_{1}+x_{2}+x_{3} \<br>\text { s.t. } \quad &amp; x_{1}+x_{2}+2 x_{3} \leq 25 \<br>&amp; -x_{1}+2 x_{2}-x_{3} \geq 2 \<br>&amp; x_{1}-x_{2}+x_{3}=3 \<br>&amp; x_{1}, x_{2} \geq 0<br>\end{array}<br>$$<br>转化为标准形式为:<br>$$<br>\begin{array}{ll}<br>\min &amp; x_{1}-x_{2}-x_{3} \<br>\text { s.t. } &amp; x_{1}+x_{2}+2 x_{3}-25 \leq 0 \<br>&amp; x_{1}-2 x_{2}+x_{3}+2 \leq 0 \<br>&amp; -x_{1} \leq 0 \<br>&amp; -x_{2} \leq 0 \<br>&amp; x_{1}-x_{2}+x_{3}-3=0<br>\end{array}<br>$$</p>
+<h2 id="3-Lagragian-函数"><a href="#3-Lagragian-函数" class="headerlink" title="3. Lagragian 函数"></a>3. Lagragian 函数</h2><p>根据原问题(优化问题的标准形式)，我们定义 Lagrangian 函数：<br>$$<br>L(x, \lambda, \mu)=f_{0}(x)+\sum_{i=1}^{m} \lambda_{i} f_{i}(x)+\sum_{j=1}^{p} \mu_{j} h_{j}(x)<br>$$<br>从下面 4 点理解 Lagrangian 函数：</p>
+<ol>
+<li>因为带约束的优化问题 (原问题), 求解起来比较困难, 所以将原问 题中的不等式约束 $f_{i}(x)$ 、等式约束 $h_{j}(x)$ 和优化目标 $f_{0}(x)$ 以加权求 和的方式融合在一起, 将新得到的函数称为 Lagrangian 函数;</li>
+<li>其中 $x$ 叫做原变量 (primal variables)。相对于原问题, Lagrangian 函数引人 2 个新的变量 $\lambda, \mu$, 变量的维度分别和不等式的约束个数以 及等式的约束个数相等, 即 $\lambda \in \mathbf{R}<em>{0+}^{m}, \mu \in \mathbf{R}^{p}$, 将 $\lambda, \mu$ 命名为 Lagrange 乘子, 也叫对偶变量 (dual variables)。需要注意不等式约束的系数 $\lambda</em>{i}$ 非负, 即 $\lambda_{i} \geq 0$, 等式约束的系数 $\mu_{j}$ 可以是任意实数;</li>
+<li>当 $x$ 固定时, $f_{0}(x), f_{i}(x), h_{j}(x)$ 均为常数, 此时 Lagrangian 函数 是关于 $\lambda, \mu$ 的线性函数;</li>
+<li>在可行域 $\mathcal{D}$ 内, $f_{0}(x) \geq L(x, \lambda, \mu)$ 。因为 $h_{j}(x)=0, f_{i}(x) \leq 0$, 代 人式 $3-5$, 便得到这个结论;</li>
+</ol>
+<h2 id="4-Lagrage-对偶函数-对偶函数"><a href="#4-Lagrage-对偶函数-对偶函数" class="headerlink" title="4. Lagrage 对偶函数/对偶函数"></a>4. Lagrage 对偶函数/对偶函数</h2><p>有了 Lagrangian 函数，我们再引入 Lagrange 对偶函数如式3-6：<br>$$<br>g(\lambda, \mu)=\inf _{x \in \mathcal{D}} L(x, \lambda, \mu)<br>$$<br>Lagrange 对偶函数是 Lagrangian 函数关于 x 取最小值时的函数。Lagrange对偶函数有以下 2 点性质：</p>
+<ul>
+<li>性质 1. $g(\lambda, \mu)$ 为凹函数。这里我们不严格证明，结合图像直观理解 下。我们知道对于一个固定的 $x, L(\lambda, \mu)$ 是关于的 $\lambda, \mu$ 的线性函数, 所 以 ${L(\lambda, \mu), x \in \mathcal{D}}$ 表示一族线性函数, 在一族线性函数中, 取最小 值, 会得到一个凹函数；具体如图3-1中红色实线所示。</li>
+<li>性质 2.  $g(\lambda, \mu)$ 是原问题最优值的一个下界。证明过程参考如下。</li>
+</ul>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2021-08-30</span>
+            
+                <span>该篇文章被 Yann</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Convex-Optimization/'>
+                            Convex Optimization
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Courses/'>
+                            Courses
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2021/cmbezz4qa000u44ce475k612v/'>Convex Optimization-12</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2021/cmbezz4qc001044ce0z1kcqv8/">Convex Optimization-11</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2025 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

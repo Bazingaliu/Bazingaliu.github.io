@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="GAMES202-实时全局光照" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/20250602032635.jpg">
+    <title>Yann | 我愿做你光华中淡淡的一笔</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    <style>
+        :root {
+            --waline-theme-color: #323e74; 
+            --waline-color: #323e74; 
+            --waline-border-color: #323e74; 
+            --waline-white: #323e74; 
+            --waline-bgcolor-light: #f2fafc;  
+        }
+        body {
+            color: #323e74;
+            background: #eaeae8;
+        }
+        .post-md code {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #323e74;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #323e74;
+        }
+        .year-font-color {
+            color: #323e74 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #323e74; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #323e74;
+            color: #323e74; 
+        }
+        .wl-btn {
+            border: 1px solid #323e74; 
+            color:  #323e74;  
+        }
+        .wl-btn.primary {
+            color: #f2fafc; 
+        }
+        .wl-header label {
+            color: #323e74;
+        }
+        a {
+            color: #7f688d;
+        }
+
+        .post-md a {
+            color: #7f688d;
+        }
+
+        .nav li a {
+            color: #7f688d;
+        }
+
+        .archive-main a:link {
+            color: #7f688d;
+        }
+        .archive-main a:visited {
+            color: #767c7c; 
+        }
+
+        .archive li span {
+            color: #323e74;
+        }
+
+        .post-main-title {
+            color: #323e74;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #323e74;
+        }
+
+        [data-waline] p {
+            color: #323e74;
+        }
+        [data-waline] a {
+            color: #323e74;
+        } 
+        .wl-sort li.active {
+            color: #323e74;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #f2fafc;
+        }
+
+        .paper {
+            background: #eaeae8;
+        }
+
+        .index-main {
+            background: #f2fafc;
+        }
+
+        .paper-main {
+            background: #f2fafc;
+        }
+
+        .wl-panel {
+            background: #f2fafc;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #f2fafc;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #f2fafc;
+        }
+
+    
+        .progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #323e74; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: #7f688d;
+            border-left-color: #7f688d;
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #323e74;
+        }
+    </style>
+
+    
+    <style>
+        body {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }
+        .paper {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }  
+    </style>
+
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #eaeae8  ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/20250602032635.jpg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">Yann</a> 
+            <span class="description">人工智能、计算机、机器学习、linux、程序员</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    GAMES202-实时全局光照
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-06-02</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：2.9k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：9分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Reflective-Shadow-Maps-RSM"><span class="post-toc-text">Reflective Shadow Maps (RSM)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A1%AE%E5%AE%9A%E6%AC%A1%E7%BA%A7%E5%85%89%E6%BA%90"><span class="post-toc-text">确定次级光源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%A1%E7%AE%97%E6%AC%A1%E7%BA%A7%E5%85%89%E6%BA%90%E8%B4%A1%E7%8C%AE"><span class="post-toc-text">计算次级光源贡献</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BC%98%E5%8A%BF%E4%B8%8E%E5%8A%A3%E5%8A%BF"><span class="post-toc-text">优势与劣势</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Light-Propagation-Volumes-LPV"><span class="post-toc-text">Light Propagation Volumes  (LPV)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B"><span class="post-toc-text">算法流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#step1%EF%BC%9A%E7%94%9F%E6%88%90%E6%AC%A1%E7%BA%A7%E5%85%89%E6%BA%90"><span class="post-toc-text">step1：生成次级光源</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#step2%EF%BC%9A%E6%B3%A8%E5%85%A5%E6%AC%A1%E7%BA%A7%E5%85%89%E6%BA%90"><span class="post-toc-text">step2：注入次级光源</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#step3%EF%BC%9A%E4%BC%A0%E6%92%AD"><span class="post-toc-text">step3：传播</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#step4%EF%BC%9A%E6%B8%B2%E6%9F%93%E7%9D%80%E8%89%B2%E7%82%B9"><span class="post-toc-text">step4：渲染着色点</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="post-toc-text">可能出现的问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Voxel-Global-Illumination-VXGI"><span class="post-toc-text">Voxel Global Illumination  (VXGI)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B-1"><span class="post-toc-text">算法流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pass1-%E5%85%89%E6%BA%90%E8%A7%86%E8%A7%92%E4%B8%8B"><span class="post-toc-text">pass1 光源视角下</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pass2-%E7%9B%B8%E6%9C%BA%E8%A7%86%E8%A7%92%E4%B8%8B"><span class="post-toc-text">pass2 相机视角下</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Screen-Space-Ambient-Occlusion-SSAO"><span class="post-toc-text">Screen Space Ambient Occlusion  (SSAO)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC"><span class="post-toc-text">数学推导</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%A1%E7%AE%97%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="post-toc-text">计算可见性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Horizon-based-ambient-occlusion%EF%BC%88HBAO%EF%BC%89"><span class="post-toc-text">Horizon based ambient occlusion（HBAO）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Screen-Space-Directional-Occlusion-SSDO"><span class="post-toc-text">Screen Space Directional Occlusion  (SSDO)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="post-toc-text">基本思想</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AE%97%E6%B3%95%E7%AE%80%E4%BB%8B"><span class="post-toc-text">算法简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="post-toc-text">存在的问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Screen-Space-Reflection-SSR"><span class="post-toc-text">Screen Space Reflection (SSR)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ray-tracing%E8%BF%87%E7%A8%8B"><span class="post-toc-text">ray tracing过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9D%80%E8%89%B2"><span class="post-toc-text">着色</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%83%BD%E8%BE%BE%E5%88%B0%E7%9A%84%E6%95%88%E6%9E%9C"><span class="post-toc-text">能达到的效果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA%E6%94%B9%E8%BF%9B%E6%80%9D%E8%B7%AF"><span class="post-toc-text">光线追踪改进思路</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98-1"><span class="post-toc-text">存在的问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93"><span class="post-toc-text">优缺点的简单总结</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><span id="more"></span>
+<p>全局光照=直接光照+间接光照</p>
+<p>直接光照是由光源直接照亮</p>
+<p>间接光照是由其他物体表面反射的光照亮</p>
+<p>实时渲染中，全局光照一般只解决一次反射的间接光照</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210703150404055.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210703150404055.png" alt=""></a></p>
+<h2 id="Reflective-Shadow-Maps-RSM"><a href="#Reflective-Shadow-Maps-RSM" class="headerlink" title="Reflective Shadow Maps (RSM)"></a>Reflective Shadow Maps (RSM)</h2><h3 id="确定次级光源"><a href="#确定次级光源" class="headerlink" title="确定次级光源"></a>确定次级光源</h3><p>首先由经典的shadow map得到光源直接点亮的表面片，作为次级光源（shadow map上每一个像素都是一个表面片patch）</p>
+<h3 id="计算次级光源贡献"><a href="#计算次级光源贡献" class="headerlink" title="计算次级光源贡献"></a>计算次级光源贡献</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210703160335712.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210703160335712.png" alt=""></a></p>
+<p>q点为次级光源位置，p点为被照亮的着色点，$\mathrm dA $为像素覆盖的表面片面积，$\mathrm d\omega$为$\mathrm dA $覆盖的立体角。</p>
+<p>q对p的光照贡献为对立体角的积分，可转化为表面面积的积分，如上图中公式所示</p>
+<p>转化为对表面积的积分后，对应渲染方程的推导如下</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210703162144907.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210703162144907.png" alt=""></a></p>
+<p>渲染方程中$L_i$是q到p的radiance，$V$暂不考虑，假设无遮挡关系（若对每个次级光源考虑对每个着色点的可见性开销太大），$f_r$为着色点的BRDF，可为任意类型（只假设q处为diffuse）</p>
+<p>着重考虑$L_i$项，即q点出射的radiance，此处BRDF为diffuse，可得如下关系</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210703162417755.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210703162417755.png" alt=""></a></p>
+<p>$\frac{\phi}{\mathrm dA}$为q点irradiance，乘以BRDF得出射radiance即$L_i$，将$L_i$代入原渲染方程，$\mathrm dA$抵消，剩下BRDF与$\phi$相乘，BRDF为常值，$\phi$由光源决定，在生成shadow map时可储存</p>
+<p>并非所有的次级光源都产生贡献，比如被遮挡的（此处暂不考虑）和世界坐标下距离较远的</p>
+<p>可以大胆假设在shadow map上距离着色点较远的像素在世界坐标下也距离较远，之后可以通过shadow map上的采样来决定产生贡献的像素（具体采样方法未详细介绍）</p>
+<p>下图为需要保存的数据</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210703171424160.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210703171424160.png" alt=""></a></p>
+<h3 id="优势与劣势"><a href="#优势与劣势" class="headerlink" title="优势与劣势"></a>优势与劣势</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210703171546836.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210703171546836.png" alt=""></a></p>
+<p>优势：</p>
+<p>便于实现</p>
+<p>劣势：</p>
+<p>开销线性相关于光源数</p>
+<p>没有间接光照的可见性检测</p>
+<p>过多假设，如次级光源为diffuse的表面，shadow map为深度信息却被认为表示距离远近</p>
+<p>采样的速度及质量的两难问题</p>
+<h2 id="Light-Propagation-Volumes-LPV"><a href="#Light-Propagation-Volumes-LPV" class="headerlink" title="Light Propagation Volumes  (LPV)"></a>Light Propagation Volumes  (LPV)</h2><p>主要思想是将场景划分为三维网格，在网格中计算间接光的传播</p>
+<h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><h4 id="step1：生成次级光源"><a href="#step1：生成次级光源" class="headerlink" title="step1：生成次级光源"></a>step1：生成次级光源</h4><p>利用RSM即可找到被光源直接点亮的表面，作为次级光源</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704102136684.png" title="image-20210704102136684" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704102136684.png" alt="image-20210704102136684"></a></p>
+<h4 id="step2：注入次级光源"><a href="#step2：注入次级光源" class="headerlink" title="step2：注入次级光源"></a>step2：注入次级光源</h4><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704102232518.png" title="image-20210704102232518" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704102232518.png" alt="image-20210704102232518"></a></p>
+<p>将场景划分为三维网格</p>
+<p>对每一网格，计算所包围的次级光源向各个方向发出的radiance，整体投影到球谐函数SH进行拟合，视为该网格包含的radiance</p>
+<h4 id="step3：传播"><a href="#step3：传播" class="headerlink" title="step3：传播"></a>step3：传播</h4><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704102622416.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704102622416.png" alt=""></a></p>
+<p>对每个网格，收集从周围六个面传播来的radiance</p>
+<p>收集的radiance同样用SH拟合</p>
+<p>重复上述过程直到收敛</p>
+<h4 id="step4：渲染着色点"><a href="#step4：渲染着色点" class="headerlink" title="step4：渲染着色点"></a>step4：渲染着色点</h4><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704102951454.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704102951454.png" alt=""></a></p>
+<p>确定着色点所在的网格</p>
+<p>利用该网格所保存的radiance进行着色</p>
+<h3 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h3><p>在step4中，当物体的几何尺度小于网格大小，则会出现网格内部的几何遮挡，即本应被遮蔽的间接光依然被视作可以照亮同网格内的着色点。</p>
+<p>这个问题会导致漏光现象（Light leaking），如下图中的屋檐下方</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704103515391.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704103515391.png" alt=""></a></p>
+<h2 id="Voxel-Global-Illumination-VXGI"><a href="#Voxel-Global-Illumination-VXGI" class="headerlink" title="Voxel Global Illumination  (VXGI)"></a>Voxel Global Illumination  (VXGI)</h2><p>将整个场景体素化（Voxelize）并且建立层级结构（hierarchy）</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704105051627.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704105051627.png" alt=""></a></p>
+<h3 id="算法流程-1"><a href="#算法流程-1" class="headerlink" title="算法流程"></a>算法流程</h3><h4 id="pass1-光源视角下"><a href="#pass1-光源视角下" class="headerlink" title="pass1 光源视角下"></a>pass1 光源视角下</h4><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704105221648.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704105221648.png" alt=""></a></p>
+<p>存储每个体素的入射方向分布和法线方向分布（应当还有入射的radiance），并更新层级结构</p>
+<h4 id="pass2-相机视角下"><a href="#pass2-相机视角下" class="headerlink" title="pass2 相机视角下"></a>pass2 相机视角下</h4><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704105448481.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704105448481.png" alt=""></a></p>
+<p>对glossy的表面，往反射方向追踪一个圆锥体（cone）</p>
+<p>追踪圆锥体的过程中逐渐增大在层级结构中的查询尺寸</p>
+<p>如果是diffuse的表面，可追踪多个圆锥，大体覆盖所有方向，如下图</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704105747505.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704105747505.png" alt=""></a></p>
+<h2 id="Screen-Space-Ambient-Occlusion-SSAO"><a href="#Screen-Space-Ambient-Occlusion-SSAO" class="headerlink" title="Screen Space Ambient Occlusion  (SSAO)"></a>Screen Space Ambient Occlusion  (SSAO)</h2><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704142621482.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704142621482.png" alt=""></a></p>
+<p>环境光遮蔽（AO）开销小但能强化位置的相对关系</p>
+<p>SSAO是对全局光照的一个近似，在屏幕空间中进行</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704142855830.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704142855830.png" alt=""></a></p>
+<p>假设间接光照为常数，材质为diffuse</p>
+<p>需要考虑着色点处在所有方向上的可见性</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704143049731.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704143049731.png" alt=""></a></p>
+<p>受遮蔽少的更亮，受遮蔽多的更暗</p>
+<h3 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704143210425.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704143210425.png" alt=""></a></p>
+<p>依然从渲染方程开始，利用乘积积分的一个近似方法进行推导</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704143423140.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704143423140.png" alt=""></a></p>
+<p>套用近似约等式时，将$cos\theta_i\,\mathrm{d}\omega_i$作为积分变量，得到上图中形式（加入cos目的不明，但使用加入cos的积分变量进行近似时，由于L项和BRDF项均为常数，故该近似实际上是准确的）</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704144040605.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704144040605.png" alt=""></a></p>
+<p>$cos\theta_i\,\mathrm{d}\omega_i$的实际意义是立体角在单位圆上的投影，易求得分母下方积分为$\pi$</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704144444570.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704144444570.png" alt=""></a></p>
+<p>V项积分变成加权平均，L项积分由于假设间接光照为常数且BRDF为diffuse，推导后依然为常数</p>
+<p>更简单直接的推导如下，直接代入常数项即可</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704145917329.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704145917329.png" alt=""></a></p>
+<h3 id="计算可见性"><a href="#计算可见性" class="headerlink" title="计算可见性"></a>计算可见性</h3><p>SSAO中使用深度缓冲（z-buffer）来计算可见性</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704150515368.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704150515368.png" alt=""></a></p>
+<p>在球形范围内采样点，在深度缓冲中构成遮挡则视作对着色点构成遮挡（即屏幕空间下，人眼看去被遮挡的采样点被认为对着色点构成遮挡，本质是用易于获得的屏幕空间下的深度缓冲信息近似场景中的几何信息）</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704151024049.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704151024049.png" alt=""></a></p>
+<p>由于理论上只有半球面内的遮挡需要考虑，所以整个球体内，当构成遮挡的采样点超过一半时才视为存在环境光遮蔽（不直接使用半球面的原因是可能没有保存法线信息）</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704151303681.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704151303681.png" alt=""></a></p>
+<p>用深度信息近似会产生一些错误，如图中红线内的采样点，实际并未造成遮挡</p>
+<p>在数学推导中，对可见性的cos加权在此也没有考虑，因此在物理意义也不准确</p>
+<p>SSAO用深度信息近似造成错误遮挡的情形如下</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704151639974.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704151639974.png" alt=""></a></p>
+<p>选取采样点计算时一些其他注意事项</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704151814387.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704151814387.png" alt=""></a></p>
+<p>为了效率使用较少的采样点，由此产生带噪声的结果，进行模糊处理后，也能得到不错的效果</p>
+<h3 id="Horizon-based-ambient-occlusion（HBAO）"><a href="#Horizon-based-ambient-occlusion（HBAO）" class="headerlink" title="Horizon based ambient occlusion（HBAO）"></a>Horizon based ambient occlusion（HBAO）</h3><p>同样在屏幕空间下，但需要法线已知，仅在半球面内采样，可以减少一些错误。与SSAO的效果对比如下</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704152335703.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704152335703.png" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704152409093.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210704152409093.png" alt=""></a></p>
+<h2 id="Screen-Space-Directional-Occlusion-SSDO"><a href="#Screen-Space-Directional-Occlusion-SSDO" class="headerlink" title="Screen Space Directional Occlusion  (SSDO)"></a>Screen Space Directional Occlusion  (SSDO)</h2><h3 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h3><p>不再假设间接光照为常数，而是考虑一部分真实的间接光照，但是次级光源在屏幕空间下</p>
+<p>基本思想类似于path tracing，如下</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705110616822.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705110616822.png" alt=""></a></p>
+<p>在着色点附近，若某方向上存在遮挡，即射线与物体表面相交，则视为接收到交点处反射来的间接光；若某方向上没有遮挡，则视为接收到外部的直接光</p>
+<p>基本思想恰好与SSAO相反</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705110942970.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705110942970.png" alt=""></a></p>
+<p>SSAO中，着色点附近有遮挡则视为无间接光。两种方法思路相反的根本原因在于SSAO只考虑来自远处的间接光，而SSDO只考虑来自近处的间接光</p>
+<p>（个人理解：SSDO只考虑近处的间接光，而间接光本应对近处的着色点有较多贡献，更加合理）</p>
+<p>简单的数学描述如下</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705111910016.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705111910016.png" alt=""></a></p>
+<h3 id="算法简介"><a href="#算法简介" class="headerlink" title="算法简介"></a>算法简介</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705112207432.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705112207432.png" alt=""></a></p>
+<p>与HBAO类似，同样是在已知法线的情况下，在半球面内采样点，采样点到着色点是否存在遮挡由屏幕空间下采样点的可见性决定，被认为到着色点无遮挡的采样点视作无间接光，转而接收该方向上的来自外部的直接光（图左侧）</p>
+<p>每个采样点在屏幕空间下对应一个次级光源，被认为到着色点有遮挡的采样点（即屏幕空间下不可见的）对应的次级光源才对着色点有光照贡献，不过当着色点在次级光源面片的法线背面时，光照贡献为0（图中间）</p>
+<p>可能存在的问题依然是将屏幕空间的深度信息视作场景中的几何信息可能会出现的错误，比如采样点到着色点实际无遮挡，但因为屏幕空间下不可见而被认为有遮挡；又或者被认为无遮挡的采样点，在该方向远处的直接光实际上是被遮挡的（图右侧）</p>
+<h3 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h3><p>虽然质量不错，但只利用屏幕空间信息会忽略不可见的表面</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705113932880.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705113932880.png" alt=""></a></p>
+<p>比如图中，地面上本应有来自黄色表面的间接光照，但在黄色表面逐渐转向不可见的一侧时，因为屏幕空间下对应的次级光源只能是可见的侧面，故不会对原来地面上的位置有光照贡献。这可能也是所有屏幕空间方法的问题</p>
+<p>另外一个问题是SSDO只考虑小范围内的间接光</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705114338596.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705114338596.png" alt=""></a></p>
+<p>比如图中立方体侧面应该接受来自绿色墙体的间接光，若是SSDO方法则可能不会考虑到较远距离的绿色墙体</p>
+<h2 id="Screen-Space-Reflection-SSR"><a href="#Screen-Space-Reflection-SSR" class="headerlink" title="Screen Space Reflection (SSR)"></a>Screen Space Reflection (SSR)</h2><p>本质是在屏幕空间下做ray tracing</p>
+<p>效果如下</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705165720577.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705165720577.png" alt=""></a></p>
+<p>用SSR做基本的镜面反射，大概流程如下</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705165930751.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705165930751.png" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705165958534.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705165958534.png" alt=""></a></p>
+<h3 id="ray-tracing过程"><a href="#ray-tracing过程" class="headerlink" title="ray tracing过程"></a>ray tracing过程</h3><p>在着色点处追踪光线时，运用raymarch的方法，如下</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705170211510.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705170211510.png" alt=""></a></p>
+<p>基本思路是光线以固定值步进（后续加入层次结构以变化步长前进），每一步检查深度值，若在屏幕空间下被遮蔽，则与物体表面相交</p>
+<p>加入层次结构加速raymarch过程，先由屏幕空间深度图生成mipmap，此处mipmap不再是用均值压缩，而是用最小值</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705191508559.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705191508559.png" alt=""></a></p>
+<p>利用层次结构进行raymarch的具体算法如下</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705191610915.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705191610915.png" alt=""></a></p>
+<p>第一步在mip0层步进，若不相交则层数加一，如此不断扩大步长直到相交，相交后不再步进，缩小mip层次，确定mip0层的相交位置即为所求。</p>
+<h3 id="着色"><a href="#着色" class="headerlink" title="着色"></a>着色</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705193656533.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705193656533.png" alt=""></a></p>
+<p>同样需要假设次级光源为diffuse的表面，因为只有屏幕空间信息，相当于只知道相机方向的radiance，只有作diffuse假设才能认为到着色点方向的radiance已知</p>
+<h3 id="能达到的效果"><a href="#能达到的效果" class="headerlink" title="能达到的效果"></a>能达到的效果</h3><p>清晰或模糊的反射</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705193936796.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705193936796.png" alt=""></a></p>
+<p>离物体近的表面接收的反射更加清晰，因为以圆锥状向外追踪多条光线时，距离较近则采样光线较集中于小范围</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705194121116.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705194121116.png" alt=""></a></p>
+<p>对各向同性表面，由于BRDF形状为椭圆，故反射景象有所拉长（此处尚不理解）</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705194304891.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705194304891.png" alt=""></a></p>
+<p>接收反射的表面可以有各处不相同的粗糙度和法向</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705194418388.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705194418388.png" alt=""></a></p>
+<h3 id="光线追踪改进思路"><a href="#光线追踪改进思路" class="headerlink" title="光线追踪改进思路"></a>光线追踪改进思路</h3><p>根据BRDF性质的重要性采样</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705194531643.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705194531643.png" alt=""></a></p>
+<p>复用周围点的采样光线，因为两点的采样光线都可能打在同样的交点处</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705194611444.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705194611444.png" alt=""></a></p>
+<p>提前将结果滤波，只需查询镜面反射方向的结构</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705194927479.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705194927479.png" alt=""></a></p>
+<h3 id="存在的问题-1"><a href="#存在的问题-1" class="headerlink" title="存在的问题"></a>存在的问题</h3><p>只有屏幕空间信息相当于只能看见物体的外壳</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705193217976.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705193217976.png" alt=""></a></p>
+<p>屏幕空间外的物体自然也不会追踪到，但可以通过边缘模糊实现类似淡出的效果，缓解该问题的影响</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705193320226.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705193320226.png" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705193444108.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705193444108.png" alt=""></a></p>
+<h3 id="优缺点的简单总结"><a href="#优缺点的简单总结" class="headerlink" title="优缺点的简单总结"></a>优缺点的简单总结</h3><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705195022923.png" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/image-20210705195022923.png" alt=""></a></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2021-09-21</span>
+            
+                <span>该篇文章被 Yann</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/computer-graphics/'>
+                            computer graphics
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Courses/'>
+                            Courses
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2021/20211013/'>关于时间</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2021/20210830/">Moving Deep Learning into Web Browser:How Far Can We Go</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2025 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>

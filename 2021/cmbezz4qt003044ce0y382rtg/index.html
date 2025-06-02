@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="MIT 6.824 分布式系统课程- 实现Raft Lab3 K/V Server（Part B）" />
+    <meta name="hexo-theme-A4" content="v1.9.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/20250602032635.jpg">
+    <title>Yann | 我愿做你光华中淡淡的一笔</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    <style>
+        :root {
+            --waline-theme-color: #323e74; 
+            --waline-color: #323e74; 
+            --waline-border-color: #323e74; 
+            --waline-white: #323e74; 
+            --waline-bgcolor-light: #f2fafc;  
+        }
+        body {
+            color: #323e74;
+            background: #eaeae8;
+        }
+        .post-md code {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #e7f7f3;
+            color: #7f688d; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #323e74;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #323e74;
+        }
+        .year-font-color {
+            color: #323e74 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #323e74; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #323e74;
+            color: #323e74; 
+        }
+        .wl-btn {
+            border: 1px solid #323e74; 
+            color:  #323e74;  
+        }
+        .wl-btn.primary {
+            color: #f2fafc; 
+        }
+        .wl-header label {
+            color: #323e74;
+        }
+        a {
+            color: #7f688d;
+        }
+
+        .post-md a {
+            color: #7f688d;
+        }
+
+        .nav li a {
+            color: #7f688d;
+        }
+
+        .archive-main a:link {
+            color: #7f688d;
+        }
+        .archive-main a:visited {
+            color: #767c7c; 
+        }
+
+        .archive li span {
+            color: #323e74;
+        }
+
+        .post-main-title {
+            color: #323e74;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #323e74;
+        }
+
+        [data-waline] p {
+            color: #323e74;
+        }
+        [data-waline] a {
+            color: #323e74;
+        } 
+        .wl-sort li.active {
+            color: #323e74;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #f2fafc;
+        }
+
+        .paper {
+            background: #eaeae8;
+        }
+
+        .index-main {
+            background: #f2fafc;
+        }
+
+        .paper-main {
+            background: #f2fafc;
+        }
+
+        .wl-panel {
+            background: #f2fafc;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #f2fafc;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #f2fafc;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #f2fafc;
+        }
+
+    
+        .progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #323e74; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #323e74; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, #7f688d, #7f688d); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #323e74; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: #7f688d;
+            border-left-color: #7f688d;
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #323e74;
+        }
+    </style>
+
+    
+    <style>
+        body {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }
+        .paper {
+            background-image: url(/img/3.jpg);
+            background-attachment: fixed;  /* 背景固定，不随页面滚动 */
+            background-repeat: no-repeat;  /* 防止背景图片重复 */
+            background-size: cover;       /* 背景自适应大小，覆盖整个背景 */
+            background-position: center;   /* 背景居中显示 */
+        }  
+    </style>
+
+
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #eaeae8  ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/20250602032635.jpg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">Yann</a> 
+            <span class="description">人工智能、计算机、机器学习、linux、程序员</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    MIT 6.824 分布式系统课程- 实现Raft Lab3 K/V Server（Part B）
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2021-08-08</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：2.1k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：8分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="post-toc-text">课程介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><span class="post-toc-text">实验要求</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Shard-Master"><span class="post-toc-text">Shard Master</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Shift-Shards"><span class="post-toc-text">Shift Shards</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="post-toc-text">思路</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="post-toc-text">流程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="post-toc-text">实现细节</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Challenge%EF%BC%88TODO%EF%BC%89"><span class="post-toc-text">Challenge（TODO）</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><span id="more"></span>
+<h2 id="课程介绍"><a href="#课程介绍" class="headerlink" title="课程介绍"></a><strong>课程介绍</strong></h2><p>Distributed Systems课程一共包含Lab1-4共4个大作业，Lab1是实现Mapreduce原型，Lab2-4是实现Raft以及基于Raft实现分布式KV存储。</p>
+<p>本次实现Raft，该实验（2020 年版本）分为三个部分，目标是开发一个容错的KV系统，分别是 Part 2A：leader 选举、Part 2B：日志同步、lab2C：状态备份。</p>
+<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/shard.jpg" title="shard" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/shard.jpg" alt="shard"></a></p>
+<ul>
+<li>每个 Replica Group 负责存储一组 K/V，通过 Raft 实现组内一致性；</li>
+<li>Shard Master 管理配置信息，决定如何分片，通过 Raft 实现容错；</li>
+<li>客户端请求 Shard Master 来查询 Key 所在的 Replica Group，可以将配置信息存储在客户端本地，可直在请求失败时才重新获取配置；</li>
+<li>分片需要在不同 Replica Group 之间移动，以实现 Replica Group 加入或离开集群时负载均衡；</li>
+<li>负载均衡时，需要尽量少地移动分片；</li>
+<li>Shard Master 需要保留历史配置，不同的配置直接拥有唯一编号标示。第一个配置的编号为 0，不包含任何 Replica Group，所有的碎片都被分配到 GID 0（此时 GID 0 是无效的）；</li>
+<li>分片的数量远多于 Replica Groups 数量，即每个 Replica Group 管理许多分片，以支持细粒度的负载转移；</li>
+<li>Shard Master 需要实现如下 RPC 接口：<ul>
+<li><code>Join</code>：加入新 Replica Group；</li>
+<li><code>Leave</code>：将 Replica Group 从集群剔除；</li>
+<li><code>Move</code>：将分片移动到指定 Replica Group，单纯用于测试，之后的<code>Join</code>和<code>Leave</code>触发的负载均衡将覆盖<code>Move</code>的影响；</li>
+<li><code>Query</code>：查询特定编号的配置，如果参数为 -1 或大于最大编号，则返回最新配置；</li>
+</ul>
+</li>
+<li>Replica Group 至少需要 100ms/次 的频率向 Shard Master 了解最新配置；</li>
+<li>允许在迁移完分片后，不删除不再拥有的分片，这样可以简化服务的设计；</li>
+<li>迁移分片时，允许直接发送整个数据库的数据，以简化传输逻辑；</li>
+</ul>
+<h1 id="Shard-Master"><a href="#Shard-Master" class="headerlink" title="Shard Master"></a>Shard Master</h1><p>逻辑流程与 Lab 3 的 kvraft 一致，将<code>Get</code>、<code>PutAppend</code>的处理换成了<code>Join</code>、<code>Leave</code>、<code>Move</code>、<code>Query</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> groupSlot <span class="keyword">struct</span> &#123;</span><br><span class="line">	gid <span class="keyword">int</span></span><br><span class="line">  valid <span class="keyword">bool</span>   <span class="comment">// 如初始状态下的 gid 0 为 false</span></span><br><span class="line">	shards []<span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ShardMaster <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">	slots []groupSlot <span class="comment">// gid -&gt; shards</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(sm *ShardMaster)</span> <span class="title">join</span><span class="params">(servers <span class="keyword">map</span>[<span class="keyword">int</span>][]<span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">  <span class="comment">// 从最新的 config 将内容拷贝出来，避免 config 之间共享底层结构</span></span><br><span class="line">	shards := sm.lastedConfig().Shards</span><br><span class="line">	groups := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>][]<span class="keyword">string</span>)</span><br><span class="line">	<span class="keyword">for</span> gid, servers := <span class="keyword">range</span> sm.lastedConfig().Groups &#123;</span><br><span class="line">		groups[gid] = servers</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">  <span class="comment">// 将新 group 加入 slots</span></span><br><span class="line">  <span class="comment">// 对 slots 负载均衡</span></span><br><span class="line">  <span class="comment">// 基于 slots 更新 shard -&gt; gid</span></span><br><span class="line">  <span class="comment">// 新建 config</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(sm *ShardMaster)</span> <span class="title">leave</span><span class="params">(gids []<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="comment">// 将 leave 的 group 在 slots 中标记为 invalid</span></span><br><span class="line">  <span class="comment">// 对 slots 负载均衡</span></span><br><span class="line">  <span class="comment">// 基于 slots 更新 shard -&gt; gid</span></span><br><span class="line">  <span class="comment">// 新建 config</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(sm *ShardMaster)</span> <span class="title">move</span><span class="params">(shard, gid <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">	<span class="comment">// 在 slots 中，将 shard 从源 group 删除</span></span><br><span class="line">  <span class="comment">// 在 slots 中，将 shard 加入目的 group</span></span><br><span class="line">  <span class="comment">// 对 slots 负载均衡</span></span><br><span class="line">  <span class="comment">// 基于 slots 更新 shard -&gt; gid</span></span><br><span class="line">  <span class="comment">// 新建 config</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">StartServer</span><span class="params">(servers []*labrpc.ClientEnd, me <span class="keyword">int</span>, persister *raft.Persister)</span> *<span class="title">ShardMaster</span></span> &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">  <span class="comment">// 初始化 slots，将所有 shards 绑定到 gid 0，并将其标记为 invalid</span></span><br><span class="line">	<span class="keyword">var</span> shards []<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> shard := <span class="number">0</span>; shard &lt; NShards; shard++ &#123;</span><br><span class="line">		shards = <span class="built_in">append</span>(shards, shard)</span><br><span class="line">	&#125;</span><br><span class="line">	sm.slots = <span class="built_in">append</span>(sm.slots, groupSlot&#123;<span class="number">0</span>, <span class="literal">false</span>, shards&#125;)</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>负载均衡策略：</p>
+<ul>
+<li>为了尽可能少的转移分片，不应该以最大<code>slot</code>到最小<code>slot</code>的方式循环迭代转移（如图箭头 2，<code>slot0</code>、<code>slot1</code>都需要需要同时和<code>slot2</code>、<code>slot3</code>通信），而应该批量转移（如图箭头 1，<code>slot0</code>只需要和<code>slot2</code>通信，<code>slot1</code>只需要和<code>slot3</code>通信）；</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/trans.jpg" title="trans" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/trans.jpg" alt="trans"></a></p>
+<ul>
+<li>负载均衡状态下的容量上限不是唯一值（如图），要确定每个<code>slot</code>需要转移（接受）多少分片，等价于，确定每个<code>slot</code>应该满足哪个容量上限。为了尽可能少的转移分片，应该让含有分片多的<code>slot</code>满足<code>limMax</code>，让含有分片少的<code>slot</code>满足<code>limMin</code>；</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/slotlim1.jpg" title="slotlim1" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/slotlim1.jpg" alt="slotlim1"></a></p>
+<p>负载均衡实现：</p>
+<ol>
+<li>对<code>slots</code>排序，优先<code>valid == false</code>，<code>shards</code>多的；</li>
+<li>更新<code>slots</code>，将前面<code>invalid</code>的裁了；</li>
+<li>令前的<code>nMax</code>个<code>slot</code>需满足<code>limMax</code>，后<code>nMin</code>个需满足<code>limMin</code>（如图）；<ul>
+<li>将<code>invalid</code>中的分片转移到不足容量上限的<code>slot</code>；</li>
+<li>将超过容量上限分片转移到不足容量上限的<code>slot</code>；</li>
+</ul>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/slotlim2.jpg" title="slotlim2" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/slotlim2.jpg" alt="slotlim2"></a></p>
+<h1 id="Shift-Shards"><a href="#Shift-Shards" class="headerlink" title="Shift Shards"></a>Shift Shards</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
+<li><p>为了避免重复请求，只由 Leader 向 Shard Master 请求配置，再使用 Raft 达成共识；</p>
+</li>
+<li><p>为了避免重复请求，只由 Leader 进行分片转移，再使用 Raft 达成共识；</p>
+</li>
+<li><p>应该单独开一个 goroutine 主动检查并进行分片转移，而非配置更新时被动触发，可能分片转移的结果没能在 Raft 达到共识，需要重试；</p>
+</li>
+<li><p>一次分片转移的完整过程为：从 Raft 中读取到配置更新，到 Raft 中读取到分片更新，在这期间应该停止对旧分片和新分片的操作，避免转移的结果覆盖操作；</p>
+</li>
+<li><p>不应该直接更新到最新的配置，而应该更新到下一任配置，预防出现这样的情况：</p>
+<ol>
+<li>分片一开始在 A Group；</li>
+<li>分片转移到 B Group；</li>
+<li>分片转移到 C Group；</li>
+</ol>
+<p>C Group 直接从配置 1 更新到配置 3，从而只从 A Group 请求分片，丢失了 B Group 的更新；</p>
+</li>
+<li><p>应该拒绝将分片转移给配置比自己新的 Group，预防 A Group 还没更新配置，B Group 先更新并从 A Group 获取了分片，之后 A Group 执行的数据更新操作都没有转移到 B Group；</p>
+</li>
+<li><p>应该针对每个分片都维护一个“每个客户端最后执行的命令 Id”来避免操作重复，在转移分片的时候将该记录也转移，预防 A Group 执行完了操作但没向客户端反馈，接着将分片转移给 B Group，客户端继续向 B Group 发送重复请求；</p>
+</li>
+</ul>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/shardkv.jpg" title="shardkv" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.jsdelivr.net/gh/Bazingaliu/clouding@master/shardkv.jpg" alt="shardkv"></a></p>
+<p>在 Lab 3 kvraft 的基础上实现，省略了 kvraft 的部分</p>
+<h2 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(kv *ShardKV)</span> <span class="title">genSnapshot</span><span class="params">()</span> []<span class="title">byte</span></span> &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">  <span class="comment">// 可能配置更新过程中会触发 snapshot</span></span><br><span class="line">  e.Encode(kv.oldConfig)</span><br><span class="line">	e.Encode(kv.shifting)</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(kv *ShardKV)</span> <span class="title">applyCommand</span><span class="params">(op Op)</span></span> &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">  <span class="comment">// 可能接受请求时还拥有分片，而执行请求时就失去了对分片的拥有，所以再次判断</span></span><br><span class="line">	<span class="keyword">if</span> kv.shifting || kv.config.Shards[key2shard(op.Key)] != kv.gid &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(kv *ShardKV)</span> <span class="title">applyPulled</span><span class="params">(pulled Pulled)</span></span> &#123;</span><br><span class="line">  <span class="comment">// 第一个条件避免出现 Raft 日志为：【config】【pulled】...【pulled】</span></span><br><span class="line">  <span class="comment">// 中间 &quot;...&quot; 的操作被后面的【pulled】覆盖而丢失</span></span><br><span class="line">  <span class="comment">// [reason1] 第二个条件避免出现 Raft 日志为：【config1】【pulled1】【config2】【pulled1】</span></span><br><span class="line">	<span class="comment">// 【config2】还未完成分片转移，【pulled1】就会关闭 shifting 允许执行操作</span></span><br><span class="line">	<span class="keyword">if</span> !kv.shifting || pulled.ConfigNum != kv.config.Num &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">  <span class="comment">// 应该拷贝而非直接引用</span></span><br><span class="line">  <span class="comment">// 因为 kv.lastApplied 之后会修改，而 pulled 来自 Raft 日志</span></span><br><span class="line">  <span class="comment">// Raft 日志内容应该一旦写入就不再改变</span></span><br><span class="line">	<span class="keyword">for</span> _, shard := <span class="keyword">range</span> pulled.Shards &#123;</span><br><span class="line">		<span class="keyword">for</span> clerkId, opId := <span class="keyword">range</span> pulled.LastApplied[shard] &#123;</span><br><span class="line">			kv.lastApplied[shard][clerkId] = opId</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(kv *ShardKV)</span> <span class="title">ShiftShards</span><span class="params">(args *ShiftArgs, reply *ShiftReply)</span></span> &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">  <span class="comment">// 避免转移脏数据，只应该由 Leader 执行转移</span></span><br><span class="line">  <span class="comment">// 采用和 Get 操作一样的逻辑</span></span><br><span class="line">	kv.registerFeedback(feedbackCh, opId, <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		reply.KV = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">		<span class="keyword">for</span> _, shard := <span class="keyword">range</span> args.Shards &#123;</span><br><span class="line">			<span class="keyword">for</span> k, v := <span class="keyword">range</span> kv.kv &#123;</span><br><span class="line">				<span class="keyword">if</span> key2shard(k) == shard &#123;</span><br><span class="line">					reply.KV[k] = v</span><br><span class="line">          <span class="comment">// 应该拷贝而非直接引用</span></span><br><span class="line">          <span class="comment">// 因为 kv.lastApplied 之后会修改，而 reply 作为 pulled 将存入 Raft 日志</span></span><br><span class="line">          <span class="comment">// Raft 日志内容应该一旦写入就不再改变</span></span><br><span class="line">					reply.LastApplied[shard] = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int64</span>]<span class="keyword">int64</span>)</span><br><span class="line">					<span class="keyword">for</span> clerkId, opId := <span class="keyword">range</span> kv.lastApplied[shard] &#123;</span><br><span class="line">						reply.LastApplied[shard][clerkId] = opId</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(kv *ShardKV)</span> <span class="title">checkPull</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="comment">// ...</span></span><br><span class="line">		<span class="keyword">var</span> pulled Pulled</span><br><span class="line">		pulled.KV = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">    <span class="comment">// For [reasone1]</span></span><br><span class="line">		pulled.ConfigNum = config.Num</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> gid, shards := <span class="keyword">range</span> tobePull &#123;</span><br><span class="line">			<span class="comment">// ...</span></span><br><span class="line">      <span class="comment">// [reason0] 因为 Group 可能已经在新配置 Leave 了，所以从旧配置信息中获取 Servers</span></span><br><span class="line">			servers := oldConfig.Groups[gid]</span><br><span class="line">			<span class="comment">// ...</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(kv *ShardKV)</span> <span class="title">applyConfig</span><span class="params">(config shardmaster.Config)</span></span> &#123;</span><br><span class="line">  <span class="comment">// 第一个条件避免出现 Raft 日志为：【config1】【pulled1】...【config1】【pulled1】</span></span><br><span class="line">  <span class="comment">// 中间 &quot;...&quot; 的操作被后面的【pulled1】覆盖而丢失</span></span><br><span class="line">  <span class="comment">// 第二个条件避免出现 Raft 日志为：【config1】【config2】【pulled1】</span></span><br><span class="line">  <span class="comment">// 【config2】还未完成分片转移，【pulled1】就会关闭 shifting 允许执行操作</span></span><br><span class="line">	<span class="keyword">if</span> kv.config.Num &gt;= config.Num || kv.shifting &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">  <span class="comment">// For [reason0]</span></span><br><span class="line">	kv.oldConfig = kv.config</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(kv *ShardKV)</span> <span class="title">Get</span><span class="params">(args *GetArgs, reply *GetReply)</span></span> &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">  kv.registerFeedback(feedbackCh, opId, <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 不应该在 Get 入口检查是否拥有分片</span></span><br><span class="line">		<span class="comment">// 避免节点已经不是 Leader 了，却因为没有更新配置以 ErrWrongGroup 拒绝请求</span></span><br><span class="line">		<span class="keyword">if</span> kv.shifting ||</span><br><span class="line">		   kv.config.Shards[key2shard(args.Key)] != kv.gid &#123;</span><br><span class="line">			reply.Err = ErrWrongGroup</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		reply.Value = kv.kv[args.Key]</span><br><span class="line">		reply.Err = OK</span><br><span class="line">	&#125;)</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Challenge（TODO）"><a href="#Challenge（TODO）" class="headerlink" title="Challenge（TODO）"></a>Challenge（TODO）</h2><p>删除分片思路：</p>
+<ul>
+<li>防止 Raft 日志重放时触发分片转移，分片转移后应该 Snapshot；</li>
+<li>Snapshot 结束后，向源 Group 发送一个 RPC 信号，通知其可以删除分片；</li>
+</ul>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2021-08-03</span>
+            
+                <span>该篇文章被 Yann</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Distributed-Systems/'>
+                            Distributed Systems
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Courses/'>
+                            Courses
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2021/2202210803/'>MLB Player Digital Engagement Forecasting</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2021/cmbezz4qu003344cebt5kc862/">MIT 6.824 分布式系统课程- 实现Raft Lab3 K/V Server（Part A）</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2025 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    wrapEmojis('.paper');
+  });
+</script>
